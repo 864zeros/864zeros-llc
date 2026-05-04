@@ -1,0 +1,12 @@
+name = "clipboard-864z"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+account_id = "a4b47c6a92c524a330753eff5c48f2d5"
+
+[vars]
+ALLOWED_ORIGIN = "chrome-extension://kpdalmmbbimfemgkpjnejefaodipbekg"
+
+# Secrets (add via: wrangler secret put GEMINI_API_KEY)
+# - GEMINI_API_KEY
+# - CLAUDE_API_KEY (optional)

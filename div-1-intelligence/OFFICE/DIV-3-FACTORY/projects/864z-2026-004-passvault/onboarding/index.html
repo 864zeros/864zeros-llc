@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PassVault - Setup</title>
+  <link rel="stylesheet" href="../assets/security-theme.css">
+  <style>
+    /* Onboarding-specific styles */
+    .onboarding-container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .onboarding-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .onboarding-header .logo {
+      margin-bottom: 16px;
+    }
+
+    .onboarding-header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .onboarding-header .subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .step-indicator {
+      font-size: 12px;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    /* Password form */
+    .password-form {
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .password-input-wrapper {
+      position: relative;
+    }
+
+    .password-input-wrapper input {
+      width: 100%;
+      padding: 12px 44px 12px 12px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 16px;
+      font-family: var(--font-mono);
+      transition: border-color 0.2s;
+    }
+
+    .password-input-wrapper input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .toggle-visibility {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .toggle-visibility:hover {
+      color: var(--text-primary);
+    }
+
+    /* Strength meter */
+    .strength-meter {
+      height: 4px;
+      background: var(--bg-secondary);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0;
+      transition: width 0.3s, background-color 0.3s;
+    }
+
+    .strength-bar.weak { background: var(--status-danger); }
+    .strength-bar.moderate { background: var(--status-warning); }
+    .strength-bar.strong { background: var(--accent-primary); }
+    .strength-bar.very-strong { background: var(--status-secure); }
+
+    .strength-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Match indicator */
+    .match-indicator {
+      font-size: 12px;
+      margin-top: 4px;
+      min-height: 16px;
+    }
+
+    .match-indicator.match { color: var(--status-secure); }
+    .match-indicator.no-match { color: var(--status-danger); }
+
+    /* Checkbox */
+    .checkbox-group {
+      padding: 16px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      flex-shrink: 0;
+      accent-color: var(--accent-primary);
+    }
+
+    .checkbox-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .checkbox-text strong {
+      color: var(--status-danger);
+    }
+
+    /* Form actions */
+    .form-actions {
+      margin-top: 24px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-hover);
+    }
+
+    /* Trust badge */
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: var(--accent-muted);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: var(--accent-primary);
+    }
+
+    /* Recovery step */
+    .recovery-preview-container {
+      background: #fff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .recovery-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .saved-confirmation {
+      padding: 16px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      margin: 24px 0;
+    }
+
+    /* Error message */
+    .error-message {
+      font-size: 13px;
+      color: var(--status-danger);
+      margin-top: 8px;
+      min-height: 18px;
+    }
+
+    /* Recovery link */
+    .recovery-link {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .recovery-link a {
+      color: var(--text-secondary);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .recovery-link a:hover {
+      color: var(--accent-primary);
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: #fff !important; }
+      .onboarding-container { display: none !important; }
+      .recovery-preview { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="./master-password.js"></script>
+</body>
+</html>

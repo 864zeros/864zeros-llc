@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(powershell:*)",
+      "Bash(dir:*)",
+      "Bash(forfiles /P \"C:\\\\Users\\\\I820965\\\\dev\\\\webinsight-v2\" /M \"webinsight-backup-2025-12-04-13-40-29.json\" /C \"cmd /c echo @fsize\")",
+      "Bash(wsl ls:*)"
+    ]
+  }
+}

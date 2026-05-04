@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PassVault Import Test - Resentment Test</title>
+  <link rel="stylesheet" href="../assets/security-theme.css">
+  <style>
+    body { padding: 40px; }
+    .test-container { max-width: 800px; margin: 0 auto; }
+    .test-section { margin-bottom: 32px; padding: 20px; background: var(--bg-secondary); border-radius: 8px; }
+    .test-section h2 { margin-bottom: 16px; color: var(--accent-primary); }
+    pre { background: var(--bg-primary); padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+    .result { padding: 16px; border-radius: 8px; margin-top: 16px; }
+    .result.pass { background: var(--status-secure-bg); border: 1px solid var(--status-secure); }
+    .result.fail { background: var(--status-danger-bg); border: 1px solid var(--status-danger); }
+    .stat { display: inline-block; padding: 8px 16px; margin: 4px; border-radius: 4px; }
+    .stat.danger { background: var(--status-danger-bg); color: var(--status-danger); }
+    .stat.warning { background: var(--status-warning-bg); color: var(--status-warning); }
+    .stat.secure { background: var(--status-secure-bg); color: var(--status-secure); }
+    #run-test { padding: 16px 32px; font-size: 18px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>PassVault Import Test</h1>
+    <p class="text-secondary">The "Resentment" Test - Validating Migration Audit accuracy</p>
+
+    <button id="run-test" class="btn btn-primary">Run Simulated Import Test</button>
+
+    <div class="test-section">
+      <h2>Test Data</h2>
+      <p>Using simulated Dashlane JSON export with 15 passwords</p>
+      <pre id="test-data">Loading test data...</pre>
+    </div>
+
+    <div class="test-section">
+      <h2>Expected Results</h2>
+      <ul>
+        <li><strong>Total Passwords:</strong> 15</li>
+        <li><strong>Reused Passwords:</strong> 6 (password123 used on 6 sites)</li>
+        <li><strong>Weak Passwords:</strong> 2 (qwerty, 123456)</li>
+        <li><strong>Strong Passwords:</strong> 7</li>
+        <li><strong>Value Saved:</strong> $60/year vs Dashlane Premium</li>
+      </ul>
+    </div>
+
+    <div class="test-section" id="results-section" style="display: none;">
+      <h2>Test Results</h2>
+      <div id="test-results"></div>
+    </div>
+
+    <div class="test-section" id="audit-section" style="display: none;">
+      <h2>Migration Audit Output</h2>
+      <div id="audit-output"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { parsePasswordExport, parseDashlaneJSON } from '../lib/password-parser.js';
+
+    // Test data
+    const testData = {
+      "AUTHENTIFIANT": [
+        { "title": "Google", "email": "user@gmail.com", "login": "user@gmail.com", "password": "GooglePass123!", "url": "https://accounts.google.com", "category": "Personal" },
+        { "title": "Amazon", "email": "user@gmail.com", "login": "user@gmail.com", "password": "password123", "url": "https://amazon.com", "category": "Shopping" },
+        { "title": "Netflix", "email": "user@gmail.com", "login": "user@gmail.com", "password": "password123", "url": "https://netflix.com", "category": "Entertainment" },
+        { "title": "LinkedIn", "email": "user@gmail.com", "login": "user@gmail.com", "password": "password123", "url": "https://linkedin.com", "category": "Work" },
+        { "title": "Twitter", "email": "user@gmail.com", "login": "@userhandle", "password": "qwerty", "url": "https://twitter.com", "category": "Social" },
+        { "title": "Facebook", "email": "user@gmail.com", "login": "user@gmail.com", "password": "123456", "url": "https://facebook.com", "category": "Social" },
+        { "title": "GitHub", "email": "dev@example.com", "login": "devuser", "password": "Str0ng!P@ssw0rd#2024", "url": "https://github.com", "category": "Work" },
+        { "title": "Dropbox", "email": "user@gmail.com", "login": "user@gmail.com", "password": "password123", "url": "https://dropbox.com", "category": "Cloud" },
+        { "title": "Spotify", "email": "user@gmail.com", "login": "user@gmail.com", "password": "MusicLover2024!", "url": "https://spotify.com", "category": "Entertainment" },
+        { "title": "Reddit", "email": "user@gmail.com", "login": "reddit_user", "password": "password123", "url": "https://reddit.com", "category": "Social" },
+        { "title": "PayPal", "email": "user@gmail.com", "login": "user@gmail.com", "password": "P@yP@l$ecure99", "url": "https://paypal.com", "category": "Finance" },
+        { "title": "Bank of America", "email": "user@gmail.com", "login": "bankuser123", "password": "B@nk!ng2024Secure", "url": "https://bankofamerica.com", "category": "Finance" },
+        { "title": "Instagram", "email": "user@gmail.com", "login": "@instauser", "password": "password123", "url": "https://instagram.com", "category": "Social" },
+        { "title": "Slack", "email": "work@company.com", "login": "work@company.com", "password": "Sl@ckW0rk2024", "url": "https://slack.com", "category": "Work" },
+        { "title": "Adobe", "email": "user@gmail.com", "login": "user@gmail.com", "password": "Cr3@tive2024!", "url": "https://adobe.com", "category": "Software" }
+      ]
+    };
+
+    // Display test data
+    document.getElementById('test-data').textContent = JSON.stringify(testData, null, 2).substring(0, 500) + '...';
+
+    // Run test
+    document.getElementById('run-test').addEventListener('click', () => {
+      console.log('[TEST] Running simulated Dashlane import...');
+
+      // Parse the test data
+      const vault = parseDashlaneJSON(JSON.stringify(testData));
+
+      console.log('[TEST] Parsed vault:', vault);
+
+      // Run security audit
+      const auditSummary = vault.runSecurityAudit();
+
+      console.log('[TEST] Audit summary:', auditSummary);
+
+      // Display results
+      const resultsSection = document.getElementById('results-section');
+      const auditSection = document.getElementById('audit-section');
+      const resultsDiv = document.getElementById('test-results');
+      const auditDiv = document.getElementById('audit-output');
+
+      resultsSection.style.display = 'block';
+      auditSection.style.display = 'block';
+
+      // Validate results
+      const tests = [
+        { name: 'Total Imported', expected: 15, actual: vault.metadata.totalImported },
+        { name: 'Reused Passwords', expected: 6, actual: auditSummary.reused },
+        { name: 'Weak Passwords', expected: 2, actual: auditSummary.weak },
+        { name: 'Strong Passwords', expected: 7, actual: auditSummary.strong },
+        { name: 'Security Score < 70', expected: true, actual: auditSummary.securityScore < 70 },
+        { name: 'Worst Reuse Count >= 6', expected: true, actual: auditSummary.worstReuseCount >= 6 }
+      ];
+
+      let allPassed = true;
+      let resultsHTML = '<table style="width: 100%; border-collapse: collapse;">';
+      resultsHTML += '<tr><th style="text-align: left; padding: 8px; border-bottom: 1px solid var(--border-color);">Test</th><th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Expected</th><th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Actual</th><th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Status</th></tr>';
+
+      tests.forEach(test => {
+        const passed = test.expected === test.actual || (typeof test.expected === 'boolean' && test.expected === test.actual);
+        if (!passed) allPassed = false;
+
+        resultsHTML += `<tr>
+          <td style="padding: 8px; border-bottom: 1px solid var(--border-subtle);">${test.name}</td>
+          <td style="padding: 8px; text-align: center; border-bottom: 1px solid var(--border-subtle);">${test.expected}</td>
+          <td style="padding: 8px; text-align: center; border-bottom: 1px solid var(--border-subtle);">${test.actual}</td>
+          <td style="padding: 8px; text-align: center; border-bottom: 1px solid var(--border-subtle);">${passed ? '<span style="color: var(--status-secure);">PASS</span>' : '<span style="color: var(--status-danger);">FAIL</span>'}</td>
+        </tr>`;
+      });
+
+      resultsHTML += '</table>';
+      resultsHTML += `<div class="result ${allPassed ? 'pass' : 'fail'}" style="margin-top: 16px;">
+        <strong>${allPassed ? 'ALL TESTS PASSED' : 'SOME TESTS FAILED'}</strong>
+      </div>`;
+
+      resultsDiv.innerHTML = resultsHTML;
+
+      // Display audit output (the "aha!" moment)
+      auditDiv.innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 48px; font-weight: bold; color: ${auditSummary.securityScore >= 70 ? 'var(--status-secure)' : auditSummary.securityScore >= 50 ? 'var(--status-warning)' : 'var(--status-danger)'};">
+            ${auditSummary.securityScore}/100
+          </div>
+          <div style="color: var(--text-secondary); margin-bottom: 20px;">Security Score</div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px;">
+          <span class="stat danger">${auditSummary.weak} Weak</span>
+          <span class="stat danger">${auditSummary.reused} Reused</span>
+          <span class="stat secure">${auditSummary.strong} Strong</span>
+        </div>
+
+        <div style="background: var(--accent-subtle); padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px;">
+          <div style="font-size: 32px; font-weight: bold; color: var(--accent-primary);">$60/year</div>
+          <div style="color: var(--text-secondary);">Estimated Value Saved vs Dashlane Premium</div>
+          <div style="margin-top: 8px; color: var(--accent-primary);">"Your passwords are now free. Forever."</div>
+        </div>
+
+        <pre style="margin-top: 20px;">${JSON.stringify(auditSummary, null, 2)}</pre>
+      `;
+    });
+  </script>
+</body>
+</html>

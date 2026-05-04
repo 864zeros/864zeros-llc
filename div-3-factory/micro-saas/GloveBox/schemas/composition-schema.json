@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GLOVEBOX Composition Schema",
+  "description": "Defines how adapters map to the vehicle knowledge graph",
+  "type": "object",
+  "properties": {
+    "entity": {
+      "const": "vehicle"
+    },
+    "identity_key": {
+      "const": "vin"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "adapter": {
+            "type": "string",
+            "enum": [
+              "nhtsa-vin",
+              "nhtsa-recalls",
+              "nhtsa-complaints",
+              "nhtsa-safety",
+              "epa-fuel",
+              "carfax-parser",
+              "obd-adapter",
+              "receipt-parser",
+              "maintenance-schedule",
+              "user-input"
+            ]
+          },
+          "maps_to": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "node_type": {
+            "type": "string",
+            "enum": ["skill:Concept", "skill:Rule", "skill:AntiPattern", "skill:Technique"]
+          }
+        },
+        "required": ["adapter", "maps_to", "node_type"]
+      }
+    }
+  },
+  "required": ["entity", "identity_key", "sources"],
+
+  "default_composition": {
+    "entity": "vehicle",
+    "identity_key": "vin",
+    "sources": [
+      {
+        "adapter": "nhtsa-vin",
+        "maps_to": ["make", "model", "year", "trim", "engine", "body", "plant", "safety_equipment"],
+        "node_type": "skill:Concept"
+      },
+      {
+        "adapter": "nhtsa-recalls",
+        "maps_to": ["recall_events"],
+        "node_type": "skill:Rule"
+      },
+      {
+        "adapter": "nhtsa-complaints",
+        "maps_to": ["known_problems"],
+        "node_type": "skill:AntiPattern"
+      },
+      {
+        "adapter": "nhtsa-safety",
+        "maps_to": ["safety_ratings"],
+        "node_type": "skill:Concept"
+      },
+      {
+        "adapter": "epa-fuel",
+        "maps_to": ["fuel_economy"],
+        "node_type": "skill:Concept"
+      },
+      {
+        "adapter": "maintenance-schedule",
+        "maps_to": ["service_intervals"],
+        "node_type": "skill:Rule"
+      }
+    ]
+  }
+}

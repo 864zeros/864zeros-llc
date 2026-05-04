@@ -1,0 +1,101 @@
+/* injector.css - Injected Page Styles */
+/* 864zeros Build Kit - ReadVault Extension */
+/*
+ * Styles for any UI elements injected into web pages.
+ * Currently minimal - reserved for future enhancements.
+ */
+
+/* ===== SAVE INDICATOR ===== */
+
+.readvault-save-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background: #6366f1;
+  color: white;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  z-index: 2147483647;
+  animation: readvault-slide-in 0.3s ease-out;
+}
+
+.readvault-save-indicator.success {
+  background: #22c55e;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.readvault-save-indicator.error {
+  background: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes readvault-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== READING MODE OVERLAY ===== */
+/* Reserved for future reading mode feature */
+
+.readvault-reading-mode {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 2147483646;
+  overflow-y: auto;
+  padding: 40px;
+}
+
+.readvault-reading-mode article {
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #1a1a1a;
+}
+
+.readvault-reading-mode h1 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 32px;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.readvault-reading-mode .close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f5f9;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .readvault-reading-mode {
+    background: #0f172a;
+  }
+
+  .readvault-reading-mode article {
+    color: #f8fafc;
+  }
+
+  .readvault-reading-mode .close-btn {
+    background: #334155;
+    color: #f8fafc;
+  }
+}

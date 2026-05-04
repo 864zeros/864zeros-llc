@@ -1,0 +1,312 @@
+[
+  {
+    "site_id": "Abel-beth-maacah",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 33.267, "lng": 35.580,
+      "elevation": "350m, Hula Valley",
+      "region": "Upper Galilee"
+    },
+    "geopolitics": {
+      "era": "Divided Monarchy (9th c. BCE)",
+      "primary_conflict": "Israel vs. Aram",
+      "status": "Border City / 'Mother in Israel'",
+      "tension_gradient": "ISR-ARM"
+    },
+    "archaeology": {
+      "excavation_start": 2013,
+      "finds": [
+        {
+          "title": "9th-Century Faience Head",
+          "description": "Rare portrait head of a bearded male figure.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Aerial_view_of_Area_A%2C_end_of_2015_excavation_season%2C_looking_west.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Avel Bet Ma'akhah', meaning 'Meadow of the House of Maacah'.",
+    "scripture": {
+      "key_verse": "2 Samuel 20:15",
+      "narrative_insight": "Tactical: A strategic border outpost saved by a wise woman's negotiation."
+    }
+  },
+  {
+    "site_id": "Tel-Hazor",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 33.016, "lng": 35.568,
+      "elevation": "230m, Hula Valley",
+      "region": "Upper Galilee"
+    },
+    "geopolitics": {
+      "era": "Solomonic Era",
+      "primary_conflict": "Israel vs. Canaanites",
+      "status": "Regional Capital / 'Head of All Kingdoms'",
+      "tension_gradient": "ISR-CAN"
+    },
+    "archaeology": {
+      "excavation_start": 1955,
+      "finds": [
+        {
+          "title": "Solomonic Six-Chambered Gate",
+          "description": "Massive gateway confirming Iron Age fortification standards.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Hatzor-SolomonicGate.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Hazor', meaning 'Enclosure'.",
+    "scripture": {
+      "key_verse": "Joshua 11:10",
+      "narrative_insight": "Tactical: Largest city in the Levant; its destruction broke Canaanite power."
+    }
+  },
+  {
+    "site_id": "Megiddo",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 32.585, "lng": 35.184,
+      "elevation": "160m, Jezreel Valley",
+      "region": "Lower Galilee"
+    },
+    "geopolitics": {
+      "era": "Iron Age II",
+      "primary_conflict": "Israel vs. Egypt/Assyria",
+      "status": "Strategic Chokepoint",
+      "tension_gradient": "ISR-EGY"
+    },
+    "archaeology": {
+      "excavation_start": 1903,
+      "finds": [
+        {
+          "title": "Iron Age Stables",
+          "description": "Complex cavalry barracks showcasing royal military might.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Megiddo_stables.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Megiddo', associated with 'place of crowds'.",
+    "scripture": {
+      "key_verse": "1 Kings 9:15",
+      "narrative_insight": "Tactical: Control of Megiddo meant control of the main international highway."
+    }
+  },
+  {
+    "site_id": "Lachish",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 31.565, "lng": 34.846,
+      "elevation": "260m, Shephelah",
+      "region": "Judean Foothills"
+    },
+    "geopolitics": {
+      "era": "Assyrian Crisis (701 BCE)",
+      "primary_conflict": "Judah vs. Assyria",
+      "status": "Judah's Second City",
+      "tension_gradient": "JUD-ASY"
+    },
+    "archaeology": {
+      "excavation_start": 1932,
+      "finds": [
+        {
+          "title": "Assyrian Siege Ramp",
+          "description": "World's oldest surviving siege ramp, built by Sennacherib's army.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Lachish_Siege_Ramp.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Lakhish', likely meaning 'Hard to Conquer'.",
+    "scripture": {
+      "key_verse": "2 Kings 18:14",
+      "narrative_insight": "Tactical: A formidable fortress whose fall was documented in Assyrian palace reliefs."
+    }
+  },
+  {
+    "site_id": "Tel-Dan",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 33.248, "lng": 35.652,
+      "elevation": "200m, Dan Spring",
+      "region": "Upper Galilee"
+    },
+    "geopolitics": {
+      "era": "Divided Monarchy",
+      "primary_conflict": "Israel vs. Aram",
+      "status": "Northern Ritual Center",
+      "tension_gradient": "ISR-ARM"
+    },
+    "archaeology": {
+      "excavation_start": 1966,
+      "finds": [
+        {
+          "title": "Tel Dan Stele",
+          "description": "Inscription fragment mentioning the 'House of David'.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Tel_Dan_Stele.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Dan', meaning 'Judge'.",
+    "scripture": {
+      "key_verse": "Judges 18:29",
+      "narrative_insight": "Tactical: Strategic source of the Jordan River; location of Jeroboam's golden calf."
+    }
+  },
+  {
+    "site_id": "Gezer",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 31.863, "lng": 34.921,
+      "elevation": "225m, Shephelah",
+      "region": "Coastal Plain Border"
+    },
+    "geopolitics": {
+      "era": "Solomonic Era",
+      "primary_conflict": "Israel vs. Philistia",
+      "status": "Dowry City",
+      "tension_gradient": "ISR-PHI"
+    },
+    "archaeology": {
+      "excavation_start": 1902,
+      "finds": [
+        {
+          "title": "Gezer High Place",
+          "description": "Ten massive standing stones (Massebot) from a ritual site.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gezer_Standing_Stones.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Gezer', meaning 'Cut'.",
+    "scripture": {
+      "key_verse": "1 Kings 9:16",
+      "narrative_insight": "Tactical: Destroyed by Egypt and given to Solomon as a wedding dowry."
+    }
+  },
+  {
+    "site_id": "Beersheba",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 31.244, "lng": 34.841,
+      "elevation": "280m, Negev",
+      "region": "Southern Frontier"
+    },
+    "geopolitics": {
+      "era": "Patriarchal to Monarchy",
+      "primary_conflict": "Judah vs. Edom",
+      "status": "Southern Administrative Hub",
+      "tension_gradient": "JUD-EDM"
+    },
+    "archaeology": {
+      "excavation_start": 1969,
+      "finds": [
+        {
+          "title": "Horned Altar",
+          "description": "Dismantled stone altar found in the city walls.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Horned_Altar_Beersheba.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Be'er Sheva', meaning 'Well of the Seven'.",
+    "scripture": {
+      "key_verse": "Genesis 21:31",
+      "narrative_insight": "Tactical: The southernmost limit of settled Israel."
+    }
+  },
+  {
+    "site_id": "Jericho",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 31.871, "lng": 35.444,
+      "elevation": "-258m, Jordan Valley",
+      "region": "Dead Sea Basin"
+    },
+    "geopolitics": {
+      "era": "Conquest Era",
+      "primary_conflict": "Israel vs. Canaanite City-States",
+      "status": "Oasis Stronghold",
+      "tension_gradient": "ISR-CAN"
+    },
+    "archaeology": {
+      "excavation_start": 1868,
+      "finds": [
+        {
+          "title": "Neolithic Tower",
+          "description": "One of the oldest stone structures in human history.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Jericho_Tower.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Yeriho', associated with 'Moon'.",
+    "scripture": {
+      "key_verse": "Joshua 6:20",
+      "narrative_insight": "Tactical: Critical spring-fed oasis and the primary obstacle to entering central Canaan."
+    }
+  },
+  {
+    "site_id": "Shiloh",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 32.055, "lng": 35.289,
+      "elevation": "700m, Samarian Hills",
+      "region": "Central Highlands"
+    },
+    "geopolitics": {
+      "era": "Tabernacle Period",
+      "primary_conflict": "Israel vs. Philistines",
+      "status": "First Tribal Capital",
+      "tension_gradient": "ISR-PHI"
+    },
+    "archaeology": {
+      "excavation_start": 1922,
+      "finds": [
+        {
+          "title": "Tabernacle Platform",
+          "description": "Rock-cut area on the summit believed to be the Tabernacle site.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Tel_Shiloh_Tabernacle_Area.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Shiloh', meaning 'Place of Rest'.",
+    "scripture": {
+      "key_verse": "Joshua 18:1",
+      "narrative_insight": "Tactical: The heart of Israelite assembly before Jerusalem."
+    }
+  },
+  {
+    "site_id": "Joppa",
+    "last_updated": "2026-02-21T20:50:00Z",
+    "location": {
+      "lat": 32.055, "lng": 34.751,
+      "elevation": "30m, Coastal Hill",
+      "region": "Mediterranean Coast"
+    },
+    "geopolitics": {
+      "era": "Monarchy to Apostolic Era",
+      "primary_conflict": "Israel vs. Sea Peoples",
+      "status": "Primary Maritime Gateway",
+      "tension_gradient": "ISR-SEA"
+    },
+    "archaeology": {
+      "excavation_start": 1948,
+      "finds": [
+        {
+          "title": "Ramses II Gateway",
+          "description": "Inscriptions reflecting Egyptian control of the port.",
+          "img_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Old_Jaffa_Gate.jpg",
+          "asset_status": 200, "timestamp": "2026-02-21T20:50:00Z"
+        }
+      ]
+    },
+    "etymology": "Hebrew 'Yafo', meaning 'Beautiful'.",
+    "scripture": {
+      "key_verse": "Jonah 1:3",
+      "narrative_insight": "Tactical: The primary deep-water port serving the Judean mountains."
+    }
+  }
+]

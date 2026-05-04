@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-03-17",
+  "description": "Hosts analyzed by Vulture Nest. Excluded from re-scanning for specified duration.",
+
+  "exclusions": [
+    {
+      "host": "getpocket.com",
+      "name": "Pocket",
+      "category": "read_it_later",
+      "analyzed_at": "2026-03-17",
+      "exclude_until": "2026-09-17",
+      "reason": "STRIKE_DEPLOYED",
+      "strike_id": "864z-2026-002",
+      "vulture_score": 9.32,
+      "outcome": "ReadVault deployed successfully"
+    }
+  ],
+
+  "active_targets": [],
+
+  "scan_history": [
+    {
+      "date": "2026-03-17",
+      "targets_scanned": 1,
+      "strikes_generated": 1,
+      "hosts_excluded": ["getpocket.com"]
+    }
+  ]
+}

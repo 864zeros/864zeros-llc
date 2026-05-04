@@ -1,0 +1,35 @@
+{
+  "name": "glovebox",
+  "version": "1.0.0",
+  "description": "Your Car, As an Agent - VIN to AETHER Capsule pipeline",
+  "author": "864zeros LLC",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test test/",
+    "test:vin": "node test/test-vin-validate.js",
+    "test:decode": "node test/test-vin-decode.js",
+    "test:recalls": "node test/test-recalls.js",
+    "test:complaints": "node test/test-complaints.js",
+    "test:fuel": "node test/test-fuel.js",
+    "test:composer": "node test/test-composer.js",
+    "test:full": "node test/test-full-pipeline.js"
+  },
+  "keywords": [
+    "vin",
+    "vehicle",
+    "car",
+    "agent",
+    "aether",
+    "capsule",
+    "nhtsa",
+    "864zeros"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,235 @@
+/* ============================================================
+   TuneOut2FocusIn — Side Panel Styles
+   Extends OIA Design System
+   ============================================================ */
+
+/* --- Panel Layout --- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--oia-space-lg);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--oia-space-lg);
+}
+
+.panel-header__settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  transition: color var(--oia-duration-fast) var(--oia-ease-default),
+              background-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.panel-header__settings:hover {
+  color: var(--oia-text-primary);
+  background-color: var(--oia-bg-card);
+}
+
+.panel-header__settings:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}
+
+.panel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-lg);
+}
+
+.panel-footer {
+  margin-top: auto;
+  padding-top: var(--oia-space-lg);
+  text-align: center;
+}
+
+/* --- Toggle Section --- */
+.toggle-section {
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-btn {
+  width: 100%;
+  max-width: 280px;
+  height: 64px;
+  font-size: 18px;
+}
+
+.toggle-btn.is-playing {
+  background-color: var(--oia-coral);
+  box-shadow: 0 2px 8px rgba(232, 165, 152, 0.3);
+}
+
+.toggle-btn.is-playing:hover {
+  background-color: var(--oia-coral-dark);
+}
+
+/* --- Sound Selection --- */
+.sounds-section {
+  text-align: center;
+}
+
+.sounds-label {
+  margin-bottom: var(--oia-space-md);
+  color: var(--oia-text-secondary);
+}
+
+.sounds-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--oia-space-sm);
+}
+
+.sound-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-xs);
+  padding: var(--oia-space-md);
+  min-height: 80px;
+  background-color: var(--oia-bg-card);
+  border: 2px solid transparent;
+  border-radius: var(--oia-radius-md);
+  cursor: pointer;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              border-color var(--oia-duration-fast) var(--oia-ease-default),
+              transform var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.sound-btn:hover {
+  background-color: var(--oia-bg-elevated);
+}
+
+.sound-btn:active {
+  transform: scale(0.97);
+}
+
+.sound-btn.is-active {
+  border-color: var(--oia-sage);
+  background-color: rgba(139, 168, 136, 0.1);
+}
+
+.sound-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sound-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--oia-sage);
+}
+
+.sound-btn__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.sound-btn__label {
+  font-family: var(--oia-font);
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-medium);
+  color: var(--oia-text-primary);
+}
+
+/* --- Volume Control --- */
+.volume-section {
+  padding: var(--oia-space-md);
+  background-color: var(--oia-bg-card);
+  border-radius: var(--oia-radius-md);
+}
+
+.volume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--oia-space-sm);
+}
+
+.volume-label {
+  color: var(--oia-text-secondary);
+  margin: 0;
+}
+
+.volume-value {
+  color: var(--oia-sage);
+  font-weight: var(--oia-weight-semibold);
+  margin: 0;
+}
+
+.volume-slider {
+  width: 100%;
+}
+
+/* --- Status Display --- */
+.status-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-sm);
+  padding: var(--oia-space-md);
+  background-color: var(--oia-bg-card);
+  border-radius: var(--oia-radius-md);
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--oia-taupe);
+  opacity: 0.5;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              opacity var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.status-indicator.is-playing {
+  background-color: var(--oia-sage);
+  opacity: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+.status-text {
+  margin: 0;
+  color: var(--oia-text-secondary);
+}
+
+.status-text.is-playing {
+  color: var(--oia-sage);
+  font-weight: var(--oia-weight-semibold);
+}
+
+/* --- Focus States --- */
+.toggle-btn:focus-visible,
+.sound-btn:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}

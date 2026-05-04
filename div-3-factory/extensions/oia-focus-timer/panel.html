@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oia.focus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <div class="oia-screen" id="container">
+        <!-- Time Selection View -->
+        <div class="oia-view" id="selectionView">
+            <header class="oia-header">
+                <h1 class="oia-title">oia.focus</h1>
+            </header>
+
+            <div class="oia-focus-input-section">
+                <label for="focusInput" class="oia-label">What are you focusing on?</label>
+                <input
+                    type="text"
+                    id="focusInput"
+                    class="oia-input"
+                    placeholder="e.g., Writing project proposal (optional)"
+                    maxlength="60"
+                >
+            </div>
+
+            <div class="oia-timer-grid">
+                <button class="oia-time-btn" data-minutes="5">
+                    <span class="oia-time-number">5</span>
+                    <span class="oia-time-label">min</span>
+                </button>
+                <button class="oia-time-btn" data-minutes="10">
+                    <span class="oia-time-number">10</span>
+                    <span class="oia-time-label">min</span>
+                </button>
+                <button class="oia-time-btn" data-minutes="25">
+                    <span class="oia-time-number">25</span>
+                    <span class="oia-time-label">min</span>
+                </button>
+                <button class="oia-time-btn" data-minutes="50">
+                    <span class="oia-time-number">50</span>
+                    <span class="oia-time-label">min</span>
+                </button>
+            </div>
+
+            <div class="oia-settings">
+                <div class="oia-setting-group">
+                    <label for="soundSelect" class="oia-label-inline">Alert Sound:</label>
+                    <div class="oia-sound-controls">
+                        <select id="soundSelect" class="oia-select">
+                            <option value="off">Off</option>
+                            <option value="soft-chime">Soft Chime</option>
+                            <option value="nature-pop">Nature Pop</option>
+                            <option value="breath">Breath</option>
+                        </select>
+                        <button id="playSound" class="oia-btn oia-btn-icon" aria-label="Preview sound">
+                            <span class="oia-play-icon">▶</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timer View -->
+        <div class="oia-view oia-hidden" id="timerView">
+            <header class="oia-header oia-header-timer">
+                <div class="oia-session-info">
+                    <span class="oia-session-type" id="sessionType">Focus Session</span>
+                    <span class="oia-session-duration" id="sessionDuration">25 minutes</span>
+                </div>
+                <button class="oia-btn oia-btn-reset" id="resetButton" aria-label="Reset timer">
+                    <span>✕</span>
+                </button>
+            </header>
+
+            <div class="oia-timer-display">
+                <div class="oia-progress-ring">
+                    <svg class="oia-progress-svg" viewBox="0 0 120 120">
+                        <circle class="oia-progress-bg" cx="60" cy="60" r="54"/>
+                        <circle class="oia-progress-bar" cx="60" cy="60" r="54" id="progressCircle"/>
+                    </svg>
+                    <div class="oia-time-remaining" id="timeRemaining">25:00</div>
+                </div>
+            </div>
+
+            <div class="oia-timer-controls">
+                <button class="oia-btn oia-btn-primary oia-btn-control" id="pauseButton">
+                    <span id="pauseText">Pause</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Completion Alert Overlay -->
+        <div class="oia-completion-overlay oia-hidden" id="completionOverlay">
+            <div class="oia-completion-message">
+                <div class="oia-completion-icon">✓</div>
+                <div class="oia-completion-text">time's up. you may want to give your brain a break. think about it for a moment.</div>
+                <div class="oia-completion-subtitle">Click anywhere to dismiss</div>
+            </div>
+        </div>
+
+        <footer class="oia-footer">
+            Built for ADHD minds
+        </footer>
+    </div>
+
+    <script type="module" src="panel.js"></script>
+</body>
+</html>

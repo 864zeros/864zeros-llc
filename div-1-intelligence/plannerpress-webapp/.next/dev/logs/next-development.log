@@ -1,0 +1,14 @@
+[00:00:01.544] Server  LOG     ✓ Ready in 1102ms
+[00:00:02.412] Server  ERROR   ⨯ Error: useToast must be used within a ToastProvider
+[00:00:02.443] Server  ERROR   ⨯ Error: useToast must be used within a ToastProvider
+[00:00:02.988] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.165] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.205] Browser ERROR   uncaughtError: Error: useToast must be used within a ToastProvider
+[00:00:03.548] Browser ERROR   uncaughtError: Error: useToast must be used within a ToastProvider
+[00:00:32.209] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:32.210] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:32.235] Server  LOG     ✓ Compiled in 9ms
+[00:00:32.750] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:32.826] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:34.416] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:00.050] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

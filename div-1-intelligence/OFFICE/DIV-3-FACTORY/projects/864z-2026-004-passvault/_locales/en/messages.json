@@ -1,0 +1,66 @@
+{
+  "extName": {
+    "message": "PassVault",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Zero-knowledge password vault. 100% local. 100% free. Your passwords never leave your device.",
+    "description": "Extension description"
+  },
+  "cmdLockVault": {
+    "message": "Lock vault",
+    "description": "Keyboard shortcut to lock the vault"
+  },
+  "cmdOpenVault": {
+    "message": "Open vault",
+    "description": "Keyboard shortcut to open the vault"
+  },
+  "masterPasswordTitle": {
+    "message": "Create Your Master Password",
+    "description": "Onboarding title"
+  },
+  "masterPasswordSubtitle": {
+    "message": "This is the ONLY password you need to remember. We cannot recover it if you forget it.",
+    "description": "Onboarding subtitle"
+  },
+  "recoveryPdfTitle": {
+    "message": "Emergency Recovery Document",
+    "description": "Recovery PDF section title"
+  },
+  "recoveryPdfSubtitle": {
+    "message": "Download and print this document. Store it somewhere safe (not on your computer). This is your ONLY backup option.",
+    "description": "Recovery PDF instructions"
+  },
+  "vaultHealthTitle": {
+    "message": "Vault Health Report",
+    "description": "Migration audit title"
+  },
+  "compromisedPasswords": {
+    "message": "COMPROMISED passwords",
+    "description": "Breach detection label"
+  },
+  "reusedPasswords": {
+    "message": "REUSED passwords",
+    "description": "Reuse detection label"
+  },
+  "weakPasswords": {
+    "message": "WEAK passwords",
+    "description": "Weak password label"
+  },
+  "valueSaved": {
+    "message": "Estimated Value Saved",
+    "description": "Value proposition label"
+  },
+  "passwordsFreeForever": {
+    "message": "Your passwords are now free. Forever.",
+    "description": "Value proposition tagline"
+  },
+  "noRecovery": {
+    "message": "I understand: If I lose this password, my data cannot be recovered. There is no \"forgot password.\"",
+    "description": "No recovery acknowledgment"
+  },
+  "trustBadge": {
+    "message": "Your passwords never leave your device.",
+    "description": "Trust badge text"
+  }
+}

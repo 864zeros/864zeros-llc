@@ -1,0 +1,57 @@
+/* dashboard.css */
+
+:root {
+    --pico-font-size: 100%;
+}
+
+body {
+    padding-bottom: 5rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.opportunity-card {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-left-width: 5px;
+    border-left-style: solid;
+}
+
+.status-build-queue {
+    border-left-color: var(--pico-color-green-500);
+}
+
+.status-vulture-nest {
+    border-left-color: var(--pico-color-amber-500);
+}
+
+.grade-bar {
+    background-color: var(--pico-color-slate-200);
+    border-radius: 5px;
+    height: 10px;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.grade-fill {
+    background-color: var(--pico-color-blue-500);
+    border-radius: 5px;
+    height: 100%;
+}
+
+.opportunity-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+.opportunity-card .meta {
+    font-size: 0.9rem;
+    color: var(--pico-color-slate-500);
+    margin-bottom: 1rem;
+}
+
+.opportunity-card a {
+    font-weight: bold;
+}

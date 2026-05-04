@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Who Is Watching",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "See who collects your data — analytics vendors, identity resolution, and consent violations exposed",
+    "description": "Extension description for Chrome Web Store"
+  }
+}

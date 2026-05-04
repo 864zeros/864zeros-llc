@@ -1,0 +1,169 @@
+/* ============================================================
+   app-layout.css — Global Layout & Navigation Styles
+   ============================================================ */
+
+.oia-screen-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--oia-bg);
+  color: var(--oia-text-primary);
+  font-family: var(--oia-font);
+}
+
+.oia-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--oia-space-md) var(--oia-space-lg);
+  border-bottom: 1px solid var(--oia-border);
+  background-color: var(--oia-bg-card);
+}
+
+.oia-h2.oia-link-unstyled {
+  color: inherit;
+  text-decoration: none;
+}
+
+.oia-nav {
+  display: flex;
+  gap: var(--oia-space-lg);
+}
+
+.oia-nav__item {
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  text-decoration: none;
+  color: var(--oia-text-secondary);
+  font-weight: var(--oia-weight-semibold);
+  border-radius: var(--oia-radius-sm);
+  transition: all var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-nav__item:hover,
+.oia-nav__item.active {
+  background-color: var(--oia-sage-light);
+  color: var(--oia-sage);
+}
+
+.oia-main-content {
+  flex: 1;
+  padding: var(--oia-space-lg);
+}
+
+/* ============================================================
+   Authentication Page Styles
+   ============================================================ */
+.oia-auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--oia-header-height, 80px)); /* Adjust for header if fixed */
+  padding: var(--oia-space-lg);
+}
+
+.oia-auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: var(--oia-space-xl);
+  text-align: center;
+}
+
+.oia-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+.oia-form-group {
+  text-align: left;
+}
+
+.oia-label {
+  display: block;
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-secondary);
+  margin-bottom: var(--oia-space-xs);
+}
+
+.oia-link {
+  color: var(--oia-sage);
+  text-decoration: none;
+  font-weight: var(--oia-weight-semibold);
+}
+
+.oia-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   Toast Notification Styles
+   ============================================================ */
+.oia-toast-container {
+  position: fixed;
+  bottom: var(--oia-space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+  align-items: center;
+}
+
+.oia-toast {
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  border-radius: var(--oia-radius-md);
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-inverse);
+  box-shadow: var(--oia-shadow-md);
+  animation: oia-slide-up var(--oia-duration-normal) var(--oia-ease-enter) forwards;
+  opacity: 0;
+}
+
+.oia-toast--success {
+  background-color: var(--oia-success);
+}
+
+.oia-toast--error {
+  background-color: var(--oia-error);
+}
+
+.oia-toast--info {
+  background-color: var(--oia-dusty-blue);
+}
+
+.oia-toast--warning {
+  background-color: var(--oia-mustard);
+  color: var(--oia-text-primary); /* Warning text is dark */
+}
+
+@keyframes oia-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   Privacy Footer Styles
+   ============================================================ */
+.oia-footer {
+  padding: var(--oia-space-md) var(--oia-space-lg);
+  border-top: 1px solid var(--oia-border);
+  background-color: var(--oia-bg-card);
+  text-align: center;
+  color: var(--oia-text-muted);
+  font-size: var(--oia-size-caption);
+}
+
+.oia-privacy-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-xs);
+}
+
+.oia-privacy-footer svg {
+  color: var(--oia-sage);
+  flex-shrink: 0;
+}

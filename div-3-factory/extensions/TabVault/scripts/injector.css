@@ -1,0 +1,5 @@
+/* Styles for content script injections */
+.tabvault-highlight {
+  border: 2px solid #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+}

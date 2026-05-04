@@ -1,0 +1,162 @@
+{
+  "strike_id": "864z-2026-004",
+  "codename": "PassVault",
+  "alias": "Dashlane-Rescue",
+  "status": "STRIKE_INITIATED",
+  "initiated_at": "2026-03-17T09:45:00Z",
+  "vulture_score": 9.45,
+  "score_breakdown": {
+    "convergence": 0.92,
+    "velocity": 0.88,
+    "scarcity": 0.78,
+    "exit_multiplier": 1.5,
+    "formula": "(0.92 * 0.45 + 0.88 * 0.35 + 0.78 * 0.20) * 10 * 1.5 = 9.45"
+  },
+  "qualification": "ULTRA_GREENLIGHT",
+  "target": {
+    "primary": "Dashlane",
+    "secondary": ["LastPass", "1Password"],
+    "category": "Password Manager",
+    "monthly_searches": 1850000,
+    "complaint_velocity": "CRITICAL"
+  },
+  "pain_signals": [
+    {
+      "signal": "25 password free limit",
+      "severity": "CRITICAL",
+      "evidence": "Reduced from unlimited (2022) -> 50 (2023) -> 25 (2024)"
+    },
+    {
+      "signal": "Price increase backlash",
+      "severity": "CRITICAL",
+      "evidence": "$40/yr -> $60/yr overnight (50% increase)"
+    },
+    {
+      "signal": "Cloud-only architecture",
+      "severity": "HIGH",
+      "evidence": "Desktop app discontinued 2022, browser-only model"
+    },
+    {
+      "signal": "Export format confusion",
+      "severity": "HIGH",
+      "evidence": "Users unsure CSV vs JSON, data loss fears"
+    },
+    {
+      "signal": "Single device restriction",
+      "severity": "HIGH",
+      "evidence": "Free tier limited to one device"
+    },
+    {
+      "signal": "LastPass breach fallout",
+      "severity": "CRITICAL",
+      "evidence": "2022 breach exposed user vaults, mass exodus"
+    }
+  ],
+  "market_gap": {
+    "the_problem": "Users of freemium password managers are trapped by arbitrary limits, price increases, and cloud dependency. They want to migrate but fear losing data or making mistakes. Local-first alternatives like KeePass are too technical.",
+    "our_solution": "One-click migration from Dashlane/LastPass with instant security audit ('aha!' moment showing weak/reused passwords). 100% local-first, zero cloud, 100% free forever.",
+    "differentiation": [
+      "Zero cloud required (offline-first)",
+      "100% client-side encryption (Web Crypto API)",
+      "Instant 'Migration Audit' reveals password hygiene issues",
+      "One-click import from Dashlane CSV/JSON and LastPass CSV",
+      "No account required",
+      "Free forever with no password limits"
+    ]
+  },
+  "vulture_hook": {
+    "type": "Migration Audit",
+    "description": "Instant analysis of imported passwords showing weak passwords, reused passwords, and a security score. Creates 'aha!' moment: user realizes their password hygiene needs help, and we just solved it.",
+    "psychological_trigger": "Loss aversion + revelation of unknown risk",
+    "conversion_point": "User sees '37% of your passwords are reused' - immediate value demonstration"
+  },
+  "build": {
+    "brick_size": "M",
+    "estimated_custom_code": "25%",
+    "bricks_required": [
+      "BRK-PWD-001 (Password Rescue Parser)",
+      "BRK-DB-001 (IndexedDB Manager)",
+      "BRK-PRI-005 (Privacy Architecture)",
+      "BRK-EXT-001 (Chrome Extension Scaffold)"
+    ],
+    "delta_features": [
+      "BRK-PWD-001: Dashlane/LastPass parser with security audit",
+      "BRK-CRYPTO-001: Web Crypto API encryption layer",
+      "Migration Audit UI with visual security score"
+    ],
+    "build_path": "864zeros_engine/builds/864z-2026-004-passvault/"
+  },
+  "gtm": {
+    "primary_channel": "SEO + Reddit",
+    "keywords": [
+      "dashlane alternative free",
+      "dashlane migration tool",
+      "export dashlane passwords",
+      "dashlane 25 password limit",
+      "lastpass alternative after breach",
+      "local password manager",
+      "offline password manager"
+    ],
+    "reddit_targets": [
+      "r/privacy",
+      "r/PasswordManagers",
+      "r/selfhosted",
+      "r/degoogle",
+      "r/Bitwarden",
+      "r/cybersecurity"
+    ],
+    "value_props": {
+      "headline": "Don't pay $60/year to access your own passwords.",
+      "subhead": "Escape Dashlane in 30 seconds. 100% Free. 100% Private. Zero Cloud.",
+      "cta": "Rescue Your Passwords"
+    }
+  },
+  "rule_of_40": {
+    "estimated_growth": 35,
+    "estimated_margin": 90,
+    "total": 125,
+    "exit_multiplier": 1.5,
+    "status": "EXCEEDS"
+  },
+  "north_star_metric": {
+    "metric": "Successful Password Rescues",
+    "target_30_day": 500,
+    "target_90_day": 3000
+  },
+  "competitive_landscape": {
+    "scarcity_check": {
+      "direct_competitors": 2,
+      "threshold": 3,
+      "status": "PASS"
+    },
+    "competitors": [
+      {
+        "name": "Bitwarden",
+        "type": "Alternative (not rescue tool)",
+        "weakness": "Still cloud-based, requires account"
+      },
+      {
+        "name": "KeePassXC",
+        "type": "Local-first alternative",
+        "weakness": "Technical, no easy migration, no audit"
+      }
+    ]
+  },
+  "monetization": {
+    "model": "Freemium",
+    "free_tier": "Unlimited passwords, full import/export, security audit",
+    "premium_tier": {
+      "price": "$29 one-time (lifetime)",
+      "features": [
+        "Browser autofill extension",
+        "TOTP 2FA codes",
+        "Encrypted cloud sync (optional)",
+        "Breach monitoring",
+        "Family sharing (5 vaults)"
+      ]
+    },
+    "target_mrr": 3500
+  },
+  "created_at": "2026-03-17T09:45:00Z",
+  "updated_at": "2026-03-17T09:45:00Z"
+}

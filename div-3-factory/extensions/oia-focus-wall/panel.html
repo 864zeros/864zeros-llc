@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self';">
+    <title>oia.focus.wall</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <div class="oia-main-container">
+        <div class="oia-sidebar">
+            <header class="oia-header">
+                <h1 class="oia-title">oia.focus.wall</h1>
+            </header>
+
+            <div class="oia-brain-dump-section">
+                <label for="brainDump" class="oia-label">what do you need to remember?</label>
+                <textarea
+                    id="brainDump"
+                    class="oia-textarea"
+                    placeholder="let your thoughts flow..."
+                ></textarea>
+            </div>
+
+            <div class="oia-action-buttons">
+                <button class="oia-btn oia-btn-primary" id="saveButton">save sticky</button>
+                <button class="oia-btn oia-btn-secondary" id="copyButton" aria-label="copy all notes">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="m5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <button class="oia-btn oia-btn-secondary" id="downloadButton" aria-label="download notes">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7,10 12,15 17,10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="oia-notes-section">
+                <div class="oia-notes-header">
+                    <div class="oia-notes-label">sticky notes</div>
+                    <div class="oia-note-count" id="noteCount">0 of 10 notes</div>
+                </div>
+                <div id="notesContainer" class="oia-notes-container">
+                    <!-- Accordion notes will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <footer class="oia-footer">
+                made for adhd minds
+            </footer>
+        </div>
+    </div>
+
+    <div class="oia-resize-handle" id="resizeHandle">
+        <span class="oia-drag-arrow">&#8592;</span>
+    </div>
+
+    <div class="oia-cork-board" id="corkBoard">
+        <div class="oia-empty-wall" id="emptyWallMessage">
+            your sticky note wall
+            <div class="oia-empty-wall-subtitle">drag from the right to expand</div>
+        </div>
+    </div>
+
+    <script type="module" src="panel.js"></script>
+</body>
+</html>

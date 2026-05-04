@@ -1,0 +1,181 @@
+{
+  "id": "864z-2026-005",
+  "name": "ReadFlow",
+  "slug": "readflow",
+  "type": "rescue",
+  "version": "1.0.0",
+
+  "description": "Local-first read-it-later with instant Instapaper import. No cloud sync required.",
+
+  "target": {
+    "name": "Instapaper",
+    "price": 30,
+    "pain": "Kobo sync broken since 2024, $30/yr Premium wall for basic features, cloud dependency",
+    "signals": [
+      "Reddit: 'Instapaper Kobo sync has been broken for months'",
+      "Twitter: 'Why am I paying $30/yr for something that doesn't work?'",
+      "HN: 'Instapaper was acquired and abandoned, looking for alternatives'"
+    ]
+  },
+
+  "north_star": {
+    "metric": "Article Rescues",
+    "target": 1000,
+    "timeframe_days": 30,
+    "definition": "Articles successfully imported from Instapaper CSV"
+  },
+
+  "vulture_hook": "Instant 'Import from Instapaper CSV' with local-first reading mode",
+
+  "user_archetype": "I'm a reader who saved hundreds of articles in Instapaper but can't sync to my Kobo anymore. I want my articles accessible offline without paying $30/yr for broken sync.",
+
+  "aha_moment": {
+    "trigger": "After importing Instapaper CSV",
+    "show": [
+      "Total articles rescued: [COUNT]",
+      "Reading time saved: [HOURS] hours",
+      "Money saved: $30/year forever"
+    ],
+    "tagline": "Your reading list is now free. Forever."
+  },
+
+  "competitor_comparison": {
+    "instapaper_premium": {
+      "price": "$30/year",
+      "kobo_sync": "Broken",
+      "offline": "Premium only",
+      "export": "CSV only",
+      "privacy": "Cloud-stored"
+    },
+    "readflow": {
+      "price": "Free forever",
+      "kobo_sync": "N/A (local export)",
+      "offline": "Always",
+      "export": "Multiple formats",
+      "privacy": "100% local"
+    }
+  },
+
+  "security_architecture": {
+    "encryption": "Optional (reader content, not credentials)",
+    "storage": "IndexedDB",
+    "network": "Zero calls (import is file-based)",
+    "approved_endpoints": []
+  },
+
+  "host_permissions": [],
+
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "sidePanel",
+    "contextMenus"
+  ],
+
+  "optional_permissions": [
+    "clipboardWrite"
+  ],
+
+  "core_features": [
+    {
+      "id": 1,
+      "name": "Instapaper CSV Import",
+      "description": "Parse Instapaper export, extract articles with metadata",
+      "priority": "P0",
+      "brick": "BRK-ARTICLE-001"
+    },
+    {
+      "id": 2,
+      "name": "Article Reader View",
+      "description": "Clean, distraction-free reading with dark mode",
+      "priority": "P0",
+      "brick": null
+    },
+    {
+      "id": 3,
+      "name": "Reading List Management",
+      "description": "Archive, favorite, search, filter articles",
+      "priority": "P0",
+      "brick": null
+    },
+    {
+      "id": 4,
+      "name": "Rescue Audit UI",
+      "description": "Show import stats, reading time, savings",
+      "priority": "P0",
+      "brick": null
+    },
+    {
+      "id": 5,
+      "name": "Export to EPUB/HTML",
+      "description": "Export for e-readers or backup",
+      "priority": "P1",
+      "brick": null
+    },
+    {
+      "id": 6,
+      "name": "Browser Save Button",
+      "description": "Save current page to reading list",
+      "priority": "P1",
+      "brick": null
+    }
+  ],
+
+  "explicitly_not_building": [
+    "Cloud sync",
+    "Account system",
+    "Kobo direct sync (hardware integration)",
+    "Social sharing",
+    "Highlights sync to Readwise",
+    "Mobile app"
+  ],
+
+  "ui_views": [
+    { "id": "reading-list", "name": "Reading List", "purpose": "Main article list with search/filter" },
+    { "id": "reader", "name": "Reader", "purpose": "Distraction-free article view" },
+    { "id": "import", "name": "Import", "purpose": "Instapaper CSV upload + audit" },
+    { "id": "settings", "name": "Settings", "purpose": "Theme, export, data management" }
+  ],
+
+  "import_formats": [
+    {
+      "source": "Instapaper",
+      "format": "CSV",
+      "fields": ["URL", "Title", "Selection", "Folder", "Timestamp"],
+      "parser": "instapaper-parser.js"
+    },
+    {
+      "source": "Pocket",
+      "format": "HTML",
+      "fields": ["URL", "Title", "Tags", "Time Added"],
+      "parser": "pocket-parser.js"
+    }
+  ],
+
+  "rescue_metrics": {
+    "articles_imported": "Count of successfully parsed articles",
+    "reading_time_hours": "Estimated based on word count (200 WPM)",
+    "savings_annual": 30,
+    "savings_lifetime": "Infinite (no subscription)"
+  },
+
+  "copy": {
+    "trust_message": "Your articles stay on your device",
+    "rescue_complete": "You just rescued [COUNT] articles from Instapaper",
+    "savings_banner": "$30/year saved. Forever.",
+    "tagline": "Read without ransom."
+  },
+
+  "theme": {
+    "variant": "reader",
+    "accent": "#00d084",
+    "reader_bg_light": "#faf9f7",
+    "reader_bg_dark": "#1a1a1a",
+    "reader_text_light": "#1a1a1a",
+    "reader_text_dark": "#e8e6e3"
+  },
+
+  "created": "2026-03-17",
+  "status": "phase-1",
+  "author": "864zeros"
+}

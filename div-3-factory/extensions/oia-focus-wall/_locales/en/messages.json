@@ -1,0 +1,80 @@
+{
+  "appName": {
+    "message": "oia.focus.wall",
+    "description": "Extension name displayed in Chrome"
+  },
+  "appDescription": {
+    "message": "Sticky note wall for ADHD minds - drag & drop your thoughts onto a cork board",
+    "description": "Extension description for Chrome Web Store"
+  },
+  "openAction": {
+    "message": "Open oia.focus.wall",
+    "description": "Tooltip for the extension icon"
+  },
+  "brainDumpLabel": {
+    "message": "what do you need to remember?",
+    "description": "Label for the note input area"
+  },
+  "brainDumpPlaceholder": {
+    "message": "let your thoughts flow...",
+    "description": "Placeholder text for note input"
+  },
+  "saveButton": {
+    "message": "save sticky",
+    "description": "Save button text"
+  },
+  "updateButton": {
+    "message": "update sticky",
+    "description": "Update button text when editing"
+  },
+  "copyAllNotes": {
+    "message": "Copy all notes",
+    "description": "ARIA label for copy button"
+  },
+  "downloadNotes": {
+    "message": "Download notes",
+    "description": "ARIA label for download button"
+  },
+  "deleteNote": {
+    "message": "Delete note",
+    "description": "ARIA label for delete button"
+  },
+  "stickyNotesLabel": {
+    "message": "sticky notes",
+    "description": "Section label for notes list"
+  },
+  "noteCountFormat": {
+    "message": "$count$ of $max$ notes",
+    "description": "Note count display",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "10"
+      }
+    }
+  },
+  "emptyState": {
+    "message": "no notes yet. start by writing something above.",
+    "description": "Empty state message"
+  },
+  "emptyWallTitle": {
+    "message": "your sticky note wall",
+    "description": "Cork board empty state title"
+  },
+  "emptyWallSubtitle": {
+    "message": "drag from the right to expand",
+    "description": "Cork board empty state instruction"
+  },
+  "maxNotesAlert": {
+    "message": "Maximum 10 sticky notes allowed. Delete some notes first.",
+    "description": "Alert when max notes reached"
+  },
+  "footerText": {
+    "message": "made for adhd minds",
+    "description": "Footer text"
+  }
+}

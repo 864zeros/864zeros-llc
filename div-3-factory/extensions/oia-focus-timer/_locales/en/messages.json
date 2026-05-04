@@ -1,0 +1,90 @@
+{
+  "appName": {
+    "message": "oia.focus",
+    "description": "Extension name displayed in Chrome"
+  },
+  "appDescription": {
+    "message": "Simple focus timer with preset intervals. Built by someone with ADHD, for people with ADHD.",
+    "description": "Extension description for Chrome Web Store"
+  },
+  "openAction": {
+    "message": "Open oia.focus",
+    "description": "Tooltip for the extension icon"
+  },
+  "focusInputLabel": {
+    "message": "What are you focusing on?",
+    "description": "Label for focus text input"
+  },
+  "focusInputPlaceholder": {
+    "message": "e.g., Writing project proposal (optional)",
+    "description": "Placeholder for focus text input"
+  },
+  "alertSoundLabel": {
+    "message": "Alert Sound:",
+    "description": "Label for sound selector"
+  },
+  "soundOff": {
+    "message": "Off",
+    "description": "Sound option: off"
+  },
+  "soundSoftChime": {
+    "message": "Soft Chime",
+    "description": "Sound option: soft chime"
+  },
+  "soundNaturePop": {
+    "message": "Nature Pop",
+    "description": "Sound option: nature pop"
+  },
+  "soundBreath": {
+    "message": "Breath",
+    "description": "Sound option: breath"
+  },
+  "previewSound": {
+    "message": "Preview sound",
+    "description": "ARIA label for preview sound button"
+  },
+  "focusSession": {
+    "message": "Focus Session",
+    "description": "Default session type label"
+  },
+  "minutes": {
+    "message": "minutes",
+    "description": "Minutes label"
+  },
+  "min": {
+    "message": "min",
+    "description": "Short minutes label"
+  },
+  "pause": {
+    "message": "Pause",
+    "description": "Pause button text"
+  },
+  "resume": {
+    "message": "Resume",
+    "description": "Resume button text"
+  },
+  "resetTimer": {
+    "message": "Reset timer",
+    "description": "ARIA label for reset button"
+  },
+  "completionMessage": {
+    "message": "time's up. you may want to give your brain a break. think about it for a moment.",
+    "description": "Completion overlay message"
+  },
+  "clickToDismiss": {
+    "message": "Click anywhere to dismiss",
+    "description": "Completion overlay subtitle"
+  },
+  "notificationTitle": {
+    "message": "oia.focus",
+    "description": "Notification title"
+  },
+  "notificationBody": {
+    "message": "Focus session complete!",
+    "description": "Notification body text"
+  },
+  "footerText": {
+    "message": "Built for ADHD minds",
+    "description": "Footer text"
+  }
+}

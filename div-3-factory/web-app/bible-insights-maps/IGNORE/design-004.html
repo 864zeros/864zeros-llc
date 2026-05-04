@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Insights - Node Integration Beta</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root { --bg: #0f0f0f; --panel: #1a1a1a; --gold: #ffd700; --text: #eee; --dim: #888; }
+        body { margin: 0; font-family: sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; }
+        #test-controls { width: 280px; border-right: 1px solid #333; padding: 20px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+        .btn { background: #333; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; text-align: left; transition: 0.2s; }
+        .btn:hover { background: #444; border-left: 3px solid var(--gold); }
+        .btn.active { background: #222; border-left: 3px solid var(--gold); }
+        #explorer { flex: 1; display: flex; flex-direction: column; }
+        #map { height: 45%; border-bottom: 2px solid #333; }
+        #dashboard { flex: 1; overflow-y: auto; padding: 20px; }
+        .rail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .pill { background: var(--panel); padding: 10px; border-radius: 5px; border: 1px solid #333; }
+        .pill label { font-size: 0.6rem; color: var(--dim); display: block; text-transform: uppercase; margin-bottom: 4px; }
+        .pill span { font-size: 0.9rem; font-weight: bold; color: var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .card { background: var(--panel); border-radius: 8px; overflow: hidden; border: 1px solid #333; }
+        .card img { width: 100%; height: 100px; object-fit: cover; background: #222; border-bottom: 1px solid #333; }
+        .card-body { padding: 10px; }
+        .card-body h4 { margin: 0; font-size: 0.8rem; color: var(--gold); }
+        .card-body p { margin: 5px 0 0; font-size: 0.7rem; color: var(--dim); line-height: 1.3; }
+        .narrative { background: #151515; padding: 15px; border-radius: 5px; border-left: 3px solid var(--gold); margin-top: 20px; }
+        .quote { font-style: italic; color: #ccc; font-size: 0.85rem; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <section id="test-controls">
+        <h3>📍 Node Validator</h3>
+        <button class="btn active" onclick="updateSite('Abel-beth-maacah', this)"><b>2 Sam 20:15</b><br>Abel-beth-maacah</button>
+        <button class="btn" onclick="updateSite('Tel-Hazor', this)"><b>Joshua 11:10</b><br>Tel Hazor</button>
+        <button class="btn" onclick="updateSite('Bozkath', this)"><b>Joshua 15:39</b><br>Bozkath (Fallback Test)</button>
+    </section>
+
+    <section id="explorer">
+        <div id="map"></div>
+        <div id="dashboard">
+            <div class="rail">
+                <div class="pill"><label>Elevation</label><span id="stat-elev">--</span></div>
+                <div class="pill"><label>Tension</label><span id="stat-geo">--</span></div>
+                <div class="pill"><label>Context</label><span id="stat-era">--</span></div>
+            </div>
+            <div class="grid" id="artifact-grid"></div>
+            <div class="narrative">
+                <div class="quote" id="nar-quote">"Select a location..."</div>
+                <div style="font-size: 0.8rem; color: var(--dim); line-height: 1.4;" id="nar-insight">--</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Data follows the "enriched-master-geodata" Schema
+        const siteData = {
+            "Abel-beth-maacah": {
+                location: { lat: 33.267, lng: 35.580, elevation: "350m", region: "Hula Valley" },
+                geopolitics: { era: "Divided Monarchy", primary_conflict: "ISR vs ARM" },
+                archaeology: { finds: [
+                    { title: "Mystery Head", description: "9th-c. BCE Faience portrait found in Area A.", img_url: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Aerial_view_of_Area_A%2C_end_of_2015_excavation_season%2C_looking_west.jpg" }
+                ]},
+                scripture: { key_verse: "2 Sam 20:15", quote: "And they came and besieged him in Abel-beth-maacah...", narrative_insight: "A strategic hinge city saved by a wise woman's negotiation." }
+            },
+            "Tel-Hazor": {
+                location: { lat: 33.016, lng: 35.568, elevation: "230m", region: "Upper Galilee" },
+                geopolitics: { era: "Joshua's Conquest", primary_conflict: "ISR vs CAN" },
+                archaeology: { finds: [
+                    { title: "Solomonic Gate", description: "6-Chambered Fortress Gate confirming 1 Kings 9:15.", img_url: "https://upload.wikimedia.org/wikipedia/commons/7/77/Hatzor-SolomonicGate.jpg" }
+                ]},
+                scripture: { key_verse: "Joshua 11:10", quote: "Joshua at that time turned back, and took Hazor...", narrative_insight: "The 'Head of all Kingdoms'—ten times larger than Jerusalem." }
+            },
+            "Bozkath": {
+                location: { lat: 31.558, lng: 34.842, elevation: "200m", region: "Shephelah" },
+                geopolitics: { era: "Divided Monarchy", primary_conflict: "JUD vs PHI" },
+                archaeology: { finds: [
+                    { title: "Regional Landscape", description: "The rolling hills of the Shephelah, home of King Josiah's mother.", img_url: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Shephelah_region.jpg" }
+                ]},
+                scripture: { key_verse: "Joshua 15:39", quote: "Lachish, and Bozkath, and Eglon...", narrative_insight: "Intelligence: An unexcavated marker city serving as a strategic buffer between the coast and the highlands." }
+            }
+        };
+
+        let map = L.map('map').setView([33.267, 35.580], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        let marker = L.marker([33.267, 35.580]).addTo(map);
+
+        function updateSite(id, btn) {
+            const data = siteData[id];
+            
+            map.flyTo([data.location.lat, data.location.lng], 14, { duration: 1.5 });
+            marker.setLatLng([data.location.lat, data.location.lng]);
+
+            document.getElementById('stat-elev').innerText = data.location.elevation;
+            document.getElementById('stat-geo').innerText = data.geopolitics.primary_conflict;
+            document.getElementById('stat-era').innerText = data.geopolitics.era;
+            document.getElementById('nar-quote').innerText = `"${data.scripture.quote}"`;
+            document.getElementById('nar-insight').innerText = data.scripture.narrative_insight;
+
+            const grid = document.getElementById('artifact-grid');
+            grid.innerHTML = data.archaeology.finds.map(f => `
+                <div class="card">
+                    <img src="${f.img_url}" alt="${f.title}">
+                    <div class="card-body">
+                        <h4>${f.title}</h4>
+                        <p>${f.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // Init
+        updateSite('Abel-beth-maacah', document.querySelector('.btn.active'));
+    </script>
+</body>
+</html>

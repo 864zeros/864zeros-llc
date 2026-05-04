@@ -1,0 +1,26 @@
+{
+  "uid": "glovebox-KH522075-v1.0.0-da5e4bf9",
+  "name": "GloveBox: 2019 HONDA Civic",
+  "version": "1.0.0",
+  "type": "glovebox",
+  "vin": "2HGFC2F59KH522075",
+  "vin_last8": "KH522075",
+  "vehicle": {
+    "make": "HONDA",
+    "model": "Civic",
+    "year": "2019"
+  },
+  "files": {
+    "manifest": "glovebox-KH522075-manifest.json",
+    "definition": "glovebox-KH522075-definition.json",
+    "persona": "glovebox-KH522075-persona.json",
+    "kb": "glovebox-KH522075-kb.md",
+    "kg": "glovebox-KH522075-kg.jsonld"
+  },
+  "created_at": "2026-03-26T03:52:38.107Z",
+  "framework": {
+    "name": "AETHER",
+    "version": "1.0.0",
+    "company": "864zeros LLC"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Signal2Noise",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "Built for people with ADHD by someone with ADHD. Tune out the noise, focus in on your signal.",
+    "description": "Extension description for Chrome Web Store"
+  }
+}

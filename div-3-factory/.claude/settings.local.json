@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(copy:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "WebSearch",
+      "WebFetch(domain:www.gmass.co)",
+      "Bash(dir \"C:\\\\Users\\\\I820965\\\\dev\\\\864zeros\\\\extensions\\\\clipboard\" /s /b)",
+      "Bash(dir \"C:\\\\Users\\\\I820965\\\\dev\\\\864zeros\" /b)",
+      "Bash(dir \"C:\\\\Users\\\\I820965\\\\dev\\\\864zeros\\\\extensions\" /b)",
+      "Bash(dir \"C:\\\\Users\\\\I820965\\\\dev\\\\864zeros\\\\extensions\\\\clipboard\" /s /b /o:-d)",
+      "Bash(powershell:*)",
+      "Bash(npm install)",
+      "Bash(npm test:*)",
+      "Bash(mkdir:*)",
+      "Bash(dir \"C:\\\\Users\\\\I820965\\\\dev\\\\864zeros\\\\extensions\\\\clipboard\\\\lib\\\\google-drive\" /b)",
+      "Bash(dir \"C:\\\\Users\\\\I820965\\\\dev\\\\864zeros\\\\864z-build-kit\" /s /b)",
+      "Bash(dir:*)",
+      "WebFetch(domain:extensionpay.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npm install:*)",
+      "Bash(openssl rsa:*)",
+      "Bash(openssl base64:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:clipboard-864z.864zeros.workers.dev)",
+      "WebFetch(domain:aistudio.google.com)",
+      "WebFetch(domain:docs.api.bible)",
+      "WebFetch(domain:docs.cloud.google.com)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:gist.github.com)",
+      "Bash(node:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(file:*)",
+      "Bash(cd:*)"
+    ]
+  }
+}

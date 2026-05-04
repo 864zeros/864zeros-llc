@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oia.focus.signal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <div class="oia-screen" id="container">
+        <header class="oia-header">
+            <h1 class="oia-title">oia.focus.signal</h1>
+        </header>
+
+        <!-- Priority Signal Visualization -->
+        <div class="oia-signal-pills oia-empty" id="signalPillContainer">
+            mark your priority signals to see them here
+        </div>
+
+        <!-- Signal-to-Noise Ratio Selector -->
+        <div class="oia-ratio-section">
+            <label class="oia-label">signal-to-noise ratio:</label>
+            <div class="oia-ratio-controls">
+                <label class="oia-ratio-option">
+                    <input type="radio" name="signalRatio" value="60" id="ratio60">
+                    <span class="oia-ratio-text">60</span>
+                </label>
+                <label class="oia-ratio-option">
+                    <input type="radio" name="signalRatio" value="70" id="ratio70" checked>
+                    <span class="oia-ratio-text">70</span>
+                </label>
+                <label class="oia-ratio-option">
+                    <input type="radio" name="signalRatio" value="80" id="ratio80">
+                    <span class="oia-ratio-text">80</span>
+                </label>
+                <div class="oia-ratio-status" id="ratioStatus"></div>
+            </div>
+        </div>
+
+        <!-- Daily Signal Input -->
+        <div class="oia-input-section">
+            <label for="signalInput" class="oia-label">what is today's signal?</label>
+            <textarea
+                id="signalInput"
+                class="oia-textarea"
+                placeholder="capture your thoughts, tasks, and priorities..."
+                maxlength="500"
+                rows="3"
+            ></textarea>
+            <div class="oia-input-actions">
+                <button class="oia-btn oia-btn-primary" id="saveSignalBtn">save signal</button>
+            </div>
+        </div>
+
+        <!-- Bulk Actions -->
+        <div class="oia-bulk-actions">
+            <button class="oia-btn-icon" id="copyAllSignalsBtn" aria-label="copy all signals">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="m5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                copy all
+            </button>
+            <button class="oia-btn-icon" id="downloadSignalsBtn" aria-label="download signals">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7,10 12,15 17,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                download
+            </button>
+        </div>
+
+        <!-- Signal Notes Display -->
+        <div class="oia-accordion-container" id="accordionContainer">
+            <!-- Dynamically populated with signal notes -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="oia-empty oia-hidden" id="emptyState">
+            <div class="oia-empty-message">no signals yet. start by capturing what matters today.</div>
+        </div>
+
+        <footer class="oia-footer">
+            built for adhd minds
+        </footer>
+    </div>
+
+    <script type="module" src="panel.js"></script>
+</body>
+</html>

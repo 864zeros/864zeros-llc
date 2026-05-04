@@ -1,0 +1,683 @@
+/*
+ * ================================================================
+ * FHG (For His Glory) Theme — Bible Insight Extension
+ * ================================================================
+ * Brand: FHG (separate from OIA/864zeros in user-facing surfaces)
+ * Palette: Charcoal primary, Bronze accent
+ * Tone: Reverent, masculine, purposeful
+ *
+ * This theme overlays the OIA design system with FHG brand colors.
+ * Dark mode: Automatic via prefers-color-scheme
+ * ================================================================
+ */
+
+:root {
+  /* --- FHG Brand Colors --- */
+  --fhg-charcoal:         #2D2D2D;
+  --fhg-charcoal-light:   #3D3D3D;
+  --fhg-charcoal-dark:    #1D1D1D;
+
+  --fhg-bronze:           #A67C52;
+  --fhg-bronze-light:     #C49A6C;
+  --fhg-bronze-dark:      #8B6642;
+  --fhg-bronze-subtle:    #F0E6D8;
+
+  /* --- Backgrounds --- */
+  --fhg-bg:               #FDFCF8;
+  --fhg-bg-card:          #FFFFFF;
+  --fhg-bg-elevated:      #FFFFFF;
+  --fhg-cream:            #F8F6F1;
+
+  /* --- Supporting --- */
+  --fhg-warm-white:       #FAF9F6;
+  --fhg-taupe:            #D4CFC8;
+  --fhg-sage:             #717D71;
+
+  /* --- Text --- */
+  --fhg-text-primary:     #2D2D2D;
+  --fhg-text-secondary:   #5C5C5C;
+  --fhg-text-muted:       #8C8C8C;
+  --fhg-text-inverse:     #FDFCF8;
+
+  /* --- Semantic --- */
+  --fhg-success:          #5B8C5A;
+  --fhg-warning:          #C9A86C;
+  --fhg-error:            #C94C4C;
+  --fhg-info:             #7A8FA3;
+
+  /* --- Border --- */
+  --fhg-border:           #D4CFC8;
+  --fhg-border-light:     #E8E4DE;
+
+  /* --- Typography --- */
+  --fhg-font:             'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --fhg-font-serif:       'Lora', Georgia, serif;
+
+  /* --- Spacing (8px base) --- */
+  --fhg-space-xs:         4px;
+  --fhg-space-sm:         8px;
+  --fhg-space-md:         16px;
+  --fhg-space-lg:         24px;
+  --fhg-space-xl:         32px;
+  --fhg-space-xxl:        48px;
+
+  /* --- Border Radius --- */
+  --fhg-radius-sm:        8px;
+  --fhg-radius-md:        12px;
+  --fhg-radius-lg:        16px;
+  --fhg-radius-xl:        24px;
+  --fhg-radius-full:      9999px;
+
+  /* --- Shadows --- */
+  --fhg-shadow-sm:        0 1px 3px rgba(45, 45, 45, 0.08);
+  --fhg-shadow-md:        0 2px 8px rgba(45, 45, 45, 0.12);
+  --fhg-shadow-lg:        0 4px 16px rgba(45, 45, 45, 0.15);
+  --fhg-shadow-button:    0 2px 8px rgba(166, 124, 82, 0.25);
+
+  /* --- Animation --- */
+  --fhg-duration-fast:    150ms;
+  --fhg-duration-normal:  250ms;
+  --fhg-duration-slow:    350ms;
+  --fhg-ease:             ease-out;
+
+  /* --- Component Sizes --- */
+  --fhg-button-height:    48px;
+  --fhg-input-height:     48px;
+  --fhg-touch-min:        44px;
+}
+
+
+/* ================================================================
+   BASE STYLES
+   ================================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--fhg-font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fhg-text-primary);
+  background-color: var(--fhg-bg);
+}
+
+a {
+  color: var(--fhg-bronze);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--fhg-bronze-dark);
+}
+
+
+/* ================================================================
+   TYPOGRAPHY
+   ================================================================ */
+
+.fhg-display {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--fhg-charcoal);
+}
+
+.fhg-h1 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--fhg-charcoal);
+}
+
+.fhg-h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--fhg-charcoal);
+}
+
+.fhg-h3 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--fhg-text-secondary);
+}
+
+.fhg-body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--fhg-text-primary);
+}
+
+.fhg-body-sm {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--fhg-text-secondary);
+}
+
+.fhg-caption {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--fhg-text-muted);
+}
+
+/* Verse reference styling */
+.fhg-verse-ref {
+  font-family: var(--fhg-font-serif);
+  font-style: italic;
+  color: var(--fhg-bronze);
+}
+
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+
+.fhg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--fhg-button-height);
+  min-width: 100px;
+  padding: 0 var(--fhg-space-lg);
+  border: none;
+  border-radius: var(--fhg-radius-md);
+  font-family: var(--fhg-font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--fhg-duration-fast) var(--fhg-ease),
+              transform var(--fhg-duration-fast) var(--fhg-ease),
+              box-shadow var(--fhg-duration-fast) var(--fhg-ease);
+  user-select: none;
+}
+
+/* Primary - Bronze */
+.fhg-btn-primary {
+  background-color: var(--fhg-bronze);
+  color: var(--fhg-text-inverse);
+  box-shadow: var(--fhg-shadow-button);
+}
+
+.fhg-btn-primary:hover {
+  background-color: var(--fhg-bronze-dark);
+}
+
+.fhg-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.fhg-btn-primary:disabled {
+  background-color: var(--fhg-taupe);
+  color: rgba(253, 252, 248, 0.6);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Secondary - Outlined */
+.fhg-btn-secondary {
+  background-color: transparent;
+  color: var(--fhg-bronze);
+  border: 2px solid var(--fhg-bronze);
+}
+
+.fhg-btn-secondary:hover {
+  background-color: var(--fhg-bronze-subtle);
+}
+
+.fhg-btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* Charcoal variant */
+.fhg-btn-charcoal {
+  background-color: var(--fhg-charcoal);
+  color: var(--fhg-text-inverse);
+}
+
+.fhg-btn-charcoal:hover {
+  background-color: var(--fhg-charcoal-light);
+}
+
+/* Small button variant */
+.fhg-btn-sm {
+  height: 36px;
+  padding: 0 var(--fhg-space-md);
+  font-size: 13px;
+}
+
+
+/* ================================================================
+   INPUTS
+   ================================================================ */
+
+.fhg-input {
+  display: block;
+  width: 100%;
+  height: var(--fhg-input-height);
+  padding: 0 var(--fhg-space-md);
+  background-color: var(--fhg-bg-card);
+  border: 1px solid var(--fhg-border);
+  border-radius: var(--fhg-radius-md);
+  font-family: var(--fhg-font);
+  font-size: 14px;
+  color: var(--fhg-text-primary);
+  outline: none;
+  transition: border-color var(--fhg-duration-fast) var(--fhg-ease);
+}
+
+.fhg-input::placeholder {
+  color: var(--fhg-text-muted);
+}
+
+.fhg-input:focus {
+  border-color: var(--fhg-bronze);
+  border-width: 2px;
+  padding: 0 calc(var(--fhg-space-md) - 1px);
+}
+
+textarea.fhg-input {
+  height: auto;
+  min-height: 100px;
+  padding: var(--fhg-space-md);
+  resize: vertical;
+}
+
+
+/* ================================================================
+   CARDS
+   ================================================================ */
+
+.fhg-card {
+  background-color: var(--fhg-bg-card);
+  border-radius: var(--fhg-radius-lg);
+  padding: var(--fhg-space-md);
+  box-shadow: var(--fhg-shadow-sm);
+}
+
+.fhg-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--fhg-space-sm);
+  border-bottom: 1px solid var(--fhg-border-light);
+  margin-bottom: var(--fhg-space-md);
+}
+
+
+/* ================================================================
+   TAGS / BADGES
+   ================================================================ */
+
+.fhg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--fhg-space-xs) var(--fhg-space-sm);
+  background-color: var(--fhg-bronze-subtle);
+  color: var(--fhg-bronze-dark);
+  border-radius: var(--fhg-radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.fhg-tag-verse {
+  background-color: rgba(166, 124, 82, 0.15);
+  color: var(--fhg-bronze);
+  font-family: var(--fhg-font-serif);
+  font-style: italic;
+}
+
+.fhg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--fhg-space-xs) var(--fhg-space-sm);
+  border-radius: var(--fhg-radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fhg-badge-success {
+  background-color: rgba(91, 140, 90, 0.15);
+  color: var(--fhg-success);
+}
+
+.fhg-badge-warning {
+  background-color: rgba(201, 168, 108, 0.15);
+  color: var(--fhg-warning);
+}
+
+
+/* ================================================================
+   PANEL LAYOUT
+   ================================================================ */
+
+.fhg-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fhg-panel-header {
+  padding: var(--fhg-space-md);
+  border-bottom: 1px solid var(--fhg-border);
+  flex-shrink: 0;
+}
+
+.fhg-panel-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fhg-charcoal);
+  text-align: center;
+  margin-bottom: var(--fhg-space-sm);
+}
+
+.fhg-panel-header .fhg-subtitle {
+  font-size: 12px;
+  color: var(--fhg-bronze);
+  text-align: center;
+  font-style: italic;
+}
+
+.fhg-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--fhg-space-md);
+}
+
+.fhg-panel-footer {
+  padding: var(--fhg-space-md);
+  border-top: 1px solid var(--fhg-border);
+  flex-shrink: 0;
+}
+
+.fhg-panel-section {
+  margin-bottom: var(--fhg-space-lg);
+}
+
+.fhg-panel-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fhg-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--fhg-space-sm);
+}
+
+
+/* ================================================================
+   CAPTURE BUTTONS (Panel Actions)
+   ================================================================ */
+
+.fhg-capture-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--fhg-space-sm);
+}
+
+.fhg-capture-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--fhg-space-sm);
+  height: 64px;
+  background-color: var(--fhg-cream);
+  border: 1px solid var(--fhg-border);
+  border-radius: var(--fhg-radius-md);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fhg-text-secondary);
+  cursor: pointer;
+  transition: all var(--fhg-duration-fast) var(--fhg-ease);
+}
+
+.fhg-capture-btn:hover {
+  background-color: var(--fhg-bronze-subtle);
+  border-color: var(--fhg-bronze);
+  color: var(--fhg-bronze-dark);
+}
+
+.fhg-capture-btn:active {
+  transform: scale(0.98);
+}
+
+/* YouTube Sermon Mode button - red accent */
+.fhg-capture-btn--youtube {
+  background-color: #FFEBEE;
+  border-color: #FF5252;
+  color: #D32F2F;
+}
+
+.fhg-capture-btn--youtube:hover {
+  background-color: #FFCDD2;
+  border-color: #D32F2F;
+  color: #B71C1C;
+}
+
+.fhg-capture-btn--youtube svg {
+  margin-bottom: 4px;
+}
+
+
+/* ================================================================
+   CONTENT LIST
+   ================================================================ */
+
+.fhg-content-list {
+  border: 1px solid var(--fhg-border);
+  border-radius: var(--fhg-radius-md);
+  overflow: hidden;
+}
+
+.fhg-content-item {
+  padding: var(--fhg-space-md);
+  border-bottom: 1px solid var(--fhg-border-light);
+  cursor: pointer;
+  transition: background-color var(--fhg-duration-fast) var(--fhg-ease);
+}
+
+.fhg-content-item:last-child {
+  border-bottom: none;
+}
+
+.fhg-content-item:hover {
+  background-color: var(--fhg-cream);
+}
+
+.fhg-content-item-title {
+  font-weight: 500;
+  color: var(--fhg-charcoal);
+  margin-bottom: var(--fhg-space-xs);
+}
+
+.fhg-content-item-preview {
+  font-size: 13px;
+  color: var(--fhg-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.fhg-content-item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--fhg-space-sm);
+  margin-top: var(--fhg-space-sm);
+  font-size: 11px;
+  color: var(--fhg-text-muted);
+}
+
+
+/* ================================================================
+   VERSE HIGHLIGHT
+   ================================================================ */
+
+.fhg-verse-highlight {
+  background-color: rgba(166, 124, 82, 0.12);
+  border-left: 3px solid var(--fhg-bronze);
+  padding: var(--fhg-space-sm) var(--fhg-space-md);
+  margin: var(--fhg-space-sm) 0;
+  border-radius: 0 var(--fhg-radius-sm) var(--fhg-radius-sm) 0;
+}
+
+.fhg-verse-highlight .verse-text {
+  font-family: var(--fhg-font-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fhg-text-primary);
+}
+
+.fhg-verse-highlight .verse-ref {
+  display: block;
+  margin-top: var(--fhg-space-xs);
+  font-size: 12px;
+  color: var(--fhg-bronze);
+  font-style: italic;
+}
+
+
+/* ================================================================
+   STATUS MESSAGES
+   ================================================================ */
+
+.fhg-status {
+  padding: var(--fhg-space-sm) var(--fhg-space-md);
+  border-radius: var(--fhg-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.fhg-status-success {
+  background-color: rgba(91, 140, 90, 0.12);
+  color: var(--fhg-success);
+}
+
+.fhg-status-error {
+  background-color: rgba(201, 76, 76, 0.12);
+  color: var(--fhg-error);
+}
+
+.fhg-status-info {
+  background-color: rgba(166, 124, 82, 0.12);
+  color: var(--fhg-bronze);
+}
+
+
+/* ================================================================
+   SPINNER
+   ================================================================ */
+
+.fhg-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--fhg-border);
+  border-top-color: var(--fhg-bronze);
+  border-radius: 50%;
+  animation: fhg-spin 1s linear infinite;
+}
+
+@keyframes fhg-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ================================================================
+   DARK MODE
+   ================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* --- Backgrounds --- */
+    --fhg-bg:               #1A1A1A;
+    --fhg-bg-card:          #242424;
+    --fhg-bg-elevated:      #2E2E2E;
+    --fhg-cream:            #2E2E2E;
+
+    /* --- Text --- */
+    --fhg-text-primary:     #F0EDE8;
+    --fhg-text-secondary:   #A8A8A8;
+    --fhg-text-muted:       #6C6C6C;
+    --fhg-text-inverse:     #1A1A1A;
+
+    /* --- Brand (lighter for dark bg) --- */
+    --fhg-bronze:           #C49A6C;
+    --fhg-bronze-light:     #D4AA7C;
+    --fhg-bronze-dark:      #A67C52;
+    --fhg-bronze-subtle:    rgba(196, 154, 108, 0.15);
+
+    --fhg-charcoal:         #F0EDE8;
+    --fhg-charcoal-light:   #FFFFFF;
+    --fhg-charcoal-dark:    #D4CFC8;
+
+    /* --- Border --- */
+    --fhg-border:           #3D3D3D;
+    --fhg-border-light:     #333333;
+
+    /* --- Shadows --- */
+    --fhg-shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.3);
+    --fhg-shadow-md:        0 2px 8px rgba(0, 0, 0, 0.4);
+    --fhg-shadow-lg:        0 4px 16px rgba(0, 0, 0, 0.5);
+    --fhg-shadow-button:    0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .fhg-capture-btn:hover {
+    background-color: rgba(196, 154, 108, 0.15);
+  }
+
+  .fhg-verse-highlight {
+    background-color: rgba(196, 154, 108, 0.08);
+  }
+}
+
+
+/* ================================================================
+   ACCESSIBILITY
+   ================================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--fhg-bronze);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.fhg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

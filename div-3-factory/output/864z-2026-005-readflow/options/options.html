@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReadFlow Settings</title>
+  <link rel="stylesheet" href="../lib/aether-ui.css">
+</head>
+<body>
+  <div class="options-container p-xl">
+    <h1>ReadFlow Settings</h1>
+
+    <div class="card mt-lg">
+      <h3>Security</h3>
+      <div class="form-group mt-md">
+        <label class="form-label">Auto-lock timeout</label>
+        <select id="auto-lock-timeout">
+          <option value="5">5 minutes</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card mt-lg">
+      <h3>Data</h3>
+      <button class="btn btn-secondary mt-md" id="export-btn">Export Vault</button>
+      <button class="btn btn-danger mt-sm" id="reset-btn">Reset Vault</button>
+    </div>
+
+    <div class="trust-banner mt-xl">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      Your data never leaves your device
+    </div>
+  </div>
+
+  <script type="module" src="./options.js"></script>
+</body>
+</html>

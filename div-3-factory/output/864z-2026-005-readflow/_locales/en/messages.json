@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "ReadFlow",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Local-first read-it-later with instant Instapaper import. No cloud sync required.",
+    "description": "Extension description"
+  },
+  "cmdLockVault": {
+    "message": "Lock vault",
+    "description": "Lock keyboard shortcut"
+  },
+  "cmdOpenVault": {
+    "message": "Open ReadFlow",
+    "description": "Open keyboard shortcut"
+  }
+}

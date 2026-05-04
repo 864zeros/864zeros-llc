@@ -1,0 +1,20 @@
+{
+"algorithm_version": "864z-final-stable",
+"target_node": "OneTab",
+"vault_destination": "TabVault",
+"weights": {
+"z_convergence": 0.45,
+"z_velocity": 0.35,
+"z_scarcity": 0.20
+},
+"thresholds": {
+"one_tab_min": 3.50,
+"vault_trigger": 8.64,
+"decay_rate": 0.05
+},
+"metadata": {
+"last_validated": "2026-02-04",
+"author": "V-Architect",
+"description": "High-fidelity weighting for identifying verified data carcasses."
+}
+}

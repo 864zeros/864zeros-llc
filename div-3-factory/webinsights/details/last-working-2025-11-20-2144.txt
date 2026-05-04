@@ -1,0 +1,77 @@
+WebInsight — Last Known Working Snapshot
+Recorded by: user session
+Recorded at (UTC): 2025-11-20T21:44:27Z
+Recorded locally: 2025-11-20
+
+Console log excerpt demonstrating successful add-tag flow (Panel → Background → DB):
+
+db.js:24 Opening database WebInsightDB version 2...
+background.js:3103 WebInsight Service Worker (with Google Drive integration and PDF support) started.
+db.js:40 Database opened successfully.
+background.js:80 WebInsight extension update. Previous version: 2.1.0
+background.js:167 Context menu item 'saveSelectionWebInsight' not found, creating it.
+background.js:192 Context menu item 'savePageAsPDFWebInsight' not found, creating it.
+background.js:128 Extension icon clicked on tab: 741801544
+background.js:150 Side panel open request sent for window: 741801076
+panel.js:74 WI: Temporary global click logger installed and ENABLED. Use window.__wi_set_click_logger(false) to disable or window.__wi_remove_global_click_logger() to remove.
+panel.js:2034 WebInsight Panel script loaded and initialized (v8 - Simple Display with PDF support).
+panel.js:199 Panel DOM loaded.
+panel.js:730 🔍 loadSavedContent called with filterTagId: null
+panel.js:758 🔍 Sending message: GET_ALL_SAVED_CONTENT Object
+background.js:275 Message received in background: Object From: Extension UI (Panel/Options/Viewer)
+background.js:275 Message received in background: Object From: Extension UI (Panel/Options/Viewer)
+panel.js:1376 Panel theme applied: dark (system)
+background.js:275 Message received in background: Object From: Extension UI (Panel/Options/Viewer)
+panel.js:763 🔍 Response received from background for loadSavedContent: Object
+panel.js:57 [WI-CLICK] 2025-11-20T21:44:13.639Z tag: BUTTON id:  classes: tag-filter-item dataset: {tagId: '30', tagName: 'target arch'}
+panel.js:730 🔍 loadSavedContent called with filterTagId: 30
+panel.js:758 🔍 Sending message: GET_FILTERED_ITEMS_BY_TAG {tagId: 30}
+background.js:275 Message received in background: {type: 'GET_FILTERED_ITEMS_BY_TAG', payload: {…}} From: Extension UI (Panel/Options/Viewer)
+panel.js:763 🔍 Response received from background for loadSavedContent: {success: true, payload: Array(1)}
+panel.js:57 [WI-CLICK] 2025-11-20T21:44:19.229Z tag: BUTTON id: clearTagFilterBtn classes: clear-filter-btn dataset: {}
+panel.js:730 🔍 loadSavedContent called with filterTagId: null
+panel.js:758 🔍 Sending message: GET_ALL_SAVED_CONTENT {}
+background.js:275 Message received in background: {type: 'GET_ALL_SAVED_CONTENT', payload: {…}} From: Extension UI (Panel/Options/Viewer)
+panel.js:763 🔍 Response received from background for loadSavedContent: {success: true, payload: Array(69)}
+panel.js:57 [WI-CLICK] 2025-11-20T21:44:21.023Z tag: STRONG id:  classes:  dataset: {}
+background.js:275 Message received in background: {type: 'GET_TAGS_FOR_ITEM', payload: {…}} From: Extension UI (Panel/Options/Viewer)
+panel.js:57 [WI-CLICK] 2025-11-20T21:44:24.095Z tag: INPUT id:  classes: add-tag-input dataset: {}
+panel.js:57 [WI-CLICK] 2025-11-20T21:44:27.692Z tag: BUTTON id:  classes: add-tag-btn dataset: {contentId: '83'}
+panel.js:62 [WI-CLICK] nearest .add-tag-btn detected. contentId: 83 add-input-value: tag
+panel.js:1887 panel -> ADD_TAG_TO_ITEM {contentId: 83, tagName: 'tag'}
+background.js:275 Message received in background: {type: 'ADD_TAG_TO_ITEM', payload: {…}} From: Extension UI (Panel/Options/Viewer)
+background.js:733 ADD_TAG_TO_ITEM payload: {contentId: 83, tagName: 'tag'}
+background.js:734 ADD_TAG_TO_ITEM invoked by sender: {id: 'oehagajkbojcdioofhhlpimcchjpnnne', url: 'chrome-extension://oehagajkbojcdioofhhlpimcchjpnnne/html/panel.html', origin: 'chrome-extension://oehagajkbojcdioofhhlpimcchjpnnne'}
+background.js:735 ADD_TAG_TO_ITEM trace
+background.js:738 background: starting addTag -> linkTagToContent flow for: tag
+db.js:336 db.addTag called with: tag
+db.js:337 db.addTag trace
+addTag @ db.js:337
+db.js:348 Adding new tag: "tag"
+db.js:348 Tag "tag" added (ID: 41)
+background.js:742 background: addTag resolved with tagId: 41
+background.js:746 background: calling linkTagToContent for contentId/tagId: {contentId: 83, tagId: 41}
+db.js:449 db.linkTagToContent called with: {contentId: 83, tagId: 41}
+db.js:450 db.linkTagToContent trace
+linkTagToContent @ db.js:450
+db.js:458 Linked content 83 with tag 41. Key: (2) [83, 41]
+background.js:748 background: linkTagToContent resolved: (2) [83, 41]
+background.js:763 background -> sendResponse (ADD_TAG_TO_ITEM): {success: true, message: "Tag 'tag' added or already linked."}
+db.js:341 addTag transaction complete for: "tag"
+db.js:454 linkTagToContent transaction complete for: [contentId:83, tagId:41]
+panel.js:1895 panel <- raw response for ADD_TAG_TO_ITEM: {success: true, message: "Tag 'tag' added or already linked."}
+panel.js:1301 panel <- ADD_TAG_TO_ITEM response: {success: true, message: "Tag 'tag' added or already linked."} at 2025-11-20T21:44:27.714Z
+background.js:275 Message received in background: {type: 'GET_TAGS_FOR_ITEM', payload: {…}} From: Extension UI (Panel/Options/Viewer)
+panel.js:498 Storage changed in namespace: local {lastSaveTimestamp: {…}}
+panel.js:507 Detected data change, reloading panel content and filters...
+panel.js:730 🔍 loadSavedContent called with filterTagId: null
+background.js:275 Message received in background: {type: 'GET_ALL_TAGS'} From: Extension UI (Panel/Options/Viewer)
+background.js:275 Message received in background: {type: 'GET_ALL_TAGS'} From: Extension UI (Panel/Options/Viewer)
+panel.js:758 🔍 Sending message: GET_ALL_SAVED_CONTENT {}
+background.js:275 Message received in background: {type: 'GET_ALL_SAVED_CONTENT', payload: {…}} From: Extension UI (Panel/Options/Viewer)
+panel.js:763 🔍 Response received from background for loadSavedContent: {success: true, payload: Array(69)}
+
+
+Notes:
+- This demonstrates a complete successful path: user click -> panel handler -> background receive -> db addTag/linkTagToContent -> sendResponse -> panel refresh.
+- Use this file as the last-known-working snapshot before any further changes.

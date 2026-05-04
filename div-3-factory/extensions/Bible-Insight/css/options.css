@@ -1,0 +1,284 @@
+/* css/options.css - Bible Insight Options Page Styles */
+/* Extends fhg-theme.css with options-specific styling */
+
+/* ================================================================
+   LAYOUT
+   ================================================================ */
+
+body {
+  min-height: 100vh;
+  padding: var(--fhg-space-xl);
+}
+
+.options-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.options-header {
+  text-align: center;
+  margin-bottom: var(--fhg-space-xl);
+  padding-bottom: var(--fhg-space-lg);
+  border-bottom: 1px solid var(--fhg-border);
+}
+
+.options-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--fhg-charcoal);
+  margin-bottom: var(--fhg-space-xs);
+}
+
+.options-footer {
+  margin-top: var(--fhg-space-xl);
+  padding-top: var(--fhg-space-lg);
+  border-top: 1px solid var(--fhg-border);
+  text-align: center;
+}
+
+
+/* ================================================================
+   SETTINGS SECTIONS
+   ================================================================ */
+
+.settings-section {
+  background-color: var(--fhg-bg-card);
+  border: 1px solid var(--fhg-border);
+  border-radius: var(--fhg-radius-lg);
+  padding: var(--fhg-space-lg);
+  margin-bottom: var(--fhg-space-lg);
+}
+
+.settings-section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fhg-charcoal);
+  margin-bottom: var(--fhg-space-md);
+  padding-bottom: var(--fhg-space-sm);
+  border-bottom: 1px solid var(--fhg-border-light);
+}
+
+.setting {
+  margin-bottom: var(--fhg-space-md);
+}
+
+.setting:last-child {
+  margin-bottom: 0;
+}
+
+.setting > label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fhg-text-primary);
+  margin-bottom: var(--fhg-space-xs);
+}
+
+.help-text {
+  font-size: 12px;
+  color: var(--fhg-text-muted);
+  margin-top: var(--fhg-space-xs);
+  line-height: 1.5;
+}
+
+.help-text a {
+  color: var(--fhg-bronze);
+}
+
+.help-text a:hover {
+  text-decoration: underline;
+}
+
+
+/* ================================================================
+   CHECKBOX LABELS
+   ================================================================ */
+
+.checkbox-label {
+  display: block;
+  margin-bottom: var(--fhg-space-md);
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: var(--fhg-space-sm);
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  accent-color: var(--fhg-bronze);
+}
+
+.checkbox-label span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fhg-text-primary);
+  vertical-align: middle;
+}
+
+.checkbox-label .help-text {
+  margin-left: 26px;
+}
+
+
+/* ================================================================
+   BACKUP ACTIONS
+   ================================================================ */
+
+.backup-actions {
+  display: flex;
+  gap: var(--fhg-space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--fhg-space-sm);
+}
+
+
+/* ================================================================
+   STORAGE BAR
+   ================================================================ */
+
+.storage-bar {
+  background: var(--fhg-border-light);
+  border-radius: var(--fhg-radius-sm);
+  height: 24px;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  position: relative;
+  margin-top: var(--fhg-space-xs);
+}
+
+.storage-fill {
+  background: var(--fhg-bronze);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: var(--fhg-radius-sm);
+}
+
+.storage-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 24px;
+  font-size: 11px;
+  color: var(--fhg-text-primary);
+  font-weight: 500;
+}
+
+
+/* ================================================================
+   DEBUG LINKS
+   ================================================================ */
+
+.debug-links {
+  display: flex;
+  gap: var(--fhg-space-sm);
+  flex-wrap: wrap;
+}
+
+
+/* ================================================================
+   ACTIONS
+   ================================================================ */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--fhg-space-md);
+  margin-top: var(--fhg-space-lg);
+}
+
+.actions .fhg-status {
+  flex: 1;
+}
+
+
+/* ================================================================
+   TOGGLE SWITCH (Pause Toggle)
+   ================================================================ */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--fhg-border);
+  transition: 0.3s;
+  border-radius: 28px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #FFE066;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(22px);
+}
+
+.toggle-switch input:focus + .toggle-slider {
+  box-shadow: 0 0 0 2px var(--fhg-bronze-light);
+}
+
+.pause-status {
+  animation: pulse-warning 2s ease-in-out infinite;
+}
+
+@keyframes pulse-warning {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+
+/* ================================================================
+   DARK MODE
+   ================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .settings-section {
+    background-color: var(--fhg-bg-card);
+    border-color: var(--fhg-border);
+  }
+
+  .settings-section h2 {
+    border-bottom-color: var(--fhg-border);
+  }
+
+  .storage-bar {
+    background: var(--fhg-border);
+  }
+
+  .storage-label {
+    color: var(--fhg-text-primary);
+  }
+}

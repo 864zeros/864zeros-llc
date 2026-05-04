@@ -1,0 +1,224 @@
+```markdown
+# Claude Code Agent Prompt: Report Polish & Bug Fixes
+
+## Objective
+Fix remaining issues in the report generation: broken identity links, duplicate events, and add engagement phase detection.
+
+---
+
+## Bug 1: Fix Identity Links
+
+**Problem:** Identity links show identical source/target IDs.
+
+**Root cause:** Linking logic uses same identity ID for both ends.
+
+**Fix in `lib/journey.js`:**
+
+```javascript
+// In extractMilestones() - track identities for linking
+const identityRegistry = new Map(); // type -> identityId
+
+// When identity detected
+if (event.type === 'identity_detected') {
+  const existingId = identityRegistry.get(event.identityType);
+  const newId = event.identityId;
+  
+  if (existingId && existingId !== newId) {
+    // Link different identities of same type (shouldn't happen)
+    await wiwDB.linkIdentities(existingId, newId, 'same_type_update');
+  } else if (identityRegistry.size > 0) {
+    // Link to first identity of DIFFERENT type (cross-vendor stitching)
+    const firstOther = Array.from(identityRegistry.entries())
+      .find(([type, id]) => type !== event.identityType);
+    if (firstOther) {
+      await wiwDB.linkIdentities(firstOther[1], newId, 'cross_vendor_stitch');
+    }
+  }
+  
+  identityRegistry.set(event.identityType, newId);
+}
+```
+
+**Fix in report generation:**
+
+```javascript
+// In generateReport() - ensure distinct source/target
+const links = await wiwDB.getIdentityGraph(session.id);
+const validLinks = links.filter(l => l.source !== l.target);
+
+// Render only valid links
+${validLinks.map(l => `
+  <tr>
+    <td><code>${l.source.substring(0, 20)}...</code></td>
+    <td><code>${l.target.substring(0, 20)}...</code></td>
+    <td>${l.reason}</td>
+  </tr>
+`).join('')}
+```
+
+---
+
+## Bug 2: Deduplicate Timeline Events
+
+**Problem:** Every event appears twice in timeline.
+
+**Root cause:** Events stored from both content script and hook.js.
+
+**Fix in `background.js`:**
+
+```javascript
+const dedupCache = new Map(); // 5-second window
+const DEDUP_WINDOW = 5000;
+
+async function addEvent(sessionId, event) {
+  const key = `${event.type}-${event.timestamp}-${JSON.stringify(event.vendor)}`;
+  const now = Date.now();
+  
+  // Clean old entries
+  for (const [k, v] of dedupCache) {
+    if (now - v > DEDUP_WINDOW) dedupCache.delete(k);
+  }
+  
+  // Skip if duplicate in window
+  if (dedupCache.has(key)) return;
+  dedupCache.set(key, now);
+  
+  await wiwDB.addEvent(sessionId, event);
+}
+```
+
+---
+
+## Enhancement: Add Engagement Phase
+
+**Add to `lib/journey.js` milestone detection:**
+
+```javascript
+// Engagement tracking
+if (event.behavioralSignals?.some(s => 
+  ['INTERACTION_DATA', 'SCROLL', 'CLICK', 'MOUSE'].includes(s)
+) && !seen.has('engagement')) {
+  seen.add('engagement');
+  milestones.push({
+    time,
+    type: 'engagement',
+    icon: '👆',
+    title: 'Your behavior tracked',
+    detail: 'Scroll depth, mouse movements, clicks captured',
+    vendors: this.getVendorsWithBehavior('INTERACTION_DATA')
+  });
+}
+
+// Exit intent
+if (event.type === 'network_request' && 
+    (event.url?.includes('beacon') || event.url?.includes('unload')) &&
+    !seen.has('exit')) {
+  seen.add('exit');
+  milestones.push({
+    time,
+    type: 'exit',
+    icon: '🚪',
+    title: 'Exit tracking activated',
+    detail: 'Final data capture before leaving',
+    vendor: event.vendor
+  });
+}
+```
+
+---
+
+## Enhancement: Better ASCII Flow
+
+**Update `renderASCIIFlow()`:**
+
+```javascript
+renderASCIIFlow(flow) {
+  const lines = [];
+  lines.push('');
+  lines.push('    ╔═══════════════════════════════════════════════════════════╗');
+  lines.push('    ║              YOUR TRACKING JOURNEY                        ║');
+  lines.push('    ╚═══════════════════════════════════════════════════════════╝');
+  lines.push('');
+  
+  for (let i = 0; i < flow.length; i++) {
+    const phase = flow[i];
+    const duration = i > 0 ? 
+      Math.round((phase.events[0].timestamp - flow[i-1].events[0].timestamp) / 1000) + 's' 
+      : '0s';
+    
+    // Phase box
+    lines.push(`    ╔═ ${this.phaseEmoji(phase.type)} ${phase.type.toUpperCase()} ═══════════ ${duration} ═══════╗`);
+    lines.push('    ║');
+    
+    // Events
+    for (const event of phase.events) {
+      const time = event.time;
+      const icon = event.icon;
+      const title = event.title.substring(0, 40);
+      lines.push(`    ║  ${time}  ${icon}  ${title}`);
+      
+      if (event.detail) {
+        const detail = event.detail.substring(0, 45);
+        lines.push(`    ║              ↳ ${detail}`);
+      }
+    }
+    
+    lines.push('    ║');
+    lines.push('    ╚═══════════════════════════════════════════════════════════╝');
+    
+    if (i < flow.length - 1) {
+      lines.push('                    ↓');
+    }
+  }
+  
+  lines.push('');
+  lines.push('    Legend: 📍 Landing  🏢 Company ID  🆔 Identity  ⚖️ Consent');
+  lines.push('            👆 Engagement  ⚠️ Violation  🚪 Exit');
+  lines.push('');
+  
+  return lines.join('\n');
+}
+```
+
+---
+
+## Enhancement: Collapse Raw Timeline
+
+**Update timeline section in report:**
+
+```html
+<section id="timeline">
+  <h2>Activity Timeline</h2>
+  <details>
+    <summary>Show ${events.length} raw events</summary>
+    <table>
+      <!-- existing table content -->
+    </table>
+  </details>
+</section>
+```
+
+---
+
+## Files to Modify
+
+1. `lib/journey.js` - Fix identity linking, add engagement/exit phases, improve ASCII
+2. `background.js` - Add deduplication logic
+3. Report template - Collapse raw timeline, filter invalid identity links
+
+---
+
+## Success Criteria
+
+- [ ] Identity links show distinct source/target IDs
+- [ ] No duplicate events in timeline
+- [ ] Engagement phase appears when scroll/click tracking detected
+- [ ] Exit phase appears for beacon/unload events
+- [ ] ASCII flow uses box-drawing characters (╔═╗)
+- [ ] Raw timeline collapsed by default
+- [ ] Report still generates in < 2 seconds
+
+---
+
+End of prompt.
+```

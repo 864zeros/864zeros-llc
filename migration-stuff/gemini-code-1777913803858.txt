@@ -1,0 +1,25 @@
+# 1. Create the new Project HQ and its sub-structure
+mkdir 864zeros-llc
+cd 864zeros-llc
+mkdir migration-stuff
+mkdir div-1-intelligence
+mkdir div-3-factory
+mkdir 864z-build-kit
+
+# 2. Extract Vulture Nest (Intelligence) - Ignoring the heavy dross
+robocopy "..\vulture-nest" ".\div-1-intelligence" /E /XD .git node_modules .venv __pycache__ /XF .gitignore
+
+# 3. Extract 864zeros (Factory) - Ignoring the heavy dross
+robocopy "..\864zeros" ".\div-3-factory" /E /XD .git node_modules .venv __pycache__ /XF .gitignore
+
+# 4. Extract the Build Kit to the shared root
+robocopy "..\864zeros\864z-build-kit" ".\864z-build-kit" /E /XD .git
+
+# 5. Initialize the New Repository and push to GitHub
+git init
+git config user.email "864zeros@gmail.com"
+git add .
+git commit -m "feat: initial corporate migration to 864zeros-llc"
+git remote add origin https://github.com/864zeros/864zeros-llc.git
+git branch -M main
+git push -u origin main

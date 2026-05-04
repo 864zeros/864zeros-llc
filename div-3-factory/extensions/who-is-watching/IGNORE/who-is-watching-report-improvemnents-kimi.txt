@@ -1,0 +1,491 @@
+Yes, ASCII diagram would be perfect for reports - works in both HTML and Markdown, no dependencies, instantly communicates the tracking flow.
+
+Here's the Claude Code prompt:
+
+```markdown
+# Claude Code Agent Prompt: Journey Narrative & ASCII Flow Diagram
+
+## Objective
+Transform the static event list into a compelling user journey narrative with visual ASCII flow diagrams showing how tracking unfolds over time.
+
+---
+
+## Implementation
+
+### 1. Journey Analysis Engine (`lib/journey.js`)
+
+Create journey narrative generator:
+
+```javascript
+class JourneyAnalyzer {
+  constructor(events, identities, vendors) {
+    this.events = events.sort((a, b) => a.timestamp - b.timestamp);
+    this.identities = identities;
+    this.vendors = vendors;
+  }
+
+  generateNarrative() {
+    const milestones = this.extractMilestones();
+    const flow = this.buildFlow(milestones);
+    const ascii = this.renderASCIIFlow(flow);
+    const story = this.generateStory(flow);
+    
+    return { milestones, flow, ascii, story };
+  }
+
+  extractMilestones() {
+    const milestones = [];
+    const seen = new Set();
+    
+    for (const event of this.events) {
+      const time = new Date(event.timestamp).toLocaleTimeString();
+      
+      // Page load / landing
+      if (event.type === 'vendor_detected' && !seen.has('landed')) {
+        seen.add('landed');
+        milestones.push({
+          time,
+          type: 'landing',
+          icon: '📍',
+          title: 'You landed on the site',
+          detail: `First trackers loaded: ${event.vendor.name}`,
+          vendors: [event.vendor.name]
+        });
+      }
+      
+      // Company identification (B2B intent)
+      if (event.vendor?.type === 'intent' && !seen.has('identified')) {
+        seen.add('identified');
+        const vendor = event.vendor.name;
+        milestones.push({
+          time,
+          type: 'identification',
+          icon: '🏢',
+          title: `${vendor} identified your company`,
+          detail: 'Firmographic data collected: company name, size, industry',
+          vendors: [vendor]
+        });
+      }
+      
+      // Identity assignment
+      if (event.type === 'identity_detected' && !seen.has('id_' + event.identityType)) {
+        seen.add('id_' + event.identityType);
+        milestones.push({
+          time,
+          type: 'identity',
+          icon: '🆔',
+          title: `${event.identityType} assigned`,
+          detail: `Tracking ID: ${event.identityValue?.substring(0, 20)}...`,
+          vendor: event.vendor
+        });
+      }
+      
+      // Consent interaction
+      if (event.type === 'consent_detected' && !seen.has('consent')) {
+        seen.add('consent');
+        milestones.push({
+          time,
+          type: 'consent',
+          icon: '⚖️',
+          title: 'Consent banner shown',
+          detail: `Platform: ${event.platform}`,
+          platform: event.platform
+        });
+      }
+      
+      // Consent violation
+      if (event.type === 'consent_violation') {
+        milestones.push({
+          time,
+          type: 'violation',
+          icon: '⚠️',
+          title: 'TRACKING AFTER REJECT',
+          detail: event.description,
+          severity: 'high'
+        });
+      }
+      
+      // Engagement tracking
+      if (event.behavioralSignals?.includes('INTERACTION_DATA') && !seen.has('engagement')) {
+        seen.add('engagement');
+        milestones.push({
+          time,
+          type: 'engagement',
+          icon: '👆',
+          title: 'Your interactions tracked',
+          detail: 'Mouse movements, clicks, scroll depth captured',
+          vendors: this.getVendorsWithBehavior('INTERACTION_DATA')
+        });
+      }
+      
+      // Exit tracking
+      if (event.type === 'network_request' && event.url?.includes('beacon') && !seen.has('exit')) {
+        seen.add('exit');
+        milestones.push({
+          time,
+          type: 'exit',
+          icon: '🚪',
+          title: 'Exit tracking activated',
+          detail: 'Data sent on page unload',
+          vendor: event.vendor
+        });
+      }
+    }
+    
+    return milestones;
+  }
+
+  buildFlow(milestones) {
+    // Group into phases
+    const phases = [];
+    let currentPhase = { type: 'entry', events: [] };
+    
+    for (const m of milestones) {
+      if (m.type === 'landing') {
+        currentPhase.events.push(m);
+      } else if (m.type === 'identification' || m.type === 'identity') {
+        if (currentPhase.events.length > 0) phases.push(currentPhase);
+        currentPhase = { type: 'profiling', events: [m] };
+      } else if (m.type === 'engagement') {
+        if (currentPhase.type !== 'tracking') {
+          if (currentPhase.events.length > 0) phases.push(currentPhase);
+          currentPhase = { type: 'tracking', events: [] };
+        }
+        currentPhase.events.push(m);
+      } else if (m.type === 'violation') {
+        currentPhase.events.push(m);
+      } else {
+        currentPhase.events.push(m);
+      }
+    }
+    
+    if (currentPhase.events.length > 0) phases.push(currentPhase);
+    return phases;
+  }
+
+  renderASCIIFlow(flow) {
+    const lines = [];
+    lines.push('');
+    lines.push('    ┌─────────────────────────────────────────────────────────┐');
+    lines.push('    │           YOUR TRACKING JOURNEY                        │');
+    lines.push('    └─────────────────────────────────────────────────────────┘');
+    lines.push('');
+    
+    for (let i = 0; i < flow.length; i++) {
+      const phase = flow[i];
+      const isLast = i === flow.length - 1;
+      
+      // Phase header
+      lines.push(`    ┌─ ${this.phaseEmoji(phase.type)} ${phase.type.toUpperCase()} PHASE`);
+      lines.push('    │');
+      
+      // Events in phase
+      for (const event of phase.events) {
+        const time = event.time;
+        const icon = event.icon;
+        const title = event.title.substring(0, 45);
+        lines.push(`    │  ${time}  ${icon} ${title}`);
+        
+        if (event.detail) {
+          const detail = event.detail.substring(0, 50);
+          lines.push(`    │              ↳ ${detail}`);
+        }
+        lines.push('    │');
+      }
+      
+      // Connector to next phase
+      if (!isLast) {
+        lines.push('    │');
+        lines.push('    ▼');
+      }
+    }
+    
+    lines.push('    │');
+    lines.push('    └─ 🏁 Journey ends (session archived)');
+    lines.push('');
+    lines.push('    Legend: 📍 Landing  🏢 Company ID  🆔 Identity  ⚖️ Consent');
+    lines.push('            👆 Engagement  ⚠️ Violation  🚪 Exit Tracking');
+    lines.push('');
+    
+    return lines.join('\n');
+  }
+
+  phaseEmoji(type) {
+    const map = {
+      entry: '📍',
+      profiling: '🏢',
+      tracking: '👆',
+      exit: '🚪'
+    };
+    return map[type] || '•';
+  }
+
+  generateStory(flow) {
+    const parts = [];
+    
+    // Opening
+    const landing = flow[0]?.events[0];
+    if (landing) {
+      parts.push(`At ${landing.time}, you landed on the site.`);
+      parts.push(`Within seconds, ${landing.vendors?.length || 'multiple'} tracking vendors initialized.`);
+    }
+    
+    // Profiling
+    const profiling = flow.find(f => f.type === 'profiling');
+    if (profiling) {
+      const idEvents = profiling.events.filter(e => e.type === 'identification');
+      if (idEvents.length > 0) {
+        parts.push(`Before you interacted, ${idEvents.map(e => e.title).join(' and ')}.`);
+      }
+    }
+    
+    // Tracking
+    const tracking = flow.find(f => f.type === 'tracking');
+    if (tracking) {
+      parts.push(`As you browsed, your behavior was tracked: ${tracking.events.map(e => e.title).join(', ')}.`);
+    }
+    
+    // Violations
+    const violations = flow.flatMap(f => f.events).filter(e => e.type === 'violation');
+    if (violations.length > 0) {
+      parts.push(`⚠️ WARNING: ${violations.length} consent violation(s) detected.`);
+    }
+    
+    return parts.join(' ');
+  }
+
+  getVendorsWithBehavior(signal) {
+    return [...new Set(
+      this.events
+        .filter(e => e.behavioralSignals?.includes(signal))
+        .map(e => e.vendor?.name)
+        .filter(Boolean)
+    )];
+  }
+}
+```
+
+### 2. Report Integration
+
+Update report generation in `sidepanel/main.js`:
+
+```javascript
+async function generateReport() {
+  const session = await wiwDB.getSession(currentSessionId);
+  const events = await wiwDB.getSessionTimeline(currentSessionId);
+  const identities = await wiwDB.getSessionIdentities(currentSessionId);
+  const vendors = await wiwDB.getSessionVendors(currentSessionId);
+  
+  const journey = new JourneyAnalyzer(events, identities, vendors);
+  const { milestones, ascii, story } = journey.generateNarrative();
+  
+  const reportHTML = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Who Is Watching Report - ${session.domain}</title>
+      <style>
+        /* existing styles */
+        
+        .journey-narrative {
+          background: var(--bg-card);
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin: 1.5rem 0;
+          border-left: 4px solid var(--sage);
+        }
+        
+        .journey-narrative p {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          color: var(--text);
+        }
+        
+        .ascii-flow {
+          background: #0d0d1a;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin: 1.5rem 0;
+          overflow-x: auto;
+          font-family: 'Courier New', monospace;
+          font-size: 13px;
+          line-height: 1.6;
+          color: #7ee787;
+          white-space: pre;
+        }
+        
+        .milestone-grid {
+          display: grid;
+          gap: 1rem;
+          margin: 1.5rem 0;
+        }
+        
+        .milestone {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          padding: 1rem;
+          background: var(--bg-elevated);
+          border-radius: 6px;
+        }
+        
+        .milestone-icon {
+          font-size: 1.5rem;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--bg-card);
+          border-radius: 50%;
+        }
+        
+        .milestone-content h4 {
+          margin: 0 0 0.25rem 0;
+          color: var(--text);
+        }
+        
+        .milestone-content p {
+          margin: 0;
+          color: var(--text-muted);
+          font-size: 0.9rem;
+        }
+        
+        .milestone-time {
+          color: var(--sage);
+          font-family: monospace;
+          font-size: 0.85rem;
+        }
+        
+        .violation .milestone-icon {
+          background: var(--coral);
+        }
+      </style>
+    </head>
+    <body>
+      <!-- existing header -->
+      
+      <!-- NEW: Journey Narrative -->
+      <section id="journey-narrative">
+        <h2>📖 Your Tracking Story</h2>
+        <div class="journey-narrative">
+          <p>${story}</p>
+        </div>
+      </section>
+      
+      <!-- NEW: ASCII Flow Diagram -->
+      <section id="journey-flow">
+        <h2>🗺️ Journey Flow</h2>
+        <div class="ascii-flow">${escapeHtml(ascii)}</div>
+      </section>
+      
+      <!-- NEW: Milestone Cards -->
+      <section id="milestones">
+        <h2>⏱️ Key Moments</h2>
+        <div class="milestone-grid">
+          ${milestones.map(m => `
+            <div class="milestone ${m.type}">
+              <div class="milestone-icon">${m.icon}</div>
+              <div class="milestone-content">
+                <span class="milestone-time">${m.time}</span>
+                <h4>${m.title}</h4>
+                <p>${m.detail}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+      
+      <!-- existing sections... -->
+      
+    </body>
+    </html>
+  `;
+  
+  return reportHTML;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+```
+
+### 3. Markdown Export Support
+
+Add Markdown format option:
+
+```javascript
+function generateMarkdownReport(session, journey) {
+  return `# Who Is Watching Report: ${session.domain}
+
+**Generated:** ${new Date().toLocaleString()}  
+**Session Duration:** ${formatDuration(session.startTime, session.endTime)}  
+**URL:** ${session.startUrl}
+
+---
+
+## 📖 Your Tracking Story
+
+${journey.story}
+
+---
+
+## 🗺️ Journey Flow
+
+\`\`\`
+${journey.ascii}
+\`\`\`
+
+---
+
+## ⏱️ Key Moments
+
+${journey.milestones.map(m => `
+### ${m.icon} ${m.time} — ${m.title}
+
+${m.detail}
+
+${m.vendors ? `**Vendors:** ${m.vendors.join(', ')}` : ''}
+`).join('\n')}
+
+---
+
+## 📊 Statistics
+
+- **Vendors Detected:** ${session.vendorCount}
+- **Identity Tokens:** ${journey.identities.length}
+- **Total Events:** ${session.eventCount}
+- **Consent Violations:** ${session.violationCount}
+
+---
+
+*Generated by Who Is Watching v2.0*
+`;
+}
+```
+
+---
+
+## Success Criteria
+
+- [ ] Report shows narrative story, not just raw events
+- [ ] ASCII flow diagram renders correctly in both HTML and Markdown
+- [ ] Milestone cards highlight key tracking moments
+- [ ] "You landed, 6sense identified..." storytelling format
+- [ ] Deduplicated events (no more double entries)
+- [ ] Works for both short (< 1 min) and long (30+ min) sessions
+
+---
+
+## Files to Create/Modify
+
+1. Create `lib/journey.js` - Journey analysis engine
+2. Update `sidepanel/main.js` - Integrate journey into report generation
+3. Update report CSS - Add narrative, ASCII, milestone styles
+
+---
+
+End of prompt.
+```

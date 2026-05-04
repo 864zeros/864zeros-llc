@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "ClipGenius - The Intelligent Web Clipper",
+    "description": "The name of the application."
+  },
+  "appDescription": {
+    "message": "Clip the web without the mess. The web clipper for modern note-takers that intelligently extracts content.",
+    "description": "The description of the application."
+  }
+}

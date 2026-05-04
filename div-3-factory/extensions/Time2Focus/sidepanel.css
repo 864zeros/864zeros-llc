@@ -1,0 +1,351 @@
+/* ============================================================
+   Time2Focus — Side Panel Styles
+   Built on OIA Design System
+   ============================================================ */
+
+/* --- Panel Layout --- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--oia-space-md);
+  position: relative;
+}
+
+/* --- Flash Overlay --- */
+.flash-overlay {
+  --flash-color: #717D71;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--flash-color);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.flash-overlay.flashing {
+  animation: flash-pulse 2s ease-in-out infinite;
+}
+
+@keyframes flash-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.4; }
+}
+
+/* --- Header --- */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--oia-space-xs);
+}
+
+.panel-header__title {
+  font-size: var(--oia-size-h2);
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-text-primary);
+  margin: 0;
+}
+
+.panel-header__settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--oia-taupe);
+  border-radius: var(--oia-radius-full);
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  transition:
+    color var(--oia-duration-fast) var(--oia-ease-default),
+    border-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.panel-header__settings:hover {
+  color: var(--oia-sage);
+  border-color: var(--oia-sage);
+}
+
+/* --- Tagline --- */
+.panel-tagline {
+  font-size: var(--oia-size-caption);
+  font-weight: var(--oia-weight-medium);
+  color: var(--oia-sage);
+  margin: 0 0 var(--oia-space-md) 0;
+  font-style: italic;
+}
+
+/* --- Focus Section --- */
+.focus-section {
+  margin-bottom: var(--oia-space-md);
+}
+
+.focus-label {
+  display: block;
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-secondary);
+  margin-bottom: var(--oia-space-xs);
+}
+
+.focus-input {
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  text-overflow: ellipsis;
+  height: 48px;
+}
+
+/* --- Countdown Section --- */
+.countdown-section {
+  text-align: center;
+  margin-bottom: var(--oia-space-md);
+}
+
+.countdown {
+  font-size: 48px;
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: var(--oia-space-xs);
+}
+
+.cancel-btn {
+  background: none;
+  border: none;
+  color: var(--oia-text-muted);
+  font-size: var(--oia-size-body-sm);
+  cursor: pointer;
+  padding: var(--oia-space-xs) var(--oia-space-sm);
+  transition: color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.cancel-btn:hover {
+  color: var(--oia-text-secondary);
+}
+
+/* --- Timer Grid --- */
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--oia-space-sm);
+  margin-bottom: var(--oia-space-lg);
+}
+
+.timer-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-text-primary);
+  background-color: var(--oia-bg-card);
+  border: 2px solid var(--oia-taupe);
+  border-radius: var(--oia-radius-lg);
+  cursor: pointer;
+  transition:
+    background-color var(--oia-duration-fast) var(--oia-ease-default),
+    border-color var(--oia-duration-fast) var(--oia-ease-default),
+    transform var(--oia-duration-fast) var(--oia-ease-default);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.timer-btn:hover {
+  border-color: var(--oia-sage);
+}
+
+.timer-btn:active {
+  transform: scale(0.97);
+}
+
+.timer-btn.active {
+  background-color: var(--oia-sage);
+  border-color: var(--oia-sage);
+  color: var(--oia-text-inverse);
+}
+
+/* --- Settings Section (always visible) --- */
+.settings-section {
+  background-color: var(--oia-bg-card);
+  border-radius: var(--oia-radius-lg);
+  padding: var(--oia-space-md);
+  margin-bottom: var(--oia-space-md);
+}
+
+.settings-title {
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-secondary);
+  margin: 0 0 var(--oia-space-sm) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.setting-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--oia-space-sm) 0;
+}
+
+.setting-group:not(:last-child) {
+  border-bottom: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+.setting-label {
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+}
+
+/* --- Sound Options --- */
+.sound-options {
+  display: flex;
+  gap: var(--oia-space-xs);
+}
+
+.sound-option {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--oia-bg);
+  border: 2px solid transparent;
+  border-radius: var(--oia-radius-sm);
+  cursor: pointer;
+  transition: border-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.sound-option:hover {
+  border-color: var(--oia-taupe);
+}
+
+.sound-option.selected {
+  border-color: var(--oia-sage);
+  background-color: rgba(139, 168, 136, 0.1);
+}
+
+.sound-icon {
+  font-size: 16px;
+}
+
+/* --- Color Options --- */
+.color-options {
+  display: flex;
+  gap: var(--oia-space-xs);
+}
+
+.color-swatch {
+  width: 28px;
+  height: 28px;
+  border: 2px solid transparent;
+  border-radius: var(--oia-radius-full);
+  cursor: pointer;
+  transition:
+    transform var(--oia-duration-fast) var(--oia-ease-default),
+    box-shadow var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+.color-swatch.selected {
+  box-shadow: 0 0 0 2px var(--oia-bg-card), 0 0 0 4px currentColor;
+}
+
+/* --- Toggle Switch --- */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--oia-taupe);
+  border-radius: var(--oia-radius-full);
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.toggle input:checked + .toggle-slider {
+  background-color: var(--oia-sage);
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(18px);
+}
+
+/* --- Footer --- */
+.panel-footer {
+  margin-top: auto;
+  padding-top: var(--oia-space-md);
+  text-align: center;
+}
+
+.panel-footer__tagline {
+  font-size: var(--oia-size-caption);
+  font-weight: var(--oia-weight-medium);
+  color: var(--oia-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* --- Accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+  .flash-overlay.flashing {
+    animation: none;
+    opacity: 0.25;
+  }
+}
+
+/* --- Dark Mode Tweaks --- */
+@media (prefers-color-scheme: dark) {
+  .settings-section {
+    background-color: var(--oia-bg-card);
+  }
+
+  .setting-group:not(:last-child) {
+    border-bottom-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .sound-option {
+    background: var(--oia-bg-elevated);
+  }
+
+  .color-swatch.selected {
+    box-shadow: 0 0 0 2px var(--oia-bg-card), 0 0 0 4px currentColor;
+  }
+}

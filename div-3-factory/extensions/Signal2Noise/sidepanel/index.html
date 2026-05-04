@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal2Noise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="oia-screen panel-container">
+    <!-- Header -->
+    <header class="panel-header">
+      <h1 class="oia-h1">Signal2Noise</h1>
+      <button class="panel-header__settings" id="openOptions" title="Settings" aria-label="Open settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- FEAT-01: Signal Pill Display -->
+    <div id="signalPillContainer" class="signal-pill" aria-label="Priority signals"></div>
+
+    <!-- FEAT-02: Signal-to-Noise Ratio Selector -->
+    <fieldset class="ratio-selector">
+      <legend class="oia-sr-only">Signal-to-Noise Ratio</legend>
+      <div class="ratio-options">
+        <label class="ratio-option">
+          <input type="radio" name="s_n_ratio" id="ratio80" value="80" checked>
+          <span class="ratio-label">80</span>
+        </label>
+        <label class="ratio-option">
+          <input type="radio" name="s_n_ratio" id="ratio70" value="70">
+          <span class="ratio-label">70</span>
+        </label>
+        <label class="ratio-option">
+          <input type="radio" name="s_n_ratio" id="ratio60" value="60">
+          <span class="ratio-label">60</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- FEAT-03: Daily Signal Input -->
+    <div class="input-section">
+      <label for="signalInput" class="oia-body">What is today's signal?</label>
+      <textarea
+        id="signalInput"
+        class="oia-input signal-textarea"
+        placeholder="Capture your signal here..."
+        aria-describedby="signalHint"
+      ></textarea>
+      <span id="signalHint" class="oia-caption signal-hint">Your thoughts are here when you need them</span>
+    </div>
+
+    <!-- FEAT-04: Save Signal Button -->
+    <button id="saveSignalBtn" class="oia-btn oia-btn-primary save-btn">
+      Save Signal
+    </button>
+
+    <!-- Action Buttons Row -->
+    <div class="action-buttons">
+      <!-- FEAT-08: Copy All Signals -->
+      <button id="copyAllSignalsBtn" class="oia-btn oia-btn-secondary action-btn">
+        Copy All
+      </button>
+      <!-- FEAT-09: Download Signals -->
+      <button id="downloadSignalsBtn" class="oia-btn oia-btn-secondary action-btn">
+        Download
+      </button>
+    </div>
+
+    <!-- FEAT-05: Accordion Signal List -->
+    <div id="accordionContainer" class="accordion-container" aria-label="Your signals"></div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="oia-empty empty-state">
+      <div class="oia-empty__headline">No signals yet</div>
+      <div class="oia-empty__subtext">Ready when you are. Capture your first signal above.</div>
+    </div>
+
+    <!-- Toast container for feedback -->
+    <div id="toastContainer" class="toast-container"></div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

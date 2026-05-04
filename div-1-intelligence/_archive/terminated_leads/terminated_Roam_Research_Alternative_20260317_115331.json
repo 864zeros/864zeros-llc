@@ -1,0 +1,47 @@
+{
+  "lead": {
+    "name": "Roam Research Alternative",
+    "incumbent": "Roam Research",
+    "weakness": "Users frustrated with: pricing ($15/mo), performance, no offline",
+    "export_format": "Unknown",
+    "traffic_monthly": 500000,
+    "last_update_months": 4,
+    "sentiment_score": 38,
+    "pain_signals": [
+      "Signal 1",
+      "Signal 2",
+      "Signal 3",
+      "Signal 4",
+      "Signal 5",
+      "Signal 6",
+      "Signal 7",
+      "Signal 8",
+      "Signal 9",
+      "Signal 10",
+      "Signal 11",
+      "Signal 12",
+      "Signal 13",
+      "Signal 14",
+      "Signal 15",
+      "Signal 16",
+      "Signal 17",
+      "Signal 18",
+      "Signal 19",
+      "Signal 20",
+      "Signal 21",
+      "Signal 22",
+      "Signal 23",
+      "Signal 24",
+      "Signal 25"
+    ],
+    "competitors": [
+      "Obsidian",
+      "Logseq",
+      "Notion"
+    ],
+    "growth_projection": 25.0,
+    "margin_projection": 85.0
+  },
+  "termination_reason": "SCORE_BELOW_THRESHOLD: 7.92 < 8.64",
+  "timestamp": "20260317_115331"
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time2Focus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="lib/oia-design-system.css">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <!-- Flash overlay for timer completion -->
+  <div id="flashOverlay" class="flash-overlay"></div>
+
+  <div class="panel">
+    <!-- Header -->
+    <header class="panel-header">
+      <h1 class="panel-header__title">Time2Focus</h1>
+      <button class="panel-header__settings" id="btnOpenOptions" title="About & Settings" aria-label="Open settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Tagline -->
+    <p class="panel-tagline">Built for people with ADHD by someone with ADHD.</p>
+
+    <!-- Focus Topic Section -->
+    <section class="focus-section">
+      <label for="focusTopicInput" class="focus-label">You are focused on:</label>
+      <input
+        type="text"
+        id="focusTopicInput"
+        class="oia-input focus-input"
+        placeholder="what matters right now"
+        autocomplete="off"
+      >
+    </section>
+
+    <!-- Countdown Display -->
+    <section class="countdown-section">
+      <div id="countdownDisplay" class="countdown">--:--</div>
+      <button id="btnCancel" class="cancel-btn" style="display: none;">Cancel</button>
+    </section>
+
+    <!-- Timer Buttons Grid -->
+    <section class="timer-grid">
+      <button id="btnTimer5" class="timer-btn" data-minutes="5">5</button>
+      <button id="btnTimer10" class="timer-btn" data-minutes="10">10</button>
+      <button id="btnTimer25" class="timer-btn" data-minutes="25">25</button>
+      <button id="btnTimer50" class="timer-btn" data-minutes="50">50</button>
+    </section>
+
+    <!-- Settings Section (always visible) -->
+    <section class="settings-section">
+      <h2 class="settings-title">Alert Settings</h2>
+
+      <!-- Sound Selection -->
+      <div class="setting-group">
+        <span class="setting-label">Sound</span>
+        <div class="sound-options">
+          <button id="sndChime" class="sound-option selected" data-sound="chime" title="Chime">
+            <span class="sound-icon">🔔</span>
+          </button>
+          <button id="sndBowl" class="sound-option" data-sound="bowl" title="Singing Bowl">
+            <span class="sound-icon">🎵</span>
+          </button>
+          <button id="sndRaindrop" class="sound-option" data-sound="raindrop" title="Raindrop">
+            <span class="sound-icon">💧</span>
+          </button>
+          <button id="sndSoftBell" class="sound-option" data-sound="soft_bell" title="Soft Bell">
+            <span class="sound-icon">🔕</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Color Selection -->
+      <div class="setting-group">
+        <span class="setting-label">Flash Color</span>
+        <div class="color-options">
+          <button id="clrSage" class="color-swatch selected" data-color="#717D71" style="background-color: #717D71;" title="Sage"></button>
+          <button id="clrCoral" class="color-swatch" data-color="#E07A5F" style="background-color: #E07A5F;" title="Coral"></button>
+          <button id="clrSky" class="color-swatch" data-color="#81B4D8" style="background-color: #81B4D8;" title="Sky"></button>
+          <button id="clrLavender" class="color-swatch" data-color="#B8A9C9" style="background-color: #B8A9C9;" title="Lavender"></button>
+          <button id="clrWarm" class="color-swatch" data-color="#F2CC8F" style="background-color: #F2CC8F;" title="Warm"></button>
+        </div>
+      </div>
+
+      <!-- Notification Toggle -->
+      <div class="setting-group">
+        <span class="setting-label">Notify me</span>
+        <label class="toggle">
+          <input type="checkbox" id="toggleNotify" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Footer Tagline -->
+    <footer class="panel-footer">
+      <p class="panel-footer__tagline">Scientifically proven to work for me.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

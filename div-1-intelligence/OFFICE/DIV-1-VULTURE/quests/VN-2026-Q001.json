@@ -1,0 +1,266 @@
+{
+  "quest_id": "VN-2026-Q001",
+  "target_name": "Knak",
+  "generated_at": "2026-03-19T11:23:33.584536",
+  "mode": "quick",
+  "target": {
+    "category": "micro-saas",
+    "traffic": 500000,
+    "stagnation_months": 18,
+    "primary_weakness": "  I've had mild success using programs like knak but\u2026 outlook haunts ... broken process but when the",
+    "secondary_weakness": "**Knak Pros and Cons | User Likes & Dislikes**"
+  },
+  "ransom": {
+    "pricing_model": "subscription",
+    "price_range": "$100",
+    "free_tier_exists": true,
+    "free_tier_limits": [
+      "Free Plan: Available with limits on contacts and emails per month. ... In addition, you can use thir",
+      "Unlike Beefree, Knak only offers customized pricing plans so you'll need to work with a representati"
+    ],
+    "price_increase_history": [],
+    "enterprise_wall": true,
+    "ransom_signals": [
+      {
+        "source": "web",
+        "content": "**Knak Software Pricing, Alternatives & More 2026**"
+      },
+      {
+        "source": "web",
+        "content": "With the help of Capterra, learn about Knak Software - reviews, pricing plans, popular comparisons to other Email Marketing products and more."
+      },
+      {
+        "source": "web",
+        "content": "This workflow was costly and creating bottlenecks that were delaying the distribution of our emails. On-boarding with Knak was excellent. Our customer success\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "Compare Keap and Knak head-to-head across pricing, user satisfaction, and features, using data from actual users."
+      },
+      {
+        "source": "web",
+        "content": "At an average salary of $100K for a developer, this means an email costs $481. Agencies often charge $10,000 \u2013 $80,000 for ONE template. Knak\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "Knak \u00b7 Price is quite expensive for Premium or once you get into high volumes of contacts. \u00b7 Depending on how you'll use it, it may require some help from\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "Free Plan: Available with limits on contacts and emails per month. ... In addition, you can use third-party tools like Knak to design your emails\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "Unlike Beefree, Knak only offers customized pricing plans so you'll need to work with a representative to find out your pricing. TrustRadius and\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.dyspatch.io/blog/best-email-template-builders-an-expert-breakdown/)"
+      },
+      {
+        "source": "web",
+        "content": "**Knak Reviews 2026: Details, Pricing, & Features**"
+      },
+      {
+        "source": "web",
+        "content": "**Knak Image Hosting - Limits & Cost**"
+      },
+      {
+        "source": "web",
+        "content": "(https://help.knak.io/en/articles/8660390-knak-image-hosting-limits-cost)"
+      },
+      {
+        "source": "web",
+        "content": "Understand how image hosting works in Knak, how usage affects your account, and how to reduce costs."
+      },
+      {
+        "source": "web",
+        "content": "AI-generated subject lines increase open rates by up to 22%, with ... ** Knak base price. Ready to see Knak in action? Get a demo and\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**How Forbes Doubled Landing Page Performance Without ...**"
+      },
+      {
+        "source": "web",
+        "content": "See how Forbes doubled landing page conversion rates with Knak\u2014building high-performing pages without developers and saving 18000 hours\u00a0..."
+      }
+    ],
+    "ransom_severity": 10
+  },
+  "friction": {
+    "export_formats": [
+      "CSV"
+    ],
+    "export_limitations": [
+      "**Knak Image Hosting - Limits & Cost**",
+      "(https://help.knak.io/en/articles/8660390-knak-image-hosting-limits-cost)",
+      "Each Knak contract includes a hosting limit, measured in terabytes (TB). You can monitor usage by vi",
+      "APIs, integrations, and tools for building custom solutions with Knak. ... limits design flexibility"
+    ],
+    "api_restrictions": [],
+    "data_portability_score": 3,
+    "lock_in_mechanisms": [],
+    "migration_complexity": "difficult",
+    "friction_signals": [
+      {
+        "source": "web",
+        "content": "The primary method is CSV import: export a list from your HR system, upload it to Knak Send, and map the columns to contact fields. Once\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "How to export your asset from Knak ... Open your asset and find the \"publish\" button on the top right corner. After selecting publish, click download > download\u00a0..."
+      },
+      {
+        "source": "web",
+        "content": "See how DocuSign used Knak to migrate from Eloqua to Iterable without rebuilding 3000+ emails\u2014cutting email creation time by 90%."
+      },
+      {
+        "source": "web",
+        "content": "**Knak Image Hosting - Limits & Cost**"
+      },
+      {
+        "source": "web",
+        "content": "(https://help.knak.io/en/articles/8660390-knak-image-hosting-limits-cost)"
+      },
+      {
+        "source": "web",
+        "content": "Each Knak contract includes a hosting limit, measured in terabytes (TB). You can monitor usage by visiting CDN Usage. How Hosting Impacts Your Account. Every\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "APIs, integrations, and tools for building custom solutions with Knak. ... limits design flexibility. Neither keeps pace ... Start with API authentication."
+      }
+    ],
+    "friction_severity": 7
+  },
+  "math": {
+    "z_convergence": 0.7,
+    "z_velocity": 0.5,
+    "z_scarcity": 0.8,
+    "vulture_score": 9.75,
+    "growth_projection": 25.0,
+    "margin_projection": 85.0,
+    "rule_of_40": 110.0,
+    "exit_multiplier": 1.5,
+    "tam_estimate": 2500000,
+    "sam_estimate": 750000,
+    "som_estimate": 37500,
+    "target_mrr": 6750.0,
+    "months_to_exit": 1,
+    "exit_valuation": 141312,
+    "price_point": 9.0,
+    "tshirt_size": "M",
+    "complexity_score": 6,
+    "build_hours_estimate": 336,
+    "strike_qualified": true,
+    "kill_rationale": "864z score 9.75 exceeds 8.64 threshold | Rule of 40 (110.0%) qualifies for 1.5x exit multiplier"
+  },
+  "blueprint": {
+    "product_codename": "KnakRescue",
+    "tagline": "The local-first Knak alternative that respects your data.",
+    "architecture_type": "chrome_extension_mv3",
+    "offline_first": true,
+    "cloud_dependency": "none",
+    "storage_strategy": "IndexedDB",
+    "rescue_capabilities": [
+      "Import from Knak (full data migration)",
+      "Local-first storage (no cloud required)",
+      "Export to multiple formats (JSON, CSV, Markdown)",
+      "Zero-knowledge architecture"
+    ],
+    "delta_features": [
+      {
+        "name": "One-Click Migration",
+        "description": "Guided import wizard for Knak refugees",
+        "priority": "P0"
+      },
+      {
+        "name": "Offline-First",
+        "description": "Works without internet, syncs optionally",
+        "priority": "P0"
+      },
+      {
+        "name": "Data Portability",
+        "description": "Export your data anytime, no restrictions",
+        "priority": "P1"
+      }
+    ],
+    "required_technologies": [
+      "Chrome Extension MV3",
+      "IndexedDB",
+      "Service Worker"
+    ],
+    "integration_points": [
+      "Knak export format",
+      "Chrome Storage API"
+    ],
+    "primary_metric": {
+      "name": "Successful Migrations",
+      "description": "Users who completed Knak data import",
+      "target": "1000 in 30 days"
+    },
+    "secondary_metric": {
+      "name": "Retention Rate",
+      "description": "Users active after 7 days",
+      "target": "70%"
+    }
+  },
+  "pain_signals": {
+    "total": 27,
+    "critical": [
+      "  I've had mild success using programs like knak but\u2026 outlook haunts ... broken process but when they became responsive as well it became\u00a0...Read more"
+    ],
+    "high": [
+      "**Knak Pros and Cons | User Likes & Dislikes**",
+      "  (https://www.g2.com/products/knak/reviews?qs=pros-and-cons)",
+      "  5 Cons or Disadvantages of Knak. 1. Learning Curve. Users find the learning curve challenging, but the tool's intuitiveness promises eventual ease o",
+      "**Knak Pros and Cons | User Likes & Dislikes**",
+      "  (https://www.g2.com/products/knak/reviews?page=3&qs=pros-and-cons)",
+      "  Explore Knak's top pros, cons, and user-rated features\u201a based on real, verified reviews from teams who use it every day.",
+      "**Knak Software Pricing, Alternatives & More 2026**",
+      "With the help of Capterra, learn about Knak Software - reviews, pricing plans, popular comparisons t",
+      "This workflow was costly and creating bottlenecks that were delaying the distribution of our emails.",
+      "The primary method is CSV import: export a list from your HR system, upload it to Knak Send, and map"
+    ],
+    "medium": [
+      "**What do large companies use to build emails?**",
+      "  (https://www.reddit.com/r/Emailmarketing/comments/1ijib6m/what_do_large_companies_use_to_build_emails/)",
+      "  Most large companies use knak, stensul, taxiforemail or chamaileon.io to have a central email template builder for all the ESP/CRM they use.Read mor",
+      "**If you could wave a magic wand and create your dream ...**",
+      "  (https://www.reddit.com/r/Emailmarketing/comments/ugptve/if_you_could_wave_a_magic_wand_and_create_your/)",
+      "  ... knak is worth a checkout as well. Tbh, both knak and stensul are quite expensive (min 5 figures) as they're both enterprise team oriented.Read m",
+      "**How does email design work? : r/graphic_design**",
+      "  (https://www.reddit.com/r/graphic_design/comments/17n2z5c/how_does_email_design_work/)",
+      "**How hard is it REALLY to get a job nowadays? : r/marketing**",
+      "  (https://www.reddit.com/r/marketing/comments/1cncbb4/how_hard_is_it_really_to_get_a_job_nowadays/)"
+    ],
+    "sources": [
+      "g2",
+      "web",
+      "reddit"
+    ],
+    "traffic_estimate": 500000,
+    "stagnation_months": 18,
+    "ransom_severity": 10,
+    "friction_severity": 7
+  },
+  "sentiment_synthesis": "Analysis of 27 pain signals across 3 sources indicates significant user frustration with active migration discussions. Pricing concerns are prominent (severity 10/10). Export/lock-in friction is significant (severity 7/10).",
+  "competitors": [
+    {
+      "name": "Knak Alternatives",
+      "category": "direct",
+      "threat_level": "Medium"
+    }
+  ],
+  "gtm": {
+    "channels": [
+      "r/knak",
+      "r/selfhosted",
+      "Indie Hackers",
+      "Hacker News (Show HN)",
+      "Product Hunt"
+    ],
+    "positioning": "The local-first Knak alternative that puts your data first. No subscriptions, no cloud lock-in, no ransom."
+  }
+}

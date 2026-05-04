@@ -1,0 +1,127 @@
+{
+  "factory_owner": "Jeff Conn / 864z LLC",
+  "registry_version": "2.0.0",
+  "last_updated": "2026-03-17",
+  "bricks": {
+    "persistence_vault": {
+      "id": "BRK-DB-001",
+      "name": "IndexedDB_Core",
+      "description": "Production-ready IndexedDB wrapper with CRUD, export/import, and auto-ID generation",
+      "agent_wrapper": "VaultAgent",
+      "status": "Production-Ready",
+      "path": "libs/vault_engine.js",
+      "used_in": ["864z-2026-002"]
+    },
+    "migration_engine": {
+      "id": "BRK-MIG-002",
+      "name": "Text_Parser_Base",
+      "description": "Multi-format backup/restore pipeline (JSON, HTML, CSV, Markdown)",
+      "agent_wrapper": "RescueAgent",
+      "status": "Production-Ready",
+      "path": "libs/OneTab_Importer.js",
+      "used_in": ["864z-2026-002"]
+    },
+    "rescue_importer": {
+      "id": "BRK-MIG-003",
+      "name": "Universal_ReadLater_Parser",
+      "description": "Universal HTML/JSON parser for Read-it-Later service imports. Handles Pocket, Instapaper, and generic bookmark exports. Includes wizard UI for guided import flow.",
+      "agent_wrapper": "RescueAgent",
+      "status": "Production-Ready",
+      "path": "libs/pocket-parser.js",
+      "ui_path": "rescue/rescue.html",
+      "source_strike": "864z-2026-002",
+      "extracted_from": "864z-2026-002-pocket-alt",
+      "capabilities": [
+        "pocket_html_import",
+        "pocket_json_import",
+        "auto_format_detection",
+        "duplicate_detection",
+        "tag_preservation",
+        "progress_tracking"
+      ],
+      "used_in": ["864z-2026-002"]
+    },
+    "performance_brick": {
+      "id": "BRK-OPT-003",
+      "name": "Native_Discard_Logic",
+      "description": "Tab suspension and memory optimization for Chrome extensions",
+      "agent_wrapper": "EfficiencyAgent",
+      "status": "Production-Ready",
+      "path": "libs/deep_sleep.js",
+      "used_in": []
+    },
+    "tiered_unlock": {
+      "id": "BRK-PAY-004",
+      "name": "Pay_Once_Unlock",
+      "description": "License key validation and tier management for freemium extensions",
+      "agent_wrapper": "MonetizeAgent",
+      "status": "Production-Ready",
+      "path": "libs/tiers.js",
+      "used_in": ["864z-2026-002"]
+    },
+    "privacy_shield": {
+      "id": "BRK-PRI-005",
+      "name": "Data_Redactor",
+      "description": "PII detection and data sanitization for privacy-first applications",
+      "agent_wrapper": "PrivacyAgent",
+      "status": "Production-Ready",
+      "path": "libs/redactor.js",
+      "used_in": ["864z-2026-002"]
+    },
+    "password_parser": {
+      "id": "BRK-PWD-001",
+      "name": "Password_Rescue_Parser",
+      "description": "High-security password manager import parser. Supports Dashlane CSV/JSON, LastPass CSV, 1Password CSV with auto-detection. Includes Migration Audit (weak/reused password detection) and security scoring.",
+      "agent_wrapper": "RescueAgent",
+      "status": "Production-Ready",
+      "path": "libs/password-rescue/password-parser.js",
+      "source_strike": "864z-2026-004",
+      "capabilities": [
+        "dashlane_csv_import",
+        "dashlane_json_import",
+        "lastpass_csv_import",
+        "auto_format_detection",
+        "password_strength_audit",
+        "reuse_detection",
+        "security_scoring",
+        "totp_parsing"
+      ],
+      "used_in": ["864z-2026-004"]
+    },
+    "crypto_vault": {
+      "id": "BRK-CRYPTO-001",
+      "name": "Web_Crypto_Vault",
+      "description": "100% client-side encryption layer using Web Crypto API. AES-256-GCM encryption with PBKDF2 key derivation (600k iterations). Zero server dependency.",
+      "agent_wrapper": "SecurityAgent",
+      "status": "Production-Ready",
+      "path": "libs/password-rescue/crypto-vault.js",
+      "source_strike": "864z-2026-004",
+      "capabilities": [
+        "aes_256_gcm_encryption",
+        "pbkdf2_key_derivation",
+        "secure_password_generation",
+        "breach_check_hash_prefix",
+        "indexeddb_encrypted_storage"
+      ],
+      "used_in": ["864z-2026-004"]
+    }
+  },
+  "strikes_deployed": [
+    {
+      "id": "864z-2026-002",
+      "name": "ReadVault",
+      "target": "Pocket",
+      "status": "DEPLOYED",
+      "deployed_at": "2026-03-17",
+      "bricks_used": ["BRK-DB-001", "BRK-MIG-002", "BRK-MIG-003", "BRK-PAY-004", "BRK-PRI-005"]
+    },
+    {
+      "id": "864z-2026-004",
+      "name": "PassVault",
+      "target": "Dashlane",
+      "status": "STRIKE_INITIATED",
+      "initiated_at": "2026-03-17",
+      "bricks_used": ["BRK-DB-001", "BRK-PWD-001", "BRK-CRYPTO-001", "BRK-PRI-005"]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Time2Focus",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "Built for people with ADHD by someone with ADHD. Set a time. Name your focus. Stay on track.",
+    "description": "Extension description for Chrome Web Store"
+  }
+}

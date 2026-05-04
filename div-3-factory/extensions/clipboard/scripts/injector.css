@@ -1,0 +1,28 @@
+/* ============================================================
+   ClipBoard — Injected page styles
+   Styles injected into host pages for capture feedback.
+   Scope selectors carefully to avoid conflicts.
+   ============================================================ */
+
+/* Capture feedback animation */
+.clipboard-capture-feedback {
+  animation: clipboard-pulse 300ms ease-out;
+}
+
+@keyframes clipboard-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 168, 136, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(139, 168, 136, 0);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .clipboard-capture-feedback {
+    animation: none;
+    outline: 2px solid rgba(139, 168, 136, 0.6);
+    outline-offset: 2px;
+  }
+}

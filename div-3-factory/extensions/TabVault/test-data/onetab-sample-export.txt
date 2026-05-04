@@ -1,0 +1,45 @@
+https://www.google.com/search?q=chrome+extension+development | chrome extension development - Google Search
+https://developer.chrome.com/docs/extensions/mv3/getstarted/ | Getting started - Chrome Developers
+https://developer.chrome.com/docs/extensions/mv3/manifest/ | Manifest file format - Chrome Developers
+https://stackoverflow.com/questions/tagged/google-chrome-extension | Newest 'google-chrome-extension' Questions - Stack Overflow
+
+https://github.com/nicolo-ribaudo/onetab-export-to-bookmarks | GitHub - nicolo-ribaudo/onetab-export-to-bookmarks
+https://www.notion.so/Product-Roadmap-Template-abc123 | Product Roadmap Template | Notion
+https://trello.com/b/xyz789/project-board | Project Board | Trello
+https://docs.google.com/document/d/1abc123/edit | Q1 Planning Doc - Google Docs
+https://www.figma.com/file/abc123/Design-System | Design System – Figma
+
+https://www.nytimes.com/2024/02/15/technology/ai-news.html | A.I. News and Updates - The New York Times
+https://www.wsj.com/tech/ai/artificial-intelligence-business | AI in Business - WSJ
+https://www.theverge.com/2024/2/15/ai-announcements | Latest AI Announcements - The Verge
+
+https://react.dev/learn | Quick Start – React
+https://react.dev/reference/react/useState | useState – React
+https://react.dev/reference/react/useEffect | useEffect – React
+https://nextjs.org/docs/getting-started | Getting Started | Next.js
+https://tailwindcss.com/docs/installation | Installation - Tailwind CSS
+https://www.typescriptlang.org/docs/handbook/ | The TypeScript Handbook
+
+https://www.amazon.com/gp/cart | Amazon.com Shopping Cart
+https://www.amazon.com/dp/B0BSHF7WHW | USB-C Hub Multiport Adapter | Amazon
+https://www.bestbuy.com/site/monitors | Computer Monitors - Best Buy
+
+https://mail.google.com/mail/u/0/#inbox | Inbox - Gmail
+https://calendar.google.com/calendar/u/0/r | Google Calendar
+https://drive.google.com/drive/my-drive | My Drive - Google Drive
+https://docs.google.com/spreadsheets/d/1xyz789/edit | Budget 2024 - Google Sheets
+
+https://www.youtube.com/watch?v=dQw4w9WgXcQ | Never Gonna Give You Up - YouTube
+https://www.youtube.com/watch?v=abc123 | How to Build Chrome Extensions in 2024 - YouTube
+https://www.youtube.com/playlist?list=PLxyz | Web Development Tutorials - YouTube
+
+https://twitter.com/home | Home / X
+https://www.linkedin.com/feed/ | LinkedIn Feed
+https://www.reddit.com/r/webdev/ | r/webdev - Reddit
+https://news.ycombinator.com/ | Hacker News
+
+https://github.com/anthropics/claude-code | anthropics/claude-code: Claude Code CLI
+https://github.com/vercel/next.js | vercel/next.js: The React Framework
+https://github.com/tailwindlabs/tailwindcss | tailwindlabs/tailwindcss
+https://github.com/microsoft/TypeScript | microsoft/TypeScript
+https://github.com/facebook/react | facebook/react: A JavaScript library for UI

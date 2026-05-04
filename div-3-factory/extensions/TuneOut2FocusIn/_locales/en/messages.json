@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Tune Out 2 Focus In",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "Built for people with ADHD by someone with ADHD. One click to mask distractions and lock in focus. Scientifically proven to help me.",
+    "description": "Extension description for Chrome Web Store"
+  }
+}

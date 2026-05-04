@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-03-17T11:53:31.564842",
+  "threshold": 8.64,
+  "categories": [
+    "chrome extension",
+    "micro-saas"
+  ],
+  "targets_scanned": 10,
+  "qualified_count": 5,
+  "results": [
+    {
+      "name": "Instapaper",
+      "score": 9.38,
+      "qualified": true,
+      "disqualify_reason": null,
+      "rule_of_40": 110.0,
+      "exit_multiplier": 1.5,
+      "competitors": 3,
+      "weakness": "stagnant development, limited features"
+    },
+    {
+      "name": "Dashlane",
+      "score": 9.3,
+      "qualified": true,
+      "disqualify_reason": null,
+      "rule_of_40": 110.0,
+      "exit_multiplier": 1.5,
+      "competitors": 0,
+      "weakness": "Unknown"
+    },
+    {
+      "name": "AdBlock",
+      "score": 9.3,
+      "qualified": true,
+      "disqualify_reason": null,
+      "rule_of_40": 110.0,
+      "exit_multiplier": 1.5,
+      "competitors": 0,
+      "weakness": "Unknown"
+    },
+    {
+      "name": "Notion",
+      "score": 9.3,
+      "qualified": true,
+      "disqualify_reason": null,
+      "rule_of_40": 110.0,
+      "exit_multiplier": 1.5,
+      "competitors": 0,
+      "weakness": "Unknown"
+    },
+    {
+      "name": "LastPass",
+      "score": 8.69,
+      "qualified": true,
+      "disqualify_reason": null,
+      "rule_of_40": 110.0,
+      "exit_multiplier": 1.5,
+      "competitors": 3,
+      "weakness": "security breaches, pricing, free tier gutted"
+    },
+    {
+      "name": "1Password",
+      "score": 0.0,
+      "qualified": false,
+      "disqualify_reason": "SCARCITY_EXCEEDED: 4 competitors > 3 threshold",
+      "rule_of_40": 0.0,
+      "exit_multiplier": 0.0,
+      "competitors": 4,
+      "weakness": "subscription model, no lifetime option"
+    },
+    {
+      "name": "Evernote",
+      "score": 0.0,
+      "qualified": false,
+      "disqualify_reason": "SCARCITY_EXCEEDED: 4 competitors > 3 threshold",
+      "rule_of_40": 0.0,
+      "exit_multiplier": 0.0,
+      "competitors": 4,
+      "weakness": "export, sync, pricing, bloat"
+    },
+    {
+      "name": "Roam Research",
+      "score": 0.0,
+      "qualified": false,
+      "disqualify_reason": "SCORE_BELOW_THRESHOLD: 7.92 < 8.64",
+      "rule_of_40": 0.0,
+      "exit_multiplier": 0.0,
+      "competitors": 3,
+      "weakness": "pricing ($15/mo), performance, no offline"
+    },
+    {
+      "name": "Raindrop.io",
+      "score": 0.0,
+      "qualified": false,
+      "disqualify_reason": "SCORE_BELOW_THRESHOLD: 6.97 < 8.64",
+      "rule_of_40": 0.0,
+      "exit_multiplier": 0.0,
+      "competitors": 3,
+      "weakness": "sync issues, mobile app, offline access"
+    },
+    {
+      "name": "Grammarly",
+      "score": 0.0,
+      "qualified": false,
+      "disqualify_reason": "SCORE_BELOW_THRESHOLD: 7.64 < 8.64",
+      "rule_of_40": 0.0,
+      "exit_multiplier": 0.0,
+      "competitors": 3,
+      "weakness": "pricing, privacy, aggressive upselling"
+    }
+  ],
+  "qualified_strikes": [
+    {
+      "target": "Instapaper",
+      "score": 9.38,
+      "weakness": "stagnant development, limited features",
+      "competitors": [
+        "Pocket",
+        "Raindrop",
+        "Matter"
+      ]
+    },
+    {
+      "target": "Dashlane",
+      "score": 9.3,
+      "weakness": "Unknown",
+      "competitors": []
+    },
+    {
+      "target": "AdBlock",
+      "score": 9.3,
+      "weakness": "Unknown",
+      "competitors": []
+    },
+    {
+      "target": "Notion",
+      "score": 9.3,
+      "weakness": "Unknown",
+      "competitors": []
+    },
+    {
+      "target": "LastPass",
+      "score": 8.69,
+      "weakness": "security breaches, pricing, free tier gutted",
+      "competitors": [
+        "1Password",
+        "Bitwarden",
+        "Dashlane"
+      ]
+    }
+  ]
+}

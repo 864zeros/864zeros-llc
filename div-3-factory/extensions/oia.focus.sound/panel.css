@@ -1,0 +1,270 @@
+/**
+ * oia.focus.sound - OIA Design System Styles
+ * Auto dark/light mode via prefers-color-scheme
+ */
+
+/* ===== OIA Design Tokens ===== */
+:root {
+  /* Light Mode (Default) */
+  --oia-bg: #F5F2ED;
+  --oia-bg-card: #FDFCFA;
+  --oia-text-primary: #2D2D2D;
+  --oia-text-secondary: #5C5C5C;
+  --oia-text-muted: #8C8C8C;
+  --oia-sage: #8BA888;
+  --oia-sage-dark: #7A9676;
+  --oia-taupe: #A69485;
+  --oia-border: #E8E4DE;
+  --oia-shadow: rgba(45, 45, 45, 0.08);
+
+  /* Spacing */
+  --oia-space-xs: 4px;
+  --oia-space-sm: 8px;
+  --oia-space-md: 16px;
+  --oia-space-lg: 24px;
+  --oia-space-xl: 32px;
+
+  /* Border Radius */
+  --oia-radius-sm: 8px;
+  --oia-radius-md: 12px;
+  --oia-radius-lg: 16px;
+  --oia-radius-full: 50%;
+
+  /* Transitions */
+  --oia-transition-fast: 150ms ease;
+  --oia-transition-normal: 250ms ease;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oia-bg: #1A1A1A;
+    --oia-bg-card: #242424;
+    --oia-text-primary: #F5F2ED;
+    --oia-text-secondary: #B8B8B8;
+    --oia-text-muted: #808080;
+    --oia-sage: #8BA888;
+    --oia-sage-dark: #9DB89A;
+    --oia-taupe: #C4B5A6;
+    --oia-border: #3D3D3D;
+    --oia-shadow: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--oia-text-primary);
+  background: var(--oia-bg);
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.oia-screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--oia-space-lg);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.oia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--oia-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ===== Main Content ===== */
+.oia-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Playback Section ===== */
+.oia-playback-section {
+  text-align: center;
+  margin-bottom: var(--oia-space-xl);
+}
+
+.oia-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border: none;
+  border-radius: var(--oia-radius-md);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--oia-transition-fast);
+}
+
+.oia-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.oia-btn-primary {
+  background: var(--oia-sage);
+  color: #FFFFFF;
+  padding: 0 var(--oia-space-xl);
+  min-width: 160px;
+  margin-bottom: var(--oia-space-md);
+}
+
+.oia-btn-primary:hover:not(:disabled) {
+  background: var(--oia-sage-dark);
+  transform: translateY(-1px);
+}
+
+.oia-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.oia-btn-primary.oia-playing {
+  background: var(--oia-taupe);
+}
+
+.oia-status {
+  font-size: 14px;
+  color: var(--oia-text-muted);
+  font-style: italic;
+}
+
+/* ===== Sound Selection ===== */
+.oia-sound-section {
+  margin-bottom: var(--oia-space-xl);
+}
+
+.oia-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--oia-text-secondary);
+  margin-bottom: var(--oia-space-md);
+}
+
+.oia-sound-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}
+
+.oia-sound-btn {
+  background: var(--oia-bg-card);
+  border: 2px solid var(--oia-border);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--oia-transition-fast);
+}
+
+.oia-sound-btn:hover {
+  background: var(--oia-bg);
+  border-color: var(--oia-sage);
+}
+
+.oia-sound-btn.oia-active {
+  border-color: var(--oia-sage);
+  background: var(--oia-bg);
+}
+
+.oia-sound-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--oia-text-primary);
+  margin-bottom: var(--oia-space-xs);
+}
+
+.oia-sound-desc {
+  font-size: 12px;
+  color: var(--oia-text-muted);
+}
+
+/* ===== Volume Notice ===== */
+.oia-notice {
+  background: var(--oia-bg-card);
+  border: 1px solid var(--oia-border);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-notice-text {
+  font-size: 12px;
+  color: var(--oia-text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ===== Footer ===== */
+.oia-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--oia-text-muted);
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid var(--oia-border);
+  margin-top: auto;
+}
+
+/* ===== Loading State ===== */
+.oia-loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: currentColor;
+  animation: oia-spin 1s ease-in-out infinite;
+  margin-right: var(--oia-space-sm);
+}
+
+@keyframes oia-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.oia-loading {
+  opacity: 0.8;
+  cursor: wait;
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}

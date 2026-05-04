@@ -1,0 +1,33 @@
+{
+  "site_id": "[ID from Bedrock]",
+  "last_updated": "[Current Timestamp]",
+  "location": {
+    "lat": [Raw Float],
+    "lng": [Raw Float],
+    "elevation": "[Search Result]m, [Topography]",
+    "region": "[Region]"
+  },
+  "geopolitics": {
+    "era": "[Linked Era]",
+    "primary_conflict": "[Rivals]",
+    "status": "[Strategic Class]",
+    "tension_gradient": "[Gradient Code]"
+  },
+  "archaeology": {
+    "excavation_start": [Year],
+    "finds": [
+      {
+        "title": "[Artifact]",
+        "description": "[Summary]",
+        "img_url": "[Verified 200 OK URI]",
+        "asset_status": 200,
+        "timestamp": "[Current Timestamp]"
+      }
+    ]
+  },
+  "etymology": "[Root Meaning]",
+  "scripture": {
+    "key_verse": "[Input Verse]",
+    "narrative_insight": "Intelligence: [Tactical Brief]"
+  }
+}

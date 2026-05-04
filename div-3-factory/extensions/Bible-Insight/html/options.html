@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Insight Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/fhg-theme.css">
+    <link rel="stylesheet" href="../css/options.css">
+</head>
+<body>
+    <div class="options-container">
+        <header class="options-header">
+            <h1>Bible Insight Settings</h1>
+            <p class="fhg-subtitle">Rest. Create. For His Glory.</p>
+        </header>
+
+        <!-- API Configuration -->
+        <section class="settings-section">
+            <h2>API Configuration</h2>
+            <div class="setting">
+                <label for="apiKey">Google Gemini API Key:</label>
+                <input type="password" id="apiKey" name="apiKey" class="fhg-input" placeholder="Enter your Gemini API key" aria-describedby="apiKeyHelp">
+                <p id="apiKeyHelp" class="help-text">
+                    Your API key enables AI analysis features. It is stored locally in your browser.
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get an API Key from Google AI Studio</a>.
+                </p>
+            </div>
+            <div class="setting" style="margin-top: 16px;">
+                <label for="bibleApiKey">API.Bible Key (optional):</label>
+                <input type="password" id="bibleApiKey" name="bibleApiKey" class="fhg-input" placeholder="Enter your API.Bible key" aria-describedby="bibleApiKeyHelp">
+                <p id="bibleApiKeyHelp" class="help-text">
+                    Enables verse text lookup. Free tier supports 1,500+ translations.
+                    <a href="https://scripture.api.bible" target="_blank" rel="noopener noreferrer">Get a free API key</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bible Translation Settings (Bible Insight specific) -->
+        <section class="settings-section">
+            <h2>Bible Translation</h2>
+            <div class="setting">
+                <label for="bibleTranslation">Default Translation:</label>
+                <select id="bibleTranslation" name="bibleTranslation" class="fhg-input">
+                    <option value="KJV">King James Version (KJV)</option>
+                    <option value="ASV">American Standard Version (ASV)</option>
+                    <option value="WEB">World English Bible (WEB)</option>
+                    <option value="ESV">English Standard Version (ESV)</option>
+                    <option value="NIV">New International Version (NIV)</option>
+                    <option value="NLT">New Living Translation (NLT)</option>
+                </select>
+                <p class="help-text">
+                    Select your preferred Bible translation for verse lookups. KJV, ASV, and WEB are public domain.
+                    ESV, NIV, and NLT are accessed via API.Bible.
+                </p>
+            </div>
+            <div class="setting">
+                <label>
+                    <input type="checkbox" id="autoDetectVerses" checked>
+                    Auto-detect Bible verses in saved content
+                </label>
+                <p class="help-text">
+                    Automatically detect and link Bible references (e.g., "John 3:16", "Rom 8:28") when you save content.
+                </p>
+            </div>
+        </section>
+
+        <!-- AI Preferences -->
+        <section class="settings-section">
+            <h2>AI Preferences</h2>
+            <div class="setting">
+                <label for="aiModeSelect">AI Mode:</label>
+                <select id="aiModeSelect" name="aiModeSelect" class="fhg-input">
+                    <option value="ask">Ask each time</option>
+                    <option value="local-first">Local-first (on-device)</option>
+                    <option value="cloud-first">Cloud-first (Gemini)</option>
+                </select>
+                <p class="help-text">
+                    <strong>Local-first</strong> uses the on-device model when available.<br>
+                    <strong>Cloud-first</strong> uses Gemini (requires API key).<br>
+                    <strong>Ask each time</strong> lets you decide per action.
+                </p>
+            </div>
+            <div class="setting">
+                <label for="crossRefSource">Cross-Reference Source:</label>
+                <select id="crossRefSource" name="crossRefSource" class="fhg-input">
+                    <option value="treasury">Treasury of Scripture Knowledge only</option>
+                    <option value="treasury-ai">Treasury + AI suggestions</option>
+                    <option value="ai-only">AI suggestions only</option>
+                </select>
+                <p class="help-text">
+                    Choose how cross-references are generated when you save a verse.
+                </p>
+            </div>
+        </section>
+
+        <!-- Data Management Section -->
+        <section class="settings-section">
+            <h2>Data Management</h2>
+            <div class="setting">
+                <p class="help-text">
+                    Save a complete backup of your Bible Insight data to a file on your computer.
+                    Your data is stored locally and never sent to our servers.
+                </p>
+                <div class="backup-actions">
+                    <button id="exportBackupBtn" class="fhg-btn fhg-btn-secondary">Export Full Backup</button>
+                    <button id="importBackupBtn" class="fhg-btn fhg-btn-secondary">Import from Backup</button>
+                    <input type="file" id="importFileInput" style="display: none;" accept=".json">
+                </div>
+            </div>
+            <div class="setting" style="margin-top: 16px;">
+                <label>Storage Usage:</label>
+                <div id="storageUsageBar" class="storage-bar">
+                    <div id="storageUsageFill" class="storage-fill"></div>
+                    <span id="storageUsageLabel" class="storage-label"></span>
+                </div>
+                <p id="storageUsageDetail" class="help-text" style="margin-top: 4px;"></p>
+            </div>
+        </section>
+
+        <!-- Report Defaults -->
+        <section class="settings-section">
+            <h2>Study Report Defaults</h2>
+
+            <label class="checkbox-label">
+                <input id="stripNavigation" type="checkbox">
+                <span>Strip Navigation, Header & Footer</span>
+                <p class="help-text">Remove common navigation elements before saving page content.</p>
+            </label>
+
+            <label class="checkbox-label">
+                <input id="cloudAssist" type="checkbox">
+                <span>Cloud Assist (LLM enhancement)</span>
+                <p class="help-text">Use AI to improve clarity and organize content better.</p>
+            </label>
+
+            <label class="checkbox-label">
+                <input id="autoKeyPoints" type="checkbox">
+                <span>Auto-generate Key Points if missing</span>
+                <p class="help-text">Create key points automatically before generating PDF.</p>
+            </label>
+
+            <label class="checkbox-label">
+                <input id="includeVerses" type="checkbox" checked>
+                <span>Include "Verses Referenced" section</span>
+                <p class="help-text">Add a section listing all detected Bible verses in reports.</p>
+            </label>
+
+            <label class="checkbox-label">
+                <input id="includeThemes" type="checkbox" checked>
+                <span>Include "Theological Themes" section</span>
+                <p class="help-text">Add AI-identified theological themes to reports.</p>
+            </label>
+
+            <label class="checkbox-label">
+                <input id="exportResearchMarkdown" type="checkbox">
+                <span>Also export Research Markdown</span>
+                <p class="help-text">Create a Markdown file with prompts used.</p>
+            </label>
+        </section>
+
+        <!-- Appearance -->
+        <section class="settings-section">
+            <h2>Appearance</h2>
+            <div class="setting">
+                <label for="themeSelect">Theme:</label>
+                <select id="themeSelect" name="themeSelect" class="fhg-input">
+                    <option value="system">System Default</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+                <p class="help-text">Choose the visual theme for the extension.</p>
+            </div>
+        </section>
+
+        <!-- Debug Links -->
+        <section class="settings-section">
+            <h2>Advanced</h2>
+
+            <!-- Pause Toggle (Development) -->
+            <div class="setting" style="margin-bottom: 16px; padding: 12px; background: var(--fhg-bg-secondary); border-radius: 8px; border: 1px solid var(--fhg-border);">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <label style="font-weight: 600; display: block;">Pause Extension</label>
+                        <p class="help-text" style="margin: 4px 0 0 0;">Stops all background processing for this session.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pauseToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div id="pauseStatusIndicator" class="pause-status" style="display: none; margin-top: 8px; padding: 8px; background: #FFE066; color: #333; border-radius: 4px; font-size: 13px;">
+                    ⏸ Extension is paused. AI calls and verse detection are disabled.
+                </div>
+            </div>
+
+            <div class="debug-links">
+                <a href="../html/data_viewer.html" target="_blank" class="fhg-btn fhg-btn-sm fhg-btn-secondary">View Database</a>
+            </div>
+            <p class="help-text" style="margin-top: 8px;">For debugging and advanced configuration.</p>
+
+            <!-- Token Usage (Development) -->
+            <div class="setting" style="margin-top: 16px; padding: 12px; background: var(--fhg-bg-secondary); border-radius: 8px;">
+                <label style="font-weight: 600;">Gemini API Token Usage (this session):</label>
+                <div id="tokenUsageDisplay" style="margin-top: 8px; font-family: monospace; font-size: 13px;">
+                    <div>Input tokens: <span id="tokenInputCount">0</span></div>
+                    <div>Output tokens: <span id="tokenOutputCount">0</span></div>
+                    <div>Total API calls: <span id="tokenCallCount">0</span></div>
+                    <div style="margin-top: 4px; color: var(--fhg-text-muted); font-size: 11px;">
+                        Last reset: <span id="tokenLastReset">-</span>
+                    </div>
+                </div>
+                <button id="resetTokenUsageBtn" class="fhg-btn fhg-btn-sm fhg-btn-secondary" style="margin-top: 8px;">Reset Counter</button>
+                <p class="help-text" style="margin-top: 4px;">Token usage resets when the extension reloads.</p>
+            </div>
+        </section>
+
+        <!-- Save Button -->
+        <div class="actions">
+            <button id="saveSettingsBtn" class="fhg-btn fhg-btn-primary">Save Settings</button>
+            <div id="statusMessage" class="fhg-status" style="display: none;" aria-live="polite"></div>
+        </div>
+
+        <footer class="options-footer">
+            <p class="fhg-caption">Bible Insight v1.0.0 | FHG Brand | 864zeros LLC</p>
+            <p class="fhg-caption"><a href="#" id="privacyPolicyLink">Privacy Policy</a></p>
+        </footer>
+    </div>
+
+    <script src="../js/options.js" type="module"></script>
+</body>
+</html>

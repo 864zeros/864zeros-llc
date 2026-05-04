@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "skill": "https://aether.864zeros.com/skill/",
+    "aether": "https://aether.864zeros.com/ns/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Concept": "skill:Concept",
+    "Rule": "skill:Rule",
+    "AntiPattern": "skill:AntiPattern",
+    "Technique": "skill:Technique",
+
+    "label": "rdfs:label",
+    "origin": "aether:origin",
+    "source": "aether:source",
+    "retrieved": {
+      "@id": "aether:retrieved",
+      "@type": "xsd:dateTime"
+    },
+
+    "requires": {
+      "@id": "aether:requires",
+      "@type": "@id"
+    },
+    "avoids": {
+      "@id": "aether:avoids",
+      "@type": "@id"
+    },
+    "enables": {
+      "@id": "aether:enables",
+      "@type": "@id"
+    },
+    "contradicts": {
+      "@id": "aether:contradicts",
+      "@type": "@id"
+    }
+  }
+}

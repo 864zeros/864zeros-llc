@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4/qO/Dejt3tPcd7DR/+QwJBtkxH7ZG6aC5TEKdsJJ+d5OiP7hQ4Epwh3/K9nUWe3954Q/ysWvF61gsQgxg9E5i06wj+eoUdtfwLYN6aypjP2KN/scdihlhxy9VyeFKi7BjdxxnqAgUo+PTvLQv2zPJGqgVsmacjTeSa7fD+vaWFPSCUipHdpQMqA+Od1oJ+FmMQsTwFnwmBCUkf0pNtpeTeJyFPrKUkCZKI1O08gEToSLycCJ4v0psv1PkzfCrLhaweVzwil0xgTQKVLl3iWtMdBUqxdSHd1J5Kw3Vmvtud8CPLqMolz0d3g4zatpcvThKb2fZ2ZWu2xbcvg0EQIDwIDAQAB",
+  "name": "__MSG_appName__",
+  "version": "1.0.0",
+  "description": "__MSG_appDescription__",
+  "default_locale": "en",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "debugger",
+    "downloads",
+    "identity",
+    "alarms",
+    "management"
+  ],
+  "oauth2": {
+    "client_id": "100480155220-om7fq5o98vj4h46c94bulvac41s1jj0t.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/drive.appdata", "email"]
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/index.html"
+  },
+  "action": {
+    "default_title": "Open ClipBoard"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://extensionpay.com/*"],
+      "js": ["lib/payments/ExtPay.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

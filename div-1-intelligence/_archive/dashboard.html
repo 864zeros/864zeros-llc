@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>864z Vulture Nest - Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>🦅 864z Vulture Nest Dashboard</h1>
+            <p>Load your local `Vulture_Nest.md` and `query_log.json` files to view the latest opportunities and agent performance.</p>
+        </header>
+
+        <section id="file-loaders">
+            <div class="grid">
+                <article>
+                    <label for="nest-file">Load Vulture_Nest.md</label>
+                    <input type="file" id="nest-file" accept=".md">
+                </article>
+                <article>
+                    <label for="query-log-file">Load query_log.json</label>
+                    <input type="file" id="query-log-file" accept=".json">
+                </article>
+            </div>
+        </section>
+
+        <section id="opportunities-section">
+            <h2>Vulture Opportunities</h2>
+            <div id="opportunities-container">
+                <p>Please load `Vulture_Nest.md` to see opportunities.</p>
+            </div>
+        </section>
+        
+        <section id="performance-section">
+            <h2>Agent Performance</h2>
+            <div id="performance-container">
+                <p>Please load `query_log.json` to see agent performance.</p>
+                <canvas id="performance-chart"></canvas>
+            </div>
+        </section>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

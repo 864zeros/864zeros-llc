@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Is Watching</title>
+  <link rel="stylesheet" href="panel.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="panel-header">
+      <h1 class="panel-title">Who Is Watching</h1>
+      <div class="panel-summary">
+        <span id="vendor-count" class="badge">0 vendors</span>
+        <span id="consent-status" class="badge badge--pending">Checking consent...</span>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="vendors">Vendors</button>
+      <button class="tab-btn" data-tab="identity">Identity Graph</button>
+      <button class="tab-btn" data-tab="network">Network</button>
+      <button class="tab-btn" data-tab="datalayer">Data Layers</button>
+      <button class="tab-btn" data-tab="inject">Inject</button>
+    </nav>
+
+    <!-- Tab Content -->
+    <main class="tab-content">
+      <!-- Vendors Tab -->
+      <section id="vendors" class="tab active">
+        <div class="section-header">
+          <h2>Detected Vendors</h2>
+          <button id="refresh-vendors" class="btn-icon" title="Refresh">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 4v6h-6M1 20v-6h6"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </button>
+        </div>
+        <ul id="vendor-list" class="vendor-list">
+          <li class="empty-state">Scanning page for analytics vendors...</li>
+        </ul>
+      </section>
+
+      <!-- Identity Graph Tab -->
+      <section id="identity" class="tab">
+        <div class="section-header">
+          <h2>Identity Graph</h2>
+          <span class="hint">Shows how your identity is stitched across vendors</span>
+        </div>
+        <div class="graph-container">
+          <svg id="identity-graph"></svg>
+        </div>
+        <div id="identity-details" class="details-panel"></div>
+      </section>
+
+      <!-- Network Tab -->
+      <section id="network" class="tab">
+        <div class="section-header">
+          <h2>Network Requests</h2>
+          <button id="clear-network" class="btn-small">Clear</button>
+        </div>
+        <ul id="network-log" class="network-log">
+          <li class="empty-state">Monitoring for tracking requests...</li>
+        </ul>
+      </section>
+
+      <!-- Data Layer Tab -->
+      <section id="datalayer" class="tab">
+        <div class="section-header">
+          <h2>Data Layers</h2>
+          <button id="snapshot-datalayer" class="btn-small">Snapshot</button>
+        </div>
+        <pre id="datalayer-view" class="code-view">Waiting for data layer activity...</pre>
+      </section>
+
+      <!-- Inject Tab -->
+      <section id="inject" class="tab">
+        <div class="section-header">
+          <h2>DOM Injection</h2>
+          <span class="hint">Modify page behavior for testing</span>
+        </div>
+        <div class="inject-controls">
+          <div class="control-group">
+            <h3>Identity Spoofing</h3>
+            <div class="input-group">
+              <input type="text" id="spoof-ecid-value" placeholder="Custom ECID value (optional)">
+              <button id="spoof-ecid" class="btn-action">Spoof ECID</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <h3>Request Blocking</h3>
+            <button id="block-alloy" class="btn-action btn-warning">Block Alloy SDK</button>
+          </div>
+          <div class="control-group">
+            <h3>Consent Override</h3>
+            <div class="input-group">
+              <input type="text" id="fake-consent-groups" placeholder="Consent groups (e.g., C0001,C0002)">
+              <button id="fake-consent" class="btn-action">Fake Consent</button>
+            </div>
+          </div>
+        </div>
+        <pre id="inject-log" class="code-view inject-log"></pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="panel.js"></script>
+</body>
+</html>

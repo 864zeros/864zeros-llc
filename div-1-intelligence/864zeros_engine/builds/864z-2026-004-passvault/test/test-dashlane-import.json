@@ -1,0 +1,171 @@
+{
+  "AUTHENTIFIANT": [
+    {
+      "title": "Google",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "GooglePass123!",
+      "note": "Main Google account",
+      "url": "https://accounts.google.com",
+      "category": "Personal",
+      "otpSecret": ""
+    },
+    {
+      "title": "Amazon",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "password123",
+      "note": "",
+      "url": "https://amazon.com",
+      "category": "Shopping"
+    },
+    {
+      "title": "Netflix",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "password123",
+      "note": "Family account",
+      "url": "https://netflix.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "LinkedIn",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "password123",
+      "note": "",
+      "url": "https://linkedin.com",
+      "category": "Work"
+    },
+    {
+      "title": "Twitter",
+      "email": "user@gmail.com",
+      "login": "@userhandle",
+      "password": "qwerty",
+      "note": "",
+      "url": "https://twitter.com",
+      "category": "Social"
+    },
+    {
+      "title": "Facebook",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "123456",
+      "note": "",
+      "url": "https://facebook.com",
+      "category": "Social"
+    },
+    {
+      "title": "GitHub",
+      "email": "dev@example.com",
+      "login": "devuser",
+      "password": "Str0ng!P@ssw0rd#2024",
+      "note": "Developer account",
+      "url": "https://github.com",
+      "category": "Work",
+      "otpSecret": "JBSWY3DPEHPK3PXP"
+    },
+    {
+      "title": "Dropbox",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "password123",
+      "note": "",
+      "url": "https://dropbox.com",
+      "category": "Cloud"
+    },
+    {
+      "title": "Spotify",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "MusicLover2024!",
+      "note": "",
+      "url": "https://spotify.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "Reddit",
+      "email": "user@gmail.com",
+      "login": "reddit_user",
+      "password": "password123",
+      "note": "",
+      "url": "https://reddit.com",
+      "category": "Social"
+    },
+    {
+      "title": "PayPal",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "P@yP@l$ecure99",
+      "note": "Main payment account",
+      "url": "https://paypal.com",
+      "category": "Finance"
+    },
+    {
+      "title": "Bank of America",
+      "email": "user@gmail.com",
+      "login": "bankuser123",
+      "password": "B@nk!ng2024Secure",
+      "note": "Checking and savings",
+      "url": "https://bankofamerica.com",
+      "category": "Finance"
+    },
+    {
+      "title": "Instagram",
+      "email": "user@gmail.com",
+      "login": "@instauser",
+      "password": "password123",
+      "note": "",
+      "url": "https://instagram.com",
+      "category": "Social"
+    },
+    {
+      "title": "Slack",
+      "email": "work@company.com",
+      "login": "work@company.com",
+      "password": "Sl@ckW0rk2024",
+      "note": "Company workspace",
+      "url": "https://slack.com",
+      "category": "Work"
+    },
+    {
+      "title": "Adobe",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "Cr3@tive2024!",
+      "note": "Creative Cloud",
+      "url": "https://adobe.com",
+      "category": "Software"
+    }
+  ],
+  "SECURENOTE": [
+    {
+      "title": "WiFi Password",
+      "content": "Home WiFi: MyNetwork\nPassword: SuperSecretWiFi123",
+      "category": "Personal"
+    },
+    {
+      "title": "Software Licenses",
+      "content": "Microsoft Office: XXXXX-XXXXX-XXXXX\nAdobe CC: 1234-5678-9012",
+      "category": "Software"
+    }
+  ],
+  "PAYMENTMEAN_CREDITCARD": [
+    {
+      "name": "Personal Visa",
+      "cardNumber": "4111111111111111",
+      "expireMonth": "12",
+      "expireYear": "2027",
+      "securityCode": "123",
+      "bank": "Chase"
+    }
+  ],
+  "IDENTITY": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "user@gmail.com",
+      "phone": "+1-555-123-4567"
+    }
+  ]
+}

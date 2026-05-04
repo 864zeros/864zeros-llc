@@ -1,0 +1,50 @@
+{
+  "appName": {
+    "message": "oia.focus.note",
+    "description": "Extension name displayed in Chrome"
+  },
+  "appDescription": {
+    "message": "Simple note taking for ADHD minds. Capture what you need to remember.",
+    "description": "Extension description for Chrome Web Store"
+  },
+  "openAction": {
+    "message": "Open oia.focus.note",
+    "description": "Tooltip for the extension icon"
+  },
+  "brainDumpLabel": {
+    "message": "what do you need to remember?",
+    "description": "Label for the note input area"
+  },
+  "brainDumpPlaceholder": {
+    "message": "let your thoughts flow...",
+    "description": "Placeholder text for note input textarea"
+  },
+  "saveButton": {
+    "message": "save",
+    "description": "Save button text"
+  },
+  "copyAllNotes": {
+    "message": "copy all notes",
+    "description": "ARIA label for copy button"
+  },
+  "downloadNotes": {
+    "message": "download notes",
+    "description": "ARIA label for download button"
+  },
+  "notesLabel": {
+    "message": "notes",
+    "description": "Notes section heading"
+  },
+  "deleteNote": {
+    "message": "delete note",
+    "description": "ARIA label for delete button"
+  },
+  "emptyState": {
+    "message": "no notes yet. start by writing something above.",
+    "description": "Empty state message when no notes exist"
+  },
+  "footerText": {
+    "message": "made for adhd minds",
+    "description": "Footer text"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "strike_id": "864z-2026-002",
+  "product_name": "ReadVault",
+  "target_incumbent": "Pocket",
+  "deployed_at": "2026-03-17",
+  "vulture_score": 9.32,
+
+  "projections": {
+    "target_mrr": 2500,
+    "months_to_exit": 10,
+    "exit_target": 141312,
+    "growth_projection": 30,
+    "margin_projection": 85,
+    "rule_of_40_score": 115,
+    "rule_of_40_met": true,
+    "exit_multiplier": 1.5
+  },
+
+  "north_star_metric": {
+    "name": "Successful Pocket Rescues",
+    "description": "Number of successful Pocket import operations completed",
+    "unit": "imports",
+    "target_30_day": 500,
+    "tracking_period": "30 days"
+  },
+
+  "metrics": {
+    "total_installs": 0,
+    "active_users_7d": 0,
+    "pocket_rescues_total": 0,
+    "pocket_rescues_30d": 0,
+    "articles_saved_total": 0,
+    "paid_upgrades": 0,
+    "current_mrr": 0
+  },
+
+  "milestones": [
+    {
+      "name": "First Install",
+      "target": 1,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "First Pocket Rescue",
+      "target": 1,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "100 Rescues",
+      "target": 100,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "First Paid Upgrade",
+      "target": 1,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "$100 MRR",
+      "target": 100,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "$500 MRR",
+      "target": 500,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "$1000 MRR",
+      "target": 1000,
+      "achieved": false,
+      "achieved_at": null
+    },
+    {
+      "name": "$2500 MRR (Target)",
+      "target": 2500,
+      "achieved": false,
+      "achieved_at": null
+    }
+  ],
+
+  "cost_analysis": {
+    "fixed_costs": {
+      "chrome_store_fee": 5,
+      "domain": 0,
+      "hosting": 0,
+      "cloud_services": 0
+    },
+    "variable_costs": {
+      "payment_processing_pct": 2.9,
+      "payment_processing_fixed": 0.30
+    },
+    "total_monthly_fixed": 5,
+    "notes": "100% offline-first. Zero server costs for free tier. Cloud sync (paid tier) will use Cloudflare Workers when implemented."
+  },
+
+  "rule_of_40_verification": {
+    "verified_at": "2026-03-17",
+    "growth_rate": 30,
+    "profit_margin": 85,
+    "combined_score": 115,
+    "threshold": 40,
+    "status": "PASSING",
+    "hidden_costs_detected": false,
+    "notes": "No cloud dependencies in core product. All compute is client-side. Chrome Store $5/lifetime is only fixed cost."
+  },
+
+  "acquisition": {
+    "channels": {
+      "reddit": {
+        "subreddits": ["r/pocket", "r/degoogle", "r/selfhosted", "r/productivity", "r/privacy", "r/DataHoarder"],
+        "strategy": "non-marketing_rescue_response",
+        "installs": 0
+      },
+      "twitter": {
+        "strategy": "build_in_public",
+        "hooks_deployed": 3,
+        "installs": 0
+      },
+      "hackernews": {
+        "post_type": "show_hn",
+        "installs": 0
+      },
+      "indiehackers": {
+        "post_type": "technical_build_story",
+        "installs": 0
+      }
+    },
+    "utm_tracking": {
+      "reddit_export_pain": "?utm_source=reddit&utm_medium=comment&utm_campaign=rescue&utm_content=export_pain",
+      "reddit_privacy": "?utm_source=reddit&utm_medium=comment&utm_campaign=rescue&utm_content=privacy_concern",
+      "reddit_alternative": "?utm_source=reddit&utm_medium=comment&utm_campaign=rescue&utm_content=alternative_search",
+      "reddit_selfhosted": "?utm_source=reddit&utm_medium=comment&utm_campaign=rescue&utm_content=selfhosted",
+      "twitter_zero_cost": "?utm_source=twitter&utm_medium=organic&utm_campaign=buildinpublic&utm_content=zero_cost",
+      "twitter_privacy": "?utm_source=twitter&utm_medium=organic&utm_campaign=buildinpublic&utm_content=privacy_flex",
+      "twitter_unbundling": "?utm_source=twitter&utm_medium=organic&utm_campaign=buildinpublic&utm_content=unbundling",
+      "hackernews_post": "?utm_source=hackernews&utm_medium=post&utm_campaign=launch&utm_content=technical",
+      "indiehackers_post": "?utm_source=indiehackers&utm_medium=post&utm_campaign=launch&utm_content=80_20_build"
+    }
+  },
+
+  "changelog": [
+    {
+      "date": "2026-03-17",
+      "event": "DEPLOYED",
+      "details": "Initial deployment from Vulture Nest. 26 files, 80/20 automation split achieved."
+    },
+    {
+      "date": "2026-03-17",
+      "event": "GTM_GENERATED",
+      "details": "Acquisition assets created. 4 Reddit templates, 3 Twitter hooks, 1 IH/HN post. UTM tracking configured."
+    }
+  ]
+}

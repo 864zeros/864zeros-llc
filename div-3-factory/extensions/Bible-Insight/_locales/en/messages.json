@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Bible Insight",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "AI-powered Bible study sidebar. Take sermon notes, auto-detect verses, generate study reports. Your data stays private.",
+    "description": "Extension description for Chrome Web Store (132 chars max)"
+  }
+}

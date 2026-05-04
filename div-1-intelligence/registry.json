@@ -1,0 +1,26 @@
+{
+  "factory_owner": "Jeff Conn / 864z LLC",
+  "bricks": {
+    "persistence_vault": {
+      "id": "BRK-DB-001",
+      "name": "IndexedDB_Core",
+      "agent_wrapper": "VaultAgent",
+      "status": "Production-Ready",
+      "path": "libs/vault_engine.js"
+    },
+    "migration_engine": {
+      "id": "BRK-MIG-002",
+      "name": "Text_Parser_Base",
+      "agent_wrapper": "RescueAgent",
+      "status": "Beta",
+      "path": "libs/OneTab_Importer.js"
+    },
+    "performance_brick": {
+      "id": "BRK-OPT-003",
+      "name": "Native_Discard_Logic",
+      "agent_wrapper": "EfficiencyAgent",
+      "status": "Production-Ready",
+      "path": "libs/deep_sleep.js"
+    }
+  }
+}

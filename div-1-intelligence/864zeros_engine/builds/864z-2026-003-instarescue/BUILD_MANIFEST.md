@@ -1,0 +1,213 @@
+# BUILD MANIFEST: 864z-2026-003 (InstaRescue / ReadFlow)
+
+## Strike Summary
+
+| Field | Value |
+|-------|-------|
+| Strike ID | 864z-2026-003 |
+| Codename | InstaRescue |
+| Product Name | ReadFlow |
+| Target | Instapaper |
+| Vulture Score | 9.38/10 |
+| Status | BUILD_INITIATED |
+
+---
+
+## Registry Audit
+
+### Required Bricks (From Registry)
+
+| Brick ID | Name | Status | Source |
+|----------|------|--------|--------|
+| BRK-DB-001 | IndexedDB_Core | Production-Ready | `libs/vault_engine.js` |
+| BRK-MIG-002 | Migration_Engine | Production-Ready | `libs/backup.js` |
+| BRK-MIG-003 | Universal_ReadLater_Parser | Production-Ready | `libs/pocket-parser.js` |
+| BRK-PAY-004 | Pay_Once_Unlock | Production-Ready | `libs/tiers.js` |
+| BRK-PRI-005 | Data_Redactor | Production-Ready | `libs/redactor.js` |
+
+### New Bricks to Create (Delta)
+
+| Brick ID | Name | Purpose | Complexity |
+|----------|------|---------|------------|
+| BRK-PRS-001 | Deep_Parser | Superior article parsing with fallback chain | M |
+| BRK-EPUB-001 | EReader_Sync | EPUB generation + Kobo/Kindle sync | M |
+
+---
+
+## 75/25 Automation Split
+
+### 75% Boilerplate (From Bricks)
+
+- IndexedDB persistence layer
+- Multi-format export pipeline
+- Instapaper import (via BRK-MIG-003)
+- Tier/license management
+- Privacy redaction
+- Chrome MV3 scaffold
+- OIA Design System CSS
+- Side panel UI framework
+
+### 25% Delta (Custom Development)
+
+1. **Deep-Parse Engine (BRK-PRS-001)**
+   - Readability.js integration
+   - Mercury Parser fallback
+   - DOM snapshot capture
+   - Image extraction
+   - Parse confidence scoring
+
+2. **E-Reader Sync (BRK-EPUB-001)**
+   - EPUB generation
+   - Kobo/Kindle USB detection
+   - Send-to-Kindle integration
+   - Calibre format compatibility
+   - Batch export
+
+3. **Reader View**
+   - Distraction-free reading mode
+   - Font/theme customization
+   - Progress tracking
+
+---
+
+## File Structure
+
+```
+864z-2026-003-instarescue/
+├── BUILD_MANIFEST.md
+├── manifest.json
+├── _locales/
+│   └── en/messages.json
+├── assets/
+│   ├── icon.svg
+│   └── icon*.png
+├── background/
+│   └── service-worker.js
+├── sidepanel/
+│   ├── index.html
+│   ├── main.js
+│   └── styles.css
+├── reader/                    ← DELTA
+│   ├── reader.html
+│   ├── reader.js
+│   └── reader.css
+├── ereader/                   ← DELTA
+│   ├── ereader.html
+│   ├── ereader.js
+│   ├── epub-generator.js
+│   └── device-sync.js
+├── rescue/
+│   ├── rescue.html
+│   ├── rescue.js
+│   └── rescue.css
+├── options/
+│   ├── options.html
+│   ├── options.js
+│   └── options.css
+├── lib/
+│   ├── constants.js
+│   ├── db.js                  ← BRK-DB-001
+│   ├── store.js
+│   ├── backup.js              ← BRK-MIG-002
+│   ├── instapaper-parser.js   ← BRK-MIG-003 (extended)
+│   ├── deep-parser.js         ← DELTA: BRK-PRS-001
+│   ├── epub-generator.js      ← DELTA: BRK-EPUB-001
+│   ├── tiers.js               ← BRK-PAY-004
+│   ├── redactor.js            ← BRK-PRI-005
+│   ├── oia-design-system.css
+│   └── api-client.js
+├── scripts/
+│   ├── content.js
+│   └── injector.css
+└── vendor/
+    ├── readability.js         ← Mozilla Readability
+    └── epub.js                ← EPUB library
+```
+
+---
+
+## Delta Feature Specifications
+
+### BRK-PRS-001: Deep Parser
+
+```javascript
+// Parse priority chain
+const PARSE_CHAIN = [
+  { name: 'readability', parser: ReadabilityParser },
+  { name: 'mercury', parser: MercuryFallback },
+  { name: 'dom_snapshot', parser: DOMSnapshotParser },
+  { name: 'raw_text', parser: RawTextExtractor }
+];
+
+// Confidence thresholds
+const CONFIDENCE = {
+  HIGH: 0.8,    // Use result directly
+  MEDIUM: 0.5,  // Use with warning
+  LOW: 0.3      // Offer manual selection
+};
+```
+
+### BRK-EPUB-001: E-Reader Sync
+
+```javascript
+// Supported formats
+const EREADER_FORMATS = {
+  EPUB: { ext: '.epub', mime: 'application/epub+zip' },
+  MOBI: { ext: '.mobi', mime: 'application/x-mobipocket-ebook' },
+  AZW3: { ext: '.azw3', mime: 'application/vnd.amazon.ebook' },
+  PDF: { ext: '.pdf', mime: 'application/pdf' }
+};
+
+// Device detection
+const DEVICE_SIGNATURES = {
+  KOBO: ['.kobo', 'KOBOeReader'],
+  KINDLE: ['documents', 'Kindle'],
+  CALIBRE: ['.calibre']
+};
+```
+
+---
+
+## North Star Metrics
+
+| Metric | Target (30-day) |
+|--------|-----------------|
+| E-Reader Syncs | 1,000 |
+| Parse Success Rate | 95% |
+| Instapaper Rescues | 500 |
+
+---
+
+## Build Commands
+
+```bash
+# Initialize from strike package
+864zeros build --strike=864z-2026-003 --target=instapaper
+
+# Development
+pnpm install
+pnpm run dev
+
+# Production build
+pnpm run build
+
+# Load in Chrome
+chrome://extensions → Load unpacked → dist/
+```
+
+---
+
+## Timeline
+
+| Phase | Tasks | Est. Hours |
+|-------|-------|------------|
+| Scaffold | Inject 75% boilerplate | 1 |
+| Deep Parser | Implement BRK-PRS-001 | 2 |
+| E-Reader Sync | Implement BRK-EPUB-001 | 2 |
+| Reader View | Distraction-free UI | 1 |
+| Testing | Parse tests, sync tests | 1 |
+| **Total** | | **7 hours** |
+
+---
+
+*Generated by 864zeros Factory Automation*

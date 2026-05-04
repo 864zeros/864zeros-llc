@@ -1,0 +1,128 @@
+<div id="discovery-dashboard" class="discovery-grid">
+    
+    <div class="context-rail">
+        <div class="stat-pill">
+            <span class="label">Elevation</span>
+            <span class="value">350m</span>
+        </div>
+        <div class="stat-pill border-logic">
+            <span class="label">Geopolitics</span>
+            <span class="value">Israel <span class="tension-bar"></span> Aram</span>
+        </div>
+        <div class="stat-pill">
+            <span class="label">Era</span>
+            <span class="value italic">Divided Monarchy</span>
+        </div>
+    </div>
+
+    <div class="evidence-grid">
+        <div class="artifact-card">
+            <div class="image-wrapper head-find"></div>
+            <div class="card-info">
+                <h4>The Mystery Head</h4>
+                <p>9th-century BCE faience head. Israelite or Aramean?</p>
+            </div>
+        </div>
+
+        <div class="artifact-card">
+            <div class="image-wrapper silver-find"></div>
+            <div class="card-info">
+                <h4>The Silver Hoard</h4>
+                <p>3,000-year-old currency found in a ritual jug.</p>
+            </div>
+        </div>
+
+        <div class="artifact-card">
+            <div class="image-wrapper cult-find"></div>
+            <div class="card-info">
+                <h4>Cultic Stones</h4>
+                <p>Iron Age standing stones used for ancient ritual.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="scripture-focus">
+        <div class="verse-callout">
+            <span class="cite-tag">2 SAMUEL 20:15</span>
+            <p>"And they came and besieged him in Abel-beth-maacah..."</p>
+        </div>
+        <div class="story-insight">
+            <p><strong>Intelligence:</strong> This city was a "mother in Israel." The wise woman saved it by negotiating the end of a rebellion right at these walls.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Dashboard Styles for your Design System */
+.discovery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #121212; /* Matching your dark mode */
+}
+
+.context-rail {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+}
+
+.stat-pill {
+    background: #1e1e1e;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-pill .label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
+.stat-pill .value { font-weight: bold; color: #ffd700; }
+
+.tension-bar {
+    display: inline-block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #ef4444);
+    margin: 0 5px;
+    border-radius: 2px;
+}
+
+.evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.artifact-card {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.2s;
+}
+
+.artifact-card:hover { transform: translateY(-5px); border-color: #ffd700; }
+
+.image-wrapper { height: 120px; background-size: cover; background-position: center; }
+/* Replace with your actual asset URLs */
+.head-find { background-image: url('head.jpg'); }
+.silver-find { background-image: url('silver.jpg'); }
+.cult-find { background-image: url('stones.jpg'); }
+
+.card-info { padding: 0.75rem; }
+.card-info h4 { font-size: 0.9rem; margin-bottom: 0.25rem; color: #fff; }
+.card-info p { font-size: 0.75rem; color: #aaa; line-height: 1.2; }
+
+.scripture-focus {
+    background: #1a1a1a;
+    border-left: 4px solid #ffd700;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.cite-tag { font-size: 0.7rem; font-weight: bold; color: #ffd700; display: block; margin-bottom: 0.5rem; }
+.verse-callout p { font-style: italic; color: #ddd; margin-bottom: 0.5rem; }
+.story-insight p { font-size: 0.85rem; color: #888; }
+</style>

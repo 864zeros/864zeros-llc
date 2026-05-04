@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Insights Maps - POC</title>
+    <!-- Leaflet JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Dexie.js -->
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <!-- sql.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <div id="watermark">For His Glory</div>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <span class="logo-icon">📜</span>
+                <h1>Bible Insights Explorer</h1>
+            </div>
+            <div class="controls">
+                <select id="book-select">
+                    <option value="Genesis">Genesis</option>
+                    <option value="Exodus">Exodus</option>
+                    <option value="Joshua">Joshua</option>
+                    <option value="Judges">Judges</option>
+                    <option value="2 Samuel">2 Samuel</option>
+                    <option value="Jonah">Jonah</option>
+                    <option value="Acts">Acts</option>
+                </select>
+                <input type="text" id="search-input" placeholder="Search scripture...">
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="surprise-me" class="secondary-btn">🎲 Surprise Me</button>
+            <button id="test-bench">📍 Test Bench</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Left Rail: Bible Reader -->
+        <section id="bible-reader" class="panel">
+            <div class="panel-header">Bible Reader (KJV)</div>
+            <div id="verse-list" class="scroll-content">
+                <p>Loading scriptures...</p>
+            </div>
+        </section>
+
+        <!-- Right Rail: Map & Notes -->
+        <section id="map-rail" class="panel">
+            <div id="journey-tracker" class="panel-header journey-header">
+                <span>📍 Journey Timeline:</span>
+                <span id="timeline-path" class="timeline-path"><em>Select a location to start your journey...</em></span>
+            </div>
+            <div id="map-container">
+                <div id="map"></div>
+            </div>
+            <div id="notes-container">
+                <div class="panel-header">
+                    <span>Gemini Insights & Notes</span>
+                    <span id="save-status">Saved</span>
+                </div>
+                
+                <div id="insights-content" class="scroll-content">
+                    <div id="insight-placeholder">
+                        <p style="color: #888; text-align: center; margin-top: 50px;">
+                            Select a location in the Bible reader to view AI-powered insights.
+                        </p>
+                    </div>
+                    
+                    <div id="insight-display" style="display: none;">
+                        <img id="insight-image" src="" alt="Location Image" class="insight-img">
+                        <h3 id="insight-title"></h3>
+                        <p id="insight-text"></p>
+                    </div>
+
+                    <hr style="border-color: #333; margin: 20px 0;">
+                    
+                    <h3>My Notes</h3>
+                    <textarea id="study-notes" placeholder="Add your personal study notes here..."></textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="geodata.js"></script>
+    <script src="enriched-data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

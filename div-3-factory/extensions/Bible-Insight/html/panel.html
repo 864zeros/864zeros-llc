@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Insight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/fhg-theme.css">
+    <link rel="stylesheet" href="../css/panel.css">
+</head>
+<body>
+    <div class="fhg-panel">
+        <header class="fhg-panel-header">
+            <div class="fhg-panel-header__top">
+                <h1>Bible Insight</h1>
+                <button class="fhg-panel-header__settings" id="panelOptionsBtn" title="Settings" aria-label="Open settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="fhg-subtitle">Rest. Create. For His Glory.</p>
+
+            <div class="fhg-capture-grid">
+                <button id="panelSavePageBtn" class="fhg-capture-btn" title="Save visible text and basic info from the current page">
+                    <span>Save Page</span>
+                </button>
+                <button id="panelSavePageAsPDFBtn" class="fhg-capture-btn" title="Save the entire webpage as a PDF document">
+                    <span>Save as PDF</span>
+                </button>
+                <button id="panelSaveSelectionBtn" class="fhg-capture-btn" title="Save the currently selected text on the page">
+                    <span>Save Selection</span>
+                </button>
+                <button id="panelCaptureVisibleBtn" class="fhg-capture-btn" title="Capture a screenshot of the currently visible area">
+                    <span>Capture Visible</span>
+                </button>
+                <button id="panelCaptureAreaBtn" class="fhg-capture-btn" title="Select a specific area on the page to capture">
+                    <span>Capture Area</span>
+                </button>
+                <button id="panelSermonModeBtn" class="fhg-capture-btn fhg-capture-btn--youtube" title="Extract YouTube transcript for sermon notes">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    <span>Sermon Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="panelStatusMessage" class="fhg-status" style="display: none;" aria-live="polite"></div>
+
+        <!-- Paused Banner (shown when extension is paused) -->
+        <div id="pausedBanner" class="paused-banner" style="display: none;">
+            <span>⏸ Extension Paused</span>
+            <button id="resumeFromPanelBtn" class="fhg-btn fhg-btn-sm">Resume</button>
+        </div>
+
+        <main class="fhg-panel-content">
+
+            <!-- Filter by Color Section -->
+            <section class="fhg-panel-section">
+                <h3>Filter by Color</h3>
+                <div id="colorFilterList" class="color-filter-list" style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <button class="color-filter-btn" data-color="yellow" title="Important" style="background: #FFE066;"></button>
+                    <button class="color-filter-btn" data-color="green" title="Promise" style="background: #7BC96F;"></button>
+                    <button class="color-filter-btn" data-color="red" title="Warning" style="background: #E57373;"></button>
+                    <button class="color-filter-btn" data-color="blue" title="Study" style="background: #64B5F6;"></button>
+                    <button class="color-filter-btn" data-color="purple" title="Cross-ref" style="background: #BA68C8;"></button>
+                    <button class="color-filter-btn" data-color="orange" title="Personal" style="background: #FFB74D;"></button>
+                </div>
+            </section>
+
+            <!-- Filter by Tag Section -->
+            <section class="fhg-panel-section">
+                <h3>Tags</h3>
+                <div id="tagFilterList" class="tag-filter-list" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                    <i class="fhg-caption">No tags yet</i>
+                </div>
+                <div class="tag-create" style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <input type="text" id="newTagInput" placeholder="New tag name..." class="fhg-input fhg-input-sm" style="flex: 1;">
+                    <button id="createTagBtn" class="fhg-btn fhg-btn-sm fhg-btn-secondary">+ Tag</button>
+                </div>
+            </section>
+
+            <!-- Filter Actions (shown when filter active) -->
+            <section id="filterActionsSection" class="fhg-panel-section" style="display: none;">
+                <div class="filter-actions" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button id="clearFilterBtn" class="fhg-btn fhg-btn-sm fhg-btn-secondary">
+                        Clear Filter
+                    </button>
+                    <button id="synthesizeBtn" class="fhg-btn fhg-btn-sm fhg-btn-primary" title="Synthesize all filtered items into a unified summary">
+                        Synthesize
+                    </button>
+                    <button id="studyDocBtn" class="fhg-btn fhg-btn-sm fhg-btn-charcoal" title="Generate a comprehensive study document">
+                        Study Document
+                    </button>
+                    <button id="askItemsBtn" class="fhg-btn fhg-btn-sm fhg-btn-secondary" title="Ask a question about your saved items">
+                        Ask My Notes
+                    </button>
+                </div>
+            </section>
+
+            <!-- Verses Detected Section (Bible Insight specific) -->
+            <section id="versesDetectedSection" class="fhg-panel-section" style="display: none;">
+                <h3>Verses Detected</h3>
+                <div id="versesDetectedList" class="verses-list">
+                    <!-- Populated by JS when verses are detected -->
+                </div>
+            </section>
+
+            <!-- Key Points Result Area -->
+            <div id="keyPointsResultDisplay" class="key-points-result-area" style="display: none;">
+            </div>
+
+            <!-- Saved Items Section -->
+            <section class="fhg-panel-section">
+                <h3>Saved Items</h3>
+                <div id="panelContentList" class="fhg-content-list">
+                    <p class="fhg-caption" style="padding: 16px; text-align: center;">
+                        <i>Loading saved items...</i>
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/panel.js" type="module"></script>
+</body>
+</html>

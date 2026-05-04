@@ -1,0 +1,24 @@
+{
+  "strike_id": "864z-2026-002",
+  "vulture_score": 9.32,
+  "target": {
+    "name": "Pocket",
+    "weakness": "Users frustrated with: export, privacy, import",
+    "export_format": "Unknown"
+  },
+  "builder_specs": {
+    "required_bricks": [
+      "BRK-DB-001",
+      "BRK-MIG-002"
+    ],
+    "delta_features": [
+      "Users frustrated with: export, privacy, import"
+    ],
+    "projection": {
+      "target_mrr": 2500,
+      "months_to_exit": 10,
+      "rule_of_40_match": true
+    }
+  },
+  "validation_timestamp": "2026-03-17T10:41:06.817433"
+}

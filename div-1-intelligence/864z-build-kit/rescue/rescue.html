@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rescue Your Data - ReadVault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="rescue.css">
+</head>
+<body>
+  <div class="rescue-container">
+    <!-- Header -->
+    <header class="rescue-header">
+      <h1 class="oia-h1">Rescue Your Data</h1>
+      <p class="oia-body">Import your Pocket articles. 100% offline. Your data never leaves your device.</p>
+    </header>
+
+    <!-- Privacy Promise -->
+    <div class="privacy-promise">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+      </svg>
+      <div>
+        <strong>Privacy First</strong>
+        <span>All processing happens locally. No servers. No tracking. No cloud required.</span>
+      </div>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-label">Upload</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-label">Preview</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-label">Import</span>
+      </div>
+    </div>
+
+    <!-- Step 1: Upload -->
+    <section id="step-upload" class="step-content active">
+      <div class="upload-zone" id="upload-zone">
+        <svg class="upload-icon" width="64" height="64" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+        </svg>
+        <p class="upload-text">Drag & drop your Pocket export file here</p>
+        <p class="upload-hint">or click to browse</p>
+        <input type="file" id="file-input" accept=".html,.htm,.json" hidden>
+      </div>
+
+      <div class="instructions">
+        <h3 class="oia-h3">How to export from Pocket:</h3>
+        <ol>
+          <li>Go to <a href="https://getpocket.com/export" target="_blank" rel="noopener">getpocket.com/export</a></li>
+          <li>Click "Export HTML file"</li>
+          <li>Save the <code>ril_export.html</code> file</li>
+          <li>Upload it here</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Step 2: Preview -->
+    <section id="step-preview" class="step-content">
+      <div class="preview-stats">
+        <div class="stat-card">
+          <span class="stat-value" id="preview-total">0</span>
+          <span class="stat-label">Articles</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="preview-unread">0</span>
+          <span class="stat-label">Unread</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="preview-archived">0</span>
+          <span class="stat-label">Archived</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="preview-tags">0</span>
+          <span class="stat-label">Tags</span>
+        </div>
+      </div>
+
+      <div class="preview-sample">
+        <h3 class="oia-h3">Sample articles:</h3>
+        <ul id="sample-list"></ul>
+      </div>
+
+      <div class="preview-actions">
+        <button id="btn-back" class="oia-btn-secondary">Back</button>
+        <button id="btn-import" class="oia-btn-primary">Import All Articles</button>
+      </div>
+    </section>
+
+    <!-- Step 3: Importing -->
+    <section id="step-importing" class="step-content">
+      <div class="import-progress">
+        <div class="progress-icon">
+          <svg class="spinner" width="48" height="48" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="60" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="progress-text">Importing your articles...</p>
+        <div class="oia-progress">
+          <div class="oia-progress-bar" id="import-progress" style="width: 0%"></div>
+        </div>
+        <p class="progress-count"><span id="import-current">0</span> / <span id="import-total">0</span></p>
+      </div>
+    </section>
+
+    <!-- Step 4: Complete -->
+    <section id="step-complete" class="step-content">
+      <div class="complete-icon">
+        <svg width="64" height="64" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </svg>
+      </div>
+      <h2 class="oia-h2">Import Complete!</h2>
+      <p class="oia-body"><span id="complete-count">0</span> articles imported to ReadVault</p>
+
+      <div class="complete-stats">
+        <div class="stat-item">
+          <span class="stat-icon success">✓</span>
+          <span id="stat-imported">0</span> imported
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon warning">–</span>
+          <span id="stat-skipped">0</span> skipped (duplicates)
+        </div>
+        <div class="stat-item" id="error-stat" style="display: none;">
+          <span class="stat-icon error">✕</span>
+          <span id="stat-errors">0</span> errors
+        </div>
+      </div>
+
+      <div class="complete-actions">
+        <button id="btn-open-panel" class="oia-btn-primary">Open ReadVault</button>
+        <button id="btn-import-more" class="oia-btn-secondary">Import More</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="rescue-footer">
+      <span>ReadVault by 864zeros</span>
+      <span class="footer-privacy">100% Offline-First</span>
+    </footer>
+  </div>
+
+  <script type="module" src="rescue.js"></script>
+</body>
+</html>

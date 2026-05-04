@@ -1,0 +1,34 @@
+{
+  "lead": {
+    "name": "Raindrop.io Alternative",
+    "incumbent": "Raindrop.io",
+    "weakness": "Users frustrated with: sync issues, mobile app, offline access",
+    "export_format": "Unknown",
+    "traffic_monthly": 500000,
+    "last_update_months": 3,
+    "sentiment_score": 52,
+    "pain_signals": [
+      "Signal 1",
+      "Signal 2",
+      "Signal 3",
+      "Signal 4",
+      "Signal 5",
+      "Signal 6",
+      "Signal 7",
+      "Signal 8",
+      "Signal 9",
+      "Signal 10",
+      "Signal 11",
+      "Signal 12"
+    ],
+    "competitors": [
+      "Pocket",
+      "Instapaper",
+      "Pinboard"
+    ],
+    "growth_projection": 25.0,
+    "margin_projection": 85.0
+  },
+  "termination_reason": "SCORE_BELOW_THRESHOLD: 6.97 < 8.64",
+  "timestamp": "20260317_115331"
+}

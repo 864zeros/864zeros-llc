@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bible Insights - Image Debugger</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root { --bg: #0f0f0f; --panel: #1a1a1a; --gold: #ffd700; --text: #eee; --dim: #888; --err: #ff4444; }
+        body { margin: 0; font-family: sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+        
+        #sidebar { width: 320px; border-right: 1px solid #333; padding: 20px; display: flex; flex-direction: column; background: #111; }
+        #node-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; margin-top: 15px; }
+        
+        .btn { background: #222; color: var(--dim); border: 1px solid #333; padding: 10px; border-radius: 4px; cursor: pointer; text-align: left; font-size: 0.75rem; }
+        .btn:hover { background: #333; }
+        .btn.active { border-left: 4px solid var(--gold); background: #252525; color: var(--gold); }
+        .no-geo { color: #555 !important; font-style: italic; }
+
+        #explorer { flex: 1; display: flex; flex-direction: column; }
+        #map { height: 40%; border-bottom: 2px solid #333; background: #000; }
+        #dashboard { flex: 1; padding: 20px; overflow-y: auto; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .card { background: var(--panel); border-radius: 6px; border: 1px solid #333; overflow: hidden; }
+        .img-box { width: 100%; height: 150px; background: #000; position: relative; display: flex; align-items: center; justify-content: center; }
+        .img-box img { max-width: 100%; max-height: 100%; object-fit: cover; }
+        
+        .status-msg { position: absolute; font-weight: bold; font-size: 0.65rem; letter-spacing: 1px; }
+        .status-failed { color: var(--err); }
+        
+        .debug-footer { padding: 10px; background: #080808; font-size: 11px; }
+        .google-link { color: var(--gold); text-decoration: none; font-weight: bold; display: block; margin-top: 5px; }
+        
+        #nar-insight { margin-top: 20px; font-size: 0.85rem; line-height: 1.5; border-left: 3px solid var(--gold); padding: 15px; background: #151515; }
+    </style>
+</head>
+<body>
+
+    <section id="sidebar">
+        <h3 style="color:var(--gold); margin:0;">📍 DEBUGGER</h3>
+        <input type="file" onchange="loadLocalFile(event)" style="margin-top:10px; font-size:0.7rem;">
+        <div id="node-list"></div>
+    </section>
+
+    <section id="explorer">
+        <div id="map"></div>
+        <div id="dashboard">
+            <div class="grid" id="artifact-grid"></div>
+            <div id="nar-insight">Load JSON and select a site to begin.</div>
+        </div>
+    </section>
+
+    <script>
+        let allNodes = [], map, marker;
+
+        // Initialize Map
+        map = L.map('map').setView([31.7, 35.2], 8);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        marker = L.marker([31.7, 35.2]).addTo(map);
+
+        function loadLocalFile(e) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                allNodes = JSON.parse(ev.target.result);
+                renderButtons();
+            };
+            reader.readAsText(e.target.files[0]);
+        }
+
+        function renderButtons() {
+            document.getElementById('node-list').innerHTML = allNodes.map((n) => {
+                const id = n.site_id || n.id;
+                const hasGeo = n.location?.lat || n.lat;
+                return `<button class="btn ${!hasGeo ? 'no-geo' : ''}" onclick="inspectNode('${id}', this)">
+                            <b>${id}</b> ${!hasGeo ? '(No Coords)' : ''}
+                        </button>`;
+            }).join('');
+        }
+
+        function inspectNode(id, btn) {
+            const data = allNodes.find(n => (n.site_id || n.id) === id);
+            
+            // Map Logic: Only move if coordinates exist
+            const lat = data.location?.lat || data.lat;
+            const lng = data.location?.lng || data.lng;
+
+            if (lat && lng) {
+                map.flyTo([lat, lng], 13);
+                marker.setLatLng([lat, lng]);
+            } else {
+                console.warn("No coordinates for:", id);
+            }
+
+            // Intelligence logic
+            document.getElementById('nar-insight').innerText = data.scripture?.narrative_insight || data.archeology || "No data.";
+
+            // Image Logic
+            let images = data.archaeology?.finds?.map(f => f.img_url) || (data.media_uri ? [data.media_uri] : []);
+            
+            // Clean up grid
+            const grid = document.getElementById('artifact-grid');
+            grid.innerHTML = images.map(url => `
+                <div class="card">
+                    <div class="img-box">
+                        <span class="status-msg">TRYING...</span>
+                        <img src="${url}" onload="this.previousElementSibling.style.display='none'" onerror="handleError(this)">
+                    </div>
+                    <div class="debug-footer">
+                        <code style="color:#666; word-break:break-all;">${url}</code>
+                        <a class="google-link" target="_blank" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(id + ' archaeology site -wikipedia -site:wikipedia.org')}">
+                            🔍 FIND RELIABLE IMAGE
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+
+            // UI Highlight
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            map.invalidateSize(); // Force map refresh
+        }
+
+        function handleError(img) {
+            img.style.display = 'none';
+            img.previousElementSibling.innerText = "FAILED / 404";
+            img.previousElementSibling.classList.add('status-failed');
+        }
+    </script>
+</body>
+</html>

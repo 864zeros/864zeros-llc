@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "ClipBoard",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "Capture anything from the web — text, pages, screenshots — organized and private.",
+    "description": "Extension description for Chrome Web Store"
+  }
+}

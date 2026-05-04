@@ -1,0 +1,490 @@
+/**
+ * oia.focus.signal - OIA Design System Styles
+ * Auto dark/light mode via prefers-color-scheme
+ */
+
+/* ===== OIA Design Tokens ===== */
+:root {
+  /* Light Mode (Default) */
+  --oia-bg: #F5F2ED;
+  --oia-bg-card: #FDFCFA;
+  --oia-text-primary: #2D2D2D;
+  --oia-text-secondary: #5C5C5C;
+  --oia-text-muted: #8C8C8C;
+  --oia-sage: #8BA888;
+  --oia-sage-dark: #7A9676;
+  --oia-taupe: #A69485;
+  --oia-border: #E8E4DE;
+  --oia-shadow: rgba(45, 45, 45, 0.08);
+
+  /* Spacing */
+  --oia-space-xs: 4px;
+  --oia-space-sm: 8px;
+  --oia-space-md: 16px;
+  --oia-space-lg: 24px;
+  --oia-space-xl: 32px;
+
+  /* Border Radius */
+  --oia-radius-sm: 8px;
+  --oia-radius-md: 12px;
+  --oia-radius-lg: 16px;
+  --oia-radius-full: 50%;
+
+  /* Transitions */
+  --oia-transition-fast: 150ms ease;
+  --oia-transition-normal: 250ms ease;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oia-bg: #1A1A1A;
+    --oia-bg-card: #242424;
+    --oia-text-primary: #F5F2ED;
+    --oia-text-secondary: #B8B8B8;
+    --oia-text-muted: #808080;
+    --oia-sage: #8BA888;
+    --oia-sage-dark: #9DB89A;
+    --oia-taupe: #C4B5A6;
+    --oia-border: #3D3D3D;
+    --oia-shadow: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--oia-text-primary);
+  background: var(--oia-bg);
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.oia-screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--oia-space-lg);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.oia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--oia-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ===== Signal Pill Container ===== */
+.oia-signal-pills {
+  background: var(--oia-sage);
+  border-radius: var(--oia-radius-lg);
+  min-height: 48px;
+  margin-bottom: var(--oia-space-lg);
+  display: flex;
+  align-items: center;
+  padding: var(--oia-space-sm);
+  gap: var(--oia-space-xs);
+  transition: all var(--oia-transition-normal);
+}
+
+.oia-signal-pills.oia-empty {
+  background: var(--oia-bg-card);
+  border: 2px dashed var(--oia-border);
+  justify-content: center;
+  color: var(--oia-text-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.oia-pill-item {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--oia-sage-dark);
+  padding: var(--oia-space-sm);
+  border-radius: var(--oia-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .oia-pill-item {
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+  }
+}
+
+.oia-pill-delete {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: 0;
+  border-radius: var(--oia-radius-full);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0;
+  transition: all var(--oia-transition-fast);
+}
+
+.oia-pill-item:hover .oia-pill-delete {
+  opacity: 1;
+}
+
+.oia-pill-delete:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Ratio Selector ===== */
+.oia-ratio-section {
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--oia-text-secondary);
+  margin-bottom: var(--oia-space-sm);
+}
+
+.oia-ratio-controls {
+  display: flex;
+  gap: var(--oia-space-md);
+  align-items: center;
+}
+
+.oia-ratio-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all var(--oia-transition-fast);
+}
+
+.oia-ratio-option input[type="radio"] {
+  margin-right: var(--oia-space-xs);
+  accent-color: var(--oia-sage);
+}
+
+.oia-ratio-text {
+  font-size: 14px;
+  color: var(--oia-text-primary);
+  font-weight: 500;
+}
+
+.oia-ratio-status {
+  font-size: 12px;
+  color: var(--oia-text-muted);
+  font-style: italic;
+  margin-left: var(--oia-space-md);
+  display: none;
+}
+
+/* ===== Signal Input Section ===== */
+.oia-input-section {
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-textarea {
+  width: 100%;
+  min-height: 80px;
+  background: var(--oia-bg-card);
+  border: 2px solid var(--oia-border);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--oia-text-primary);
+  resize: vertical;
+  line-height: 1.5;
+  transition: border-color var(--oia-transition-fast), box-shadow var(--oia-transition-fast);
+}
+
+.oia-textarea::placeholder {
+  color: var(--oia-text-muted);
+}
+
+.oia-textarea:focus {
+  outline: none;
+  border-color: var(--oia-sage);
+  box-shadow: 0 0 0 3px rgba(139, 168, 136, 0.15);
+}
+
+.oia-input-actions {
+  margin-top: var(--oia-space-md);
+}
+
+/* ===== Buttons ===== */
+.oia-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border: none;
+  border-radius: var(--oia-radius-md);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--oia-transition-fast);
+}
+
+.oia-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.oia-btn-primary {
+  background: var(--oia-sage);
+  color: #FFFFFF;
+  padding: 0 var(--oia-space-lg);
+  min-width: 120px;
+}
+
+.oia-btn-primary:hover:not(:disabled) {
+  background: var(--oia-sage-dark);
+  transform: translateY(-1px);
+}
+
+.oia-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ===== Bulk Actions ===== */
+.oia-bulk-actions {
+  display: flex;
+  gap: var(--oia-space-md);
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-btn-icon {
+  background: var(--oia-taupe);
+  border: none;
+  border-radius: var(--oia-radius-md);
+  color: #FFFFFF;
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  cursor: pointer;
+  transition: all var(--oia-transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-xs);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+  justify-content: center;
+  min-height: 40px;
+  white-space: nowrap;
+}
+
+.oia-btn-icon svg {
+  flex-shrink: 0;
+}
+
+.oia-btn-icon:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ===== Accordion ===== */
+.oia-accordion-container {
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-accordion {
+  border: 2px solid var(--oia-border);
+  border-radius: var(--oia-radius-md);
+  background: var(--oia-bg-card);
+  overflow: hidden;
+  transition: all var(--oia-transition-normal);
+  margin-bottom: var(--oia-space-sm);
+}
+
+.oia-accordion-header {
+  padding: var(--oia-space-md);
+  cursor: pointer;
+  background: var(--oia-bg-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: background-color var(--oia-transition-fast);
+}
+
+.oia-accordion-header:hover {
+  background: var(--oia-bg);
+}
+
+.oia-accordion-title {
+  color: var(--oia-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  flex: 1;
+  margin-right: var(--oia-space-sm);
+  line-height: 1.4;
+}
+
+.oia-btn-delete {
+  background: transparent;
+  border: none;
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  padding: var(--oia-space-xs);
+  border-radius: var(--oia-radius-sm);
+  transition: all var(--oia-transition-fast);
+  font-size: 14px;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.oia-btn-delete:hover {
+  background: var(--oia-border);
+  color: var(--oia-text-primary);
+}
+
+.oia-accordion-content {
+  padding: 0 var(--oia-space-md) var(--oia-space-md) var(--oia-space-md);
+  color: var(--oia-text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--oia-transition-normal);
+}
+
+.oia-accordion.oia-expanded .oia-accordion-content {
+  max-height: 300px;
+}
+
+.oia-accordion-text {
+  margin-bottom: var(--oia-space-md);
+}
+
+.oia-accordion-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.oia-btn-mark {
+  background: transparent;
+  border: 2px solid var(--oia-sage);
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-sage);
+  padding: var(--oia-space-xs) var(--oia-space-sm);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--oia-transition-fast);
+}
+
+.oia-btn-mark:hover {
+  background: var(--oia-sage);
+  color: #FFFFFF;
+}
+
+.oia-btn-mark.oia-marked {
+  background: var(--oia-sage);
+  color: #FFFFFF;
+}
+
+.oia-accordion-timestamp {
+  color: var(--oia-text-muted);
+  font-size: 11px;
+}
+
+/* ===== Empty State ===== */
+.oia-empty {
+  text-align: center;
+  color: var(--oia-text-muted);
+  font-size: 13px;
+  padding: var(--oia-space-xl) var(--oia-space-md);
+  font-style: italic;
+}
+
+.oia-empty-icon {
+  font-size: 32px;
+  margin-bottom: var(--oia-space-md);
+  opacity: 0.6;
+}
+
+.oia-empty-message {
+  line-height: 1.5;
+}
+
+.oia-hidden {
+  display: none;
+}
+
+/* ===== Footer ===== */
+.oia-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--oia-text-muted);
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid var(--oia-border);
+  margin-top: auto;
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}
+
+.oia-accordion-header:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: -2px;
+}

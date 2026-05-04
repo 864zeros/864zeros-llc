@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReadFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/aether-ui.css">
+</head>
+<body>
+  <div class="app-container" id="app">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>ReadFlow</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-ghost" id="import-btn" title="Import Articles">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </button>
+        <button class="btn btn-ghost" id="menu-btn" title="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="1"/>
+            <circle cx="12" cy="5" r="1"/>
+            <circle cx="12" cy="19" r="1"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="stats-bar">
+      <span id="stat-total">0 articles</span>
+      <span class="stat-divider">|</span>
+      <span id="stat-unread">0 unread</span>
+      <span class="stat-divider">|</span>
+      <span id="stat-time">0h reading</span>
+    </div>
+
+    <!-- Main Content -->
+    <main class="app-content" id="main-content">
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search articles..." id="search-input">
+      </div>
+
+      <!-- Article List -->
+      <div class="article-list" id="content-list"></div>
+
+      <!-- Kobo Bridge Action -->
+      <div class="kobo-action hidden" id="kobo-action">
+        <button class="btn btn-accent btn-block" id="generate-kobo-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          Generate Kobo Digest
+        </button>
+        <p class="kobo-hint">Create an ePub from your unread articles for offline reading</p>
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <line x1="9" y1="7" x2="15" y2="7"/>
+            <line x1="9" y1="11" x2="15" y2="11"/>
+          </svg>
+        </div>
+        <h3>Your library is empty</h3>
+        <p class="text-secondary">Import your reading list from Instapaper to get started.</p>
+        <button class="btn btn-primary" id="start-import-btn">
+          Import from Instapaper
+        </button>
+      </div>
+    </main>
+
+    <!-- 864zeros Brand Footer -->
+    <footer class="brand-footer compact">
+      <div class="footer-brand">
+        <span class="footer-logo">864</span>
+        <span class="footer-company">zeros</span>
+      </div>
+      <div class="footer-mission">Organize Your Internal Architecture</div>
+      <div class="footer-links">
+        <a href="https://864zeros.com/privacy" target="_blank" rel="noopener">Privacy</a>
+        <span class="footer-divider">·</span>
+        <a href="https://864zeros.com/terms" target="_blank" rel="noopener">Terms</a>
+        <span class="footer-divider">·</span>
+        <a href="#" id="upgrade-link">Upgrade</a>
+      </div>
+      <div class="footer-copyright">© 2026 864zeros LLC. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- Import Modal (BRK-UI-IMPORT-001) -->
+  <div class="import-modal hidden" id="import-modal">
+    <header class="modal-header">
+      <h3>Import from Instapaper</h3>
+      <button class="modal-close" id="import-modal-close" title="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </header>
+    <div class="import-section p-lg">
+      <div class="dropzone" id="import-dropzone">
+        <div class="dropzone-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </div>
+        <div class="dropzone-text">Drop your Instapaper CSV export here</div>
+        <div class="dropzone-hint">Or click to browse</div>
+      </div>
+      <input type="file" id="import-file-input" accept=".csv,.json" class="hidden">
+    </div>
+  </div>
+
+  <!-- Audit Result Modal (BRK-UI-IMPORT-001) -->
+  <div class="audit-modal hidden" id="audit-modal"></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "appName": {
+    "message": "oia.focus.signal",
+    "description": "Extension name displayed in Chrome"
+  },
+  "appDescription": {
+    "message": "A distraction-free tool that helps ADHD minds identify and focus on their most impactful daily tasks through signal-to-noise prioritization.",
+    "description": "Extension description for Chrome Web Store"
+  },
+  "openAction": {
+    "message": "Open oia.focus.signal",
+    "description": "Tooltip for the extension icon"
+  },
+  "priorityPlaceholder": {
+    "message": "mark your priority signals to see them here",
+    "description": "Placeholder when no signals are marked"
+  },
+  "ratioLabel": {
+    "message": "signal-to-noise ratio:",
+    "description": "Label for ratio selector"
+  },
+  "ratioGoalReached": {
+    "message": "you've reached the signal ratio goal.",
+    "description": "Status when signal count reaches ratio"
+  },
+  "signalInputLabel": {
+    "message": "what is today's signal?",
+    "description": "Label for signal input"
+  },
+  "signalInputPlaceholder": {
+    "message": "capture your thoughts, tasks, and priorities...",
+    "description": "Placeholder for signal input"
+  },
+  "saveSignalButton": {
+    "message": "save signal",
+    "description": "Save button text"
+  },
+  "copyAllButton": {
+    "message": "copy all",
+    "description": "Copy all signals button"
+  },
+  "downloadButton": {
+    "message": "download",
+    "description": "Download signals button"
+  },
+  "copiedFeedback": {
+    "message": "copied!",
+    "description": "Feedback after copying"
+  },
+  "downloadedFeedback": {
+    "message": "downloaded!",
+    "description": "Feedback after downloading"
+  },
+  "markAsSignal": {
+    "message": "mark as signal",
+    "description": "Button to mark as priority"
+  },
+  "unmarkSignal": {
+    "message": "unmark signal",
+    "description": "Button to unmark priority"
+  },
+  "deleteSignal": {
+    "message": "Delete signal",
+    "description": "ARIA label for delete button"
+  },
+  "emptyStateMessage": {
+    "message": "no signals yet. start by capturing what matters today.",
+    "description": "Empty state message"
+  },
+  "maxSignalsAlert": {
+    "message": "Maximum $COUNT$ signals allowed. Please delete a signal before adding a new one.",
+    "description": "Alert when max signals reached",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "maxPriorityAlert": {
+    "message": "Maximum $COUNT$ priority signals allowed. Please unmark a signal first.",
+    "description": "Alert when max priority signals reached",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "footerText": {
+    "message": "built for adhd minds",
+    "description": "Footer text"
+  }
+}

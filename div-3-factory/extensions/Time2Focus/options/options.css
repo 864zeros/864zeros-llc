@@ -1,0 +1,317 @@
+/* ============================================================
+   Time2Focus — Options Page Styles
+   ============================================================ */
+
+body {
+  min-height: 100vh;
+}
+
+.options-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--oia-space-xl) var(--oia-space-lg);
+}
+
+/* ----- Hero Section ----- */
+
+.options-hero {
+  text-align: center;
+  padding-bottom: var(--oia-space-xl);
+  margin-bottom: var(--oia-space-lg);
+  border-bottom: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+.options-hero__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-md);
+  margin-bottom: var(--oia-space-lg);
+}
+
+.options-hero__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--oia-radius-lg);
+}
+
+.options-hero__brand .oia-h1 {
+  margin: 0;
+  text-align: left;
+}
+
+.oia-tagline {
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-sage);
+  margin: 0;
+  text-align: left;
+}
+
+.options-hero__pitch {
+  font-size: var(--oia-size-body);
+  color: var(--oia-text-secondary);
+  max-width: 480px;
+  margin: 0 auto var(--oia-space-md);
+  line-height: 1.6;
+}
+
+.options-hero__subpitch {
+  font-size: var(--oia-size-body);
+  color: var(--oia-text-muted);
+  margin: 0;
+}
+
+/* ----- Sections ----- */
+
+.options-section {
+  margin-bottom: var(--oia-space-lg);
+  padding: var(--oia-space-lg);
+}
+
+.options-section .oia-h2 {
+  margin-bottom: var(--oia-space-md);
+  color: var(--oia-text-primary);
+}
+
+.options-intro {
+  color: var(--oia-text-secondary);
+  margin-bottom: var(--oia-space-lg);
+  line-height: 1.6;
+}
+
+/* ----- Feature List ----- */
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+.feature-item {
+  display: flex;
+  gap: var(--oia-space-md);
+  align-items: flex-start;
+}
+
+.feature-item__icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(139, 168, 136, 0.1);
+  border-radius: var(--oia-radius-md);
+  color: var(--oia-sage);
+}
+
+.feature-item__content {
+  flex: 1;
+}
+
+.feature-item__title {
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+  margin: 0 0 var(--oia-space-xs);
+}
+
+.feature-item__desc {
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ----- Study List ----- */
+
+.study-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-lg);
+}
+
+.study-item {
+  padding-bottom: var(--oia-space-md);
+  border-bottom: 1px solid rgba(166, 148, 133, 0.1);
+}
+
+.study-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.study-item__badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: rgba(139, 168, 136, 0.15);
+  border-radius: var(--oia-radius-sm);
+  font-size: 10px;
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-sage);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--oia-space-xs);
+}
+
+.study-item__title {
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+  margin: 0 0 var(--oia-space-xs);
+}
+
+.study-item__desc {
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+  margin: 0 0 var(--oia-space-sm);
+  line-height: 1.6;
+}
+
+.study-item__source {
+  font-size: var(--oia-size-caption);
+  color: var(--oia-text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ----- How-to List ----- */
+
+.howto-list {
+  margin: 0;
+  padding-left: var(--oia-space-lg);
+  color: var(--oia-text-secondary);
+  font-size: var(--oia-size-body);
+  line-height: 1.8;
+}
+
+.howto-list li {
+  margin-bottom: var(--oia-space-sm);
+}
+
+.howto-list li:last-child {
+  margin-bottom: 0;
+}
+
+.howto-list strong {
+  color: var(--oia-text-primary);
+}
+
+/* ----- About Section ----- */
+
+.about-section .oia-body {
+  color: var(--oia-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--oia-space-lg);
+}
+
+.oia-values {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}
+
+.oia-value {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+}
+
+.oia-value__icon {
+  font-size: 20px;
+}
+
+.oia-value__text {
+  flex: 1;
+}
+
+/* ----- Footer ----- */
+
+.options-footer {
+  text-align: center;
+  padding-top: var(--oia-space-xl);
+  color: var(--oia-text-muted);
+}
+
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-xs);
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.1);
+  border: 1px solid rgba(139, 168, 136, 0.2);
+  border-radius: var(--oia-radius-full);
+  margin-bottom: var(--oia-space-md);
+  font-size: var(--oia-size-body-sm);
+}
+
+.privacy-badge svg {
+  color: var(--oia-sage);
+  flex-shrink: 0;
+}
+
+.options-footer__copyright {
+  font-size: var(--oia-size-caption);
+  margin: 0 0 var(--oia-space-xs);
+}
+
+/* ----- Dark Mode ----- */
+
+@media (prefers-color-scheme: dark) {
+  .options-hero {
+    border-bottom-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .study-item {
+    border-bottom-color: rgba(107, 107, 94, 0.15);
+  }
+
+  .feature-item__icon {
+    background-color: rgba(150, 184, 147, 0.15);
+  }
+
+  .study-item__badge {
+    background-color: rgba(150, 184, 147, 0.2);
+  }
+
+  .privacy-badge {
+    background-color: rgba(150, 184, 147, 0.1);
+    border-color: rgba(150, 184, 147, 0.2);
+  }
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 480px) {
+  .options-container {
+    padding: var(--oia-space-lg) var(--oia-space-md);
+  }
+
+  .options-hero__brand {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .options-hero__brand .oia-h1,
+  .oia-tagline {
+    text-align: center;
+  }
+
+  .options-hero__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .feature-item {
+    flex-direction: column;
+    gap: var(--oia-space-sm);
+  }
+
+  .options-section {
+    padding: var(--oia-space-md);
+  }
+}

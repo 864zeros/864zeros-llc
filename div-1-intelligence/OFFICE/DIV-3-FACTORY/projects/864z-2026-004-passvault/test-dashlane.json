@@ -1,0 +1,202 @@
+{
+  "AUTHENTIFIANT": [
+    {
+      "title": "Netflix",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Summer2025!",
+      "note": "Family streaming account",
+      "url": "https://netflix.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "Hulu",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Summer2025!",
+      "note": "",
+      "url": "https://hulu.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "Disney+",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Summer2025!",
+      "note": "Kids account",
+      "url": "https://disneyplus.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "Spotify",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Summer2025!",
+      "note": "Premium subscription",
+      "url": "https://spotify.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "ESPN",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Summer2025!",
+      "note": "",
+      "url": "https://espn.com",
+      "category": "Entertainment"
+    },
+    {
+      "title": "OldForum",
+      "email": "user@example.com",
+      "login": "forumuser",
+      "password": "12345",
+      "note": "Old account - delete?",
+      "url": "https://oldforum.net",
+      "category": "Other"
+    },
+    {
+      "title": "JunkMail",
+      "email": "junk@example.com",
+      "login": "junk@example.com",
+      "password": "12345",
+      "note": "Spam signup email",
+      "url": "https://junkmail.com",
+      "category": "Other"
+    },
+    {
+      "title": "TestSite",
+      "email": "test@example.com",
+      "login": "testuser",
+      "password": "12345",
+      "note": "Testing only",
+      "url": "https://testsite.dev",
+      "category": "Other"
+    },
+    {
+      "title": "Adobe",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "password123",
+      "note": "Creative Cloud - BREACHED 2013",
+      "url": "https://adobe.com",
+      "category": "Software"
+    },
+    {
+      "title": "LinkedIn",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "password123",
+      "note": "Professional network - BREACHED 2012",
+      "url": "https://linkedin.com",
+      "category": "Work"
+    },
+    {
+      "title": "Chase Bank",
+      "email": "user@example.com",
+      "login": "bankuser2024",
+      "password": "xK9#mPq2vL8$nR4w",
+      "note": "Primary checking",
+      "url": "https://chase.com",
+      "category": "Finance"
+    },
+    {
+      "title": "Fidelity",
+      "email": "user@example.com",
+      "login": "invest_user",
+      "password": "Yz7@hN3!cF5^tW1q",
+      "note": "401k and investments",
+      "url": "https://fidelity.com",
+      "category": "Finance"
+    },
+    {
+      "title": "GitHub",
+      "email": "dev@example.com",
+      "login": "devuser",
+      "password": "Qp4#sE9@bJ2!mK7x",
+      "note": "Developer account",
+      "url": "https://github.com",
+      "category": "Work",
+      "otpSecret": "JBSWY3DPEHPK3PXP"
+    },
+    {
+      "title": "AWS Console",
+      "email": "dev@example.com",
+      "login": "aws_admin",
+      "password": "Rv6^uD1#gH8$wT3n",
+      "note": "Cloud infrastructure",
+      "url": "https://aws.amazon.com",
+      "category": "Work"
+    },
+    {
+      "title": "Google",
+      "email": "user@gmail.com",
+      "login": "user@gmail.com",
+      "password": "Lm2@pC5!yA9^xZ4k",
+      "note": "Primary Google account",
+      "url": "https://accounts.google.com",
+      "category": "Personal"
+    },
+    {
+      "title": "Apple ID",
+      "email": "user@icloud.com",
+      "login": "user@icloud.com",
+      "password": "Bn8#fQ1@oI6^eS3j",
+      "note": "iCloud and App Store",
+      "url": "https://appleid.apple.com",
+      "category": "Personal"
+    },
+    {
+      "title": "Proton Mail",
+      "email": "secure@proton.me",
+      "login": "secure@proton.me",
+      "password": "Wt5!aV7@kM2#pN9c",
+      "note": "Encrypted email",
+      "url": "https://proton.me",
+      "category": "Personal"
+    },
+    {
+      "title": "1Password (ironic)",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Hs3@bE8!vG4^rL1m",
+      "note": "Old password manager",
+      "url": "https://1password.com",
+      "category": "Software"
+    },
+    {
+      "title": "Coinbase",
+      "email": "crypto@example.com",
+      "login": "crypto_trader",
+      "password": "Jd6#nP2@sK9!wF5y",
+      "note": "Crypto exchange",
+      "url": "https://coinbase.com",
+      "category": "Finance"
+    },
+    {
+      "title": "Bitwarden",
+      "email": "user@example.com",
+      "login": "user@example.com",
+      "password": "Uc1@tX4!zO7^qR8g",
+      "note": "Another old manager",
+      "url": "https://bitwarden.com",
+      "category": "Software"
+    }
+  ],
+  "SECURENOTE": [
+    {
+      "title": "WiFi Passwords",
+      "content": "Home: MyNetwork / SecureWiFi2024!\nOffice: CorpNet / C0mp@nyW1F1",
+      "category": "Personal"
+    }
+  ],
+  "PAYMENTMEAN_CREDITCARD": [
+    {
+      "name": "Visa Rewards",
+      "cardNumber": "4532015112830366",
+      "expireMonth": "09",
+      "expireYear": "2028",
+      "securityCode": "789",
+      "bank": "Chase"
+    }
+  ]
+}

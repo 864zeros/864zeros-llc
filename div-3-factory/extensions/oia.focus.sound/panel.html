@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oia.focus.sound</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <div class="oia-screen" id="container">
+        <header class="oia-header">
+            <h1 class="oia-title">oia.focus.sound</h1>
+        </header>
+
+        <main class="oia-main">
+            <div class="oia-playback-section">
+                <button class="oia-btn oia-btn-primary" id="toggleButton">start sound</button>
+                <div class="oia-status" id="statusDisplay">sound off</div>
+            </div>
+
+            <div class="oia-sound-section">
+                <div class="oia-label">choose your focus sound</div>
+                <div class="oia-sound-list">
+                    <button class="oia-sound-btn oia-active" id="whiteNoiseButton" data-sound="white_noise">
+                        <div class="oia-sound-name">white noise</div>
+                        <div class="oia-sound-desc">classic static</div>
+                    </button>
+                    <button class="oia-sound-btn" id="pinkNoiseButton" data-sound="pink_noise">
+                        <div class="oia-sound-name">gray noise</div>
+                        <div class="oia-sound-desc">balanced static</div>
+                    </button>
+                    <button class="oia-sound-btn" id="brownNoiseButton" data-sound="brown_noise">
+                        <div class="oia-sound-name">brown noise</div>
+                        <div class="oia-sound-desc">deep rumble</div>
+                    </button>
+                    <button class="oia-sound-btn" id="rainButton" data-sound="rain">
+                        <div class="oia-sound-name">gentle rain</div>
+                        <div class="oia-sound-desc">natural calm</div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="oia-notice">
+                <div class="oia-notice-text">adjust volume using your system controls</div>
+            </div>
+        </main>
+
+        <footer class="oia-footer">
+            made for adhd minds
+        </footer>
+    </div>
+
+    <script type="module" src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "appName": {
+    "message": "oia.focus.sound",
+    "description": "Extension name displayed in Chrome"
+  },
+  "appDescription": {
+    "message": "Simple background sounds for focus - made for ADHD minds",
+    "description": "Extension description for Chrome Web Store"
+  },
+  "openAction": {
+    "message": "Open oia.focus.sound",
+    "description": "Tooltip for the extension icon"
+  },
+  "startSound": {
+    "message": "start sound",
+    "description": "Button text to start playback"
+  },
+  "stopSound": {
+    "message": "stop sound",
+    "description": "Button text to stop playback"
+  },
+  "soundOff": {
+    "message": "sound off",
+    "description": "Status when no sound is playing"
+  },
+  "playingStatus": {
+    "message": "playing: $SOUND$",
+    "description": "Status showing which sound is playing",
+    "placeholders": {
+      "sound": {
+        "content": "$1",
+        "example": "white noise"
+      }
+    }
+  },
+  "chooseSoundLabel": {
+    "message": "choose your focus sound",
+    "description": "Label for sound selection section"
+  },
+  "whiteNoiseName": {
+    "message": "white noise",
+    "description": "White noise sound name"
+  },
+  "whiteNoiseDesc": {
+    "message": "classic static",
+    "description": "White noise description"
+  },
+  "grayNoiseName": {
+    "message": "gray noise",
+    "description": "Gray/pink noise sound name"
+  },
+  "grayNoiseDesc": {
+    "message": "balanced static",
+    "description": "Gray noise description"
+  },
+  "brownNoiseName": {
+    "message": "brown noise",
+    "description": "Brown noise sound name"
+  },
+  "brownNoiseDesc": {
+    "message": "deep rumble",
+    "description": "Brown noise description"
+  },
+  "rainName": {
+    "message": "gentle rain",
+    "description": "Rain sound name"
+  },
+  "rainDesc": {
+    "message": "natural calm",
+    "description": "Rain sound description"
+  },
+  "volumeNotice": {
+    "message": "adjust volume using your system controls",
+    "description": "Notice about volume adjustment"
+  },
+  "footerText": {
+    "message": "made for adhd minds",
+    "description": "Footer text"
+  }
+}

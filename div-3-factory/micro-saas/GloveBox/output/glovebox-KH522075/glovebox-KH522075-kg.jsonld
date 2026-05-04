@@ -1,0 +1,2253 @@
+{
+  "@context": {
+    "skill": "https://aether.864zeros.com/skill/",
+    "aether": "https://aether.864zeros.com/ns/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Concept": "skill:Concept",
+    "Rule": "skill:Rule",
+    "AntiPattern": "skill:AntiPattern",
+    "Technique": "skill:Technique",
+    "label": "rdfs:label",
+    "origin": "aether:origin",
+    "source": "aether:source",
+    "requires": {
+      "@id": "aether:requires",
+      "@type": "@id"
+    },
+    "avoids": {
+      "@id": "aether:avoids",
+      "@type": "@id"
+    },
+    "enables": {
+      "@id": "aether:enables",
+      "@type": "@id"
+    },
+    "contradicts": {
+      "@id": "aether:contradicts",
+      "@type": "@id"
+    },
+    "hasRecall": {
+      "@id": "aether:hasRecall",
+      "@type": "@id"
+    },
+    "hasIssue": {
+      "@id": "aether:hasIssue",
+      "@type": "@id"
+    },
+    "hasService": {
+      "@id": "aether:hasService",
+      "@type": "@id"
+    }
+  },
+  "@id": "glovebox:2HGFC2F59KH522075",
+  "@type": "aether:KnowledgeGraph",
+  "aether:vin": "2HGFC2F59KH522075",
+  "aether:composed_at": "2026-03-26T03:52:38.104Z",
+  "aether:node_count": 125,
+  "aether:edge_count": 96,
+  "@graph": [
+    {
+      "@id": "vehicle:2HGFC2F59KH522075",
+      "@type": "skill:Concept",
+      "rdfs:label": "2019 HONDA Civic LX",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:vin": "2HGFC2F59KH522075",
+      "aether:hasRecall": [
+        {
+          "@id": "recall:20V314000"
+        },
+        {
+          "@id": "recall:21V215000"
+        },
+        {
+          "@id": "recall:23V858000"
+        }
+      ],
+      "aether:hasIssue": [
+        {
+          "@id": "complaint:steering"
+        },
+        {
+          "@id": "complaint:fuel_system_gasoline"
+        },
+        {
+          "@id": "complaint:fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:unknown_or_other"
+        },
+        {
+          "@id": "complaint:electrical_system"
+        },
+        {
+          "@id": "complaint:engine"
+        },
+        {
+          "@id": "complaint:forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:service_brakes"
+        },
+        {
+          "@id": "complaint:structure"
+        },
+        {
+          "@id": "complaint:power_train"
+        },
+        {
+          "@id": "complaint:service_brakes_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:visibility_wiper"
+        },
+        {
+          "@id": "complaint:vehicle_speed_control"
+        },
+        {
+          "@id": "complaint:air_bags"
+        },
+        {
+          "@id": "complaint:wheels"
+        },
+        {
+          "@id": "complaint:seat_belts"
+        },
+        {
+          "@id": "complaint:electrical_system_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:steering_lane_departure"
+        },
+        {
+          "@id": "complaint:engine_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:steering_electrical_system"
+        },
+        {
+          "@id": "complaint:steering_forward_collision_avoidance_lane_departure"
+        },
+        {
+          "@id": "complaint:unknown_or_other_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:equipment"
+        },
+        {
+          "@id": "complaint:tires"
+        },
+        {
+          "@id": "complaint:electrical_system_engine_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:visibility"
+        },
+        {
+          "@id": "complaint:steering_unknown_or_other"
+        },
+        {
+          "@id": "complaint:electrical_system_engine"
+        },
+        {
+          "@id": "complaint:steering_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:steering_suspension_wheels"
+        },
+        {
+          "@id": "complaint:other_i_am_not_sure"
+        },
+        {
+          "@id": "complaint:fuel_system_gasoline_electrical_system"
+        },
+        {
+          "@id": "complaint:fuel_system_other"
+        },
+        {
+          "@id": "complaint:steering_power_train_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:steering_suspension_electrical_system"
+        },
+        {
+          "@id": "complaint:electrical_system_service_brakes_engine"
+        },
+        {
+          "@id": "complaint:fuel_system_gasoline_engine"
+        },
+        {
+          "@id": "complaint:steering_fuel_system_gasoline"
+        },
+        {
+          "@id": "complaint:unknown_or_other_service_brakes_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:service_brakes_fuel_propulsion_system_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:fuel_system_gasoline_power_train"
+        },
+        {
+          "@id": "complaint:power_train_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:fuel_propulsion_system_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:steering_service_brakes"
+        },
+        {
+          "@id": "complaint:suspension_service_brakes"
+        },
+        {
+          "@id": "complaint:suspension"
+        },
+        {
+          "@id": "complaint:unknown_or_other_engine_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:air_bags_service_brakes_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:vehicle_speed_control_lane_departure"
+        },
+        {
+          "@id": "complaint:seat_belts_service_brakes"
+        },
+        {
+          "@id": "complaint:forward_collision_avoidance_lane_departure"
+        },
+        {
+          "@id": "complaint:electrical_system_unknown_or_other_engine"
+        },
+        {
+          "@id": "complaint:unknown_or_other_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:electrical_system_unknown_or_other"
+        },
+        {
+          "@id": "complaint:electrical_system_exterior_lighting"
+        },
+        {
+          "@id": "complaint:steering_lane_departure_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:structure_unknown_or_other"
+        },
+        {
+          "@id": "complaint:electrical_system_lane_departure"
+        },
+        {
+          "@id": "complaint:communication_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:electrical_system_air_bags_fuel_propulsion_system"
+        },
+        {
+          "@id": "complaint:steering_tires"
+        },
+        {
+          "@id": "complaint:electrical_system_vehicle_speed_control_lane_departure"
+        },
+        {
+          "@id": "complaint:unknown_or_other_service_brakes_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:service_brakes_engine"
+        },
+        {
+          "@id": "complaint:steering_service_brakes_engine"
+        },
+        {
+          "@id": "complaint:power_train_engine"
+        },
+        {
+          "@id": "complaint:lane_departure"
+        },
+        {
+          "@id": "complaint:electrical_system_service_brakes_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:wheels_service_brakes"
+        },
+        {
+          "@id": "complaint:air_bags_structure_visibility_wiper"
+        },
+        {
+          "@id": "complaint:electrical_system_unknown_or_other_electronic_stability_control_esc_"
+        },
+        {
+          "@id": "complaint:vehicle_speed_control_wheels"
+        },
+        {
+          "@id": "complaint:vehicle_speed_control_electronic_stability_control_esc_"
+        },
+        {
+          "@id": "complaint:electrical_system_electronic_stability_control_esc_forward_collision_avoidance"
+        },
+        {
+          "@id": "complaint:steering_suspension_unknown_or_other"
+        },
+        {
+          "@id": "complaint:power_train_service_brakes_engine"
+        },
+        {
+          "@id": "complaint:engine_and_engine_cooling"
+        },
+        {
+          "@id": "complaint:tires_equipment"
+        }
+      ],
+      "aether:hasService": [
+        {
+          "@id": "maintenance:battery"
+        },
+        {
+          "@id": "maintenance:oil_change"
+        },
+        {
+          "@id": "maintenance:tire_rotation"
+        },
+        {
+          "@id": "maintenance:brake_inspection"
+        },
+        {
+          "@id": "maintenance:air_filter"
+        },
+        {
+          "@id": "maintenance:cabin_filter"
+        },
+        {
+          "@id": "maintenance:transmission_fluid"
+        },
+        {
+          "@id": "maintenance:coolant"
+        },
+        {
+          "@id": "maintenance:brake_fluid"
+        },
+        {
+          "@id": "maintenance:power_steering"
+        },
+        {
+          "@id": "maintenance:spark_plugs"
+        },
+        {
+          "@id": "maintenance:valve_adjustment"
+        }
+      ]
+    },
+    {
+      "@id": "spec:make",
+      "@type": "skill:Concept",
+      "rdfs:label": "Make: HONDA",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "Make",
+      "aether:value": "HONDA"
+    },
+    {
+      "@id": "spec:model",
+      "@type": "skill:Concept",
+      "rdfs:label": "Model: Civic",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "Model",
+      "aether:value": "Civic"
+    },
+    {
+      "@id": "spec:modelyear",
+      "@type": "skill:Concept",
+      "rdfs:label": "ModelYear: 2019",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "ModelYear",
+      "aether:value": "2019"
+    },
+    {
+      "@id": "spec:trim",
+      "@type": "skill:Concept",
+      "rdfs:label": "Trim: LX",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "Trim",
+      "aether:value": "LX"
+    },
+    {
+      "@id": "spec:bodyclass",
+      "@type": "skill:Concept",
+      "rdfs:label": "BodyClass: Sedan/Saloon",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "BodyClass",
+      "aether:value": "Sedan/Saloon"
+    },
+    {
+      "@id": "spec:drivetype",
+      "@type": "skill:Concept",
+      "rdfs:label": "DriveType: 4x2",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "DriveType",
+      "aether:value": "4x2"
+    },
+    {
+      "@id": "spec:engine_config",
+      "@type": "skill:Concept",
+      "rdfs:label": "EngineConfiguration: In-Line",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "EngineConfiguration",
+      "aether:value": "In-Line"
+    },
+    {
+      "@id": "spec:engine_cylinders",
+      "@type": "skill:Concept",
+      "rdfs:label": "EngineCylinders: 4",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "EngineCylinders",
+      "aether:value": "4"
+    },
+    {
+      "@id": "spec:engine_hp",
+      "@type": "skill:Concept",
+      "rdfs:label": "EngineHP: 158",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "EngineHP",
+      "aether:value": "158"
+    },
+    {
+      "@id": "spec:displacement",
+      "@type": "skill:Concept",
+      "rdfs:label": "DisplacementL: 2.0",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "DisplacementL",
+      "aether:value": "2.0"
+    },
+    {
+      "@id": "spec:fuel_type",
+      "@type": "skill:Concept",
+      "rdfs:label": "FuelTypePrimary: Gasoline",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "FuelTypePrimary",
+      "aether:value": "Gasoline"
+    },
+    {
+      "@id": "spec:transmission",
+      "@type": "skill:Concept",
+      "rdfs:label": "TransmissionStyle: Continuously Variable Transmission (CVT)",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "TransmissionStyle",
+      "aether:value": "Continuously Variable Transmission (CVT)"
+    },
+    {
+      "@id": "spec:plant_city",
+      "@type": "skill:Concept",
+      "rdfs:label": "PlantCity: ALLISTON",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "PlantCity",
+      "aether:value": "ALLISTON"
+    },
+    {
+      "@id": "spec:plant_state",
+      "@type": "skill:Concept",
+      "rdfs:label": "PlantState: ONTARIO",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "PlantState",
+      "aether:value": "ONTARIO"
+    },
+    {
+      "@id": "spec:plant_country",
+      "@type": "skill:Concept",
+      "rdfs:label": "PlantCountry: CANADA",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "PlantCountry",
+      "aether:value": "CANADA"
+    },
+    {
+      "@id": "spec:vehicle_type",
+      "@type": "skill:Concept",
+      "rdfs:label": "VehicleType: PASSENGER CAR",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "VehicleType",
+      "aether:value": "PASSENGER CAR"
+    },
+    {
+      "@id": "spec:gvwr",
+      "@type": "skill:Concept",
+      "rdfs:label": "GVWR: Class 1B: 3,001 - 4,000 lb (1,360 - 1,814 kg)",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "GVWR",
+      "aether:value": "Class 1B: 3,001 - 4,000 lb (1,360 - 1,814 kg)"
+    },
+    {
+      "@id": "spec:airbag_front",
+      "@type": "skill:Concept",
+      "rdfs:label": "AirBagLocFront: 1st Row (Driver and Passenger)",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "AirBagLocFront",
+      "aether:value": "1st Row (Driver and Passenger)"
+    },
+    {
+      "@id": "spec:airbag_side",
+      "@type": "skill:Concept",
+      "rdfs:label": "AirBagLocSide: 1st Row (Driver and Passenger)",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "AirBagLocSide",
+      "aether:value": "1st Row (Driver and Passenger)"
+    },
+    {
+      "@id": "spec:airbag_curtain",
+      "@type": "skill:Concept",
+      "rdfs:label": "AirBagLocCurtain: 1st and 2nd Rows",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "AirBagLocCurtain",
+      "aether:value": "1st and 2nd Rows"
+    },
+    {
+      "@id": "spec:abs",
+      "@type": "skill:Concept",
+      "rdfs:label": "ABS: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "ABS",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "spec:esc",
+      "@type": "skill:Concept",
+      "rdfs:label": "ESC: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "ESC",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "spec:traction_control",
+      "@type": "skill:Concept",
+      "rdfs:label": "TractionControl: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "TractionControl",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "spec:tpms",
+      "@type": "skill:Concept",
+      "rdfs:label": "TPMS: Indirect",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "TPMS",
+      "aether:value": "Indirect"
+    },
+    {
+      "@id": "spec:fcw",
+      "@type": "skill:Concept",
+      "rdfs:label": "ForwardCollisionWarning: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "ForwardCollisionWarning",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "spec:ldw",
+      "@type": "skill:Concept",
+      "rdfs:label": "LaneDepartureWarning: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "LaneDepartureWarning",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "spec:acc",
+      "@type": "skill:Concept",
+      "rdfs:label": "AdaptiveCruiseControl: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "AdaptiveCruiseControl",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "spec:blind_spot",
+      "@type": "skill:Concept",
+      "rdfs:label": "BlindSpotMon: Standard",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-vin-api",
+      "aether:retrieved": "2026-03-24T20:12:05.340Z",
+      "aether:field": "BlindSpotMon",
+      "aether:value": "Standard"
+    },
+    {
+      "@id": "recall:20V314000",
+      "@type": "skill:Rule",
+      "rdfs:label": "Recall 20V314000: FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP — Honda (American Honda Motor Co.) is recalling certain 2018-2019 Acura NSX, 2019 Acura RDX, RLX and R...",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-recall-api",
+      "aether:retrieved": "2026-03-24T19:09:32.089Z",
+      "aether:campaign": "20V314000",
+      "aether:component": "FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP",
+      "aether:summary": "Honda (American Honda Motor Co.) is recalling certain 2018-2019 Acura NSX, 2019 Acura RDX, RLX and RLX Sport Hybrid, 2018-2019 Honda Accord, Civic Hatchback, Civic Type R and HR-V, 2019-2020 Insight and 2019 Fit vehicles.  The low-pressure fuel pump inside the fuel tank may fail.",
+      "aether:severity": "If the fuel pump fails, the engine can stall while driving, increasing the risk of a crash.",
+      "aether:remedy": "Honda will notify owners and dealers will replace the fuel pump assembly, free of charge.  The recall began July 22, 2020.  Owners may contact Honda customer service at 1-888-234-2138.",
+      "aether:date": "28/05/2020",
+      "aether:requires": [
+        {
+          "@id": "complaint:fuel_system_gasoline"
+        }
+      ]
+    },
+    {
+      "@id": "recall:21V215000",
+      "@type": "skill:Rule",
+      "rdfs:label": "Recall 21V215000: FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP — Honda (American Honda Motor Co.) is recalling certain 2019-2020 Acura MDX, MDX Sport Hybrid, RDX, TL...",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-recall-api",
+      "aether:retrieved": "2026-03-24T19:09:32.089Z",
+      "aether:campaign": "21V215000",
+      "aether:component": "FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP",
+      "aether:summary": "Honda (American Honda Motor Co.) is recalling certain 2019-2020 Acura MDX, MDX Sport Hybrid, RDX, TLX, Honda Accord, Civic Hatchback, Insight, 2019 Acura ILX, Honda Accord Hybrid, Civic Coupe, Civic Coupe Si, Civic Sedan, Civic Sedan Si, Civic Type R, Fit, HR-V, Odyssey, Passport, Pilot and Ridgeline, and 2018-2019 CR-V vehicles.  The low-pressure fuel pump inside the fuel tank may fail.",
+      "aether:severity": "Fuel pump failure can cause an engine stall while driving, increasing the risk of a crash.",
+      "aether:remedy": "Honda will notify owners, and dealers will replace the fuel pump assembly, free of charge.  Owner letters were mailed May 18, 2021.  Owners may contact Honda customer service at 1-888-234-2138.  Note: This recall is an expansion of recall 20V-314.",
+      "aether:date": "25/03/2021",
+      "aether:requires": [
+        {
+          "@id": "complaint:fuel_system_gasoline"
+        }
+      ]
+    },
+    {
+      "@id": "recall:23V858000",
+      "@type": "skill:Rule",
+      "rdfs:label": "Recall 23V858000: FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP — Honda (American Honda Motor Co.) is recalling certain 2013-2023 Honda Accord, Civic Coupe, Civic Sed...",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-recall-api",
+      "aether:retrieved": "2026-03-24T19:09:32.089Z",
+      "aether:campaign": "23V858000",
+      "aether:component": "FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP",
+      "aether:summary": "Honda (American Honda Motor Co.) is recalling certain 2013-2023 Honda Accord, Civic Coupe, Civic Sedan, Civic Hatchback, Civic Type R, CR-V, HR-V, Ridgeline, Odyssey, Acura ILX, MDX, MDX Hybrid, RDX, RLX, TLX, 2019-2022 Honda Insight, Passport, 2020 Honda CR-V Hybrid, 2018-2019 Honda Clarity PHEV, Fit, and 2015-2020 Honda Accord Hybrid, Pilot, Acura NSX vehicles.  The fuel pump inside the fuel tank may fail.",
+      "aether:severity": "Fuel pump failure can cause an engine stall while driving, increasing the risk of a crash.",
+      "aether:remedy": "Dealers will replace the fuel pump module, free of charge.  Owner letters were mailed September 6, 2024.  Owners may contact Honda customer service at 1-888-234-2138.  Honda's numbers for this recall are KGC and KGD.  This recall is an expansion of NHTSA recall numbers 21V-215 and 20V-314.",
+      "aether:date": "18/12/2023",
+      "aether:requires": [
+        {
+          "@id": "complaint:fuel_system_gasoline"
+        }
+      ]
+    },
+    {
+      "@id": "complaint:steering",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING — 63 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING",
+      "aether:count": 63,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I purchased a 2019 Honda Civic LX July 3rd 2025 I noticed that the steering front end didn't feel right so I brought it back they still to this day the dealership has the car I cannot drive it on the ",
+        "When driving at highway speeds steering sticks. Steering wheel does not move without more effort than usual. Being unable to make small adjustments freely means I must constantly drive with two hands ",
+        "While driving my 2019 Honda Civic Sport, the steering wheel frequently sticks or feels like it slips when making slight adjustments or turning. This is especially noticeable at highway speeds and duri"
+      ]
+    },
+    {
+      "@id": "complaint:fuel_system_gasoline",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL SYSTEM, GASOLINE — 58 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL SYSTEM, GASOLINE",
+      "aether:count": 58,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact received notification of NHTSA Campaign Number: 23V858000 (Fuel System, Gasoline); however, the part to do the recall repair was not yet available. The",
+        "The contact owns a 2019 Honda Civic. The contact stated that while her husband was driving approximately 30 MPH, the vehicle started losing motive power and then stalled. The contact stated that her h",
+        "The contact owns a 2019 Honda Civic. The contact received notification of NHTSA Campaign Number: 23V858000 (Fuel System, Gasoline); however, the part to do the recall repair was not yet available. The"
+      ]
+    },
+    {
+      "@id": "complaint:fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL/PROPULSION SYSTEM — 47 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL/PROPULSION SYSTEM",
+      "aether:count": 47,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "When trying to start the car  the car won't turn over. When it finally does start and i am driving it seems to lose power as if it wants to shut down.  Im afraid to drive long distances. I looked up r",
+        "The fuel injector on my 2019 honda civic si went bad at 58,000 miles, which is over a $2,000 repair.  Not only is this a widespread problem with Honda,..they KNOW about the fuel injectors being faulty",
+        "I took my car in this morning for a recall. For the fuel pump. It took the dealership very little time to get my car out which was strange for me because originally they told me it would take 4-5 hour"
+      ]
+    },
+    {
+      "@id": "complaint:unknown_or_other",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: UNKNOWN OR OTHER — 28 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "UNKNOWN OR OTHER",
+      "aether:count": 28,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "AIR CONDITIONING EVAPORATOR DIED AT 86,000 MILES.",
+        "The AC Compressor failed and has been leaking refrigerant. I went to Honda of Chantilly to get it fixed. They contacted American Honda who stated that on my Carfax I have a branded title. I called the",
+        "The damage was to my rear windshield on my 2019 Honda Civic LX. The incident happened on March 19th 2025 at 5:30 PM while at a stop light. I heard a big bang or pop and initially thought that a big ro"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM — 12 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM",
+      "aether:count": 12,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "My car started sounding its alarm at 2:30am on its own. After shutting the alarm off and letting it run, I turned it off and entered my house. It repeated five minutes later. I went to drive the car l",
+        "The contact owns a 2019 Honda Civic. The contact stated while driving at an undisclosed speed, the center console power independently disconnected. The contact stated that the failure had been reoccur",
+        "The contact owns a 2019 Honda Civic. The contact stated that while using the ignition key, the vehicle would not immediately start. Eventually the failure progressed, and the vehicle was not able to b"
+      ]
+    },
+    {
+      "@id": "complaint:engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ENGINE — 11 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ENGINE",
+      "aether:count": 11,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Signs of head gasket failure at approximately 67,000 miles",
+        "Gasoline mixes with the engine oil and causes the vehicle to stop / slow down to 8 mph while moving on highway. Oil smells like gasoline.",
+        "Many owners of the same car are experiencing water entering from the hood scoop and dripping onto the 4th cylinder causing the coils and spark plug to rust and will throw a check engine light. Honda k"
+      ]
+    },
+    {
+      "@id": "complaint:forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FORWARD COLLISION AVOIDANCE — 11 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FORWARD COLLISION AVOIDANCE",
+      "aether:count": 11,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I have had the accident mitigation system trigger for no reason causing the vehicle to slam on the brakes and come to a complete stop or close to a complete stop on two separate occasions. The first t",
+        "My vehicle has randomly had the emergency brake assist applied when there was nothing in front of me. Thankfully there were no vehicles behind me & the times that there were it was residential roads t",
+        "Blackstone Lab reports fuel in my oil (acceptable for city driving} however all my driving is highway driving. Car has 22,500 miles, that oil had 4,000 miles on it and had 1.3% fuel ALL highway! Back "
+      ]
+    },
+    {
+      "@id": "complaint:service_brakes",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SERVICE BRAKES — 9 complaints, 7 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SERVICE BRAKES",
+      "aether:count": 9,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 7,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owned a 2019 Honda Civic. The contact stated that while the niece was driving at an undetermined speed, the braking system had malfunctioned and the vehicle did not stop while the brake pe",
+        "The contact owned a 2019 Honda Civic. The contact stated that while her son was using the vehicle's cruise control at approximately 65 mph, he attempted to activate the brakes however they failed to s",
+        "The contact's son owned a 2019 Honda Civic. The contact stated that while her son was driving at 30 MPH, the brake pedal inadvertently engaged on its own three times. The contact stated that there wer"
+      ]
+    },
+    {
+      "@id": "complaint:structure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STRUCTURE — 9 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STRUCTURE",
+      "aether:count": 9,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I purchased my car in December 2018. My car is a 2019 Honda Civic SI coupe I didn’t have any problems with my car other than two big dents on the top next to my sunroof. I notified the dealership in t",
+        "My 2019 Honda Civic is experiencing paint chipping on the mirrors and door handles. I've noticed others reporting similar problems. The paint is literally bubbling off.  When I contacted Honda of Amer",
+        "On 01/15/2023 my son was driving on a highway in our 2019 Honda Civic LX when he heard a scary grinding sound under the car. He was forced to stop on the side of the highway only to discover that the "
+      ]
+    },
+    {
+      "@id": "complaint:power_train",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: POWER TRAIN — 7 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "POWER TRAIN",
+      "aether:count": 7,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "While driving on interstate vehicle lost power had to weave through traffic to get to pull off lane. Honda dealership states Replace the flywheel, pressure plate, friction disc (Clutch), and release b",
+        "2019 Honda Civic Si (1.5L turbo engine with 6-speed manual transmission) purchased in September 2019 at CPO with 7,000 miles — current mileage 26,638. Honda factory CPO powertrain warranty valid until",
+        "2019 HONDA CIVIC. CONSUMER WRITES IN REGARDS TO KEYLESS CVT TRANSMISSION.  THE CONSUMER STATED IT WAS POSSIBLE FOR THE VEHICLE TO BE POWERED OFF WHILE IN REVERSE. THIS COULD CAUSE THE VEHICLE TO ROLL "
+      ]
+    },
+    {
+      "@id": "complaint:service_brakes_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SERVICE BRAKES,FORWARD COLLISION AVOIDANCE — 7 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SERVICE BRAKES,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 7,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Sometimes whenI go to brake the brake pedal goes all the way up and I can’t press it down to stop the vehicle. This only lasts a few seconds then the brakes return to normal. I believe this may be due",
+        "I was stopped at a red light in the left-hand turn lane, waiting to turn left. Light turned green and I accelerated turning left. The car suddenly braked with no car or obstruction in my path. No coll",
+        "While car in sport mode in center lane of a three lane road at 45mph traffic ahead by over 300ft began gently slowing down to +/- 25mph Extreme braking was automatically applied w/o driver input, \"BRA"
+      ]
+    },
+    {
+      "@id": "complaint:visibility_wiper",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: VISIBILITY/WIPER — 5 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "VISIBILITY/WIPER",
+      "aether:count": 5,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Rear windshield spontaneously shattered while I was driving on the highway. There was no debris or collision. The car has never been in an accident or subject to any internal or external physical forc",
+        "Honda won't cover my failing Evaporator for the AC in my 2019 Civic with only 43,000 miles. The AC helps defrost my windshield, it is a safety concern not to mention the scorching heat we get in the C",
+        "30,000 MILES ON MY VEHICLE AND MY A/C COMPRESSOR IS ON-OP, THEREFORE I CANNOT DEFROST MY WINDSHIELD AND KEEP THE FOG OFF IT IN CERTAIN CONDITIONS CAUSING A VISIBILITY HAZZARD."
+      ]
+    },
+    {
+      "@id": "complaint:vehicle_speed_control",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: VEHICLE SPEED CONTROL — 4 complaints, 2 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "VEHICLE SPEED CONTROL",
+      "aether:count": 4,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 2,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact stated that while her husband was reversing the vehicle in a parking lot, the brake pedal was depressed, but the vehicle experienced unintended acceler",
+        "The contact's daughter owned a 2019 Honda Civic Sedan.  The contact received notification NHTSA Campaign Number: 23V858000 (Fuel System, Gasoline) however, the parts to repair were not available. The ",
+        "The contact owns a 2019 Honda Civic. The contact stated that after stopping in the parking space the vehicle suddenly experienced unintended acceleration causing the vehicle to drive over a curb and i"
+      ]
+    },
+    {
+      "@id": "complaint:air_bags",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: AIR BAGS — 4 complaints, 2 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "AIR BAGS",
+      "aether:count": 4,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 2,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "We were hit on the passenger side of our car. Another car ran a red light and slammed into that side of our car. The front passenger sustained damage to their head, neck, back, shoulder and knee from ",
+        "I have been experiencing some rickety, creaking sound on my steering wheel coming from the SRS module for the past month. I've taken the car to the dealer 5 times and they did some work and on my last",
+        "I WAS DRIVING DOWN A ROAD (WITH MY FRIEND IN THE PASSENGER SEAT NEXT TO ME JUST TO NOTE) THAT IS BEING REPAVED AND IT'S NOT ANYTHING THAT I HAVEN'T DRIVEN ON BEFORE, JUST A LITTLE TINY BIT SHAKY HERE "
+      ]
+    },
+    {
+      "@id": "complaint:wheels",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: WHEELS — 4 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "WHEELS",
+      "aether:count": 4,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I purchased this car from Fox Honda a few weeks after it was sold to the car dealership.  When I picked up the car and drove home, I noticed noises from the car. I took my car to a body shop nearby to",
+        "The TPMS Sensor keeps turning ON since we bought this vehicle brand new from Lia Honda of Kingston. The problem was reported to American Honda (Case # 11487126). Per their (Honda) advice, the vehicle ",
+        "THE TPMS HAS CAME ON WARNING OF A LOW TIRE. THE TIRES WERE CHECKED AND NONE WERE LOW. THIS HAS HAPPENED A COUPLE OF TIMES. TODAY WHILE DRIVING SOMETHING PUNCTURED THE SIDE WALL OF THE TIRE  AND IT WEN"
+      ]
+    },
+    {
+      "@id": "complaint:seat_belts",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SEAT BELTS — 3 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SEAT BELTS",
+      "aether:count": 3,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I was sold a vehicle with no seatbelt in the middle of back seat . I had called the dealer that sold me the car to explain and they told me that why it took me this long to say something that now they",
+        "The contact owns a 2019 Honda Civic. The contact stated that her granddaughter was occupying the rear seat with the seat belt buckled, however, the seat belt failed to unbuckle and instead tightened, ",
+        "TL* THE CONTACT OWNS A 2019 HONDA CIVIC. THE CONTACT STATED THAT WHILE PUTTING ON HER SEATBELT, THE SEATBELT FAILED TO LATCH WITHOUT WARNING. THE VEHICLE WAS TAKEN TO THE DEALER VANDERGRIFF HONDA, ADD"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,FUEL/PROPULSION SYSTEM — 3 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,FUEL/PROPULSION SYSTEM",
+      "aether:count": 3,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The car has been stalling to start for the last week. On 7/15/23 I parked my vehicle, all windows were up, I turned the vehicle off, got out and locked the doors, walked away and all of my windows wen",
+        "The car won't start after I've driven it and it won't turn over it shakes and acts as if out of gas or a loose connection??electric..I have to wait for 20 min.before it will start.,and I'm able to dri",
+        "I I brought my car into Morehead Honda the dealer  I purchased my vehicle from to get service because the car was acting funny. I then find out I had my car has a recall car with my car for the fuel p"
+      ]
+    },
+    {
+      "@id": "complaint:steering_lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,LANE DEPARTURE — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,LANE DEPARTURE",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The vehicle steering wheel feels stuck in position while driving, it releases the initial sticking feeling when I force the turn and it continues to feel stuck in place every time the steering doesn’t",
+        "The steering sticks when making minor adjustments. Could potentially be dangerous if needing to make a quick turn."
+      ]
+    },
+    {
+      "@id": "complaint:engine_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ENGINE,FUEL/PROPULSION SYSTEM — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ENGINE,FUEL/PROPULSION SYSTEM",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I brought my car to the dealership Honda North at 382 Newbury Street in Danvers MA on 6/5/25 to repair NHTSA Recall number 23V-858. The vehicle was returned to me on 6/7/25 at which time I was told th",
+        "I accelerated into a driveway of a convenience store and as I was halfway through the driveway my gas pedal became unresponsive and would not accelerate.  Car started rolling back into traffic. 2 week"
+      ]
+    },
+    {
+      "@id": "complaint:steering_electrical_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,ELECTRICAL SYSTEM — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,ELECTRICAL SYSTEM",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Steering began to \"stick\", especially at highway speeds and when trying to keep car centered in lane, causing frequent overcorrection and difficulty maintaining lane control. No warning lights, messag",
+        "During warming months, especially when driving at highway speeds, the steering becomes \"sticky\" and creaks when turning the wheel left and right. This issue has been noted in the 11th generation civic"
+      ]
+    },
+    {
+      "@id": "complaint:steering_forward_collision_avoidance_lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,FORWARD COLLISION AVOIDANCE,LANE DEPARTURE — 2 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,FORWARD COLLISION AVOIDANCE,LANE DEPARTURE",
+      "aether:count": 2,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I was driving straight going 35mph on a 2 lane rd when my steering wheel starting making a weird noise & almost was shaking. The steering wheel then locked up to the left & wouldn’t move. This caused ",
+        "I turned on my vehicle and randomly had multiple warning lights come on including power steering, ACC, VSA, Hill start assist, LKAS, ABS. The power steering completely went out completely randomly but"
+      ]
+    },
+    {
+      "@id": "complaint:unknown_or_other_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: UNKNOWN OR OTHER,FUEL/PROPULSION SYSTEM — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "UNKNOWN OR OTHER,FUEL/PROPULSION SYSTEM",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "My car is not starting properly due to the recall. I reached out to my dealership and they basically told me there is nothing they can do due to the part being on recall. I am a single mother to a [XX",
+        "On Sunday morning, 8/27/2023, I entered my car after having driven it an hour prior for around 30 minutes to and from a sandwich shop. I entered the vehicle and turned the engine on without issue, and"
+      ]
+    },
+    {
+      "@id": "complaint:equipment",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: EQUIPMENT — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "EQUIPMENT",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "See attached document for complaint",
+        "When selecting Reverse, the rearview camera usually displays quickly, but sometimes takes several seconds to display, or doesn't display at all (the screen remains black). This detracts from my abilit"
+      ]
+    },
+    {
+      "@id": "complaint:tires",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: TIRES — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "TIRES",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "In April 2021, I hit went over a large pothole that caused me to get an immediate flat tire on my driver's left front tire (the TPMS system alerted me of low tire pressure). I had the tire replaced. H",
+        "THE SUBJECT TIRES DEVELOPED SIDEWALL BULGES AFTER ONE YEAR OF LOCAL USE, 11,200 MILES. THEY WERE TAKEN TO THE HONDA DEALER WHO DID NOT THINK IT WAS AN ISSUE AND WOULD NOT REPLACE THEM.*DT  CONSUMER ST"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_engine_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,ENGINE,FUEL/PROPULSION SYSTEM — 2 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,ENGINE,FUEL/PROPULSION SYSTEM",
+      "aether:count": 2,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Vehicle fails to start randomly in the morning Everything powers up and the screen lights up, but the car doesn't power up fully  Maybe fuel pump issue",
+        "The starter was having trouble igniting the engine upon startup. The engine would crank but would not finish with starting up. I did this three or four times. Upon removing the key from the ignition a"
+      ]
+    },
+    {
+      "@id": "complaint:visibility",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: VISIBILITY — 2 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "VISIBILITY",
+      "aether:count": 2,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic Sedan. The contact stated the AC unit was blowing hot air through the vents. The contact stated no warning light was illuminated. The contact took the vehicle to a ",
+        "2019 HONDA CIVIC. CONSUMER WRITES IN REGARD TO DESIGN DEFECT WITH THE VISIBILITY OF THE REAR WINDOW BECAUSE IT IS TILTED UPWARDS. *AS    THE CONSUMER STATED SHE BACKED INTO A VEHICLE DUE TO BEING UNAB"
+      ]
+    },
+    {
+      "@id": "complaint:steering_unknown_or_other",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,UNKNOWN OR OTHER — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,UNKNOWN OR OTHER",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The stirring wheel consistently sticks and jerks in speeds 35 and over. The steering wheel constantly has to be adjusted to drive in a lane. It is unsettling situation."
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "While driving the dash showed a \"12 volt battery charging system problem.\" Continued to drive to a safe location roughly a mile down the road and while enroute all the error lights illuminated and pro"
+      ]
+    },
+    {
+      "@id": "complaint:steering_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Since April of 2024, my steering has been sticking when making the slightest of turns. It has progressively gotten worse. I initially thought that I needed power steering fluid but that did not correc"
+      ]
+    },
+    {
+      "@id": "complaint:steering_suspension_wheels",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,SUSPENSION,WHEELS — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,SUSPENSION,WHEELS",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "On [XXX], I purchased a 2019 Honda Civic Si (VIN: [XXX] ) from Zeigler Toyota of Racine (WI). At the time of sale, the dealership concealed critical safety-related information, including three major p"
+      ]
+    },
+    {
+      "@id": "complaint:other_i_am_not_sure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: Other/I am not sure — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "Other/I am not sure",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I purchased this car seat from Amazon and was sent a notification that the car seat has a recall and to no longer use"
+      ]
+    },
+    {
+      "@id": "complaint:fuel_system_gasoline_electrical_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL SYSTEM, GASOLINE,ELECTRICAL SYSTEM — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL SYSTEM, GASOLINE,ELECTRICAL SYSTEM",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "See attached document for complaint."
+      ]
+    },
+    {
+      "@id": "complaint:fuel_system_other",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL SYSTEM, OTHER — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL SYSTEM, OTHER",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owned a 2019 Honda Civic Hatchback. The contact received notification of NHTSA Campaign Number: 23V858000 (FUEL SYSTEM, GASOLINE); however, the part to do the recall repair was not yet ava"
+      ]
+    },
+    {
+      "@id": "complaint:steering_power_train_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,POWER TRAIN,FUEL/PROPULSION SYSTEM — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,POWER TRAIN,FUEL/PROPULSION SYSTEM",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Some how my steering wheel is crooked, so while going straight, my wheel is around 2 or 3 inches to the left. If I turn it all the way, in either direction the wheel will click, click, click back, mov"
+      ]
+    },
+    {
+      "@id": "complaint:steering_suspension_electrical_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,SUSPENSION,ELECTRICAL SYSTEM — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,SUSPENSION,ELECTRICAL SYSTEM",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Reported CRUNCHING, CLICKING, GRINDING IN FRONT STEERING COMPONENTS. STEERING WHEEL LOCKS UP WHEN CAR IS IN MOTION. Failed components identified and reported to Honda Manufacturing Corportation. Waiti"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_service_brakes_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,SERVICE BRAKES,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,SERVICE BRAKES,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Car smells like rotten eggs and now wont start. Also, the brake light keeps flashing on the dash. It started flashing twice while driving and now it flashes when you try to start it."
+      ]
+    },
+    {
+      "@id": "complaint:fuel_system_gasoline_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL SYSTEM, GASOLINE,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL SYSTEM, GASOLINE,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact stated while driving at various speeds and depressing the accelerator pedal, the vehicle jerked. Additionally, the contact stated that the vehicle shud"
+      ]
+    },
+    {
+      "@id": "complaint:steering_fuel_system_gasoline",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,FUEL SYSTEM, GASOLINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,FUEL SYSTEM, GASOLINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact received notification of NHTSA Campaign Number: 23V858000 (Fuel System, Gasoline) however, the part to do the recall repair was unavailable. The contac"
+      ]
+    },
+    {
+      "@id": "complaint:unknown_or_other_service_brakes_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: UNKNOWN OR OTHER,SERVICE BRAKES,FUEL/PROPULSION SYSTEM — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "UNKNOWN OR OTHER,SERVICE BRAKES,FUEL/PROPULSION SYSTEM",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "my 2019 Honda Civic Sport has 2 different recalls and this car has not been fixed or checked by a mechanic at this time, I was sent back home from my appointment at Honda Loma Linda dealership with a "
+      ]
+    },
+    {
+      "@id": "complaint:service_brakes_fuel_propulsion_system_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SERVICE BRAKES,FUEL/PROPULSION SYSTEM,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SERVICE BRAKES,FUEL/PROPULSION SYSTEM,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The Carr some times breaks self and the gasoline not passing through the engine"
+      ]
+    },
+    {
+      "@id": "complaint:fuel_system_gasoline_power_train",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL SYSTEM, GASOLINE,POWER TRAIN — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL SYSTEM, GASOLINE,POWER TRAIN",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact received notification of NHTSA Campaign Number: 23V858000 (Fuel System, Gasoline) however, the part to do the recall repair was not yet available. The "
+      ]
+    },
+    {
+      "@id": "complaint:power_train_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: POWER TRAIN,FUEL/PROPULSION SYSTEM — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "POWER TRAIN,FUEL/PROPULSION SYSTEM",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "No parts till fall"
+      ]
+    },
+    {
+      "@id": "complaint:fuel_propulsion_system_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FUEL/PROPULSION SYSTEM,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FUEL/PROPULSION SYSTEM,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "My emergency braking system goes off constantly without anything in front of me. I almost got rear ended on a highway because my car came to a dead stop with nothing in front of me or even on the side"
+      ]
+    },
+    {
+      "@id": "complaint:steering_service_brakes",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,SERVICE BRAKES — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,SERVICE BRAKES",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "When I'm driving on the highway, the car sometimes loses its grip, the brakes slip, and it's hard to control the steering wheel. The brakes are a big issue. I'm scared of driving this vehicle. Plus, I"
+      ]
+    },
+    {
+      "@id": "complaint:suspension_service_brakes",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SUSPENSION,SERVICE BRAKES — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SUSPENSION,SERVICE BRAKES",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Brakes failed on vehicle almost causing me to collide with vehicle in front of me. Brakes Plus in Tempe checked Brakes and found them to be good. All the lights on the dash flash when attempting to st"
+      ]
+    },
+    {
+      "@id": "complaint:suspension",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SUSPENSION — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SUSPENSION",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Since purchasing the vehicle at around 35k miles there’s been an occasional clicking / knocking noise when turning. It’s not consistent, but it seems to be the start of the CV axle failing or somethin"
+      ]
+    },
+    {
+      "@id": "complaint:unknown_or_other_engine_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: UNKNOWN OR OTHER,ENGINE,FUEL/PROPULSION SYSTEM — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "UNKNOWN OR OTHER,ENGINE,FUEL/PROPULSION SYSTEM",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I received a notice from Honda dated \"February 2024.\"  The notice states that \"the fuel pump module may have an improperly molded impeller.  Over time the impeller can deform and cause the fuel pump t"
+      ]
+    },
+    {
+      "@id": "complaint:air_bags_service_brakes_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: AIR BAGS,SERVICE BRAKES,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "AIR BAGS,SERVICE BRAKES,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I was driving down the highway near where I live in Hanford California the highway is 198. I was going 68, 69 mph. No one was on the road my car literally  slammed on its brakes and jerked to the righ"
+      ]
+    },
+    {
+      "@id": "complaint:vehicle_speed_control_lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: VEHICLE SPEED CONTROL,LANE DEPARTURE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "VEHICLE SPEED CONTROL,LANE DEPARTURE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "This car followed me all the way home. I knew the driver was following me because I took a fake route home. I eventually stopped and he stopped with me. This driver is not mentally stable enough to ow"
+      ]
+    },
+    {
+      "@id": "complaint:seat_belts_service_brakes",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SEAT BELTS,SERVICE BRAKES — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SEAT BELTS,SERVICE BRAKES",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact stated that on three separate occasions, the rear seat belts malfunctioned. The contact stated that the rear driver’s side seat belt failed to retract."
+      ]
+    },
+    {
+      "@id": "complaint:forward_collision_avoidance_lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: FORWARD COLLISION AVOIDANCE,LANE DEPARTURE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "FORWARD COLLISION AVOIDANCE,LANE DEPARTURE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I leased the Honda Civic from a dealer in Maryland and the first advertisement for this car was this car has lane departure warning and adaptive cruise etc. I report some incidents of inefficacy these"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_unknown_or_other_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,UNKNOWN OR OTHER,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,UNKNOWN OR OTHER,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "All the car has problems all dash warning coming up from nowhere it’s no safety the other day I was driving 55 mph power steering lock brake failure very un safety and if you Google the problem I’m no"
+      ]
+    },
+    {
+      "@id": "complaint:unknown_or_other_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: UNKNOWN OR OTHER,FORWARD COLLISION AVOIDANCE — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "UNKNOWN OR OTHER,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Gas pedal broke off in a 20 mph collision- air bags exploded"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_unknown_or_other",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,UNKNOWN OR OTHER — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,UNKNOWN OR OTHER",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "It showing multiple warning lights on the dashboard but everything was fine"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_exterior_lighting",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,EXTERIOR LIGHTING — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,EXTERIOR LIGHTING",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "Faulty software in Body Control Module (BCM) causing numerous problems with multiple vehicle components including battery, namely:  electrical (key fob and headlights) malfunctions, illumination of se"
+      ]
+    },
+    {
+      "@id": "complaint:steering_lane_departure_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,LANE DEPARTURE,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,LANE DEPARTURE,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I was pulling into a gas station when errors started scrolling on the dash, pretty much all of the driver assist options were failing then the power steering error came up and it was almost impossible"
+      ]
+    },
+    {
+      "@id": "complaint:structure_unknown_or_other",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STRUCTURE,UNKNOWN OR OTHER — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STRUCTURE,UNKNOWN OR OTHER",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The paint on my 2019 Civic Coupe began to completely flake off inside the fuel door jam. The primer is completely exposed. There was no scratching or dent or any kind of impact that could have brought"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,LANE DEPARTURE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,LANE DEPARTURE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "My camera that is supposed to assist in turning and seeing my blind spot is always malfunctioning in my new 2019 civic. Honda says they can’t do anything about that. I’ve already had to put new tires "
+      ]
+    },
+    {
+      "@id": "complaint:communication_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: COMMUNICATION,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "COMMUNICATION,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact stated that the Forward Collision Avoidance System would inadvertently activate intermittently without a vehicle nearby. The vehicle was not taken to t"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_air_bags_fuel_propulsion_system",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,AIR BAGS,FUEL/PROPULSION SYSTEM — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,AIR BAGS,FUEL/PROPULSION SYSTEM",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "UNKNOWN  POWER TRAIN SYSTEM EVAP LEAK EVAP STUCK OPEN  P0455 P0456"
+      ]
+    },
+    {
+      "@id": "complaint:steering_tires",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,TIRES — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,TIRES",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "The contact owns a 2019 Honda Civic. The contact stated that while driving at 60 MPH, the steering wheel inadvertently lost power steering functionality. Several unknown warning lights were illuminate"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_vehicle_speed_control_lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,VEHICLE SPEED CONTROL,LANE DEPARTURE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,VEHICLE SPEED CONTROL,LANE DEPARTURE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "JUST PURCHASED THE VEHICLE AT 359XX MILES 3 DAYS AGO. AT 36,2XX MILES, WHILE DRIVING,  ALL THE DASH LIGHTS CAME ON SAYING THERE WAS A FAILURE IN THE BRAKING SYSTEM, EMERGENCY BRAKE, TPMS, LANE DEPARTU"
+      ]
+    },
+    {
+      "@id": "complaint:unknown_or_other_service_brakes_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: UNKNOWN OR OTHER,SERVICE BRAKES,FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "UNKNOWN OR OTHER,SERVICE BRAKES,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "ON FRIDAY, APRIL 2ND, I WAS DRIVING HOME ON THE 710 FWY ON THE FAR LEFT LANE.  I WAS DRIVING AROUND 75MPH AND THERE WAS AN OBJECT ON THE GROUND WHICH LOOKED LIKE AN EMPTY POTATO CHIP BAG, IT WASN'T AN"
+      ]
+    },
+    {
+      "@id": "complaint:service_brakes_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: SERVICE BRAKES,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "SERVICE BRAKES,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I WAS SLIGHTLY BRAKING BECAUSE THE VEHICLE IN FRONT OF ME WAS GOING TO MAKE A RIGHT TURN INSTEAD OF BRAKING IT STARTED SPEEDING MAKING A STRANGE NOISE I WAS ABLE TO SLIGHTLY RELEASE  THE BRAKE AND BRA"
+      ]
+    },
+    {
+      "@id": "complaint:steering_service_brakes_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,SERVICE BRAKES,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,SERVICE BRAKES,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "WHEN DRIVING HOME FROM WORK MY CAR SUDDENLY SHOWED MULTIPLE ERRORS SUCH AS EMISSIONS SYSTEM PROBLEM, BRAKE SYSTEM PROBLEM, HILL START PROBLEM, POWER STEERING PROBLEM , EMS SYSTEM PROBLEM. THE CAR ONLY"
+      ]
+    },
+    {
+      "@id": "complaint:power_train_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: POWER TRAIN,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "POWER TRAIN,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "TL* THE CONTACT OWNS A 2019 HONDA CIVIC. THE CONTACT STATED THAT THE VEHICLE SHUTOFF WHILE DRIVING, WITHOUT WARNING. THE VEHICLE WAS RESTARTED HOWEVER, THE FAILURE RECURRED. THE CONTACT CALLED THE LUT"
+      ]
+    },
+    {
+      "@id": "complaint:lane_departure",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: LANE DEPARTURE — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "LANE DEPARTURE",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "TL* THE CONTACT OWNS A 2019 HONDA CIVIC. THE CONTACT STATED THAT WHILE THE DRIVER WAS DRIVING BETWEEN 45-50 MPH, THE VEHICLE LANE KEEPING ASSISTANT DOES AN AUTOMATIC VEER TO THE RIGHT. AS A RESULT, HE"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_service_brakes_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,SERVICE BRAKES,FORWARD COLLISION AVOIDANCE — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,SERVICE BRAKES,FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "TL* THE CONTACT OWNS A 2019 HONDA CIVIC. THE CONTACT STATED THAT THE FORWARD COLLISION AVOIDANCE SYSTEM ACTIVATED INDEPENDENTLY WITHOUT A VEHICLE IN CLOSE PROXIMITY. THE CONTACT STATED THAT WHILE MAKI"
+      ]
+    },
+    {
+      "@id": "complaint:wheels_service_brakes",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: WHEELS,SERVICE BRAKES — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "WHEELS,SERVICE BRAKES",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "EVERYTIME I START THE CAR I GET A LOW TIRE PRESSURE WARNING, I HAVE CHECKED ALL FOUR TIRE PRESSURES AND THE SPARE REPEATEDLY, AND REGARDLESS OF WHETHER I FILL THEM WITH THE CORRECT PRESSURE OR NOT THE"
+      ]
+    },
+    {
+      "@id": "complaint:air_bags_structure_visibility_wiper",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: AIR BAGS,STRUCTURE,VISIBILITY/WIPER — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "AIR BAGS,STRUCTURE,VISIBILITY/WIPER",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I WAS DRIVING 70 ON THE FREE WAY IN THE FAR LEFT LANE AND MY TIRE BLEW AND I ENDED UP HITTING THE RAIL ALL THE WAY ON THE RIGHT LANE."
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_unknown_or_other_electronic_stability_control_esc_",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,UNKNOWN OR OTHER,ELECTRONIC STABILITY CONTROL (ESC) — 1 complaints, 1 involving crashes",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,UNKNOWN OR OTHER,ELECTRONIC STABILITY CONTROL (ESC)",
+      "aether:count": 1,
+      "aether:crash": true,
+      "aether:fire": false,
+      "aether:crash_count": 1,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I PARKED MY CAR IN THE DRIVEWAY AND PUT THE BRAKE ON AND THE CAR IN PARK.  I SAT IN MY CAR WHILE OFF FOR A MINUTE WHILE CALLING MY SON TO ASK HIM A QUESTION.  ABOUT 30 SECONDS AFTER I GOT OUT OF THE C"
+      ]
+    },
+    {
+      "@id": "complaint:vehicle_speed_control_wheels",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: VEHICLE SPEED CONTROL,WHEELS — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "VEHICLE SPEED CONTROL,WHEELS",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "TWICE WHILE DRIVING AT 60 MPH THE CRUISE CONTROL DROPPED OUT FOR NO REASON. I HAVE LOW PRESSURE ALARMS FOR NO REASON. THESE WERE ALWAYS WHILE I WAS DRIVING.  I HAD 6 IN MAY AND JUNE TOOK IT TO THE DEA"
+      ]
+    },
+    {
+      "@id": "complaint:vehicle_speed_control_electronic_stability_control_esc_",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: VEHICLE SPEED CONTROL,ELECTRONIC STABILITY CONTROL (ESC) — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "VEHICLE SPEED CONTROL,ELECTRONIC STABILITY CONTROL (ESC)",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "WHILE DRIVING (50+/- MPH) ON A TWO LANE STATE ROAD, MY 2019 HONDA CIVIC HATCHBACK SPORT CMBS (COLLISION MITIGATION BRAKING SYSTEM) AUTOMATICALLY ENGAGED, BRINGING MY VEHICLE VERY CLOSE TO A COMPLETE S"
+      ]
+    },
+    {
+      "@id": "complaint:electrical_system_electronic_stability_control_esc_forward_collision_avoidance",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ELECTRICAL SYSTEM,ELECTRONIC STABILITY CONTROL (ESC),FORWARD COLLISION AVOIDANCE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ELECTRICAL SYSTEM,ELECTRONIC STABILITY CONTROL (ESC),FORWARD COLLISION AVOIDANCE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I WAS ON A STATE ROAD EXITING ON A RAMP WHILE THE VEHICLE WAS IN MOTION DRIVING 40 MILES PER HOUR APPROXIMATELY TWO DAYS AGO.  THE VEHICLE WHILE IN MOTION AND ACCELERATING STOPPED.  THE CAR THREW ME B"
+      ]
+    },
+    {
+      "@id": "complaint:steering_suspension_unknown_or_other",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: STEERING,SUSPENSION,UNKNOWN OR OTHER — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "STEERING,SUSPENSION,UNKNOWN OR OTHER",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "ON THE DRIVER SIDE, IT HAS SOME WEIRD NOISE OR SOUND. IT SOUNDS LIKE THE METAL RUBBING WITH THE CAR. SEARCHED THE PROBLEM ONLINE BEFORE AND FOUND A LOT OF PEOPLE HAVING THE SAME ISSUE. SOMETIME EVEN G"
+      ]
+    },
+    {
+      "@id": "complaint:power_train_service_brakes_engine",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: POWER TRAIN,SERVICE BRAKES,ENGINE — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "POWER TRAIN,SERVICE BRAKES,ENGINE",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "ON DECEMBER 20, I BOUGHT THE CAR, HONDA CIVIC TYPE R 2019 RED.  APPROXIMATELY THE DAY I BOUGHT IT, I NOTICED THAT WHEN I PUT THE SECOND CHANGE TO A STRANGE NOISE, I TOLD THE SELLER [XXX]  AND HE TOLD "
+      ]
+    },
+    {
+      "@id": "complaint:engine_and_engine_cooling",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: ENGINE AND ENGINE COOLING — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "ENGINE AND ENGINE COOLING",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "TL* THE CONTACT OWNS A 2019 HONDA CIVIC. WHILE DRIVING, THE EMISSION WARNING INDICATOR ILLUMINATED. THE VEHICLE WAS TAKEN TO HONDA CONYERS (LOCATED AT 1860 GA-20, CONYERS, GA 30013, (855) 447-7845) WH"
+      ]
+    },
+    {
+      "@id": "complaint:tires_equipment",
+      "@type": "skill:AntiPattern",
+      "rdfs:label": "Known issue: TIRES,EQUIPMENT — 1 complaints",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-complaints-api",
+      "aether:retrieved": "2026-03-24T19:40:53.708Z",
+      "aether:component": "TIRES,EQUIPMENT",
+      "aether:count": 1,
+      "aether:crash": false,
+      "aether:fire": false,
+      "aether:crash_count": 0,
+      "aether:fire_count": 0,
+      "aether:examples": [
+        "I SKIDDED BACKWARDS DOWN THE STREET IN SNOWY CONDITIONS BECAUSE 2019 HONDA CIVIC SI WAS SHIPPED WITH SUMMER TIRES INSTEAD OF ALL SEASON TIRES.  THE MANUFACTURER'S WINDOW STICKER INDICATED THAT ALL SEA"
+      ]
+    },
+    {
+      "@id": "safety:overall",
+      "@type": "skill:Concept",
+      "rdfs:label": "Safety: 5 stars overall, 5 frontal, 5 side, 5 rollover",
+      "aether:origin": "core",
+      "aether:source": "nhtsa-safety-api",
+      "aether:retrieved": "2026-03-24T20:04:44.588Z",
+      "aether:overall_rating": 5,
+      "aether:frontal_rating": 5,
+      "aether:side_rating": 5,
+      "aether:rollover_rating": 5,
+      "aether:rollover_risk_percent": 10,
+      "aether:vehicle_id": 14009,
+      "aether:vehicle_description": "2019 Honda CIVIC 4 DR FWD"
+    },
+    {
+      "@id": "fuel:economy",
+      "@type": "skill:Concept",
+      "rdfs:label": "Fuel Economy: 30 city / 37 highway / 33 combined MPG",
+      "aether:origin": "core",
+      "aether:source": "epa-fuel-api",
+      "aether:retrieved": "2026-03-24T20:02:59.314Z",
+      "aether:city_mpg": 30,
+      "aether:highway_mpg": 37,
+      "aether:combined_mpg": 33,
+      "aether:annual_fuel_cost": 1350,
+      "aether:co2_grams_per_mile": 269,
+      "aether:fuel_type": "Regular Gasoline",
+      "aether:epa_fuel_economy_score": 8,
+      "aether:epa_ghg_score": 8,
+      "aether:vehicle_class": "Compact Cars",
+      "aether:drive_type": "Front-Wheel Drive",
+      "aether:transmission": "Automatic (AV-S7)",
+      "aether:epa_vehicle_id": "40837"
+    },
+    {
+      "@id": "fuel:emissions",
+      "@type": "skill:Concept",
+      "rdfs:label": "EPA Ratings: 8/10 fuel economy, 8/10 greenhouse gas",
+      "aether:origin": "core",
+      "aether:source": "epa-fuel-api",
+      "aether:retrieved": "2026-03-24T20:02:59.314Z",
+      "aether:fuel_economy_score": 8,
+      "aether:ghg_score": 8
+    },
+    {
+      "@id": "maintenance:battery",
+      "@type": "skill:Rule",
+      "rdfs:label": "Test/replace battery every 50,000 miles or 48 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "battery",
+      "aether:interval_miles": 50000,
+      "aether:interval_months": 48,
+      "aether:next_due_miles": 50000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:oil_change",
+      "@type": "skill:Rule",
+      "rdfs:label": "Oil and filter change (0W-20) every 7,500 miles or 12 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "oil_change",
+      "aether:interval_miles": 7500,
+      "aether:interval_months": 12,
+      "aether:next_due_miles": 52500,
+      "aether:current_mileage": 45000,
+      "aether:includes": "oil filter replacement"
+    },
+    {
+      "@id": "maintenance:tire_rotation",
+      "@type": "skill:Rule",
+      "rdfs:label": "Rotate tires every 7,500 miles or 12 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "tire_rotation",
+      "aether:interval_miles": 7500,
+      "aether:interval_months": 12,
+      "aether:next_due_miles": 52500,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:brake_inspection",
+      "@type": "skill:Rule",
+      "rdfs:label": "Inspect brake pads and rotors every 15,000 miles or 24 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "brake_inspection",
+      "aether:interval_miles": 15000,
+      "aether:interval_months": 24,
+      "aether:next_due_miles": 60000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:air_filter",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace engine air filter every 30,000 miles or 36 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "air_filter",
+      "aether:interval_miles": 30000,
+      "aether:interval_months": 36,
+      "aether:next_due_miles": 60000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:cabin_filter",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace cabin air filter every 15,000 miles or 24 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "cabin_filter",
+      "aether:interval_miles": 15000,
+      "aether:interval_months": 24,
+      "aether:next_due_miles": 60000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:transmission_fluid",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace CVT fluid every 30,000 miles or 36 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "transmission_fluid",
+      "aether:interval_miles": 30000,
+      "aether:interval_months": 36,
+      "aether:next_due_miles": 60000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:coolant",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace engine coolant every 60,000 miles or 60 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "coolant",
+      "aether:interval_miles": 60000,
+      "aether:interval_months": 60,
+      "aether:next_due_miles": 60000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:brake_fluid",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace brake fluid every 30,000 miles or 36 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "brake_fluid",
+      "aether:interval_miles": 30000,
+      "aether:interval_months": 36,
+      "aether:next_due_miles": 60000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:power_steering",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace power steering fluid every 75,000 miles or 60 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "power_steering",
+      "aether:interval_miles": 75000,
+      "aether:interval_months": 60,
+      "aether:next_due_miles": 75000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:spark_plugs",
+      "@type": "skill:Rule",
+      "rdfs:label": "Replace spark plugs every 100,000 miles or 120 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "spark_plugs",
+      "aether:interval_miles": 100000,
+      "aether:interval_months": 120,
+      "aether:next_due_miles": 100000,
+      "aether:current_mileage": 45000
+    },
+    {
+      "@id": "maintenance:valve_adjustment",
+      "@type": "skill:Rule",
+      "rdfs:label": "Adjust valve clearance every 105,000 miles or 84 months",
+      "aether:origin": "core",
+      "aether:source": "manufacturer-schedule",
+      "aether:retrieved": "2026-03-26T03:52:38.093Z",
+      "aether:service_type": "valve_adjustment",
+      "aether:interval_miles": 105000,
+      "aether:interval_months": 84,
+      "aether:next_due_miles": 105000,
+      "aether:current_mileage": 45000
+    }
+  ]
+}

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>864zeros LLC — Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Aether Palette */
+      --bg-void: #050508;
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-tertiary: #1a1a24;
+      --bg-elevated: #22222e;
+      --bg-hover: #2a2a38;
+
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --text-dim: #404050;
+
+      --accent: #00d084;
+      --accent-glow: rgba(0, 208, 132, 0.3);
+      --accent-subtle: rgba(0, 208, 132, 0.1);
+
+      --status-active: #00d084;
+      --status-idle: #3498db;
+      --status-blocked: #ff4757;
+      --status-warning: #ffa502;
+
+      --border: #2a2a38;
+      --border-subtle: #1e1e28;
+
+      /* Floor Colors */
+      --floor-1: #9b59b6;
+      --floor-2: #e74c3c;
+      --floor-3: #3498db;
+      --floor-4: #00d084;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-void);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+
+    .logo-864 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .logo-zeros {
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--text-secondary);
+    }
+
+    .logo-llc {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-left: 8px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .system-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 24px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timestamp {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Main Campus Grid */
+    .campus {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 2px;
+      padding: 16px;
+      background: var(--bg-void);
+      overflow: hidden;
+    }
+
+    .floor {
+      display: grid;
+      grid-template-columns: 200px 1fr 1fr;
+      gap: 2px;
+      background: var(--border-subtle);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .floor-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      padding: 16px;
+      border-right: 3px solid var(--floor-color);
+    }
+
+    .floor-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--floor-color);
+      line-height: 1;
+    }
+
+    .floor-name {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .floor:nth-child(1) { --floor-color: var(--floor-4); }
+    .floor:nth-child(2) { --floor-color: var(--floor-3); }
+    .floor:nth-child(3) { --floor-color: var(--floor-2); }
+    .floor:nth-child(4) { --floor-color: var(--floor-1); }
+
+    /* Room Styles */
+    .room {
+      background: var(--bg-secondary);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .room:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .room-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .room-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: var(--bg-elevated);
+    }
+
+    .room-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .room-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .room-status {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--status-idle);
+    }
+
+    .room-status.active {
+      background: var(--status-active);
+      box-shadow: 0 0 10px var(--status-active);
+      animation: pulse 2s infinite;
+    }
+
+    .room-status.blocked {
+      background: var(--status-blocked);
+      animation: blink 1s infinite;
+    }
+
+    .room-status.idle {
+      background: var(--status-idle);
+      opacity: 0.5;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--status-active); }
+      50% { opacity: 0.7; box-shadow: 0 0 20px var(--status-active); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Project Cards */
+    .room-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .project-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .project-icon {
+      font-size: 16px;
+    }
+
+    .project-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .project-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .project-id {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+    }
+
+    .project-status {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .project-status.testing { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+    .project-status.gtm { background: rgba(0, 208, 132, 0.2); color: var(--accent); }
+    .project-status.drafting { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
+    .project-status.active { background: rgba(0, 208, 132, 0.2); color: var(--accent); }
+
+    .empty-room {
+      color: var(--text-dim);
+      font-size: 11px;
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+    }
+
+    /* Hallway Terminal */
+    .hallway {
+      flex-shrink: 0;
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+    }
+
+    .hallway-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .hallway-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hallway-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .hallway-stats {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .terminal {
+      background: var(--bg-void);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      height: 100px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    .terminal-line {
+      display: flex;
+      gap: 12px;
+      padding: 2px 0;
+      color: var(--text-secondary);
+    }
+
+    .terminal-time {
+      color: var(--text-dim);
+      flex-shrink: 0;
+    }
+
+    .terminal-message {
+      flex: 1;
+    }
+
+    .terminal-message.info { color: var(--status-idle); }
+    .terminal-message.success { color: var(--status-active); }
+    .terminal-message.warning { color: var(--status-warning); }
+    .terminal-message.error { color: var(--status-blocked); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--bg-hover);
+    }
+
+    /* Footer Branding */
+    .footer-brand {
+      position: absolute;
+      bottom: 130px;
+      right: 24px;
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-section">
+      <div class="logo">
+        <span class="logo-864">864</span>
+        <span class="logo-zeros">zeros</span>
+        <span class="logo-llc">LLC</span>
+      </div>
+      <div class="system-title">Sovereign OS — Command Center</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-item">
+        <div class="stat-value" id="active-projects">2</div>
+        <div class="stat-label">Active Strikes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="pending-approvals">0</div>
+        <div class="stat-label">Pending</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="total-rooms">8</div>
+        <div class="stat-label">Rooms</div>
+      </div>
+    </div>
+    <div class="timestamp" id="clock">2026-03-18 20:00:00</div>
+  </header>
+
+  <!-- Campus Grid -->
+  <main class="campus">
+    <!-- Floor 4: Launch -->
+    <div class="floor" data-floor="4">
+      <div class="floor-label">
+        <div class="floor-number">4</div>
+        <div class="floor-name">Launch</div>
+      </div>
+      <div class="room" id="room-studio" data-room="studio">
+        <div class="room-status idle"></div>
+        <div class="room-header">
+          <div class="room-icon">🎨</div>
+          <div>
+            <div class="room-title">Creative Studio</div>
+            <div class="room-subtitle">GTM & Marketing</div>
+          </div>
+        </div>
+        <div class="room-content" id="studio-content">
+          <div class="empty-room">Scanning...</div>
+        </div>
+      </div>
+      <div class="room" id="room-social" data-room="social">
+        <div class="room-status idle"></div>
+        <div class="room-header">
+          <div class="room-icon">📡</div>
+          <div>
+            <div class="room-title">Social Hub</div>
+            <div class="room-subtitle">Engagement & Distribution</div>
+          </div>
+        </div>
+        <div class="room-content" id="social-content">
+          <div class="empty-room">Awaiting campaigns</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floor 3: Factory -->
+    <div class="floor" data-floor="3">
+      <div class="floor-label">
+        <div class="floor-number">3</div>
+        <div class="floor-name">Factory</div>
+      </div>
+      <div class="room" id="room-production" data-room="production">
+        <div class="room-status idle"></div>
+        <div class="room-header">
+          <div class="room-icon">🏭</div>
+          <div>
+            <div class="room-title">Production Floor</div>
+            <div class="room-subtitle">Active Development</div>
+          </div>
+        </div>
+        <div class="room-content" id="production-content">
+          <div class="empty-room">Scanning...</div>
+        </div>
+      </div>
+      <div class="room" id="room-qa" data-room="qa">
+        <div class="room-status idle"></div>
+        <div class="room-header">
+          <div class="room-icon">🔬</div>
+          <div>
+            <div class="room-title">QA & Security Lab</div>
+            <div class="room-subtitle">Testing & Validation</div>
+          </div>
+        </div>
+        <div class="room-content" id="qa-content">
+          <div class="empty-room">Scanning...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floor 2: Command -->
+    <div class="floor" data-floor="2">
+      <div class="floor-label">
+        <div class="floor-number">2</div>
+        <div class="floor-name">Command</div>
+      </div>
+      <div class="room" id="room-ceo" data-room="ceo">
+        <div class="room-status active"></div>
+        <div class="room-header">
+          <div class="room-icon">👔</div>
+          <div>
+            <div class="room-title">CEO Suite</div>
+            <div class="room-subtitle">Strategy & Direction</div>
+          </div>
+        </div>
+        <div class="room-content" id="ceo-content">
+          <div class="project-card">
+            <span class="project-icon">📋</span>
+            <div class="project-info">
+              <div class="project-name">OIA Mission</div>
+              <div class="project-id">Organize Your Internal Architecture</div>
+            </div>
+            <span class="project-status active">Live</span>
+          </div>
+        </div>
+      </div>
+      <div class="room" id="room-warroom" data-room="warroom">
+        <div class="room-status idle"></div>
+        <div class="room-header">
+          <div class="room-icon">⚔️</div>
+          <div>
+            <div class="room-title">War Room</div>
+            <div class="room-subtitle">Friction & Bug Triage</div>
+          </div>
+        </div>
+        <div class="room-content" id="warroom-content">
+          <div class="empty-room">No active incidents</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floor 1: Intake -->
+    <div class="floor" data-floor="1">
+      <div class="floor-label">
+        <div class="floor-number">1</div>
+        <div class="floor-name">Intake</div>
+      </div>
+      <div class="room" id="room-vulture" data-room="vulture">
+        <div class="room-status active"></div>
+        <div class="room-header">
+          <div class="room-icon">🦅</div>
+          <div>
+            <div class="room-title">Vulture Nest</div>
+            <div class="room-subtitle">Research & Discovery</div>
+          </div>
+        </div>
+        <div class="room-content" id="vulture-content">
+          <div class="project-card">
+            <span class="project-icon">🔍</span>
+            <div class="project-info">
+              <div class="project-name">Strike Scanner</div>
+              <div class="project-id">vulture_validator.py</div>
+            </div>
+            <span class="project-status active">Online</span>
+          </div>
+        </div>
+      </div>
+      <div class="room" id="room-archive" data-room="archive">
+        <div class="room-status idle"></div>
+        <div class="room-header">
+          <div class="room-icon">📦</div>
+          <div>
+            <div class="room-title">The Archive</div>
+            <div class="room-subtitle">Warehouse & History</div>
+          </div>
+        </div>
+        <div class="room-content" id="archive-content">
+          <div class="project-card">
+            <span class="project-icon">📚</span>
+            <div class="project-info">
+              <div class="project-name">Build Kit</div>
+              <div class="project-id">864z-build-kit/</div>
+            </div>
+            <span class="project-status active">Ready</span>
+          </div>
+          <div class="project-card">
+            <span class="project-icon">🗄️</span>
+            <div class="project-info">
+              <div class="project-name">Factory Inventory</div>
+              <div class="project-id">17 extensions indexed</div>
+            </div>
+            <span class="project-status active">Current</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Hallway Terminal -->
+  <div class="hallway">
+    <div class="hallway-header">
+      <div class="hallway-title">
+        <div class="hallway-indicator"></div>
+        <span>Hallway — Central Bus</span>
+      </div>
+      <div class="hallway-stats">
+        <span id="hallway-queue">0 items in queue</span>
+      </div>
+    </div>
+    <div class="terminal" id="terminal">
+      <!-- Terminal lines will be injected here -->
+    </div>
+  </div>
+
+  <div class="footer-brand">Sovereign OS v1.0</div>
+
+  <script>
+    // ============================================
+    // 864zeros Command Center — State Manager
+    // ============================================
+
+    const CommandCenter = {
+      // Project registry with icons
+      projectIcons: {
+        'passvault': '🔐',
+        'readflow': '📚',
+        'pocket-alt': '📖',
+        'instarescue': '🚀',
+        'clipgenius': '✂️',
+        'default': '📁'
+      },
+
+      // Room state
+      rooms: {
+        studio: { status: 'idle', projects: [] },
+        social: { status: 'idle', projects: [] },
+        production: { status: 'idle', projects: [] },
+        qa: { status: 'idle', projects: [] },
+        ceo: { status: 'active', projects: [] },
+        warroom: { status: 'idle', projects: [] },
+        vulture: { status: 'active', projects: [] },
+        archive: { status: 'active', projects: [] }
+      },
+
+      // Terminal log
+      terminalLog: [],
+
+      // Initialize
+      init() {
+        this.updateClock();
+        setInterval(() => this.updateClock(), 1000);
+        this.scanOffice();
+        this.logTerminal('SYSTEM', 'Command Center initialized', 'info');
+        this.logTerminal('SYSTEM', 'Scanning OFFICE/ directories...', 'info');
+      },
+
+      // Update clock
+      updateClock() {
+        const now = new Date();
+        const formatted = now.toISOString().replace('T', ' ').substring(0, 19);
+        document.getElementById('clock').textContent = formatted;
+      },
+
+      // Get project icon
+      getIcon(projectName) {
+        const name = projectName.toLowerCase();
+        for (const [key, icon] of Object.entries(this.projectIcons)) {
+          if (name.includes(key)) return icon;
+        }
+        return this.projectIcons.default;
+      },
+
+      // Scan office structure and update rooms
+      scanOffice() {
+        // Simulated scan results based on actual file structure
+        // In a real implementation, this would use a backend API
+
+        // DIV-3-FACTORY/projects/ → Production Floor
+        this.rooms.production.projects = [
+          {
+            name: 'PassVault',
+            id: '864z-2026-004',
+            status: 'testing',
+            path: 'DIV-3-FACTORY/projects/864z-2026-004-passvault/'
+          }
+        ];
+        this.rooms.production.status = 'active';
+
+        // DIV-4-STUDIO/drafts/ → Creative Studio
+        this.rooms.studio.projects = [
+          {
+            name: 'ReadFlow GTM',
+            id: '864z-2026-005',
+            status: 'drafting',
+            path: 'DIV-4-STUDIO/drafts/'
+          }
+        ];
+        this.rooms.studio.status = 'active';
+
+        // QA Lab - PassVault is in testing
+        this.rooms.qa.projects = [
+          {
+            name: 'PassVault QA',
+            id: '864z-2026-004',
+            status: 'testing',
+            path: 'Testing phase'
+          }
+        ];
+        this.rooms.qa.status = 'active';
+
+        // Render all rooms
+        this.renderRoom('production', this.rooms.production);
+        this.renderRoom('studio', this.rooms.studio);
+        this.renderRoom('qa', this.rooms.qa);
+
+        // Update stats
+        this.updateStats();
+
+        // Log scan results
+        this.logTerminal('SCAN', 'PassVault detected in Production Floor', 'success');
+        this.logTerminal('SCAN', 'ReadFlow GTM detected in Creative Studio', 'success');
+        this.logTerminal('SCAN', 'PassVault queued for QA validation', 'info');
+        this.logTerminal('HALLWAY', 'No items awaiting signature', 'info');
+      },
+
+      // Render room content
+      renderRoom(roomId, roomData) {
+        const contentEl = document.getElementById(`${roomId}-content`);
+        const statusEl = document.querySelector(`#room-${roomId} .room-status`);
+
+        // Update status indicator
+        statusEl.className = `room-status ${roomData.status}`;
+
+        // Render projects
+        if (roomData.projects.length === 0) {
+          contentEl.innerHTML = '<div class="empty-room">Room is empty</div>';
+          return;
+        }
+
+        contentEl.innerHTML = roomData.projects.map(project => `
+          <div class="project-card" data-path="${project.path}">
+            <span class="project-icon">${this.getIcon(project.name)}</span>
+            <div class="project-info">
+              <div class="project-name">${project.name}</div>
+              <div class="project-id">${project.id}</div>
+            </div>
+            <span class="project-status ${project.status}">${project.status}</span>
+          </div>
+        `).join('');
+      },
+
+      // Update header stats
+      updateStats() {
+        let activeCount = 0;
+        let pendingCount = 0;
+
+        for (const room of Object.values(this.rooms)) {
+          if (room.status === 'active') {
+            activeCount += room.projects.length;
+          }
+          if (room.status === 'blocked') {
+            pendingCount++;
+          }
+        }
+
+        document.getElementById('active-projects').textContent = activeCount;
+        document.getElementById('pending-approvals').textContent = pendingCount;
+      },
+
+      // Log to terminal
+      logTerminal(source, message, type = 'info') {
+        const terminal = document.getElementById('terminal');
+        const now = new Date();
+        const time = now.toTimeString().substring(0, 8);
+
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        line.innerHTML = `
+          <span class="terminal-time">[${time}]</span>
+          <span class="terminal-message ${type}">[${source}] ${message}</span>
+        `;
+
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
+
+        // Keep only last 50 lines
+        while (terminal.children.length > 50) {
+          terminal.removeChild(terminal.firstChild);
+        }
+
+        this.terminalLog.push({ time, source, message, type });
+      },
+
+      // Simulate handoff event
+      simulateHandoff(project, from, to) {
+        this.logTerminal('HANDOFF', `${project} moved from ${from} to ${to}`, 'success');
+      }
+    };
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      CommandCenter.init();
+
+      // Simulate some activity after load
+      setTimeout(() => {
+        CommandCenter.logTerminal('GATEKEEPER', 'Watching HALLWAY/ for new arrivals', 'info');
+      }, 2000);
+
+      setTimeout(() => {
+        CommandCenter.logTerminal('FACTORY', 'PassVault import modal verified', 'success');
+      }, 4000);
+
+      setTimeout(() => {
+        CommandCenter.logTerminal('STUDIO', 'ReadFlow Reddit post draft ready for review', 'info');
+      }, 6000);
+
+      // Periodic refresh
+      setInterval(() => {
+        CommandCenter.logTerminal('HEARTBEAT', 'All systems operational', 'info');
+      }, 60000);
+    });
+  </script>
+</body>
+</html>

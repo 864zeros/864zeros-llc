@@ -1,0 +1,205 @@
+{
+  "registry_version": "1.0.0",
+  "generated": "2026-03-18",
+  "company": "864zeros LLC",
+
+  "extensions": {
+    "864z-2026-002-pocket-alt": {
+      "id": "864z-2026-002",
+      "name": "PocketRescue",
+      "target": "Pocket",
+      "status": "BUILD_INITIALIZED",
+      "vulture_score": 9.32,
+      "ui_components": ["sidepanel", "options", "rescue"],
+      "logic_bricks": [
+        "BRK-DB-001",
+        "BRK-MIG-002",
+        "BRK-UI-003"
+      ],
+      "delta_bricks": ["pocket-parser.js"],
+      "files": {
+        "sidepanel": "sidepanel/index.html",
+        "service_worker": "background/service-worker.js",
+        "options": "options/options.html",
+        "rescue": "rescue/rescue.html"
+      }
+    },
+    "864z-2026-003-instarescue": {
+      "id": "864z-2026-003",
+      "name": "InstaRescue",
+      "target": "Instapaper",
+      "status": "BUILD_INITIATED",
+      "vulture_score": 9.38,
+      "ui_components": ["sidepanel", "options", "rescue", "reader", "ereader"],
+      "logic_bricks": [
+        "BRK-DB-001",
+        "BRK-MIG-002",
+        "BRK-MIG-003",
+        "BRK-PAY-004",
+        "BRK-PRI-005"
+      ],
+      "delta_bricks": ["BRK-PRS-001", "BRK-EPUB-001"],
+      "files": {
+        "service_worker": "background/service-worker.js"
+      },
+      "note": "Superseded by 864z-2026-005-readflow"
+    },
+    "864z-2026-004-passvault": {
+      "id": "864z-2026-004",
+      "name": "PassVault",
+      "target": "Dashlane",
+      "status": "BUILD_IN_PROGRESS",
+      "vulture_score": null,
+      "priority": "CRITICAL",
+      "ui_components": ["sidepanel", "options", "onboarding"],
+      "logic_bricks": [
+        "BRK-CRYPTO-001",
+        "BRK-PWD-001",
+        "BRK-DB-001",
+        "BRK-PRI-005",
+        "BRK-PRICING-001"
+      ],
+      "delta_bricks": ["breach-checker.js", "recovery-pdf.js", "audit-report.js"],
+      "files": {
+        "sidepanel": "sidepanel/index.html",
+        "app": "sidepanel/app.js",
+        "service_worker": "background/service-worker.js",
+        "options": "options/options.html",
+        "onboarding": "onboarding/index.html",
+        "crypto": "lib/crypto-vault.js",
+        "parser": "lib/password-parser.js",
+        "theme": "assets/security-theme.css"
+      }
+    },
+    "864z-2026-005-readflow": {
+      "id": "864z-2026-005",
+      "name": "ReadFlow",
+      "target": "Instapaper",
+      "status": "SCAFFOLD_COMPLETE",
+      "vulture_score": null,
+      "ui_components": ["sidepanel", "options", "onboarding"],
+      "logic_bricks": [
+        "BRK-CRYPTO-001",
+        "BRK-PRICING-001"
+      ],
+      "delta_bricks": ["instapaper-parser.js", "article-fetcher.js", "epub-builder.js", "qr-generator.js"],
+      "files": {
+        "sidepanel": "sidepanel/index.html",
+        "app": "sidepanel/app.js",
+        "service_worker": "background/service-worker.js",
+        "options": "options/options.html",
+        "onboarding": "onboarding/index.html",
+        "theme": "lib/aether-ui.css"
+      }
+    }
+  },
+
+  "standard_bricks": {
+    "core": {
+      "864z-core.js": {
+        "type": "branding",
+        "description": "Corporate identity constants (legal, pricing, branding)",
+        "exports": ["COMPANY_NAME", "COPYRIGHT", "LEGAL_URLS", "PRICING_TIERS", "generateFooterHTML"]
+      }
+    },
+    "ui": {
+      "BRK-UI-IMPORT-001": {
+        "type": "ui_controller",
+        "description": "Standardized import/drop flow with audit result display",
+        "file": "BRK-UI-IMPORT-001.js",
+        "exports": ["ImportFlowController"]
+      },
+      "BRK-PRICING-001": {
+        "type": "ui_controller",
+        "description": "Pricing modal with Free/Pro/Lifetime tiers",
+        "file": "BRK-PRICING-001.js",
+        "exports": ["PricingModalController", "PRICING_MODAL_HTML", "generateUpgradeBanner"]
+      },
+      "BRK-UI-003": {
+        "type": "css_framework",
+        "description": "OIA Design System (Aether UI)",
+        "file": "aether-ui.css",
+        "variants": ["oia-design-system.css", "security-theme.css"]
+      }
+    },
+    "crypto": {
+      "BRK-CRYPTO-001": {
+        "type": "security",
+        "description": "Web Crypto API vault (AES-256-GCM, PBKDF2)",
+        "file": "crypto-vault.js",
+        "exports": ["CryptoVault", "deriveKey", "encrypt", "decrypt"]
+      }
+    },
+    "parsers": {
+      "BRK-PWD-001": {
+        "type": "parser",
+        "description": "Password manager export parser (Dashlane, LastPass, 1Password, Bitwarden)",
+        "file": "password-parser.js",
+        "formats": ["dashlane-csv", "dashlane-json", "lastpass-csv", "1password-csv", "bitwarden-json"]
+      },
+      "BRK-MIG-003": {
+        "type": "parser",
+        "description": "Universal read-later parser (Pocket, Instapaper)",
+        "file": "pocket-parser.js",
+        "formats": ["pocket-html", "pocket-json", "instapaper-csv", "instapaper-html"]
+      }
+    },
+    "storage": {
+      "BRK-DB-001": {
+        "type": "persistence",
+        "description": "IndexedDB wrapper with encryption support",
+        "file": "db.js",
+        "exports": ["VaultDB", "initDB", "putEntry", "getEntry", "deleteEntry"]
+      },
+      "BRK-MIG-002": {
+        "type": "backup",
+        "description": "Export/import pipeline (JSON, CSV, HTML, Markdown)",
+        "file": "backup.js",
+        "formats": ["json", "csv", "html", "markdown"]
+      }
+    },
+    "privacy": {
+      "BRK-PRI-005": {
+        "type": "redaction",
+        "description": "PII stripping before external API calls",
+        "file": "redactor.js",
+        "exports": ["redact", "stripPII", "anonymize"]
+      }
+    },
+    "payments": {
+      "BRK-PAY-004": {
+        "type": "licensing",
+        "description": "Pay-once tier verification",
+        "file": "tiers.js",
+        "tiers": ["free", "pro", "lifetime"]
+      }
+    }
+  },
+
+  "templates": {
+    "manifest.json": {
+      "description": "Chrome MV3 manifest template",
+      "author": "864zeros LLC",
+      "permissions": ["storage", "unlimitedStorage", "sidePanel", "contextMenus", "alarms"]
+    },
+    "options/options.html": {
+      "description": "Standard options page with brand footer",
+      "includes": ["BRK-PRICING-001", "864z-core.js"]
+    }
+  },
+
+  "css_frameworks": {
+    "aether-ui.css": {
+      "description": "Primary design system",
+      "components": ["brand-header", "brand-footer", "pricing-modal", "cards", "forms", "buttons"]
+    },
+    "oia-design-system.css": {
+      "description": "Legacy OIA design system",
+      "status": "deprecated"
+    },
+    "security-theme.css": {
+      "description": "Dark security theme for password/crypto apps",
+      "extends": "aether-ui.css"
+    }
+  }
+}

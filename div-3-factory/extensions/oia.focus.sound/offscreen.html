@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>oia.focus.sound Audio Player</title>
+</head>
+<body>
+  <script>
+    // Offscreen document for audio playback
+    class AudioPlayer {
+      constructor() {
+        this.audio = null;
+        this.isPlaying = false;
+        this.currentSound = null;
+        this.loadAttempts = {};
+        
+        // Sound file URLs (placeholder URLs - replace with actual hosted audio files)
+        this.soundUrls = {
+          'white_noise': 'https://example.com/white_noise.mp3',
+          'pink_noise': 'https://example.com/pink_noise.mp3',
+          'brown_noise': 'https://example.com/brown_noise.mp3',
+          'rain': 'https://example.com/gentle_rain.mp3'
+        };
+        
+        this.init();
+      }
+      
+      init() {
+        this.setupMessageListeners();
+        console.log('Audio player initialized in offscreen document');
+      }
+      
+      setupMessageListeners() {
+        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+          // Only handle messages targeted to offscreen
+          if (message.target !== 'offscreen') {
+            return;
+          }
+          
+          this.handleMessage(message, sender, sendResponse);
+          return true; // Keep the message channel open for async response
+        });
+      }
+      
+      async handleMessage(message, sender, sendResponse) {
+        try {
+          switch (message.type) {
+            case 'play_sound':
+              await this.playSound(message.soundType);
+              sendResponse({ success: true });
+              break;
+              
+            case 'stop_sound':
+              await this.stopSound();
+              sendResponse({ success: true });
+              break;
+              
+            default:
+              sendResponse({ success: false, error: 'Unknown message type' });
+          }
+        } catch (error) {
+          console.error('Error in offscreen audio player:', error);
+          sendResponse({ success: false, error: error.message });
+          
+          // Notify background script of error
+          this.notifyBackgroundScript(false);
+        }
+      }
+      
+      async playSound(soundType) {
+        try {
+          // Stop any currently playing sound
+          await this.stopSound();
+          
+          const url = this.soundUrls[soundType];
+          if (!url) {
+            throw new Error(`Unknown sound type: ${soundType}`);
+          }
+          
+          // Track load attempts to prevent infinite retries
+          if (!this.loadAttempts[soundType]) {
+            this.loadAttempts[soundType] = 0;
+          }
+          
+          if (this.loadAttempts[soundType] >= 3) {
+            throw new Error(`Failed to load ${soundType} after 3 attempts`);
+          }
+          
+          this.loadAttempts[soundType]++;
+          
+          // Create new Audio object
+          this.audio = new Audio();
+          this.audio.src = url;
+          this.audio.loop = true;
+          this.audio.preload = 'auto';
+          
+          // Set up event listeners
+          this.audio.addEventListener('loadeddata', () => {
+            console.log(`Audio loaded for ${soundType}`);
+            // Reset load attempts on success
+            this.loadAttempts[soundType] = 0;
+          });
+          
+          this.audio.addEventListener('error', (e) => {
+            console.error(`Audio error for ${soundType}:`, e);
+            this.isPlaying = false;
+            this.notifyBackgroundScript(false);
+          });
+          
+          this.audio.addEventListener('ended', () => {
+            // This shouldn't happen with loop=true, but handle it gracefully
+            if (this.isPlaying) {
+              console.log('Audio ended unexpectedly, restarting...');
+              this.audio.currentTime = 0;
+              this.audio.play().catch(error => {
+                console.error('Error restarting audio:', error);
+                this.isPlaying = false;
+                this.notifyBackgroundScript(false);
+              });
+            }
+          });
+          
+          // Start playback
+          await this.audio.play();
+          this.isPlaying = true;
+          this.currentSound = soundType;
+          
+          console.log(`Started playing ${soundType} in offscreen document`);
+          
+        } catch (error) {
+          console.error(`Error playing sound ${soundType}:`, error);
+          this.isPlaying = false;
+          
+          // If it's a network error, we might want to show this to the user
+          if (error.name === 'NetworkError' || error.message.includes('fetch')) {
+            console.warn('Network error loading audio - check if audio files are accessible');
+          }
+          
+          throw error;
+        }
+      }
+      
+      async stopSound() {
+        try {
+          if (this.audio) {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+            this.audio.src = '';
+            
+            // Remove event listeners to prevent memory leaks
+            this.audio.removeEventListener('loadeddata', () => {});
+            this.audio.removeEventListener('error', () => {});
+            this.audio.removeEventListener('ended', () => {});
+            
+            this.audio = null;
+          }
+          
+          this.isPlaying = false;
+          this.currentSound = null;
+          console.log('Stopped sound playback in offscreen document');
+          
+        } catch (error) {
+          console.error('Error stopping sound:', error);
+          this.isPlaying = false;
+        }
+      }
+      
+      notifyBackgroundScript(isPlaying) {
+        try {
+          chrome.runtime.sendMessage({
+            type: 'audio_state_update',
+            isPlaying: isPlaying,
+            currentSound: this.currentSound
+          }).catch(error => {
+            // Background script might not be listening
+            console.log('Could not notify background script:', error);
+          });
+        } catch (error) {
+          // Ignore errors
+        }
+      }
+    }
+    
+    // Initialize the audio player
+    new AudioPlayer();
+  </script>
+</body>
+</html>

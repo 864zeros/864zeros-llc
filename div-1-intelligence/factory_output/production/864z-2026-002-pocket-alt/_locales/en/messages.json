@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "ReadVault",
+    "description": "Extension display name"
+  },
+  "appDescription": {
+    "message": "Privacy-first read-it-later. Save articles offline. Import from Pocket. Your data stays yours.",
+    "description": "Extension description for Chrome Web Store"
+  }
+}

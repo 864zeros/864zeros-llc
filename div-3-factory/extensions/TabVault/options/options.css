@@ -1,0 +1,443 @@
+/* ============================================================
+   TABVAULT OPTIONS — App-specific overrides
+   Base styles from oia-design-system.css
+   ============================================================ */
+
+body {
+  min-height: 100vh;
+}
+
+.options-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--oia-space-xl) var(--oia-space-lg);
+}
+
+/* ----- Pitch Box ----- */
+
+.pitch-box {
+  padding: var(--oia-space-md);
+  background: linear-gradient(135deg, rgba(139, 168, 136, 0.12) 0%, rgba(139, 168, 136, 0.04) 100%);
+  border-left: 3px solid var(--oia-sage);
+  border-radius: var(--oia-radius-md);
+}
+
+/* ----- Instructions Box ----- */
+
+.instructions-box {
+  background-color: rgba(139, 168, 136, 0.08);
+  border: 1px solid rgba(139, 168, 136, 0.2);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+}
+
+.instructions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instructions-list li {
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+  padding: var(--oia-space-xs) 0;
+  padding-left: var(--oia-space-md);
+  position: relative;
+}
+
+.instructions-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--oia-sage);
+}
+
+.instructions-list li strong {
+  color: var(--oia-text-primary);
+}
+
+/* ----- Setting Rows ----- */
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oia-space-md);
+  padding: var(--oia-space-sm) 0;
+}
+
+.setting-row + .setting-row {
+  border-top: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.setting-input {
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  padding: 0 var(--oia-space-sm);
+  font-size: var(--oia-size-body-sm);
+}
+
+/* ----- Toggle Switch ----- */
+
+.toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ----- Pro Badge Header ----- */
+
+.pro-badge-header {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  margin-bottom: var(--oia-space-sm);
+}
+
+.pro-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, var(--oia-sage) 0%, #6B8E6B 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: var(--oia-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--oia-radius-full);
+}
+
+/* ----- Drive Upgrade Prompt ----- */
+
+.drive-upgrade-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--oia-space-lg);
+  background: linear-gradient(135deg, rgba(139, 168, 136, 0.08) 0%, rgba(139, 168, 136, 0.02) 100%);
+  border: 1px dashed rgba(139, 168, 136, 0.3);
+  border-radius: var(--oia-radius-md);
+}
+
+.drive-upgrade-icon {
+  margin-bottom: var(--oia-space-md);
+  opacity: 0.8;
+}
+
+.drive-upgrade-prompt .oia-btn-primary {
+  min-width: 200px;
+}
+
+/* ----- Tier Display ----- */
+
+.tier-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--oia-space-xs) var(--oia-space-sm);
+  background-color: rgba(139, 168, 136, 0.15);
+  border-radius: var(--oia-radius-full);
+}
+
+.tier-badge__dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--oia-sage);
+  border-radius: 50%;
+}
+
+.tier-badge__name {
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-sage);
+}
+
+.tier-badge--pro {
+  background: linear-gradient(135deg, rgba(139, 168, 136, 0.25) 0%, rgba(107, 142, 107, 0.25) 100%);
+}
+
+.tier-badge--pro .tier-badge__dot {
+  background: linear-gradient(135deg, var(--oia-sage) 0%, #6B8E6B 100%);
+}
+
+.oia-btn--success {
+  background-color: var(--oia-success);
+  border-color: var(--oia-success);
+  color: white;
+  cursor: default;
+}
+
+.oia-btn--success:hover {
+  background-color: var(--oia-success);
+}
+
+/* ----- Feature List ----- */
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oia-space-sm);
+  padding: var(--oia-space-xs) 0;
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+}
+
+.feature-list__tier {
+  display: inline-block;
+  min-width: 50px;
+  padding: 2px 6px;
+  background-color: rgba(166, 148, 133, 0.15);
+  border-radius: var(--oia-radius-sm);
+  font-size: 10px;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-taupe);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* ----- Button Group ----- */
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oia-space-sm);
+}
+
+.button-group .oia-btn {
+  min-width: auto;
+  padding: 0 var(--oia-space-md);
+  height: 44px;
+}
+
+/* ----- OneTab Section ----- */
+
+.onetab-section {
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+/* ----- Vault Management ----- */
+
+.vault-management {
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+/* ----- Import Status ----- */
+
+.import-status {
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-medium);
+}
+
+.import-status.success {
+  color: var(--oia-success);
+}
+
+.import-status.error {
+  color: var(--oia-error);
+}
+
+.import-status.warning {
+  color: var(--oia-warning);
+}
+
+/* ----- Danger Zone ----- */
+
+.danger-btn {
+  border-color: var(--oia-error);
+  color: var(--oia-error);
+  min-width: auto;
+  padding: 0 var(--oia-space-md);
+  height: 40px;
+}
+
+.danger-btn:hover {
+  background-color: rgba(212, 132, 122, 0.1);
+}
+
+/* ----- Inline Confirmation ----- */
+
+.confirm-container {
+  margin-top: var(--oia-space-md);
+}
+
+.confirm-dialog {
+  padding: var(--oia-space-md);
+  border: 2px solid var(--oia-error);
+}
+
+.confirm-actions {
+  display: flex;
+  gap: var(--oia-space-sm);
+}
+
+/* ----- Fuel Card ----- */
+
+.fuel-card {
+  background: linear-gradient(135deg, var(--oia-bg-card) 0%, rgba(139, 168, 136, 0.08) 100%);
+  border: 1px solid rgba(139, 168, 136, 0.2);
+}
+
+/* ----- Footer ----- */
+
+.options-footer {
+  text-align: center;
+  padding: var(--oia-space-xl) 0 var(--oia-space-lg);
+  color: var(--oia-text-muted);
+}
+
+.options-footer strong {
+  color: var(--oia-text-secondary);
+}
+
+/* Privacy Badge */
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-xs);
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.1);
+  border: 1px solid rgba(139, 168, 136, 0.2);
+  border-radius: var(--oia-radius-full);
+  margin-bottom: var(--oia-space-md);
+  font-size: var(--oia-size-body-sm);
+}
+
+.privacy-badge svg {
+  color: var(--oia-sage);
+  flex-shrink: 0;
+}
+
+/* Legal Links */
+.options-footer__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  margin-bottom: var(--oia-space-sm);
+}
+
+.options-footer__links a {
+  color: var(--oia-text-muted);
+  text-decoration: none;
+  font-size: var(--oia-size-caption);
+  transition: color var(--oia-duration-fast);
+}
+
+.options-footer__links a:hover {
+  color: var(--oia-sage);
+  text-decoration: underline;
+}
+
+.options-footer__divider {
+  color: var(--oia-text-muted);
+  opacity: 0.5;
+}
+
+.options-footer__copyright {
+  font-size: var(--oia-size-caption);
+  margin: 0;
+}
+
+/* ----- Toast in Options ----- */
+
+.options-toast {
+  position: fixed;
+  bottom: var(--oia-space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+/* ----- Dark Mode ----- */
+
+@media (prefers-color-scheme: dark) {
+  .setting-row + .setting-row {
+    border-top-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .onetab-section {
+    border-top-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .vault-management {
+    border-top-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .pitch-box {
+    background: linear-gradient(135deg, rgba(150, 184, 147, 0.15) 0%, rgba(150, 184, 147, 0.05) 100%);
+  }
+
+  .instructions-box {
+    background-color: rgba(150, 184, 147, 0.08);
+    border-color: rgba(150, 184, 147, 0.2);
+  }
+
+  .fuel-card {
+    background: linear-gradient(135deg, var(--oia-bg-card) 0%, rgba(150, 184, 147, 0.1) 100%);
+    border-color: rgba(150, 184, 147, 0.25);
+  }
+
+  .tier-badge {
+    background-color: rgba(150, 184, 147, 0.2);
+  }
+
+  .feature-list__tier {
+    background-color: rgba(107, 107, 94, 0.25);
+  }
+
+  .privacy-badge {
+    background-color: rgba(150, 184, 147, 0.1);
+    border-color: rgba(150, 184, 147, 0.2);
+  }
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 480px) {
+  .options-container {
+    padding: var(--oia-space-lg) var(--oia-space-md);
+  }
+
+  .setting-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--oia-space-sm);
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group .oia-btn {
+    width: 100%;
+  }
+}

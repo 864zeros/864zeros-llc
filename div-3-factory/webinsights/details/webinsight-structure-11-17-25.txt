@@ -1,0 +1,66 @@
+WEBINSIGHTS
+│   .gitignore
+│   background.js
+│   keyword-check.html
+│   manifest.json
+│   README.md
+│
+├───css
+│       content.css
+│       data_viewer.css
+│       options.css
+│       panel.css
+│       popup.css
+│
+├───details
+│   │   chat-summ ary-backup-9-9-25.txt
+│   │   details-9-9.txt
+│   │   nextsteps-8-12-25.txt
+│   │   webinsight-structure-08-12-25.txt
+│   │   webinsight_project_overview.md
+│   │
+│   └───arch
+│           background-err.js
+│           background-v2-001.js
+│           background_orig.js
+│           data_viewer - Copy.html
+│           data_viewer - Copy.js
+│           panel-v2-001.html
+│           panel-v2-001.js
+│           panel-v2-001css
+│           popup-v2-001.css
+│           popup-v2-001.html
+│           popup-v2-001.js
+│           popup.html
+│           popup.js
+│
+├───html
+│       ai-worker.html
+│       data_viewer.html
+│       options.html
+│       optionsWdrive.html
+│       panel.html
+│
+├───icons
+│       icon128.png
+│       icon16.png
+│       icon48.png
+│
+└───js
+    │   ai-worker.js
+    │   background.js
+    │   background_min.js
+    │   content.js
+    │   data_viewer.js
+    │   options.js
+    │   optionsWDrive.js
+    │   panel.js
+    │
+    └───lib
+            api.js
+            apiv1.js
+            db.js
+            google-drive.js
+            local-ai.js
+            metadata.js
+            pdf-generator.js

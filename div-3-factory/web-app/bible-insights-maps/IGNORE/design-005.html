@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bible Insights - Final Stability Test</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root { --bg: #0f0f0f; --panel: #1a1a1a; --gold: #ffd700; --text: #eee; --dim: #888; }
+        body { margin: 0; font-family: sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+        #test-controls { width: 300px; border-right: 1px solid #333; padding: 20px; display: flex; flex-direction: column; background: #111; }
+        #node-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .btn { background: #333; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; text-align: left; font-size: 0.8rem; }
+        .btn.active { background: #222; border-left: 3px solid var(--gold); }
+        #explorer { flex: 1; display: flex; flex-direction: column; }
+        #map { height: 45%; border-bottom: 2px solid #333; }
+        #dashboard { flex: 1; padding: 20px; overflow-y: auto; }
+        .rail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .pill { background: var(--panel); padding: 10px; border-radius: 5px; border: 1px solid #333; }
+        .pill label { font-size: 0.6rem; color: var(--dim); display: block; text-transform: uppercase; }
+        .pill span { font-size: 0.9rem; font-weight: bold; color: var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .card { background: var(--panel); border-radius: 8px; overflow: hidden; border: 1px solid #333; }
+        .card img { width: 100%; height: 110px; object-fit: cover; border-bottom: 1px solid #333; background: #222; }
+        .narrative { background: #151515; padding: 15px; border-radius: 5px; border-left: 3px solid var(--gold); margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <section id="test-controls">
+        <h3 style="color:var(--gold)">📍 Discovery</h3>
+        <label style="font-size:0.7rem; color:var(--dim)">1. Select <b>enriched-master-geodata.json</b>:</label>
+        <input type="file" id="loader" onchange="loadLocalFile(event)" style="margin-bottom:10px; font-size:0.7rem;">
+        <button onclick="renderRandom()" style="font-size:0.6rem; background:#444; color:white; border:none; padding:5px; cursor:pointer;">SHUFFLE 20</button>
+        <div id="node-list"></div>
+    </section>
+    <section id="explorer">
+        <div id="map"></div>
+        <div id="dashboard">
+            <div class="rail">
+                <div class="pill"><label>Elevation</label><span id="stat-elev">--</span></div>
+                <div class="pill"><label>Conflict</label><span id="stat-geo">--</span></div>
+                <div class="pill"><label>Context</label><span id="stat-era">--</span></div>
+            </div>
+            <div class="grid" id="artifact-grid"></div>
+            <div class="narrative"><div id="nar-insight" style="font-size: 0.8rem; color: var(--dim); line-height:1.4;">Select a JSON file to populate the 1,329 nodes.</div></div>
+        </div>
+    </section>
+    <script>
+        let allNodes = [], map, marker;
+        map = L.map('map').setView([31.768, 35.213], 9);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        marker = L.marker([31.768, 35.213]).addTo(map);
+
+        function loadLocalFile(e) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    allNodes = JSON.parse(event.target.result);
+                    document.getElementById('nar-insight').innerText = `Success: ${allNodes.length} nodes loaded. Select a site.`;
+                    renderRandom();
+                } catch(err) { alert("Invalid JSON file structure."); }
+            };
+            reader.readAsText(e.target.files[0]);
+        }
+
+        function renderRandom() {
+            const shuffled = [...allNodes].sort(() => 0.5 - Math.random()).slice(0, 20);
+            display(shuffled);
+        }
+
+        function display(nodes) {
+            document.getElementById('node-list').innerHTML = nodes.map(n => `
+                <button class="btn" onclick="updateSite('${n.site_id || n.id}', this)">
+                    <b>${n.site_id || n.id}</b>
+                </button>
+            `).join('');
+        }
+
+        function updateSite(id, btn) {
+            const data = allNodes.find(n => (n.site_id || n.id) === id);
+            
+            // Map logic
+            const lat = data.location ? data.location.lat : (data.lat || 31.76);
+            const lng = data.location ? data.location.lng : (data.lng || 35.21);
+            map.flyTo([lat, lng], 14);
+            marker.setLatLng([lat, lng]);
+
+            // Stats Logic
+            document.getElementById('stat-elev').innerText = (data.location ? data.location.elevation : data.elevation) || "N/A";
+            document.getElementById('stat-geo').innerText = (data.geopolitics ? data.geopolitics.primary_conflict : data.primary_conflict) || "--";
+            document.getElementById('stat-era').innerText = (data.geopolitics ? data.geopolitics.era : data.era_context) || "--";
+            document.getElementById('nar-insight').innerText = (data.scripture ? data.scripture.narrative_insight : data.archeology) || "";
+
+            // Artifact Grid Logic (Handles both schema types)
+            let finds = [];
+            if (data.archaeology && data.archaeology.finds) {
+                finds = data.archaeology.finds;
+            } else {
+                finds = [{img_url: data.media_uri, title: "Site Discovery", description: data.archeology}];
+            }
+
+            document.getElementById('artifact-grid').innerHTML = finds.map(f => `
+                <div class="card">
+                    <img src="${f.img_url}" onerror="this.src='https://via.placeholder.com/300x150/111/ffd700?text=View'">
+                    <div style="padding:10px">
+                        <h4 style="margin:0; font-size:0.75rem; color:var(--gold)">${f.title || 'Discovery'}</h4>
+                        <p style="margin:5px 0 0; font-size:0.65rem; color:var(--dim)">${f.description || ''}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>

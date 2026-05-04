@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bible Insights - Image Debugger</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root { --bg: #0f0f0f; --panel: #1a1a1a; --gold: #ffd700; --text: #eee; --dim: #888; }
+        body { margin: 0; font-family: sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+        #test-controls { width: 300px; border-right: 1px solid #333; padding: 20px; display: flex; flex-direction: column; background: #111; }
+        #node-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .btn { background: #333; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; text-align: left; font-size: 0.8rem; }
+        .btn.active { border-left: 3px solid var(--gold); background: #222; }
+        #explorer { flex: 1; display: flex; flex-direction: column; }
+        #map { height: 40%; border-bottom: 2px solid #333; }
+        #dashboard { flex: 1; padding: 20px; overflow-y: auto; position: relative; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .card { background: var(--panel); border-radius: 8px; overflow: hidden; border: 1px solid #333; min-height: 150px; }
+        .img-box { width: 100%; height: 110px; background: #222; position: relative; border-bottom: 1px solid #333; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .debug-url { font-size: 10px; color: #666; word-break: break-all; padding: 5px; background: #000; display: block; }
+        .status-msg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--gold); font-size: 0.6rem; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <section id="test-controls">
+        <h3 style="color:var(--gold)">📍 Debugger</h3>
+        <input type="file" onchange="loadLocalFile(event)" style="font-size:0.7rem; color:var(--dim)">
+        <div id="node-list"></div>
+    </section>
+    <section id="explorer">
+        <div id="map"></div>
+        <div id="dashboard">
+            <div class="grid" id="artifact-grid"></div>
+            <div id="nar-insight" style="margin-top:20px; font-size:0.8rem; border-left:3px solid var(--gold); padding-left:10px;">Load JSON to inspect URIs.</div>
+        </div>
+    </section>
+
+    <script>
+        let allNodes = [], map, marker;
+        map = L.map('map').setView([31.7, 35.2], 9);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        marker = L.marker([31.7, 35.2]).addTo(map);
+
+        function loadLocalFile(e) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                allNodes = JSON.parse(ev.target.result);
+                document.getElementById('node-list').innerHTML = allNodes.slice(0, 25).map(n => `
+                    <button class="btn" onclick="inspectNode('${n.site_id || n.id}', this)"><b>${n.site_id || n.id}</b></button>
+                `).join('');
+            };
+            reader.readAsText(e.target.files[0]);
+        }
+
+        function inspectNode(id, btn) {
+            const data = allNodes.find(n => (n.site_id || n.id) === id);
+            
+            // Map Fly
+            const lat = (data.location ? data.location.lat : data.lat) || 31.7;
+            const lng = (data.location ? data.location.lng : data.lng) || 35.2;
+            map.flyTo([lat, lng], 14);
+            marker.setLatLng([lat, lng]);
+
+            // Intelligence Brief
+            document.getElementById('nar-insight').innerText = (data.scripture ? data.scripture.narrative_insight : data.archeology) || "No Brief Found";
+
+            // URI Inspector Logic
+            let images = [];
+            if (data.archaeology && data.archaeology.finds) {
+                images = data.archaeology.finds.map(f => f.img_url);
+            } else if (data.media_uri) {
+                images = [data.media_uri];
+            }
+
+            document.getElementById('artifact-grid').innerHTML = images.map(url => `
+                <div class="card">
+                    <div class="img-box">
+                        <div class="status-msg">TRYING...</div>
+                        <img src="${url}" onload="this.previousElementSibling.style.display='none'" onerror="this.previousElementSibling.innerText='404: FAILED'">
+                    </div>
+                    <code class="debug-url">${url || 'UNDEFINED'}</code>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{
+  "agent_type": "advisor",
+  "domain": "vehicle",
+  "description": "First-person AI agent representing a specific 2019 HONDA Civic",
+  "vin": "2HGFC2F59KH522075",
+  "domain_boundaries": {
+    "authoritative": [
+      "this specific vehicle",
+      "VIN 2HGFC2F59KH522075",
+      "vehicle specifications from NHTSA",
+      "open recalls from NHTSA",
+      "known complaints from NHTSA",
+      "fuel economy from EPA",
+      "safety ratings from NHTSA",
+      "manufacturer maintenance schedule"
+    ],
+    "out_of_scope": [
+      "other vehicles",
+      "mechanical repair procedures",
+      "specific repair costs",
+      "dealer recommendations",
+      "parts sourcing",
+      "insurance claims",
+      "legal matters"
+    ]
+  },
+  "stages": {
+    "distill": true,
+    "augment": true,
+    "generate": true,
+    "review": true
+  },
+  "aec_threshold": 0.8,
+  "impulses": [
+    {
+      "trigger": "schedule:weekly",
+      "action": "check_recalls",
+      "description": "Check for new NHTSA recalls weekly"
+    },
+    {
+      "trigger": "schedule:monthly",
+      "action": "check_complaints",
+      "description": "Check for new NHTSA complaints monthly"
+    },
+    {
+      "trigger": "event:mileage_update",
+      "action": "recalculate_maintenance",
+      "description": "Recalculate maintenance schedule when mileage is updated"
+    }
+  ],
+  "data_sources": [
+    {
+      "name": "NHTSA VIN Decoder",
+      "type": "api",
+      "refresh": "on_create"
+    },
+    {
+      "name": "NHTSA Recalls",
+      "type": "api",
+      "refresh": "weekly"
+    },
+    {
+      "name": "NHTSA Complaints",
+      "type": "api",
+      "refresh": "monthly"
+    },
+    {
+      "name": "NHTSA Safety Ratings",
+      "type": "api",
+      "refresh": "on_create"
+    },
+    {
+      "name": "EPA Fuel Economy",
+      "type": "api",
+      "refresh": "on_create"
+    },
+    {
+      "name": "Manufacturer Maintenance Schedule",
+      "type": "static",
+      "refresh": "never"
+    }
+  ],
+  "created_at": "2026-03-26T03:52:38.107Z"
+}

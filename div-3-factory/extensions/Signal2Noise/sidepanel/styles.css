@@ -1,0 +1,304 @@
+/* ============================================================
+   Signal2Noise — Panel Styles
+   Extends OIA Design System
+   ============================================================ */
+
+/* --- Panel Container --- */
+.panel-container {
+  padding: var(--oia-space-md);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+/* --- Header --- */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--oia-space-xs);
+}
+
+.panel-header .oia-h1 {
+  margin: 0;
+  font-size: var(--oia-size-h2);
+}
+
+.panel-header__settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  transition: color var(--oia-duration-fast), background-color var(--oia-duration-fast);
+}
+
+.panel-header__settings:hover {
+  color: var(--oia-text-primary);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .panel-header__settings:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* --- Signal Pill (FEAT-01) --- */
+.signal-pill {
+  display: none;
+  border-radius: var(--oia-radius-full);
+  background-color: var(--oia-sage);
+  overflow: hidden;
+  min-height: 40px;
+}
+
+.signal-pill.visible {
+  display: flex;
+}
+
+.pill-segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--oia-space-sm) var(--oia-space-xs);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pill-segment:last-child {
+  border-right: none;
+}
+
+.pill-text {
+  color: var(--oia-text-inverse);
+  font-size: var(--oia-size-caption);
+  font-weight: var(--oia-weight-bold);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* --- Ratio Selector (FEAT-02) --- */
+.ratio-selector {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ratio-options {
+  display: flex;
+  gap: var(--oia-space-sm);
+  justify-content: center;
+}
+
+.ratio-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ratio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ratio-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--oia-radius-md);
+  border: 2px solid var(--oia-taupe);
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-secondary);
+  transition: all var(--oia-duration-fast);
+}
+
+.ratio-option input[type="radio"]:checked + .ratio-label {
+  border-color: var(--oia-sage);
+  background-color: var(--oia-sage);
+  color: var(--oia-text-inverse);
+}
+
+.ratio-option input[type="radio"]:focus-visible + .ratio-label {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}
+
+/* --- Input Section (FEAT-03) --- */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+}
+
+.input-section label {
+  font-weight: var(--oia-weight-semibold);
+}
+
+.signal-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.signal-hint {
+  color: var(--oia-text-muted);
+}
+
+/* --- Save Button (FEAT-04) --- */
+.save-btn {
+  width: 100%;
+}
+
+/* --- Action Buttons (FEAT-08, FEAT-09) --- */
+.action-buttons {
+  display: flex;
+  gap: var(--oia-space-sm);
+}
+
+.action-btn {
+  flex: 1;
+  min-width: 0;
+  padding: 0 var(--oia-space-md);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Accordion (FEAT-05) --- */
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}
+
+.accordion-item {
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-xs);
+}
+
+.accordion-toggle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--oia-space-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--oia-text-primary);
+  border-radius: var(--oia-radius-sm);
+  transition: background-color var(--oia-duration-fast);
+}
+
+.accordion-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  .accordion-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.accordion-title {
+  font-weight: var(--oia-weight-semibold);
+  font-size: var(--oia-size-body-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accordion-title.is-marked {
+  color: var(--oia-sage);
+}
+
+.accordion-chevron {
+  flex-shrink: 0;
+  transition: transform var(--oia-duration-fast);
+  color: var(--oia-text-muted);
+}
+
+.accordion-item.is-expanded .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  transition: color var(--oia-duration-fast), background-color var(--oia-duration-fast);
+}
+
+.delete-btn:hover {
+  color: var(--oia-error);
+  background-color: rgba(212, 132, 122, 0.1);
+}
+
+.accordion-content {
+  padding: 0 var(--oia-space-sm) var(--oia-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+.accordion-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.mark-btn {
+  align-self: flex-start;
+  height: 40px;
+  min-width: auto;
+  padding: 0 var(--oia-space-md);
+  font-size: var(--oia-size-body-sm);
+}
+
+/* --- Empty State --- */
+.empty-state {
+  padding: var(--oia-space-xl) var(--oia-space-md);
+}
+
+/* --- Toast Container --- */
+.toast-container {
+  position: fixed;
+  bottom: var(--oia-space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}

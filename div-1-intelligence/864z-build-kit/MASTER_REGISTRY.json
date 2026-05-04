@@ -1,0 +1,630 @@
+{
+  "metadata": {
+    "version": "1.1.0",
+    "generated": "2026-03-18",
+    "totalExtensions": 17,
+    "architecture": {
+      "warehouse": {
+        "label": "Stable Library (Warehouse)",
+        "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions",
+        "purpose": "Harvestable Sources - Proven, stable components for reuse",
+        "extensionCount": 13
+      },
+      "productionFloor": {
+        "label": "Production Floor",
+        "path": "C:\\Users\\I820965\\dev\\vulture-nest\\864zeros_engine\\builds",
+        "purpose": "Active Projects - Current development strikes",
+        "extensionCount": 4
+      }
+    }
+  },
+
+  "warehouse": {
+    "_zone": "HARVESTABLE_SOURCES",
+    "_description": "Stable extensions with proven components ready for harvest",
+
+    "bible-insight": {
+      "id": "bible-insight",
+      "name": "Bible Insight",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\Bible-Insight",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0.0",
+      "brand": "FHG",
+      "corePurpose": "Bible Study / Sermon Notes",
+      "description": "Bible study, sermon note-taking, and theological research. Re-skin of WebInsight engine.",
+      "targetIncumbent": "YouVersion, Logos, Spirit Notes",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "verse-detector.js", "path": "js/lib/verse-detector.js", "purpose": "Bible verse detection (regex + NLP)", "reusable": true },
+        { "name": "api.js", "path": "js/lib/api.js", "purpose": "API.Bible integration", "reusable": true },
+        { "name": "db.js", "path": "js/lib/db.js", "purpose": "IndexedDB storage", "reusable": true },
+        { "name": "pause-toggle.js", "path": "js/lib/pause-toggle.js", "purpose": "Content capture pause", "reusable": false }
+      ],
+      "permissions": ["activeTab", "scripting", "storage", "unlimitedStorage", "tabs", "contextMenus", "sidePanel", "alarms", "debugger", "downloads"],
+      "uniqueFeatures": [
+        "Bible verse auto-detection",
+        "Cross-reference engine",
+        "YouTube sermon transcript extraction",
+        "AI tagging (local TensorFlow.js + cloud Gemini)",
+        "PDF report generation"
+      ],
+      "harvestable": ["verse-detector.js", "YouTube transcript extraction pattern", "Dual AI tagging architecture"]
+    },
+
+    "clipboard": {
+      "id": "clipboard",
+      "name": "ClipBoard",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\clipboard",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0.0",
+      "brand": "OIA",
+      "corePurpose": "Clipboard Manager",
+      "description": "Clipboard history with Google Drive sync and AI features.",
+      "targetIncumbent": "Native clipboard",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "api-client.js", "path": "lib/api-client.js", "purpose": "API communication", "reusable": true },
+        { "name": "backup.js", "path": "lib/backup.js", "purpose": "Data backup utility", "reusable": true },
+        { "name": "db.js", "path": "lib/db.js", "purpose": "IndexedDB storage", "reusable": true },
+        { "name": "google-drive/", "path": "lib/google-drive/", "purpose": "Google Drive sync", "reusable": true },
+        { "name": "pdf-generator.js", "path": "lib/pdf-generator.js", "purpose": "PDF generation", "reusable": true },
+        { "name": "redactor.js", "path": "lib/redactor.js", "purpose": "Content redaction", "reusable": true },
+        { "name": "ExtPay.js", "path": "lib/payments/ExtPay.js", "purpose": "Payment integration", "reusable": true },
+        { "name": "oia-design-system.css", "path": "lib/oia-design-system.css", "purpose": "OIA Design System", "reusable": true },
+        { "name": "tiers.js", "path": "lib/tiers.js", "purpose": "Pricing tiers", "reusable": true }
+      ],
+      "permissions": ["sidePanel", "storage", "unlimitedStorage", "activeTab", "scripting", "contextMenus", "debugger", "downloads", "identity", "alarms", "management"],
+      "uniqueFeatures": [
+        "Google Drive backup",
+        "OAuth2 authentication",
+        "AI-powered features",
+        "PDF generation",
+        "ExtPay payment integration"
+      ],
+      "harvestable": ["google-drive/", "pdf-generator.js", "backup.js", "ExtPay integration", "oia-design-system.css"]
+    },
+
+    "tabvault": {
+      "id": "tabvault",
+      "name": "TabVault",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\TabVault",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0.0",
+      "brand": "OIA",
+      "corePurpose": "Tab Manager",
+      "description": "High-reliability OneTab replacement with data safety focus.",
+      "targetIncumbent": "OneTab",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "vault_engine.js", "path": "lib/vault_engine.js", "purpose": "IndexedDB tab storage", "reusable": true }
+      ],
+      "permissions": ["sidePanel", "storage", "tabs", "scripting", "alarms", "identity"],
+      "uniqueFeatures": [
+        "Native tab discarding (chrome.tabs.discard)",
+        "OneTab import bridge",
+        "Tab state mirroring",
+        "Google Drive sync"
+      ],
+      "harvestable": ["Tab mirroring pattern", "OneTab import bridge"]
+    },
+
+    "signal2noise": {
+      "id": "signal2noise",
+      "name": "Signal2Noise",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\Signal2Noise",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0.0",
+      "brand": "OIA",
+      "corePurpose": "Task Prioritization",
+      "description": "ADHD task focus tool - prioritize daily signals.",
+      "targetIncumbent": "Generic to-do apps",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": false,
+        "customListView": true,
+        "darkMode": true,
+        "accordion": true,
+        "signalPill": true
+      },
+      "logicBricks": [],
+      "permissions": ["sidePanel", "storage", "clipboardWrite"],
+      "uniqueFeatures": [
+        "Signal pill display (priority visualization)",
+        "Signal-to-noise ratio selector",
+        "Accordion note list",
+        "Copy all / Download signals"
+      ],
+      "harvestable": ["Signal pill UI pattern", "Accordion note list pattern"]
+    },
+
+    "tuneout2focusin": {
+      "id": "tuneout2focusin",
+      "name": "TuneOut2FocusIn",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\TuneOut2FocusIn",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0.0",
+      "brand": "OIA",
+      "corePurpose": "Background Noise Generator",
+      "description": "White/pink/brown noise for ADHD focus.",
+      "targetIncumbent": "Noisli",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": false,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "offscreen-audio", "path": "offscreen/", "purpose": "MV3 offscreen audio playback", "reusable": true }
+      ],
+      "permissions": ["sidePanel", "storage", "offscreen"],
+      "uniqueFeatures": [
+        "Offscreen document audio playback (MV3 pattern)",
+        "4 noise types (white, pink, brown, rain)",
+        "Persistent background playback"
+      ],
+      "harvestable": ["Offscreen audio playback pattern"]
+    },
+
+    "time2focus": {
+      "id": "time2focus",
+      "name": "Time2Focus",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\Time2Focus",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0",
+      "brand": "OIA",
+      "corePurpose": "Focus Timer",
+      "description": "Pomodoro-style timer in side panel with focus topic persistence.",
+      "targetIncumbent": "Marinara, Forest",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": false,
+        "darkMode": true,
+        "presetButtons": true,
+        "flashOverlay": true
+      },
+      "logicBricks": [
+        { "name": "offscreen-audio", "path": "offscreen/", "purpose": "Alert sound playback", "reusable": true },
+        { "name": "chrome-alarms", "path": "background.js", "purpose": "Background timer persistence", "reusable": true }
+      ],
+      "permissions": ["sidePanel", "storage", "alarms", "notifications", "offscreen"],
+      "uniqueFeatures": [
+        "Focus topic persistence (ADHD anchor)",
+        "Side panel countdown (always visible)",
+        "Panel flash alert on completion",
+        "Soft alert sounds (chime, bowl, raindrop, bell)"
+      ],
+      "harvestable": ["chrome.alarms timer pattern", "Panel flash overlay", "Focus topic persistence"]
+    },
+
+    "864z-chronical": {
+      "id": "864z-chronical",
+      "name": "Chronicle",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\864z-chronical",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "1.0.0",
+      "brand": "864zeros",
+      "corePurpose": "AI Conversation History",
+      "description": "Automatically captures and indexes AI conversations from ChatGPT, Claude, Gemini.",
+      "targetIncumbent": "Manual copy-paste",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "content-script.js", "path": "content-script.js", "purpose": "AI platform scraping", "reusable": true },
+        { "name": "db.js", "path": "lib/db.js", "purpose": "IndexedDB storage", "reusable": true }
+      ],
+      "permissions": ["storage", "sidePanel"],
+      "hostPermissions": ["gemini.google.com", "aistudio.google.com", "claude.ai", "chatgpt.com", "chat.openai.com"],
+      "uniqueFeatures": [
+        "Multi-platform AI scraping (ChatGPT, Claude, Gemini)",
+        "Automatic conversation capture",
+        "Searchable history"
+      ],
+      "harvestable": ["AI platform scraping patterns", "db.js"]
+    },
+
+    "who-is-watching": {
+      "id": "who-is-watching",
+      "name": "Who Is Watching",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\who-is-watching",
+      "zone": "warehouse",
+      "status": "stable",
+      "version": "2.1.6",
+      "brand": "OIA",
+      "corePurpose": "Tracker Detector",
+      "description": "Detects and blocks trackers, fingerprinting, and surveillance scripts.",
+      "targetIncumbent": "Privacy Badger, uBlock",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "detector.js", "path": "content/detector.js", "purpose": "Tracker detection engine", "reusable": true },
+        { "name": "bridge.js", "path": "content/bridge.js", "purpose": "Content script bridge", "reusable": true },
+        { "name": "injector.js", "path": "content/injector.js", "purpose": "Script injection", "reusable": true },
+        { "name": "hook.js", "path": "injected/hook.js", "purpose": "JS API hooking", "reusable": true }
+      ],
+      "permissions": ["sidePanel", "tabs", "activeTab", "scripting", "storage", "webRequest", "declarativeNetRequest", "declarativeNetRequestFeedback"],
+      "uniqueFeatures": [
+        "Real-time tracker detection",
+        "JS API hooking for fingerprint detection",
+        "Network request interception"
+      ],
+      "harvestable": ["detector.js", "JS API hooking pattern", "declarativeNetRequest pattern"]
+    },
+
+    "oia-focus-note": {
+      "id": "oia-focus-note",
+      "name": "OIA Focus Note",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\oia-focus-note",
+      "zone": "warehouse",
+      "status": "minimal",
+      "version": "1.1.0",
+      "brand": "OIA",
+      "corePurpose": "Note Taking",
+      "description": "Quick note-taking side panel for ADHD focus.",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": false,
+        "darkMode": true
+      },
+      "logicBricks": [],
+      "permissions": ["storage", "sidePanel"],
+      "uniqueFeatures": ["Minimal distraction-free notes"],
+      "harvestable": []
+    },
+
+    "oia-focus-timer": {
+      "id": "oia-focus-timer",
+      "name": "OIA Focus Timer",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\oia-focus-timer",
+      "zone": "warehouse",
+      "status": "minimal",
+      "version": "1.1.0",
+      "brand": "OIA",
+      "corePurpose": "Focus Timer",
+      "description": "Simple timer with notifications.",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": false,
+        "darkMode": true
+      },
+      "logicBricks": [],
+      "permissions": ["storage", "notifications", "sidePanel"],
+      "uniqueFeatures": ["OS notifications on completion"],
+      "harvestable": []
+    },
+
+    "oia-focus-wall": {
+      "id": "oia-focus-wall",
+      "name": "OIA Focus Wall",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\oia-focus-wall",
+      "zone": "warehouse",
+      "status": "minimal",
+      "version": "1.1.0",
+      "brand": "OIA",
+      "corePurpose": "Focus Wallpaper",
+      "description": "Focus-enhancing wallpaper/visual.",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": false,
+        "darkMode": true
+      },
+      "logicBricks": [],
+      "permissions": ["storage", "sidePanel"],
+      "uniqueFeatures": ["Visual focus aids"],
+      "harvestable": []
+    },
+
+    "oia-focus-sound": {
+      "id": "oia-focus-sound",
+      "name": "OIA Focus Sound",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\oia.focus.sound",
+      "zone": "warehouse",
+      "status": "minimal",
+      "version": "1.1.0",
+      "brand": "OIA",
+      "corePurpose": "Sound Player",
+      "description": "Ambient sound player for focus.",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": false,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "audio-files", "path": "audio/*.mp3", "purpose": "Ambient audio files", "reusable": true }
+      ],
+      "permissions": ["storage", "sidePanel"],
+      "uniqueFeatures": ["Web-accessible audio resources"],
+      "harvestable": ["Audio resource pattern"]
+    },
+
+    "oia-focus-signal": {
+      "id": "oia-focus-signal",
+      "name": "OIA Focus Signal",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\oia.focus.signal",
+      "zone": "warehouse",
+      "status": "minimal",
+      "version": "1.1.0",
+      "brand": "OIA",
+      "corePurpose": "Signal/Notification",
+      "description": "Focus signal and notification tool.",
+      "ui": {
+        "sidePanel": true,
+        "contentScript": false,
+        "darkMode": true
+      },
+      "logicBricks": [],
+      "permissions": ["storage", "sidePanel"],
+      "uniqueFeatures": [],
+      "harvestable": []
+    }
+  },
+
+  "productionFloor": {
+    "_zone": "ACTIVE_PROJECTS",
+    "_description": "Current Vulture Strike builds under active development",
+
+    "864z-2026-002-pocket-alt": {
+      "id": "864z-2026-002-pocket-alt",
+      "strike": "864z-2026-002",
+      "name": "ReadVault (Pocket Alt)",
+      "path": "C:\\Users\\I820965\\dev\\vulture-nest\\864zeros_engine\\builds\\864z-2026-002-pocket-alt",
+      "zone": "production",
+      "status": "active",
+      "version": "1.0.0",
+      "brand": "864zeros",
+      "corePurpose": "Reader / Read-It-Later",
+      "description": "Pocket alternative for saving and reading articles.",
+      "targetIncumbent": "Pocket",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": true,
+        "rescuePage": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "pocket-parser.js", "path": "lib/pocket-parser.js", "purpose": "Pocket export parser", "reusable": true },
+        { "name": "api-client.js", "path": "lib/api-client.js", "purpose": "API communication", "reusable": true },
+        { "name": "backup.js", "path": "lib/backup.js", "purpose": "Data backup", "reusable": true },
+        { "name": "db.js", "path": "lib/db.js", "purpose": "IndexedDB storage", "reusable": true },
+        { "name": "redactor.js", "path": "lib/redactor.js", "purpose": "Content redaction", "reusable": true },
+        { "name": "store.js", "path": "lib/store.js", "purpose": "State management", "reusable": true },
+        { "name": "tiers.js", "path": "lib/tiers.js", "purpose": "Pricing tiers", "reusable": true },
+        { "name": "oia-design-system.css", "path": "lib/oia-design-system.css", "purpose": "OIA Design System", "reusable": true }
+      ],
+      "permissions": ["storage", "sidePanel", "tabs", "activeTab", "contextMenus"],
+      "uniqueFeatures": [
+        "Pocket export import",
+        "Rescue page UI",
+        "Article list with folders",
+        "Reading time estimation"
+      ],
+      "harvestable": ["pocket-parser.js", "Rescue page UI pattern", "Article list UI"],
+      "harvestRecommendation": "Best source for Reader UI components - use for ReadFlow fix"
+    },
+
+    "864z-2026-003-instarescue": {
+      "id": "864z-2026-003-instarescue",
+      "strike": "864z-2026-003",
+      "name": "InstaRescue",
+      "path": "C:\\Users\\I820965\\dev\\vulture-nest\\864zeros_engine\\builds\\864z-2026-003-instarescue",
+      "zone": "production",
+      "status": "scaffold",
+      "version": "1.0.0",
+      "brand": "864zeros",
+      "corePurpose": "Instapaper Rescue",
+      "description": "Instapaper data rescue tool.",
+      "targetIncumbent": "Instapaper",
+      "ui": {
+        "sidePanel": false,
+        "optionsPage": false,
+        "contentScript": false
+      },
+      "logicBricks": [
+        { "name": "deep-parser.js", "path": "lib/deep-parser.js", "purpose": "Deep CSV/export parsing", "reusable": true },
+        { "name": "constants.js", "path": "lib/constants.js", "purpose": "App constants", "reusable": false }
+      ],
+      "permissions": [],
+      "uniqueFeatures": [
+        "Deep export parsing",
+        "Data rescue focus"
+      ],
+      "harvestable": ["deep-parser.js"]
+    },
+
+    "864z-2026-004-passvault": {
+      "id": "864z-2026-004-passvault",
+      "strike": "864z-2026-004",
+      "name": "PassVault",
+      "path": "C:\\Users\\I820965\\dev\\vulture-nest\\864zeros_engine\\builds\\864z-2026-004-passvault",
+      "zone": "production",
+      "status": "active",
+      "version": "1.0.0",
+      "brand": "864zeros",
+      "corePurpose": "Password Manager",
+      "description": "Local-first password manager with breach checking and PDF recovery.",
+      "targetIncumbent": "Dashlane, LastPass, 1Password",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": false,
+        "auditModal": true,
+        "importModal": true,
+        "pricingModal": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "password-parser.js", "path": "lib/password-parser.js", "purpose": "Multi-format password import (Dashlane, LastPass, 1Password)", "reusable": true },
+        { "name": "crypto-vault.js", "path": "lib/crypto-vault.js", "purpose": "AES-GCM encryption", "reusable": true },
+        { "name": "breach-checker.js", "path": "lib/breach-checker.js", "purpose": "HaveIBeenPwned integration", "reusable": true },
+        { "name": "recovery-pdf.js", "path": "lib/recovery-pdf.js", "purpose": "PDF recovery document generation", "reusable": true },
+        { "name": "constants.js", "path": "lib/constants.js", "purpose": "App constants and pricing", "reusable": false },
+        { "name": "864z-core.js", "path": "lib/864z-core.js", "purpose": "Brand constants", "reusable": true },
+        { "name": "BRK-PRICING-001.js", "path": "lib/BRK-PRICING-001.js", "purpose": "Pricing modal controller", "reusable": true }
+      ],
+      "permissions": ["storage", "unlimitedStorage", "sidePanel", "contextMenus", "alarms"],
+      "hostPermissions": ["api.pwnedpasswords.com"],
+      "uniqueFeatures": [
+        "Multi-format password import (Dashlane, LastPass, 1Password, CSV)",
+        "AES-GCM local encryption",
+        "HaveIBeenPwned breach checking",
+        "PDF recovery document",
+        "Security audit modal",
+        "Lifetime savings calculation (Aha! moment)"
+      ],
+      "harvestable": ["password-parser.js", "crypto-vault.js", "breach-checker.js", "recovery-pdf.js", "Audit modal UI", "Import modal UI"]
+    },
+
+    "864z-2026-005-readflow": {
+      "id": "864z-2026-005-readflow",
+      "strike": "864z-2026-005",
+      "name": "ReadFlow",
+      "path": "C:\\Users\\I820965\\dev\\vulture-nest\\864zeros_engine\\builds\\864z-2026-005-readflow",
+      "zone": "production",
+      "status": "active",
+      "version": "1.0.0",
+      "brand": "864zeros",
+      "corePurpose": "Reader / Kobo Sync",
+      "description": "Instapaper alternative with Kobo e-reader sync via ePub export.",
+      "targetIncumbent": "Instapaper",
+      "ui": {
+        "sidePanel": true,
+        "optionsPage": true,
+        "contentScript": true,
+        "readerView": true,
+        "eReaderView": true,
+        "rescueAuditModal": true,
+        "koboBridgeModal": true,
+        "pricingModal": true,
+        "customListView": true,
+        "darkMode": true
+      },
+      "logicBricks": [
+        { "name": "instapaper-parser.js", "path": "lib/instapaper-parser.js", "purpose": "Instapaper CSV parsing with audit stats", "reusable": true },
+        { "name": "epub-builder.js", "path": "lib/epub-builder.js", "purpose": "ePub generation for e-readers", "reusable": true },
+        { "name": "qr-generator.js", "path": "lib/qr-generator.js", "purpose": "QR code generation for wireless transfer", "reusable": true },
+        { "name": "article-fetcher.js", "path": "lib/article-fetcher.js", "purpose": "Article content extraction", "reusable": true },
+        { "name": "crypto-vault.js", "path": "lib/crypto-vault.js", "purpose": "Local encryption", "reusable": true },
+        { "name": "constants.js", "path": "lib/constants.js", "purpose": "App constants", "reusable": false },
+        { "name": "aether-ui.css", "path": "lib/aether-ui.css", "purpose": "Aether design system", "reusable": true },
+        { "name": "864z-core.js", "path": "lib/864z-core.js", "purpose": "Brand constants", "reusable": true },
+        { "name": "BRK-PRICING-001.js", "path": "lib/BRK-PRICING-001.js", "purpose": "Pricing modal controller", "reusable": true }
+      ],
+      "permissions": ["storage", "unlimitedStorage", "sidePanel", "contextMenus", "notifications", "activeTab", "scripting", "downloads"],
+      "uniqueFeatures": [
+        "Instapaper CSV import with savings audit",
+        "ePub digest generation",
+        "Kobo Sync Bridge with QR code",
+        "Article rescue audit (THE AHA MOMENT)",
+        "Reading time calculation",
+        "Folder organization",
+        "Reader view / e-reader view"
+      ],
+      "harvestable": ["instapaper-parser.js", "epub-builder.js", "qr-generator.js", "article-fetcher.js", "Kobo Bridge modal", "Rescue audit modal"],
+      "issues": ["UI inherited from PassVault - needs Reader icons instead of Vault icons"]
+    }
+  },
+
+  "brickInventory": {
+    "_description": "Consolidated brick catalog by category",
+
+    "parsers": [
+      { "name": "password-parser.js", "source": "passvault", "zone": "production", "formats": ["Dashlane", "LastPass", "1Password", "CSV"] },
+      { "name": "instapaper-parser.js", "source": "readflow", "zone": "production", "formats": ["Instapaper CSV"] },
+      { "name": "pocket-parser.js", "source": "pocket-alt", "zone": "production", "formats": ["Pocket export"] },
+      { "name": "deep-parser.js", "source": "instarescue", "zone": "production", "formats": ["Generic CSV"] },
+      { "name": "verse-detector.js", "source": "bible-insight", "zone": "warehouse", "formats": ["Bible references"] }
+    ],
+    "exporters": [
+      { "name": "epub-builder.js", "source": "readflow", "zone": "production", "formats": ["ePub"] },
+      { "name": "recovery-pdf.js", "source": "passvault", "zone": "production", "formats": ["PDF"] },
+      { "name": "pdf-generator.js", "source": "clipboard", "zone": "warehouse", "formats": ["PDF"] },
+      { "name": "qr-generator.js", "source": "readflow", "zone": "production", "formats": ["QR Code SVG"] }
+    ],
+    "security": [
+      { "name": "crypto-vault.js", "source": "passvault", "zone": "production", "features": ["AES-GCM encryption"] },
+      { "name": "breach-checker.js", "source": "passvault", "zone": "production", "features": ["HaveIBeenPwned API"] },
+      { "name": "detector.js", "source": "who-is-watching", "zone": "warehouse", "features": ["Tracker detection"] },
+      { "name": "redactor.js", "source": "clipboard", "zone": "warehouse", "features": ["Content redaction"] }
+    ],
+    "storage": [
+      { "name": "db.js", "source": "multiple", "zone": "both", "features": ["IndexedDB wrapper"] },
+      { "name": "backup.js", "source": "clipboard", "zone": "warehouse", "features": ["Export/Import"] },
+      { "name": "google-drive/", "source": "clipboard", "zone": "warehouse", "features": ["Cloud sync"] }
+    ],
+    "ui": [
+      { "name": "oia-design-system.css", "source": "multiple", "zone": "warehouse", "features": ["Dark theme", "Typography", "Components"] },
+      { "name": "aether-ui.css", "source": "readflow", "zone": "production", "features": ["Brand footer", "Modals", "Cards"] },
+      { "name": "BRK-PRICING-001.js", "source": "build-kit", "zone": "production", "features": ["Pricing modal controller"] },
+      { "name": "864z-core.js", "source": "build-kit", "zone": "production", "features": ["Brand constants"] }
+    ],
+    "audio": [
+      { "name": "offscreen-audio", "source": "tuneout2focusin", "zone": "warehouse", "features": ["MV3 audio playback"] }
+    ]
+  },
+
+  "harvestGuide": {
+    "_description": "Quick reference for common harvest operations",
+
+    "readerUI": {
+      "recommendedSource": "864z-2026-002-pocket-alt",
+      "components": ["Article card", "Article list", "Empty state", "Search bar"],
+      "path": "vulture-nest/864zeros_engine/builds/864z-2026-002-pocket-alt/sidepanel/"
+    },
+    "securityUI": {
+      "recommendedSource": "864z-2026-004-passvault",
+      "components": ["Password card", "Audit modal", "Import modal", "Lock overlay"],
+      "path": "vulture-nest/864zeros_engine/builds/864z-2026-004-passvault/sidepanel/"
+    },
+    "focusUI": {
+      "recommendedSource": "Time2Focus",
+      "components": ["Preset buttons", "Timer display", "Flash overlay"],
+      "path": "864zeros/extensions/Time2Focus/"
+    },
+    "cloudSync": {
+      "recommendedSource": "clipboard",
+      "components": ["Google Drive auth", "Backup/restore", "Sync status"],
+      "path": "864zeros/extensions/clipboard/lib/google-drive/"
+    },
+    "payments": {
+      "recommendedSource": "clipboard",
+      "components": ["ExtPay integration", "Tier management"],
+      "path": "864zeros/extensions/clipboard/lib/payments/"
+    }
+  }
+}

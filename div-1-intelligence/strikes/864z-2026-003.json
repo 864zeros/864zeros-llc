@@ -1,0 +1,184 @@
+{
+  "strike_id": "864z-2026-003",
+  "codename": "InstaRescue",
+  "generated_at": "2026-03-17T12:00:00.000Z",
+  "status": "STRIKE_QUALIFIED",
+
+  "target": {
+    "name": "Instapaper",
+    "category": "chrome extension",
+    "estimated_traffic": 1000000,
+    "last_significant_update": "2024-06",
+    "stagnation_months": 21,
+    "primary_weakness": "Parsing failures on modern web, broken Kobo/Kindle sync",
+    "secondary_weakness": "No local backup, subscription creep, paywall bypass removed",
+    "export_formats": ["HTML", "CSV (Premium)", "JSON (API)"]
+  },
+
+  "validation": {
+    "vulture_score": 9.38,
+    "z_convergence": 0.80,
+    "z_velocity": 0.53,
+    "z_scarcity": 0.40,
+    "rule_of_40": 110.0,
+    "exit_multiplier": 1.5,
+    "competitors": ["Pocket", "Raindrop", "Matter"],
+    "competitor_count": 3,
+    "scarcity_check": "PASSED"
+  },
+
+  "pain_signals": {
+    "total_signals": 18,
+    "critical": [
+      "Parsing failures - articles save as blank pages",
+      "Kobo sync broken since 2024",
+      "Kindle formatting destroys articles"
+    ],
+    "high": [
+      "Paywall bypass no longer works",
+      "No bulk export without API scripting",
+      "Mobile app crashes on long articles"
+    ],
+    "sources": ["r/instapaper", "AlternativeTo", "Twitter", "App Store reviews"],
+    "sentiment_score": 32
+  },
+
+  "builder_specs": {
+    "product_name": "ReadFlow",
+    "tagline": "Read anything, anywhere. Your articles, your device, your data.",
+
+    "required_bricks": [
+      {
+        "id": "BRK-DB-001",
+        "name": "IndexedDB_Core",
+        "purpose": "Local article storage"
+      },
+      {
+        "id": "BRK-MIG-003",
+        "name": "Universal_ReadLater_Parser",
+        "purpose": "Instapaper import, format detection"
+      },
+      {
+        "id": "BRK-MIG-002",
+        "name": "Migration_Engine",
+        "purpose": "Multi-format export (JSON, HTML, CSV, MD, EPUB)"
+      },
+      {
+        "id": "BRK-PAY-004",
+        "name": "Pay_Once_Unlock",
+        "purpose": "Tier management, license validation"
+      },
+      {
+        "id": "BRK-PRI-005",
+        "name": "Data_Redactor",
+        "purpose": "Privacy sanitization"
+      }
+    ],
+
+    "delta_features": [
+      {
+        "name": "Deep-Parse Engine",
+        "brick_id": "BRK-PRS-001",
+        "description": "Superior article parsing with fallback chain. Handles SPAs, paywalls, and modern web architecture.",
+        "implementation": [
+          "Mozilla Readability.js as primary parser",
+          "Mercury Parser fallback",
+          "DOM snapshot with CSS inlining",
+          "Image extraction and local caching",
+          "Parse confidence scoring"
+        ],
+        "priority": "P0",
+        "complexity": "M"
+      },
+      {
+        "name": "One-Click Kobo/Kindle Rescue",
+        "brick_id": "BRK-EPUB-001",
+        "description": "Local EPUB generation with direct e-reader sync. No cloud required.",
+        "implementation": [
+          "EPUB generation from parsed articles",
+          "MOBI/AZW3 conversion support",
+          "USB device detection for Kobo/Kindle",
+          "Calibre library compatibility",
+          "Send-to-Kindle email integration",
+          "Batch export with folder organization"
+        ],
+        "priority": "P0",
+        "complexity": "M"
+      },
+      {
+        "name": "Instapaper Rescue Wizard",
+        "brick_id": null,
+        "description": "Guided import flow for Instapaper refugees. Preserves folders, highlights, progress.",
+        "implementation": [
+          "HTML export import (basic)",
+          "CSV import with full metadata",
+          "API import for power users",
+          "Progress preservation",
+          "Folder/tag mapping"
+        ],
+        "priority": "P1",
+        "complexity": "S"
+      }
+    ],
+
+    "architecture": {
+      "type": "chrome_extension_mv3",
+      "offline_first": true,
+      "cloud_dependency": "none_required",
+      "storage": "IndexedDB",
+      "sync_optional": true
+    },
+
+    "file_structure": {
+      "manifest_version": 3,
+      "directories": [
+        "background/",
+        "sidepanel/",
+        "rescue/",
+        "reader/",
+        "ereader/",
+        "options/",
+        "lib/",
+        "scripts/",
+        "assets/"
+      ]
+    }
+  },
+
+  "projection": {
+    "target_mrr": 2500,
+    "price_point": 9,
+    "model": "pay_once",
+    "months_to_exit": 8,
+    "exit_target": 141312,
+    "growth_projection": 25,
+    "margin_projection": 85,
+    "rule_of_40_score": 110
+  },
+
+  "north_star": {
+    "primary": {
+      "metric": "Successful E-Reader Syncs",
+      "description": "Articles successfully transferred to Kobo/Kindle",
+      "target_30_day": 1000
+    },
+    "secondary": {
+      "metric": "Parse Success Rate",
+      "description": "Percentage of URLs parsed correctly on first attempt",
+      "target": 95
+    }
+  },
+
+  "gtm": {
+    "channels": ["r/instapaper", "r/kobo", "r/kindle", "r/ereader"],
+    "positioning": "The local-first Instapaper alternative that actually works with your e-reader",
+    "launch_strategy": "Reddit rescue posts + Show HN"
+  },
+
+  "handoff": {
+    "ready_for_builder": true,
+    "builder_command": "864zeros build --strike=864z-2026-003 --target=instapaper",
+    "estimated_build_time": "4-6 hours",
+    "automation_ratio": "75/25"
+  }
+}

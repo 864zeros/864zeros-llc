@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - ReadVault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <h1 class="oia-h1">ReadVault Settings</h1>
+      <p class="oia-body">Configure your offline reading list.</p>
+    </header>
+
+    <!-- Privacy Section -->
+    <section class="options-section">
+      <h2 class="oia-h2">Privacy</h2>
+      <div class="oia-card">
+        <div class="option-row">
+          <div class="option-info">
+            <strong>Offline Mode</strong>
+            <span>All data is stored locally on your device. Nothing is sent to servers.</span>
+          </div>
+          <span class="status-badge success">Always On</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Section -->
+    <section class="options-section">
+      <h2 class="oia-h2">Your Data</h2>
+      <div class="oia-card">
+        <div class="option-row">
+          <div class="option-info">
+            <strong>Articles Saved</strong>
+            <span id="stat-articles">Loading...</span>
+          </div>
+        </div>
+
+        <hr class="option-divider">
+
+        <div class="option-row">
+          <div class="option-info">
+            <strong>Export Data</strong>
+            <span>Download all your articles for backup.</span>
+          </div>
+          <div class="button-group">
+            <button id="btn-export-json" class="oia-btn-secondary">JSON</button>
+            <button id="btn-export-html" class="oia-btn-secondary">HTML</button>
+            <button id="btn-export-csv" class="oia-btn-secondary">CSV</button>
+            <button id="btn-export-md" class="oia-btn-secondary">Markdown</button>
+          </div>
+        </div>
+
+        <hr class="option-divider">
+
+        <div class="option-row">
+          <div class="option-info">
+            <strong>Import Data</strong>
+            <span>Restore from a previous backup.</span>
+          </div>
+          <div>
+            <input type="file" id="import-file" accept=".json" hidden>
+            <button id="btn-import" class="oia-btn-secondary">Import Backup</button>
+          </div>
+        </div>
+
+        <hr class="option-divider">
+
+        <div class="option-row danger">
+          <div class="option-info">
+            <strong>Delete All Data</strong>
+            <span>Permanently delete all saved articles. This cannot be undone.</span>
+          </div>
+          <button id="btn-delete-all" class="oia-btn-danger">Delete All</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Import from Pocket -->
+    <section class="options-section">
+      <h2 class="oia-h2">Import from Pocket</h2>
+      <div class="oia-card">
+        <div class="option-row">
+          <div class="option-info">
+            <strong>Rescue Your Articles</strong>
+            <span>Import your saved articles from Pocket's export file.</span>
+          </div>
+          <button id="btn-pocket-import" class="oia-btn-primary">Import from Pocket</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="options-section">
+      <h2 class="oia-h2">About</h2>
+      <div class="oia-card">
+        <div class="about-info">
+          <p><strong>ReadVault</strong> by 864zeros</p>
+          <p class="version">Version 1.0.0</p>
+          <p class="oia-body-small">A privacy-respecting, offline-first reading list. Your data belongs to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

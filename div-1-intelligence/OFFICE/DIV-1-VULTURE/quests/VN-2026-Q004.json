@@ -1,0 +1,414 @@
+{
+  "quest_id": "VN-2026-Q004",
+  "target_name": "Instapaper",
+  "generated_at": "2026-03-20T18:56:36.092811",
+  "mode": "deep",
+  "target": {
+    "category": "micro-saas",
+    "traffic": 500000,
+    "stagnation_months": 18,
+    "primary_weakness": "  Instapaper on Kindle Scribes Browser is SO CLOSE to perfect! (A ... I'm not sure if the scroll fun",
+    "secondary_weakness": "  Instapaper is so slow for me. I have it as a bookmark and I only click it to save open page as a f"
+  },
+  "ransom": {
+    "pricing_model": "subscription",
+    "price_range": "$6",
+    "free_tier_exists": true,
+    "free_tier_limits": [
+      "The free version of Instapaper lets you save unlimited articles and videos, create five notes per mo",
+      "**Limits in Instapaper Free 1.4**",
+      "Instapaper's free tier now includes text-to-speech and user profiles ... Is there a limit to how man",
+      "Instapaper Free includes unlimited article saving, full typography customization, folder and tag org"
+    ],
+    "price_increase_history": [],
+    "enterprise_wall": false,
+    "ransom_signals": [
+      {
+        "source": "web",
+        "content": "**Should I wait for the Reader or get Instapaper Premium?**"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.reddit.com/r/readwise/comments/qafnjw/should_i_wait_for_the_reader_or_get_instapaper/)"
+      },
+      {
+        "source": "web",
+        "content": "Which of these features make it worth $30 a year ? Full-Text Search - Search through all of the articles you've saved to Instapaper, even ones\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.instapaper.com/premium)"
+      },
+      {
+        "source": "web",
+        "content": "Upgrade to Premium today to get the most out of Instapaper. Save over 15% by choosing a yearly plan. $5.99 per month $59.99 per yearRead more"
+      },
+      {
+        "source": "web",
+        "content": "**Permanent Archive and Premium Price Change**"
+      },
+      {
+        "source": "web",
+        "content": "(https://blog.instapaper.com/post/735784644474208256/permanent-archive-and-premium-price-change)"
+      },
+      {
+        "source": "web",
+        "content": "We are increasing the price of Instapaper Premium from $3/month ($30/year) to $6/month ($60/year). This will be our first price change to Instapaper Premium in\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Instapaper Doubles Subscription Price**"
+      },
+      {
+        "source": "web",
+        "content": "We're proud that Instapaper Premium pricing has remained consistent since 2014. ... expensive now, every interesting feature behind a paywall.Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Going Full-Time on Instapaper - Brian Donohue**"
+      },
+      {
+        "source": "web",
+        "content": "(https://bthdonohue.com/2024/03/06/going-fulltime-on-instapaper.html)"
+      },
+      {
+        "source": "web",
+        "content": "price of Instapaper Premium from $3/month to $6/month. Despite this being our first price change since 2014. , we still upset many customers\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.instapaper.com/premium)"
+      },
+      {
+        "source": "web",
+        "content": "Upgrade to Premium today to get the most out of Instapaper. Save over 15% by choosing a yearly plan. $5.99 per month $59.99 per yearRead more"
+      },
+      {
+        "source": "web",
+        "content": "**Instapaper vs. Pocket: Which is best?**"
+      },
+      {
+        "source": "web",
+        "content": "(https://zapier.com/blog/instapaper-vs-pocket/)"
+      },
+      {
+        "source": "web",
+        "content": "The free version of Instapaper lets you save unlimited articles and videos, create five notes per month, create folders, and sync your use\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Limits in Instapaper Free 1.4**"
+      },
+      {
+        "source": "web",
+        "content": "(https://blog.instapaper.com/post/93321900)"
+      },
+      {
+        "source": "web",
+        "content": "The apps require the Instapaper web service, which has its own monthly expenses and maintenance time. The server costs now exceed $550/month,\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Instapaper Goes Free Adds Text to Speech and User Prof: What It ...**"
+      },
+      {
+        "source": "web",
+        "content": "(https://lifetips.alibaba.com/tech-efficiency/instapaper-goes-free-adds-text-to-speech-and-user-prof)"
+      },
+      {
+        "source": "web",
+        "content": "Instapaper's free tier now includes text-to-speech and user profiles ... Is there a limit to how many articles I can save with the free tier? No. Unlimited saves,\u00a0..."
+      },
+      {
+        "source": "web",
+        "content": "**Is Instapaper the Best Pocket Alternative? A Migration Guide**"
+      },
+      {
+        "source": "web",
+        "content": "(https://lovable.dev/guides/instapaper-pocket-alternative)"
+      },
+      {
+        "source": "web",
+        "content": "Instapaper Free includes unlimited article saving, full typography customization, folder and tag organization, offline reading, basic text-to-\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Permanent Archive and Premium Price Change**"
+      },
+      {
+        "source": "web",
+        "content": "(https://blog.instapaper.com/post/735784644474208256/permanent-archive-and-premium-price-change)"
+      },
+      {
+        "source": "web",
+        "content": "We are increasing the price of Instapaper Premium from $3/month ($30/year) to $6/month ($60/year). This will be our first price change to Instapaper Premium in\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**PDF Support, Localization, and International Pricing**"
+      },
+      {
+        "source": "web",
+        "content": "(https://blog.instapaper.com/post/791134578856378368/pdf-support-localization-and-international)"
+      },
+      {
+        "source": "web",
+        "content": "In 2024, when we increased the price of Instapaper Premium, we ... increased the price of Instapaper Premium in some international markets.Read more"
+      },
+      {
+        "source": "web",
+        "content": "**We are also increasing the price of Instapaper Premium ...**"
+      },
+      {
+        "source": "web",
+        "content": "(https://x.com/instapaper/status/1731704886444605543)"
+      },
+      {
+        "source": "web",
+        "content": "We are also increasing the price of Instapaper Premium from $3/month ($30/year) to $6/month ($60/year). This will be our first price change\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.reddit.com/r/instapaper/comments/1qiypos/starting_february_19_sendtokindle_will_only_be/)"
+      },
+      {
+        "source": "web",
+        "content": "The Premium pricing for Instapaper in Poland is 20 z\u0142oty per month which works out to $5.55, so not a huge savings. Is there a price point that\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Read-it-later service Instapaper is doubling the price of ...**"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.theverge.com/2023/12/5/23989725/read-it-later-service-instapaper-is-doubling-the-price-of-premium)"
+      },
+      {
+        "source": "web",
+        "content": "Instapaper Premium will now cost $6 per month, which Instapaper says is the first price change for the service in nine years.Read more"
+      }
+    ],
+    "ransom_severity": 10
+  },
+  "friction": {
+    "export_formats": [
+      "CSV"
+    ],
+    "export_limitations": [
+      "**Navigating the Limits of the Instapaper API: Exporting a ...**",
+      "(https://officeofadamthede.com/blog/2025/05/04/navigating-the-limits-of-the-instapaper-api-exporting",
+      "500-Item Limit per Folder The Instapaper API only returns the first 500 items per folder, regardless",
+      "Yeah, there is an annoying instapaper api limitation that limits us to automatically fetching 500 ar"
+    ],
+    "api_restrictions": [],
+    "data_portability_score": 1,
+    "lock_in_mechanisms": [],
+    "migration_complexity": "difficult",
+    "friction_signals": [
+      {
+        "source": "web",
+        "content": "**Import/export content from/into Instapaper**"
+      },
+      {
+        "source": "web",
+        "content": "(https://instapaper.zendesk.com/hc/en-us/articles/30080578815245-Import-export-content-from-into-Instapaper)"
+      },
+      {
+        "source": "web",
+        "content": "Please go to Instapaper.com/user on your desktop while logged in. Scroll down to the import/export section and select the preferred format.Read more"
+      },
+      {
+        "source": "web",
+        "content": "Export your Instapaper data On the settings (https://www.instapaper.com/user) page, click on \u201cDownload .CSV file\u201d in the \u201cExport\u201d section."
+      },
+      {
+        "source": "web",
+        "content": "**How to export links from Instapaper - Listy**"
+      },
+      {
+        "source": "web",
+        "content": "How to export links from Instapaper. Follow this step by step guides to export all your links from Instapaper and import them on Listy. To export your saved\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Done with Reader.. how to export saved articles ...**"
+      },
+      {
+        "source": "web",
+        "content": "(https://www.reddit.com/r/readwise/comments/1n3lypq/done_with_reader_how_to_export_saved_articles_to/)"
+      },
+      {
+        "source": "web",
+        "content": "Done with Reader.. how to export saved articles to Instapaper? Sorry ... data,' you should find a button called 'Export Library as CSV.Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Export Instapaper to HTML & PDF**"
+      },
+      {
+        "source": "web",
+        "content": "Yes, you can export your Pocket account at getpocket.com/export and import to instapaper.com/user. Sorry to hear about Pocket shutting down.Read more"
+      },
+      {
+        "source": "web",
+        "content": "Import Instapaper/Readability articles into Pocket instantly using native sync, browser extensions, or CSV/API methods."
+      },
+      {
+        "source": "web",
+        "content": "**Migrate Existing Content to Reader - Readwise Docs**"
+      },
+      {
+        "source": "web",
+        "content": "**Navigating the Limits of the Instapaper API: Exporting a ...**"
+      },
+      {
+        "source": "web",
+        "content": "(https://officeofadamthede.com/blog/2025/05/04/navigating-the-limits-of-the-instapaper-api-exporting-a-decade-of-reading/?ref=autodidacts.io)"
+      },
+      {
+        "source": "web",
+        "content": "500-Item Limit per Folder The Instapaper API only returns the first 500 items per folder, regardless of pagination methods. Pagination Doesn't\u00a0...Read more"
+      },
+      {
+        "source": "web",
+        "content": "Yeah, there is an annoying instapaper api limitation that limits us to automatically fetching 500 articles from each \"folder\" in instapaper.Read more"
+      },
+      {
+        "source": "web",
+        "content": "**Instaparser API**"
+      },
+      {
+        "source": "web",
+        "content": "Instaparser is a new API that gives developers access to the same parsing tools we use for the Instapaper service.Read more"
+      }
+    ],
+    "friction_severity": 10
+  },
+  "math": {
+    "z_convergence": 0.8,
+    "z_velocity": 0.5,
+    "z_scarcity": 1.0,
+    "vulture_score": 11.03,
+    "growth_projection": 25.0,
+    "margin_projection": 85.0,
+    "rule_of_40": 110.0,
+    "exit_multiplier": 1.5,
+    "tam_estimate": 2500000,
+    "sam_estimate": 750000,
+    "som_estimate": 37500,
+    "target_mrr": 6750.0,
+    "months_to_exit": 1,
+    "exit_valuation": 141312,
+    "price_point": 9.0,
+    "tshirt_size": "M",
+    "complexity_score": 5,
+    "build_hours_estimate": 336,
+    "strike_qualified": true,
+    "strike_status": "STRIKE",
+    "kill_rationale": "STRIKE: 864z score 11.03 exceeds 8.64 threshold | Rule of 40 (110.0%) qualifies for 1.5x exit multiplier"
+  },
+  "blueprint": {
+    "product_codename": "InstapaperRescue",
+    "tagline": "The local-first Instapaper alternative that respects your data.",
+    "architecture_type": "chrome_extension_mv3",
+    "offline_first": true,
+    "cloud_dependency": "none",
+    "storage_strategy": "IndexedDB",
+    "rescue_capabilities": [
+      "Import from Instapaper (full data migration)",
+      "Local-first storage (no cloud required)",
+      "Export to multiple formats (JSON, CSV, Markdown)",
+      "Zero-knowledge architecture"
+    ],
+    "delta_features": [
+      {
+        "name": "One-Click Migration",
+        "description": "Guided import wizard for Instapaper refugees",
+        "priority": "P0"
+      },
+      {
+        "name": "Offline-First",
+        "description": "Works without internet, syncs optionally",
+        "priority": "P0"
+      },
+      {
+        "name": "Data Portability",
+        "description": "Export your data anytime, no restrictions",
+        "priority": "P1"
+      }
+    ],
+    "required_technologies": [
+      "Chrome Extension MV3",
+      "IndexedDB",
+      "Service Worker"
+    ],
+    "integration_points": [
+      "Instapaper export format",
+      "Chrome Storage API"
+    ],
+    "primary_metric": {
+      "name": "Successful Migrations",
+      "description": "Users who completed Instapaper data import",
+      "target": "1000 in 30 days"
+    },
+    "secondary_metric": {
+      "name": "Retention Rate",
+      "description": "Users active after 7 days",
+      "target": "70%"
+    }
+  },
+  "pain_signals": {
+    "total": 34,
+    "critical": [
+      "  Instapaper on Kindle Scribes Browser is SO CLOSE to perfect! (A ... I'm not sure if the scroll functionality is broken or if it's a\u00a0...Read more",
+      "**Instapaper extension broken on Zen no matter what ...**",
+      "  (https://www.reddit.com/r/zen_browser/comments/1nhqxxa/instapaper_extension_broken_on_zen_no_matter_what/)",
+      "  Instapaper extension broken on Zen no matter what cookies settings i set it to. Bug \u00b7 r/zen_browser - Instapaper extension broken on Zen no\u00a0...Read "
+    ],
+    "high": [
+      "  Instapaper is so slow for me. I have it as a bookmark and I only click it to save open page as a favorite basically for later read. But it's\u00a0...Read",
+      "**Instapaper Pros and Cons | User Likes & Dislikes**",
+      "  (https://www.g2.com/products/instapaper/reviews?qs=pros-and-cons)",
+      "  Top Cons or Disadvantages of Instapaper. 1. Expensive. Users find Instapaper to be too costly, feeling free alternatives offer better value for mone",
+      "  Pros and Cons. Instapaper Pros and Cons. How are these determined? Pros and Cons are compiled from review feedback and grouped into themes to provid",
+      "**Pocket Pros and Cons | User Likes & Dislikes**",
+      "  (https://www.g2.com/products/pocket/reviews?page=3&qs=pros-and-cons)",
+      "  Top Cons or Disadvantages of Pocket \u00b7 1. Integration Issues. Users struggle with integration issues due to regional limitations and inadequate bank\u00a0",
+      "**IFTTT Pros and Cons | User Likes & Dislikes**",
+      "  (https://www.g2.com/products/ifttt/reviews?page=5&qs=pros-and-cons)"
+    ],
+    "medium": [
+      "**Instapaper no longer HTML scraping the articles**",
+      "  (https://www.reddit.com/r/instapaper/comments/1nj3zpj/instapaper_no_longer_html_scraping_the_articles/)",
+      "  This causes problems when articles are behind a paywall and I am able to access them due to paid subscription but Instapaper is not. I know the\u00a0...R",
+      "**Instapaper on Kindle Scribes Browser is SO CLOSE to ...**",
+      "  (https://www.reddit.com/r/instapaper/comments/1lv0y4r/instapaper_on_kindle_scribes_browser_is_so_close/)",
+      "**Persistent Android article opening issue : r/instapaper**",
+      "  (https://www.reddit.com/r/instapaper/comments/1lhrpoi/persistent_android_article_opening_issue/)",
+      "  Issue description: I open an article on Instapaper. I multitask, e.g. press the home button to switch to other apps.",
+      "**Instapaper or Reader : r/readwise**",
+      "  (https://www.reddit.com/r/readwise/comments/1h5pb3q/instapaper_or_reader/)"
+    ],
+    "sources": [
+      "web",
+      "reddit",
+      "g2"
+    ],
+    "traffic_estimate": 500000,
+    "stagnation_months": 18,
+    "ransom_severity": 10,
+    "friction_severity": 10
+  },
+  "sentiment_synthesis": "Analysis of 34 pain signals across 3 sources indicates significant user frustration with active migration discussions. Pricing concerns are prominent (severity 10/10). Export/lock-in friction is significant (severity 10/10).",
+  "competitors": [],
+  "gtm": {
+    "channels": [
+      "r/instapaper",
+      "r/selfhosted",
+      "Indie Hackers",
+      "Hacker News (Show HN)",
+      "Product Hunt"
+    ],
+    "positioning": "The local-first Instapaper alternative that puts your data first. No subscriptions, no cloud lock-in, no ransom."
+  }
+}
