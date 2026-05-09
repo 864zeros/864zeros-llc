@@ -1,0 +1,189 @@
+/* ============================================================
+   864zeros — Transparency Card + Tier-0.5 Visual Contract
+   ------------------------------------------------------------
+   Canonical: 864z-build-kit/references/core/transparency-tier.css
+   Per-extension copies: extensions/{ext}/lib/transparency-tier.css
+
+   Codified: 2026-05-09 (post-Strike-013 fleet polish consolidation).
+   Authority: Office Architect (864z-OA) per RULE-000.
+   Standard alignment:
+     - Brand footer:  GTM_MANIFEST §6 (4-line stamp + lock SVG + legal links)
+     - Tier-0.5 card: TIER_0_5_BLUEPRINT.md §III.a (opacity 0.60 locked
+                      state, ⊘ glyphs, LOCKED watermark, sage CTA at
+                      full opacity)
+     - RULE-001 §2:   Auditable tier disclosure
+     - RULE-006 v1.0: Brand-prefix pill for surfaces (the brand footer is
+                      the canonical home of the bracket-tag at footer scale)
+     - RULE-007 §Disclosure: privacy line in the standardized footer
+
+   Reference implementation: extensions/864z-chronical/options/options.css
+   (Strike 013 set the visual standard; this file extracts the cross-
+   extension subset for shared consumption.)
+
+   Update protocol (canonical): edit this file, then re-sync all
+   extensions/{ext}/lib/transparency-tier.css copies in the next
+   compliance migration sprint.
+   ============================================================ */
+
+/* ----- Standardized brand footer (GTM_MANIFEST §6) ----- */
+
+.brand-footer {
+  text-align: center;
+  padding: 24px 0 16px;
+  border-top: 1px solid rgba(166, 148, 133, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 32px;
+}
+
+.brand-footer__line {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--oia-text-muted, #8C8C8C);
+}
+
+.brand-footer__product {
+  color: var(--oia-text-secondary, #5C5C5C);
+  font-weight: 600;
+}
+
+.brand-footer__privacy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--oia-text-secondary, #5C5C5C);
+}
+
+.brand-footer__lock {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.brand-footer__legal a {
+  color: var(--oia-text-primary, #2D2D2D);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.brand-footer__legal a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.brand-footer__legal span[aria-hidden="true"] {
+  margin: 0 6px;
+}
+
+.brand-footer__copyright {
+  opacity: 0.85;
+}
+
+/* ----- Tier-0.5 card with grayed-out locked state -----
+   Visual contract per TIER_0_5_BLUEPRINT.md §III.a:
+     - opacity 0.60 on the locked card (background opaque)
+     - ⊘ glyph prefix on locked features (U+2298 circled division slash)
+     - ✓ glyph prefix on unlocked features (U+2713 check mark)
+     - LOCKED watermark in the card head (small caps, low contrast)
+     - CTA + price stay at full opacity for buy-decision legibility
+*/
+
+.tier-card {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--oia-bg-card, #FDFCFA);
+  border: 1px solid rgba(166, 148, 133, 0.25);
+  border-radius: 12px;
+  position: relative;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.tier-card--locked {
+  opacity: 0.60;
+  background: rgba(166, 148, 133, 0.08);
+  cursor: default;
+}
+
+.tier-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.tier-card__name {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--oia-text-primary, #2D2D2D);
+  opacity: 1; /* stays sharp on locked card */
+}
+
+.tier-card__price {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--oia-text-secondary, #5C5C5C);
+  margin-top: 2px;
+  opacity: 1; /* stays sharp on locked card */
+}
+
+.tier-card__lock-watermark {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--oia-text-muted, #8C8C8C);
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.tier-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.tier-feature {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--oia-text-secondary, #5C5C5C);
+  line-height: 1.5;
+}
+
+.tier-card--locked .tier-feature::before {
+  content: "\2298"; /* ⊘ — circled division slash */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--oia-text-muted, #8C8C8C);
+  font-weight: 700;
+}
+
+.tier-card--unlocked .tier-feature::before {
+  content: "\2713"; /* ✓ — checkmark */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--oia-sage, #8BA888);
+  font-weight: 700;
+}
+
+.tier-card__cta {
+  width: 100%;
+  opacity: 1; /* CTA stays full opacity even on locked card */
+}
+
+.tier-card--unlocked .tier-card__cta {
+  display: none;
+}
+
+/* ----- Dark mode shim (extensions inherit from oia-design-system.css) ----- */
+
+@media (prefers-color-scheme: dark) {
+  .tier-card--locked {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
