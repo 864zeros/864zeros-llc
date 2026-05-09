@@ -6,7 +6,6 @@
 (function() {
   'use strict';
 
-  console.log('[Chronicle Panel] Panel script starting...');
 
   // State
   let entries = [];
@@ -22,22 +21,12 @@
   const settingsView = document.getElementById('settings');
   const entryCountEl = document.getElementById('entry-count');
 
-  console.log('[Chronicle Panel] DOM elements found:', {
-    searchInput: !!searchInput,
-    entriesContainer: !!entriesContainer,
-    emptyState: !!emptyState,
-    detailView: !!detailView,
-    settingsView: !!settingsView,
-    entryCountEl: !!entryCountEl
-  });
 
   // Initialize
   async function init() {
-    console.log('[Chronicle Panel] Initializing...');
     bindEvents();
     await loadEntries();
     listenForUpdates();
-    console.log('[Chronicle Panel] Initialization complete');
   }
 
   // Bind UI events
@@ -78,12 +67,9 @@
 
   // Load entries from service worker
   async function loadEntries() {
-    console.log('[Chronicle Panel] Loading entries from service worker...');
     try {
       const response = await chrome.runtime.sendMessage({ type: 'GET_ENTRIES' });
-      console.log('[Chronicle Panel] Got response:', response);
       entries = response.entries || [];
-      console.log('[Chronicle Panel] Loaded', entries.length, 'entries');
       renderEntries();
     } catch (err) {
       console.error('[Chronicle Panel] Failed to load entries:', err);
@@ -94,11 +80,8 @@
 
   // Listen for new entries
   function listenForUpdates() {
-    console.log('[Chronicle Panel] Setting up message listener for updates...');
     chrome.runtime.onMessage.addListener((msg) => {
-      console.log('[Chronicle Panel] Received message:', msg.type);
       if (msg.type === 'ENTRY_RECORDED') {
-        console.log('[Chronicle Panel] New entry recorded:', msg.entry?.id);
         // Add or update entry in list
         const idx = entries.findIndex(e => e.id === msg.entry.id);
         if (idx >= 0) {
@@ -386,7 +369,6 @@
         chatgptEnabled: document.getElementById('setting-chatgpt').checked
       };
       await chrome.storage.local.set({ settings });
-      console.log('[Chronicle Panel] Settings saved:', settings);
     } catch (err) {
       console.error('Failed to save settings:', err);
     }
@@ -460,7 +442,6 @@ ${conversationMd}
       a.click();
       URL.revokeObjectURL(url);
 
-      console.log('[Chronicle Panel] Downloaded full conversation:', filename);
     } catch (err) {
       console.error('[Chronicle Panel] Failed to download conversation:', err);
     }
@@ -521,7 +502,6 @@ ${exchange.content}
     a.click();
     URL.revokeObjectURL(url);
 
-    console.log('[Chronicle Panel] Downloaded exchange as markdown:', filename);
   }
 
   // Export all data
@@ -549,7 +529,6 @@ ${exchange.content}
       a.click();
       URL.revokeObjectURL(url);
 
-      console.log('[Chronicle Panel] Exported', exportData.length, 'entries');
     } catch (err) {
       console.error('Failed to export data:', err);
     }
@@ -566,7 +545,6 @@ ${exchange.content}
       entries = [];
       renderEntries();
       closeSettings();
-      console.log('[Chronicle Panel] All data cleared');
     } catch (err) {
       console.error('Failed to clear data:', err);
     }

@@ -19,11 +19,9 @@
   }
 
   if (!platform) {
-    console.log('[Chronicle CS] Unknown platform, not recording');
     return;
   }
 
-  console.log('[Chronicle CS] Content script starting on', platform, '(' + hostname + ')');
 
   let lastMessageCount = 0;
   let debounceTimer = null;
@@ -177,7 +175,6 @@
     const userMsgs = config.getUserMessages();
     const assistantMsgs = config.getAssistantMessages();
 
-    console.log('[Chronicle CS]', platform, '- Found', userMsgs.length, 'user messages,', assistantMsgs.length, 'assistant messages');
 
     const messages = [];
 
@@ -199,13 +196,10 @@
 
   // Record all messages in the conversation
   function recordConversation() {
-    console.log('[Chronicle CS] recordConversation called for', platform);
 
     const messages = getMessages();
-    console.log('[Chronicle CS] Total messages found:', messages.length);
 
     if (messages.length === 0) {
-      console.log('[Chronicle CS] No messages found on', platform);
       return;
     }
 
@@ -250,13 +244,11 @@
       }
     };
 
-    console.log('[Chronicle CS] Sending RECORD_ENTRY:', entry.id, 'with', exchanges.length, 'exchanges');
     chrome.runtime.sendMessage({
       type: 'RECORD_ENTRY',
       entry: entry,
       exchanges: exchanges
     }).then(response => {
-      console.log('[Chronicle CS] Service worker responded:', response);
     }).catch(err => {
       console.error('[Chronicle CS] Could not send to service worker:', err);
     });
@@ -274,27 +266,22 @@
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       const currentCount = countMessages();
-      console.log('[Chronicle CS]', platform, '- Checking messages: current=' + currentCount + ', last=' + lastMessageCount);
       if (currentCount > 0 && currentCount !== lastMessageCount) {
-        console.log('[Chronicle CS] Message count changed, recording...');
         lastMessageCount = currentCount;
         recordConversation();
       } else if (currentCount === 0) {
-        console.log('[Chronicle CS] No messages found yet on', platform);
       }
     }, 1500);
   }
 
   // Watch for new messages
   function startObserver() {
-    console.log('[Chronicle CS] Starting observer for', platform);
 
     const observer = new MutationObserver(() => {
       scheduleRecord();
     });
 
     const container = config.getContainer();
-    console.log('[Chronicle CS] Observing container:', container.tagName, container.className || '(no class)');
 
     observer.observe(container, {
       childList: true,
@@ -302,7 +289,6 @@
     });
 
     // Initial record after page load
-    console.log('[Chronicle CS] Scheduling initial record in 3 seconds...');
     setTimeout(scheduleRecord, 3000);
   }
 
@@ -313,5 +299,4 @@
     startObserver();
   }
 
-  console.log('[Chronicle CS] Content script loaded for', platform, 'on', hostname);
 })();

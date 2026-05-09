@@ -36,7 +36,86 @@
       margin-top: var(--oia-space-xl);
     }
   </style>
-</head>
+
+    <!-- Tier-0.5 CSS (opacity 0.60, ⊘ glyphs, LOCKED watermark).
+         Injected by Strike 014 phase-2 fix (2026-05-09).
+         Mirrors the Chronicle Standard at extensions/864z-chronical/options/options.css. -->
+    <style id="tier-0.5-injected">
+      .tier-card {
+        margin-top: 16px;
+        padding: 16px;
+        background: var(--oia-bg-card, #FDFCFA);
+        border: 1px solid rgba(166, 148, 133, 0.25);
+        border-radius: 12px;
+        position: relative;
+        transition: opacity 0.2s, background 0.2s;
+      }
+      .tier-card--locked {
+        opacity: 0.60;
+        background: rgba(166, 148, 133, 0.08);
+        cursor: default;
+      }
+      .tier-card__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+      .tier-card__name {
+        display: block;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--oia-text-primary, #2D2D2D);
+        opacity: 1;
+      }
+      .tier-card__price {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--oia-text-secondary, #5C5C5C);
+        margin-top: 2px;
+        opacity: 1;
+      }
+      .tier-card__lock-watermark {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        color: var(--oia-text-muted, #8C8C8C);
+        font-weight: 700;
+        opacity: 0.85;
+      }
+      .tier-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 16px 0;
+      }
+      .tier-feature {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 8px;
+        font-size: 13px;
+        color: var(--oia-text-secondary, #5C5C5C);
+        line-height: 1.5;
+      }
+      .tier-card--locked .tier-feature::before {
+        content: "\2298"; /* ⊘ — circled division slash for locked features */
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--oia-text-muted, #8C8C8C);
+        font-weight: 700;
+      }
+      .tier-card--unlocked .tier-feature::before {
+        content: "\2713"; /* ✓ — checkmark for unlocked features */
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--oia-sage, #8BA888);
+        font-weight: 700;
+      }
+      .tier-card__cta { width: 100%; opacity: 1; }
+      .tier-card--unlocked .tier-card__cta { display: none; }
+    </style>
+  </head>
 <body>
   <div class="oia-screen options-container">
     <header class="options-header">
@@ -65,5 +144,29 @@
   </div>
 
   <script type="module" src="options.js"></script>
-</body>
+
+    <!-- Transparency Card: standardized 4-line brand footer (per GTM_MANIFEST §6).
+         Injected by Strike 014 transparency-card sweep (2026-05-09) — matches the
+         Chronicle Standard at extensions/864z-chronical/options/options.html. -->
+    <footer class="brand-footer">
+      <p class="brand-footer__line brand-footer__product">
+        Signal2Noise v1.0.0 | OIA | 864zeros LLC
+      </p>
+      <p class="brand-footer__line brand-footer__privacy">
+        <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        No ads. No tracking. Your data stays yours.
+      </p>
+      <p class="brand-footer__line brand-footer__legal">
+        <a href="https://864zeros.com/terms" target="_blank" rel="noopener">Terms of Use</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://864zeros.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+      </p>
+      <p class="brand-footer__line brand-footer__copyright">
+        © 2026 864zeros LLC. All rights reserved.
+      </p>
+    </footer>
+  </body>
 </html>

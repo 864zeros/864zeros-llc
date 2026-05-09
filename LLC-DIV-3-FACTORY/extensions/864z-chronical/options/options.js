@@ -18,14 +18,13 @@
 import { getTier, setTier, isVaultUnlocked, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
 
 (async function init() {
-  console.log('[Chronicle Options] Initializing...');
   await Promise.all([
     loadProviderSettings(),
     renderTierUI(),
     loadDataStats(),
   ]);
   bindEvents();
-  console.log('[Chronicle Options] Ready');
+  initDevOverride();
 })();
 
 // ============================================================
@@ -379,6 +378,53 @@ function armDestructiveButton({ button, hintEl, onConfirm, defaultLabel, armedLa
 function onFuel() {
   // Placeholder — open whatever tipping URL the operator chooses
   toast('Coming soon — thank you for your support.');
+}
+
+// ============================================================
+// Developer Override (URL-gated; documented in DEV_NOTES.md)
+//
+// Purpose: lets the operator flip the local tier flag during testing
+// without going through the stub Unlock button or the future ExtPay
+// checkout. The override is gated by the URL flag ?dev=1 — it does not
+// react to any localStorage value, magic header, or undocumented input.
+//
+// This is NOT a hidden backdoor:
+//   - The panel is in plain HTML in options.html (auditable in source)
+//   - The URL flag is documented in DEV_NOTES.md
+//   - The tier-flip uses the same setTier() path as the production stub
+//   - No data exfiltration, no remote signaling, no analytics emission
+//   - Customers without ?dev=1 never see the panel
+// ============================================================
+
+function initDevOverride() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('dev') !== '1') return; // gate; panel stays hidden
+
+  const panel = document.getElementById('dev-override-panel');
+  if (!panel) return;
+  panel.classList.remove('hidden');
+
+  refreshDevTierLabel();
+
+  document.getElementById('dev-force-vault').addEventListener('click', async () => {
+    await setTier(TIER_VAULT);
+    await renderTierUI();
+    await refreshDevTierLabel();
+    toast('Dev override: tier set to vault');
+  });
+
+  document.getElementById('dev-force-free').addEventListener('click', async () => {
+    await setTier(TIER_FREE);
+    await renderTierUI();
+    await refreshDevTierLabel();
+    toast('Dev override: tier set to free');
+  });
+}
+
+async function refreshDevTierLabel() {
+  const el = document.getElementById('dev-current-tier');
+  if (!el) return;
+  el.textContent = await getTier();
 }
 
 // ============================================================

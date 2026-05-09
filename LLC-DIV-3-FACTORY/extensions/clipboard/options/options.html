@@ -8,7 +8,126 @@
   <link rel="stylesheet" href="../lib/oia-design-system.css">
   <link rel="stylesheet" href="../lib/google-drive/drive-styles.css">
   <link rel="stylesheet" href="options.css">
-</head>
+
+    <!-- Transparency Card + Tier-0.5 CSS (opacity 0.60, ⊘ glyphs, LOCKED watermark).
+         Injected by Strike 014 transparency-card sweep (2026-05-09).
+         Mirrors the Chronicle Standard (extensions/864z-chronical/options/options.css).
+         Future cleanup: extract to a shared design-system file. -->
+    <style>
+      /* ----- Brand footer (GTM_MANIFEST §6) ----- */
+      .brand-footer {
+        text-align: center;
+        padding: 24px 0 16px;
+        border-top: 1px solid rgba(166, 148, 133, 0.25);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 32px;
+      }
+      .brand-footer__line {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--oia-text-muted, #8C8C8C);
+      }
+      .brand-footer__product {
+        color: var(--oia-text-secondary, #5C5C5C);
+        font-weight: 600;
+      }
+      .brand-footer__privacy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: var(--oia-text-secondary, #5C5C5C);
+      }
+      .brand-footer__lock { flex-shrink: 0; vertical-align: middle; }
+      .brand-footer__legal a {
+        color: var(--oia-text-primary, #2D2D2D);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+      .brand-footer__legal a:hover { text-decoration-thickness: 2px; }
+      .brand-footer__legal span[aria-hidden="true"] { margin: 0 6px; }
+      .brand-footer__copyright { opacity: 0.85; }
+
+      /* ----- Tier-0.5 card with grayed-out locked state ----- */
+      .tier-card {
+        margin-top: 16px;
+        padding: 16px;
+        background: var(--oia-bg-card, #FDFCFA);
+        border: 1px solid rgba(166, 148, 133, 0.25);
+        border-radius: 12px;
+        position: relative;
+        transition: opacity 0.2s, background 0.2s;
+      }
+      .tier-card--locked {
+        opacity: 0.60;
+        background: rgba(166, 148, 133, 0.08);
+        cursor: default;
+      }
+      .tier-card__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+      .tier-card__name {
+        display: block;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--oia-text-primary, #2D2D2D);
+        opacity: 1; /* stays sharp on locked card */
+      }
+      .tier-card__price {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--oia-text-secondary, #5C5C5C);
+        margin-top: 2px;
+        opacity: 1; /* stays sharp on locked card */
+      }
+      .tier-card__lock-watermark {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        color: var(--oia-text-muted, #8C8C8C);
+        font-weight: 700;
+        opacity: 0.85;
+      }
+      .tier-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 16px 0;
+      }
+      .tier-feature {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 8px;
+        font-size: 13px;
+        color: var(--oia-text-secondary, #5C5C5C);
+        line-height: 1.5;
+      }
+      .tier-card--locked .tier-feature::before {
+        content: "\2298"; /* circled division slash = LOCKED feature */
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--oia-text-muted, #8C8C8C);
+        font-weight: 700;
+      }
+      .tier-card--unlocked .tier-feature::before {
+        content: "\2713"; /* checkmark = UNLOCKED feature */
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--oia-sage, #8BA888);
+        font-weight: 700;
+      }
+      .tier-card__cta { width: 100%; opacity: 1; }
+      .tier-card--unlocked .tier-card__cta { display: none; }
+    </style>
+  </head>
 <body>
   <div class="oia-screen options-container">
 
