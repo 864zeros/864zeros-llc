@@ -216,101 +216,10 @@ body {
   line-height: 1.5;
 }
 
-/* ----- The Tier Card (with grayed-out locked state) ----- */
-
-.tier-card {
-  margin-top: var(--oia-space-md);
-  padding: var(--oia-space-md);
-  background: var(--oia-bg-card);
-  border: 1px solid var(--oia-border);
-  border-radius: var(--oia-radius-md);
-  position: relative;
-  transition: opacity 0.2s, background 0.2s;
-}
-
-.tier-card--locked {
-  /* Grayed-out per TIER_0_5_BLUEPRINT.md §III.a */
-  opacity: 0.60;
-  background: rgba(166, 148, 133, 0.08);
-  cursor: default;
-}
-
-.tier-card__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--oia-space-md);
-}
-
-.tier-card__name {
-  display: block;
-  font-size: 16px;
-  font-weight: var(--oia-weight-bold);
-  color: var(--oia-text-primary);
-  /* Stays sharp even on locked card */
-  opacity: 1;
-}
-
-.tier-card__price {
-  display: block;
-  font-size: 13px;
-  font-weight: var(--oia-weight-semibold);
-  color: var(--oia-text-secondary);
-  margin-top: 2px;
-  /* Stays sharp even on locked card */
-  opacity: 1;
-}
-
-.tier-card__lock-watermark {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--oia-text-muted);
-  font-weight: var(--oia-weight-bold);
-  opacity: 0.85;
-}
-
-.tier-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 var(--oia-space-md) 0;
-}
-
-.tier-feature {
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: var(--oia-space-sm);
-  font-size: 13px;
-  color: var(--oia-text-secondary);
-  line-height: 1.5;
-}
-
-.tier-card--locked .tier-feature::before {
-  content: "⊘";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--oia-text-muted);
-  font-weight: var(--oia-weight-bold);
-}
-
-.tier-card--unlocked .tier-feature::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--oia-sage);
-  font-weight: var(--oia-weight-bold);
-}
-
-.tier-card__cta {
-  width: 100%;
-  /* CTA stays full opacity even when card is dim */
-  opacity: 1;
-}
-
-.tier-card--unlocked .tier-card__cta {
-  display: none;
-}
+/* ----- Tier card (.tier-card*, .brand-footer*) ------------------------------
+   Extracted to canonical: ../lib/transparency-tier.css
+   (linked in options.html — see GTM_MANIFEST §6 + TIER_0_5_BLUEPRINT.md §III.a)
+   Kept here: chronicle-specific .tier-display + .tier-pro-note below. */
 
 .tier-pro-note {
   display: block;
@@ -427,64 +336,9 @@ body {
   color: var(--oia-text-secondary);
 }
 
-/* ----- Standardized brand footer (per GTM_MANIFEST §6) ----- */
-
-.brand-footer {
-  text-align: center;
-  padding: var(--oia-space-lg) 0;
-  border-top: 1px solid var(--oia-border);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: var(--oia-space-xl);
-}
-
-.brand-footer__line {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--oia-text-muted);
-}
-
-.brand-footer__product {
-  color: var(--oia-text-secondary);
-  font-weight: var(--oia-weight-semibold);
-}
-
-.brand-footer__privacy {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: var(--oia-text-secondary);
-}
-
-.brand-footer__lock {
-  flex-shrink: 0;
-  vertical-align: middle;
-}
-
-.brand-footer__legal a {
-  color: var(--oia-text-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--oia-sage);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-
-.brand-footer__legal a:hover {
-  text-decoration-thickness: 2px;
-}
-
-.brand-footer__legal span[aria-hidden="true"] {
-  margin: 0 6px;
-  color: var(--oia-text-muted);
-}
-
-.brand-footer__copyright {
-  color: var(--oia-text-muted);
-  opacity: 0.85;
-}
+/* ----- Brand footer ---------------------------------------------------------
+   Extracted to canonical: ../lib/transparency-tier.css
+   (see GTM_MANIFEST §6 — 4-line stamp). */
 
 /* ----- Developer Override Panel (URL-gated; documented in DEV_NOTES.md) ----- */
 
@@ -621,7 +475,5 @@ body {
     background: rgba(212, 132, 122, 0.10);
     border-color: rgba(212, 132, 122, 0.25);
   }
-  .tier-card--locked {
-    background: rgba(255, 255, 255, 0.04);
-  }
+  /* .tier-card--locked dark-mode rule moved to ../lib/transparency-tier.css */
 }
