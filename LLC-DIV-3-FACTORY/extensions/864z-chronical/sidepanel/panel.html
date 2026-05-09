@@ -13,16 +13,32 @@
     <!-- Header -->
     <header class="chronicle-header">
       <div class="header-left">
-        <h1 class="oia-h1">Chronicle</h1>
+        <h1 class="oia-h1">
+          <span class="brand-prefix brand-prefix--oia">[OIA]</span>
+          Chronicle
+        </h1>
         <span id="entry-count" class="oia-caption">0 entries</span>
       </div>
-      <button id="settings-btn" class="oia-btn oia-btn-secondary header-settings" title="Settings">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-        </svg>
-      </button>
+      <div class="header-actions">
+        <!-- Sovereign Link: Liberate Vault (two-tap arm; per RULE-005) -->
+        <button id="liberate-btn" class="oia-btn oia-btn-secondary header-liberate" title="Liberate Vault — export all conversations as JSON">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </button>
+        <button id="settings-btn" class="oia-btn oia-btn-secondary header-settings" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
     </header>
+
+    <!-- Toast (Sovereign Link arm + status messages) -->
+    <div id="panel-toast" class="panel-toast hidden" role="status" aria-live="polite"></div>
 
     <!-- Search -->
     <div class="oia-section">
@@ -65,55 +81,8 @@
       </div>
     </div>
 
-    <!-- Settings view -->
-    <div id="settings" class="settings-view hidden">
-      <div class="detail-header">
-        <button id="settings-back-btn" class="oia-btn oia-btn-secondary detail-back">&larr;</button>
-        <h2 class="oia-h2">Settings</h2>
-        <div style="width: 32px;"></div>
-      </div>
-      <div class="settings-content">
-        <!-- Recording Settings -->
-        <section class="settings-section">
-          <h3 class="oia-body settings-section-title">Recording</h3>
-          <label class="settings-toggle">
-            <span class="settings-label">Gemini</span>
-            <input type="checkbox" id="setting-gemini" checked>
-            <span class="toggle-switch"></span>
-          </label>
-          <label class="settings-toggle">
-            <span class="settings-label">Claude</span>
-            <input type="checkbox" id="setting-claude" checked>
-            <span class="toggle-switch"></span>
-          </label>
-          <label class="settings-toggle">
-            <span class="settings-label">ChatGPT</span>
-            <input type="checkbox" id="setting-chatgpt" checked>
-            <span class="toggle-switch"></span>
-          </label>
-        </section>
-
-        <!-- Data Management -->
-        <section class="settings-section">
-          <h3 class="oia-body settings-section-title">Data</h3>
-          <button id="export-btn" class="oia-btn oia-btn-secondary settings-action">
-            Export All Data
-          </button>
-          <button id="clear-btn" class="oia-btn oia-btn-secondary settings-action settings-danger">
-            Clear All Data
-          </button>
-        </section>
-
-        <!-- About -->
-        <section class="settings-section">
-          <h3 class="oia-body settings-section-title">About</h3>
-          <div class="settings-info">
-            <span class="oia-caption">Chronicle v1.0.0</span>
-            <span class="oia-caption">864zeros</span>
-          </div>
-        </section>
-      </div>
-    </div>
+    <!-- Settings & destructive actions now live in the Options page (RULE-001).
+         Settings cog opens it via chrome.runtime.openOptionsPage(). -->
   </div>
 
   <script src="panel.js"></script>

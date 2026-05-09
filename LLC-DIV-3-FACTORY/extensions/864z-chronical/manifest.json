@@ -1,13 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Chronicle",
-  "version": "1.0.0",
-  "description": "Your AI conversation history. Automatically captured, instantly searchable.",
+  "name": "[OIA] Chronicle",
+  "version": "1.1.0",
+  "description": "Your AI conversation history. Automatically captured, instantly searchable. Local-first, sovereign by default.",
 
   "permissions": [
     "storage",
     "sidePanel"
   ],
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
 
   "host_permissions": [
     "https://gemini.google.com/*",

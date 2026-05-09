@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[OIA] Chronicle — Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+
+    <!-- Hero -->
+    <header class="options-hero">
+      <div class="options-hero__brand">
+        <img src="../icons/chronicle-48.png" alt="Chronicle" class="options-hero__icon">
+        <div>
+          <h1 class="oia-h1">
+            <span class="brand-prefix brand-prefix--oia">[OIA]</span>
+            Chronicle
+          </h1>
+          <p class="oia-tagline">Capture every AI conversation. Keep it forever.</p>
+        </div>
+      </div>
+      <p class="options-hero__pitch">
+        Chronicle silently records your conversations with Gemini, Claude, ChatGPT, and Copilot — to a local database on your device. Your data never leaves you.
+      </p>
+    </header>
+
+    <!-- §1 General Settings -->
+    <section class="oia-card options-section">
+      <h2 class="oia-h2">General Settings</h2>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="oia-body">Capture from</span>
+          <span class="oia-caption">Toggle which AI providers Chronicle records from.</span>
+        </div>
+      </div>
+
+      <div class="provider-toggles">
+        <label class="settings-toggle">
+          <span class="settings-label">Gemini</span>
+          <input type="checkbox" id="setting-gemini" checked>
+          <span class="toggle-switch"></span>
+        </label>
+        <label class="settings-toggle">
+          <span class="settings-label">Claude</span>
+          <input type="checkbox" id="setting-claude" checked>
+          <span class="toggle-switch"></span>
+        </label>
+        <label class="settings-toggle">
+          <span class="settings-label">ChatGPT</span>
+          <input type="checkbox" id="setting-chatgpt" checked>
+          <span class="toggle-switch"></span>
+        </label>
+        <label class="settings-toggle">
+          <span class="settings-label">Copilot</span>
+          <input type="checkbox" id="setting-copilot" checked>
+          <span class="toggle-switch"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- §2 How to Use (RULE-001 mandatory) -->
+    <section class="oia-card options-section">
+      <h2 class="oia-h2">How to Use</h2>
+      <ol class="howto-steps">
+        <li><strong>Open the side panel</strong> — Click the [OIA] Chronicle icon in your toolbar.</li>
+        <li><strong>Have an AI conversation</strong> — Visit gemini.google.com, claude.ai, chatgpt.com, or aistudio.google.com. Chronicle silently records the exchange.</li>
+        <li><strong>Browse, search, star</strong> — Open the side panel anytime to find what you said and what was said back.</li>
+        <li><strong>Liberate your vault</strong> — Tap the <strong>⬇</strong> Liberate Vault button in the panel header to export everything to your Downloads folder. Or use Data Management below for fine-grained control.</li>
+      </ol>
+    </section>
+
+    <!-- §3 Subscription & Tiers (RULE-001 mandatory) -->
+    <section class="oia-card options-section">
+      <h2 class="oia-h2">Subscription &amp; Tiers</h2>
+
+      <!-- Current tier display -->
+      <div class="tier-display">
+        <div class="tier-badge" id="current-tier-badge">
+          <span class="tier-badge__dot"></span>
+          <span class="tier-badge__name" id="current-tier-name">Free</span>
+        </div>
+        <p class="oia-body-sm tier-display__description" id="current-tier-description">
+          Capture from 4 AI providers · Per-entry Markdown export · Full-vault JSON export · Search · Star · Filter · Local-first storage; never leaves your device.
+        </p>
+      </div>
+
+      <!-- Tier-0.5 Vault unlock card -->
+      <div class="tier-card tier-card--locked" id="vault-tier-card">
+        <div class="tier-card__head">
+          <div>
+            <span class="tier-card__name">⌖ Tier-0.5: Vault</span>
+            <span class="tier-card__price">$2.99 once · perpetual unlock</span>
+          </div>
+          <span class="tier-card__lock-watermark" id="vault-lock-watermark">LOCKED</span>
+        </div>
+
+        <ul class="tier-features">
+          <li class="tier-feature">
+            <strong>Markdown-vault-folder export</strong> — one <code>.md</code> per conversation in <code>chronicle/{scribe}/{date}-{title}.md</code> Obsidian-friendly hierarchy.
+          </li>
+          <li class="tier-feature">
+            <strong>Bulk export by filter</strong> — by date range, by scribe, by tag, by starred-only.
+          </li>
+          <li class="tier-feature">
+            <strong>Auto-export on schedule</strong> — weekly / monthly snapshots to a folder you choose.
+          </li>
+          <li class="tier-feature">
+            <strong>All future Tier-0.5 features</strong> — at no additional cost. Perpetual unlock.
+          </li>
+        </ul>
+
+        <button class="oia-btn oia-btn-primary tier-card__cta" id="unlock-vault-btn">
+          Unlock Vault — $2.99
+        </button>
+      </div>
+
+      <p class="tier-pro-note oia-caption">
+        Pro tier (cross-device sync, semantic search, conversation diffing): coming later — never recurring; always perpetual.
+      </p>
+    </section>
+
+    <!-- §4 Data Management (RULE-001 mandatory) -->
+    <section class="oia-card options-section">
+      <h2 class="oia-h2">Data Management</h2>
+
+      <div class="data-stats" id="data-stats">
+        <span class="oia-caption">Loading vault inventory…</span>
+      </div>
+
+      <div class="data-actions">
+        <!-- Free tier: JSON export -->
+        <button class="oia-btn oia-btn-primary data-action" id="liberate-json-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Liberate Vault as JSON
+        </button>
+
+        <!-- Tier-0.5: Markdown vault export -->
+        <button class="oia-btn oia-btn-secondary data-action data-action--locked" id="liberate-md-btn" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span id="liberate-md-label">⊘ Liberate Vault as Markdown — Tier-0.5</span>
+        </button>
+      </div>
+
+      <hr class="data-divider">
+
+      <!-- Destructive zone -->
+      <div class="destructive-zone">
+        <h3 class="oia-body destructive-zone__title">Destructive zone</h3>
+        <p class="oia-caption oia-mb-sm">Tap once to arm. Tap again within 4 seconds to confirm.</p>
+        <button class="oia-btn oia-btn-secondary destructive-zone__btn" id="clear-all-btn">
+          Clear all captures
+        </button>
+        <p class="oia-caption" id="clear-all-hint">Permanently deletes every entry and exchange from this device. This cannot be undone.</p>
+      </div>
+    </section>
+
+    <!-- §5 Fuel the Build (optional) -->
+    <section class="oia-card options-section options-section--fuel">
+      <h2 class="oia-h2">Fuel the Build</h2>
+      <p class="oia-body-sm">Love Chronicle? Help fund the next feature. Every coffee counts.</p>
+      <button class="oia-btn oia-btn-secondary" id="fuel-btn">Buy us a coffee</button>
+    </section>
+
+    <!-- Standardized 4-line brand footer (per GTM_MANIFEST §6) -->
+    <footer class="brand-footer">
+      <p class="brand-footer__line brand-footer__product">
+        Chronicle v1.1.0 | OIA | 864zeros LLC
+      </p>
+      <p class="brand-footer__line brand-footer__privacy">
+        <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        No ads. No tracking. Your data stays yours.
+      </p>
+      <p class="brand-footer__line brand-footer__legal">
+        <a href="https://864zeros.com/terms" target="_blank" rel="noopener">Terms of Use</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://864zeros.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+      </p>
+      <p class="brand-footer__line brand-footer__copyright">
+        © 2026 864zeros LLC. All rights reserved.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Toast (status messages) -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

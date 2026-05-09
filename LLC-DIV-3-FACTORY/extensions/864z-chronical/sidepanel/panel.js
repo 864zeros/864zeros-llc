@@ -63,19 +63,17 @@
     document.getElementById('star-btn').addEventListener('click', toggleStar);
     document.getElementById('delete-btn').addEventListener('click', deleteEntry);
 
-    // Settings
-    document.getElementById('settings-btn').addEventListener('click', openSettings);
-    document.getElementById('settings-back-btn').addEventListener('click', closeSettings);
-    document.getElementById('export-btn').addEventListener('click', exportData);
-    document.getElementById('clear-btn').addEventListener('click', clearAllData);
-
-    // Provider toggles
-    ['gemini', 'claude', 'chatgpt'].forEach(provider => {
-      document.getElementById('setting-' + provider).addEventListener('change', saveSettings);
+    // Settings cog opens the new RULE-001 Options page (Strike 013).
+    // The inline settings view has been removed from panel.html;
+    // settings + tier display + destructive actions all live in options/.
+    document.getElementById('settings-btn').addEventListener('click', () => {
+      chrome.runtime.openOptionsPage();
     });
 
-    // Load settings
-    loadSettings();
+    // Sovereign Link header button: two-tap arm + JSON vault export.
+    // Promotes Chronicle's previously-buried export to a first-class
+    // operational surface (per SOVEREIGN_LINK_PROPOSAL.md §III.a).
+    initLiberateButton();
   }
 
   // Load entries from service worker
@@ -604,6 +602,94 @@ ${exchange.content}
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+  }
+
+  // ============================================================
+  // Sovereign Link — Strike 013 / SOVEREIGN_LINK_PROPOSAL.md §III.a
+  // RULE-005-compliant two-tap arm pattern (no alert/confirm/prompt).
+  // ============================================================
+
+  function initLiberateButton() {
+    const btn = document.getElementById('liberate-btn');
+    if (!btn) return;
+    let armed = false;
+    let armTimer = null;
+    let outsideClickHandler = null;
+
+    function disarm(silent = true) {
+      armed = false;
+      btn.dataset.armed = 'false';
+      btn.classList.remove('header-liberate--armed');
+      btn.title = 'Liberate Vault — export all conversations as JSON';
+      if (armTimer) { clearTimeout(armTimer); armTimer = null; }
+      if (outsideClickHandler) {
+        document.removeEventListener('click', outsideClickHandler, true);
+        outsideClickHandler = null;
+      }
+      if (!silent) panelToast('Liberation cancelled.');
+    }
+
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      if (armed) {
+        disarm();
+        await liberateVaultJson();
+        return;
+      }
+      const count = entries.length;
+      if (count === 0) {
+        panelToast('Vault is empty — nothing to liberate.');
+        return;
+      }
+      armed = true;
+      btn.dataset.armed = 'true';
+      btn.classList.add('header-liberate--armed');
+      btn.title = 'Tap again within 4 seconds to confirm';
+      panelToast(`Tap again to liberate ${count} entries to JSON.`, 4000);
+      armTimer = setTimeout(() => disarm(true), 4000);
+      outsideClickHandler = (ev) => {
+        if (ev.target !== btn && !btn.contains(ev.target)) disarm(true);
+      };
+      setTimeout(() => document.addEventListener('click', outsideClickHandler, true), 0);
+    });
+  }
+
+  async function liberateVaultJson() {
+    try {
+      panelToast('Building JSON export…');
+      const { entries: allEntries = [] } = await chrome.runtime.sendMessage({
+        type: 'GET_ENTRIES',
+        options: { limit: 10000 }
+      });
+      // Hydrate every entry with its exchanges
+      const fullData = [];
+      for (const entry of allEntries) {
+        const detail = await chrome.runtime.sendMessage({ type: 'GET_ENTRY', id: entry.id });
+        fullData.push({ ...entry, exchanges: detail.exchanges || [] });
+      }
+      const blob = new Blob([JSON.stringify(fullData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `chronicle-vault-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      panelToast(`Vault liberated. ${allEntries.length} entries written to your Downloads folder.`, 4000);
+    } catch (err) {
+      console.error('[Chronicle Panel] Liberation failed:', err);
+      panelToast('Liberation failed — see console for details.', 4000);
+    }
+  }
+
+  // Lightweight in-panel toast (used by Sovereign Link arm + status messages).
+  let panelToastTimer = null;
+  function panelToast(message, ms = 2400) {
+    const el = document.getElementById('panel-toast');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.remove('hidden');
+    if (panelToastTimer) clearTimeout(panelToastTimer);
+    panelToastTimer = setTimeout(() => el.classList.add('hidden'), ms);
   }
 
   // Start

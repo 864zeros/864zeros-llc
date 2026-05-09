@@ -22,7 +22,14 @@
   gap: var(--oia-space-sm);
 }
 
-.header-settings {
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-xs);
+}
+
+.header-settings,
+.header-liberate {
   width: 36px;
   height: 36px;
   min-width: 36px;
@@ -30,6 +37,71 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Sovereign Link header button — Strike 013 */
+.header-liberate {
+  color: var(--oia-sage);
+  border-color: var(--oia-sage);
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.header-liberate:hover {
+  background: rgba(139, 168, 136, 0.12);
+}
+
+.header-liberate--armed {
+  background: var(--oia-sage) !important;
+  color: var(--oia-text-inverse) !important;
+  animation: liberate-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes liberate-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 168, 136, 0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(139, 168, 136, 0); }
+}
+
+/* Brand-prefix pill (RULE-006 v1.0) */
+.brand-prefix {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--oia-radius-full);
+  font-size: 0.55em;
+  font-weight: var(--oia-weight-bold);
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.brand-prefix--oia {
+  background: var(--oia-sage);
+  color: var(--oia-text-inverse);
+}
+
+/* In-panel toast (Sovereign Link arm + status messages) */
+.panel-toast {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--oia-text-primary);
+  color: var(--oia-text-inverse);
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  border-radius: var(--oia-radius-md);
+  font-size: 13px;
+  font-weight: var(--oia-weight-semibold);
+  box-shadow: var(--oia-shadow-lg, 0 4px 16px rgba(0,0,0,0.18));
+  z-index: 1000;
+  max-width: 90%;
+  text-align: center;
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+.panel-toast.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+  pointer-events: none;
 }
 
 /* Filter tabs */
