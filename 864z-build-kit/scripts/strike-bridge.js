@@ -19,6 +19,16 @@ const path = require('path');
 
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 const LIB_DIR = path.join(__dirname, '..', 'lib');
+const PAYMENTS_TEMPLATE_DIR = path.join(TEMPLATE_DIR, 'payments');
+const CONFIG_TEMPLATE_DIR = path.join(TEMPLATE_DIR, 'config');
+
+// Canonical Factory root — DIV-3 production output (864zeros-llc).
+// The legacy vulture-nest/864zeros_engine/builds/ tree is DEPRECATED.
+const DEFAULT_OUTPUT_ROOT = path.resolve(
+  __dirname, '..', '..', '..', '864zeros-llc', 'LLC-DIV-3-FACTORY', 'output'
+);
+
+const PAYMENT_BRICKS = ['extpay-wrapper.js', 'tiers.js', 'credits.js'];
 
 const SECURITY_BRICKS = [
   'crypto-vault.js',
@@ -27,7 +37,13 @@ const SECURITY_BRICKS = [
 ];
 
 const UI_BRICKS = [
-  'BRK-UI-IMPORT-001.js'
+  'BRK-UI-IMPORT-001.js',
+  'BRK-PRICING-001.js'
+];
+
+const CORE_BRICKS = [
+  '864z-core.js',
+  'aether-ui.css'
 ];
 
 // ============================================
@@ -37,21 +53,32 @@ const UI_BRICKS = [
 async function main() {
   const args = process.argv.slice(2);
 
-  if (args.length < 1) {
+  // Flag parsing (must come before positional resolution so --free can appear
+  // anywhere in argv).
+  const freeMode = args.includes('--free');
+  const positional = args.filter(a => !a.startsWith('--'));
+
+  if (positional.length < 1) {
     console.log(`
 Strike Bridge — Vulture Nest to Extension Scaffold
 
 Usage:
-  node strike-bridge.js <vulture-strike.json> [output-dir]
+  node strike-bridge.js <vulture-strike.json> [output-dir] [--free]
 
-Example:
-  node strike-bridge.js ../strikes/864z-2026-004.json ./builds/passvault
+Flags:
+  --free   Free Edition build. Skip payment templates (extpay-wrapper.js,
+           tiers.js, credits.js). Write a minimal config/pricing.js stub
+           containing only "export const IS_FREE = true;".
+
+Examples:
+  node strike-bridge.js ../strikes/864z-2026-004.json
+  node strike-bridge.js ../strikes/864z-2026-008.json --free
+  EXTPAY_ID=my-app-864z node strike-bridge.js ../strikes/864z-2026-009.json
 `);
     process.exit(1);
   }
 
-  const strikePath = args[0];
-  const outputDir = args[1] || './output';
+  const strikePath = positional[0];
 
   // Load strike JSON
   console.log(`[Strike Bridge] Loading: ${strikePath}`);
@@ -60,9 +87,29 @@ Example:
   // Validate required fields
   validateStrike(strike);
 
+  // Default outputDir follows {id}-{slug} convention to match Factory naming.
+  // A-5 collision check applies only to default-resolved paths; an explicit
+  // positional override bypasses it (operator knows what they want).
+  let outputDir;
+  if (positional[1]) {
+    outputDir = positional[1];
+  } else {
+    const requested = path.join(DEFAULT_OUTPUT_ROOT, `${strike.id}-${strike.slug}`);
+    const resolved = findUniqueOutputDir(strike, requested);
+    outputDir = resolved.outputDir;
+    if (resolved.scaffoldId !== strike.id) {
+      console.warn(`[Strike Bridge] A-5 collision: ${requested} exists. Bumping scaffold id ${strike.id} -> ${resolved.scaffoldId}`);
+      // Mutate in-memory only — strike file on disk is preserved for traceability.
+      strike.id = resolved.scaffoldId;
+    }
+  }
+
   // Generate scaffold
+  if (freeMode) {
+    console.log(`[Strike Bridge] FREE EDITION mode — payment bricks will be skipped`);
+  }
   console.log(`[Strike Bridge] Generating scaffold: ${outputDir}`);
-  await generateScaffold(strike, outputDir);
+  await generateScaffold(strike, outputDir, { freeMode });
 
   console.log(`
 [Strike Bridge] Scaffold complete!
@@ -87,6 +134,37 @@ Build phases:
 // ============================================
 // VALIDATION
 // ============================================
+
+// A-5: Resolve a non-colliding output directory. If the requested path exists,
+// auto-increment the numeric suffix of strike.id (e.g. 864z-2026-006 -> 007)
+// until a free slot is found. Returns { outputDir, scaffoldId }.
+function findUniqueOutputDir(strike, requestedOutputDir) {
+  if (!fs.existsSync(requestedOutputDir)) {
+    return { outputDir: requestedOutputDir, scaffoldId: strike.id };
+  }
+
+  const idMatch = strike.id.match(/^(.+?-\d{4}-)(\d+)$/);
+  if (!idMatch) {
+    throw new Error(
+      `[Strike Bridge] A-5: target dir ${requestedOutputDir} exists but strike.id "${strike.id}" doesn't match expected {prefix-YYYY-NNN} format. Cannot auto-increment. Pass an explicit output-dir override as args[1].`
+    );
+  }
+
+  const prefix = idMatch[1];
+  const padWidth = idMatch[2].length;
+  let n = parseInt(idMatch[2], 10);
+
+  for (let attempts = 0; attempts < 1000; attempts++) {
+    n++;
+    const candidateId = prefix + String(n).padStart(padWidth, '0');
+    const candidateDir = path.join(DEFAULT_OUTPUT_ROOT, `${candidateId}-${strike.slug}`);
+    if (!fs.existsSync(candidateDir)) {
+      return { outputDir: candidateDir, scaffoldId: candidateId };
+    }
+  }
+
+  throw new Error(`[Strike Bridge] A-5: no free slot found within 1000 increments of ${strike.id}`);
+}
 
 function validateStrike(strike) {
   const required = [
@@ -113,8 +191,11 @@ function validateStrike(strike) {
 // SCAFFOLD GENERATION
 // ============================================
 
-async function generateScaffold(strike, outputDir) {
-  // Create directory structure
+async function generateScaffold(strike, outputDir, options = {}) {
+  const { freeMode = false } = options;
+
+  // Create directory structure. lib/payments is omitted in free-mode builds —
+  // there's nothing to put in it.
   const dirs = [
     '',
     'assets',
@@ -123,6 +204,8 @@ async function generateScaffold(strike, outputDir) {
     'onboarding',
     'options',
     'lib',
+    ...(freeMode ? [] : ['lib/payments']),
+    'config',
     '_locales/en',
     'test'
   ];
@@ -147,7 +230,65 @@ async function generateScaffold(strike, outputDir) {
   generateIconGenerator(strike, outputDir);
   copySecurityBricks(strike, outputDir);
   copyUIBricks(strike, outputDir);
-  copyStylesheet(strike, outputDir);
+  copyCoreBricks(strike, outputDir);
+  if (freeMode) {
+    writeFreeModePricing(strike, outputDir);
+  } else {
+    copyPaymentBricks(strike, outputDir);
+  }
+}
+
+// Free Edition: write a minimal config/pricing.js stub.
+// No payment bricks are copied. Downstream modules can branch on IS_FREE.
+function writeFreeModePricing(strike, outputDir) {
+  const pricingDest = path.join(outputDir, 'config', 'pricing.js');
+  const content = `// pricing.js — ${strike.name} (FREE EDITION)
+// ${strike.id}
+//
+// This is a free build. No ExtPay, no Stripe, no payment bricks.
+// IS_FREE is the canonical marker for "skip all payment gates".
+
+export const IS_FREE = true;
+
+export const PRICING_CONFIG = {
+  appSlug: '${strike.slug}',
+  free: true
+};
+`;
+  fs.writeFileSync(pricingDest, content, 'utf8');
+  console.log(`  Created: config/pricing.js (FREE EDITION — IS_FREE=true)`);
+}
+
+// Copy ExtPay wrapper, tiers, credits + templated pricing.js.
+// extpayId resolution: process.env.EXTPAY_ID || `${strike.slug}-864z`.
+// The longer __APP_SLUG__-864z pattern is substituted FIRST so that the
+// remaining __APP_SLUG__ replacement does not corrupt the extpayId line.
+function copyPaymentBricks(strike, outputDir) {
+  for (const brick of PAYMENT_BRICKS) {
+    const sourcePath = path.join(PAYMENTS_TEMPLATE_DIR, brick);
+    const destPath = path.join(outputDir, 'lib', 'payments', brick);
+    if (fs.existsSync(sourcePath)) {
+      fs.copyFileSync(sourcePath, destPath);
+      console.log(`  Copied: lib/payments/${brick}`);
+    } else {
+      console.warn(`[Strike Bridge] Payment brick not found, skipping: ${sourcePath}`);
+    }
+  }
+
+  const pricingSource = path.join(CONFIG_TEMPLATE_DIR, 'pricing.js');
+  const pricingDest = path.join(outputDir, 'config', 'pricing.js');
+  if (!fs.existsSync(pricingSource)) {
+    console.warn(`[Strike Bridge] pricing.js template not found at ${pricingSource} — payments will not function until you supply config/pricing.js manually.`);
+    return;
+  }
+
+  const extpayId = process.env.EXTPAY_ID || `${strike.slug}-864z`;
+  let content = fs.readFileSync(pricingSource, 'utf8');
+  content = content.replace(/__APP_SLUG__-864z/g, extpayId);
+  content = content.replace(/__APP_SLUG__/g, strike.slug);
+
+  fs.writeFileSync(pricingDest, content, 'utf8');
+  console.log(`  Created: config/pricing.js (appSlug=${strike.slug}, extpayId=${extpayId})`);
 }
 
 // ============================================
@@ -160,6 +301,8 @@ function generateManifest(strike, outputDir) {
     name: "__MSG_extName__",
     version: "1.0.0",
     description: "__MSG_extDescription__",
+    author: "864zeros LLC",
+    homepage_url: "https://864zeros.com",
     default_locale: "en",
     icons: {
       "16": "assets/icon16.png",
@@ -494,14 +637,21 @@ function generateSidepanelHTML(strike, outputDir) {
       </div>
     </main>
 
-    <!-- Trust Footer -->
-    <footer class="trust-footer">
-      <div class="trust-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-        Your data never leaves your device
+    <!-- 864zeros Brand Footer -->
+    <footer class="brand-footer compact">
+      <div class="footer-brand">
+        <span class="footer-logo">864</span>
+        <span class="footer-company">zeros</span>
       </div>
+      <div class="footer-mission">Organize Your Internal Architecture</div>
+      <div class="footer-links">
+        <a href="https://864zeros.com/privacy" target="_blank" rel="noopener">Privacy</a>
+        <span class="footer-divider">·</span>
+        <a href="https://864zeros.com/terms" target="_blank" rel="noopener">Terms</a>
+        <span class="footer-divider">·</span>
+        <a href="#" id="upgrade-link">Upgrade</a>
+      </div>
+      <div class="footer-copyright">© 2026 864zeros LLC. All rights reserved.</div>
     </footer>
   </div>
 
@@ -550,6 +700,7 @@ function generateSidepanelApp(strike, outputDir) {
 
 import { APP_NAME, TARGET_SAAS, TARGET_PRICE, VAULT_STATE } from '../lib/constants.js';
 import { ImportFlowController } from '../lib/BRK-UI-IMPORT-001.js';
+import { PricingModalController, injectPricingCSS } from '../lib/BRK-PRICING-001.js';
 
 /**
  * ${strike.name} Application Controller
@@ -558,6 +709,7 @@ class App {
   constructor() {
     this.state = VAULT_STATE.UNINITIALIZED;
     this.importFlow = null;
+    this.pricingModal = null;
   }
 
   async init() {
@@ -591,6 +743,17 @@ class App {
     });
 
     this.importFlow.init();
+
+    // Initialize pricing modal (BRK-PRICING-001)
+    injectPricingCSS();
+    this.pricingModal = new PricingModalController({
+      productName: APP_NAME,
+      currentTier: 'free',
+      onUpgrade: (tier) => {
+        console.log(\`[\${APP_NAME}] Upgrade to:\`, tier);
+      }
+    });
+
     this._attachListeners();
 
     console.log(\`[\${APP_NAME}] Ready\`);
@@ -599,6 +762,12 @@ class App {
   _attachListeners() {
     document.getElementById('lock-btn')?.addEventListener('click', () => {
       this._lock();
+    });
+
+    // Upgrade link in footer
+    document.getElementById('upgrade-link')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.pricingModal.show();
     });
   }
 
@@ -777,12 +946,22 @@ function generateOptions(strike, outputDir) {
       <button class="btn btn-danger mt-sm" id="reset-btn">Reset Vault</button>
     </div>
 
-    <div class="trust-banner mt-xl">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-      Your data never leaves your device
-    </div>
+    <!-- 864zeros Brand Footer -->
+    <footer class="brand-footer mt-xl">
+      <div class="footer-brand">
+        <span class="footer-logo">864</span>
+        <span class="footer-company">zeros</span>
+      </div>
+      <div class="footer-mission">Organize Your Internal Architecture</div>
+      <div class="footer-links">
+        <a href="https://864zeros.com/privacy" target="_blank" rel="noopener">Privacy</a>
+        <span class="footer-divider">·</span>
+        <a href="https://864zeros.com/terms" target="_blank" rel="noopener">Terms</a>
+        <span class="footer-divider">·</span>
+        <a href="https://864zeros.com/support" target="_blank" rel="noopener">Support</a>
+      </div>
+      <div class="footer-copyright">© 2026 864zeros LLC. All rights reserved.</div>
+    </footer>
   </div>
 
   <script type="module" src="./options.js"></script>
@@ -792,6 +971,7 @@ function generateOptions(strike, outputDir) {
 
   const js = `// options.js - ${strike.name} Settings
 // ${strike.id}
+// 864zeros LLC
 
 console.log('[${strike.name}] Options loaded');
 `;
@@ -983,15 +1163,18 @@ function copyUIBricks(strike, outputDir) {
   }
 }
 
-function copyStylesheet(strike, outputDir) {
-  // Copy aether-ui.css from build kit
-  const sourcePath = path.join(LIB_DIR, 'aether-ui.css');
-  const destPath = path.join(outputDir, 'lib/aether-ui.css');
+function copyCoreBricks(strike, outputDir) {
+  // Copy core bricks (864z-core.js, aether-ui.css) from build kit
+  for (const brick of CORE_BRICKS) {
+    const sourcePath = path.join(LIB_DIR, brick);
+    const destPath = path.join(outputDir, 'lib', brick);
 
-  if (fs.existsSync(sourcePath)) {
-    fs.copyFileSync(sourcePath, destPath);
-  } else {
-    console.warn('[Strike Bridge] aether-ui.css not found, skipping copy');
+    if (fs.existsSync(sourcePath)) {
+      fs.copyFileSync(sourcePath, destPath);
+      console.log(`  Copied: ${brick}`);
+    } else {
+      console.warn(`[Strike Bridge] ${brick} not found, skipping copy`);
+    }
   }
 }
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[FHG] ScriptureScout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="panel-header">
+    <div class="panel-header__title">
+      <h1 class="oia-h2"><span class="brand-prefix">[FHG]</span> ScriptureScout</h1>
+      <span class="oia-caption tagline">Heritage-first technology. Preserving what matters most.</span>
+    </div>
+    <button class="panel-header__settings" id="open-options" type="button" title="Settings" aria-label="Open settings">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main class="panel-content">
+
+    <section class="actions">
+      <button id="btn-marquee" class="oia-btn oia-btn-primary" type="button">
+        Drag-select region
+      </button>
+      <p class="oia-caption btn-hint">Marquee any region of the page</p>
+
+      <button id="btn-page" class="oia-btn oia-btn-secondary" type="button">
+        Save this page
+      </button>
+      <p class="oia-caption btn-hint">Full text from the active tab</p>
+    </section>
+
+    <section class="counter">
+      <p class="oia-body-sm">
+        <span id="count-num">0</span> captures ready
+        <span id="selection-count" class="selection-count" aria-live="polite"></span>
+      </p>
+    </section>
+
+    <!-- Master "Select all" row — shown only when there are captures -->
+    <section class="select-all-row" id="select-all-row" hidden>
+      <label class="oia-body-sm select-all-label">
+        <input type="checkbox" id="select-all" class="oia-checkbox" aria-label="Select all captures">
+        <span id="select-all-text">Select all</span>
+      </label>
+    </section>
+
+    <section id="captures-list" class="captures-list">
+      <div class="oia-empty">
+        <p class="oia-empty__headline">No captures yet</p>
+        <p class="oia-empty__subtext">Right-click any selected text on a page, or use the buttons above.</p>
+      </div>
+    </section>
+
+    <!-- Post-liberation cleanup prompt — shown after a successful Liberate -->
+    <section class="cleanup-prompt" id="cleanup-prompt" hidden>
+      <p class="oia-body-sm cleanup-prompt__msg" id="cleanup-prompt-msg">
+        Clear the liberated captures from this list?
+      </p>
+      <div class="cleanup-prompt__actions">
+        <button id="btn-cleanup-clear" class="oia-btn oia-btn-secondary cleanup-btn" type="button">
+          Clear selected
+        </button>
+        <button id="btn-cleanup-keep" class="oia-btn oia-btn-secondary cleanup-btn cleanup-btn--ghost" type="button">
+          Keep them
+        </button>
+      </div>
+    </section>
+
+    <section class="liberate">
+      <label class="oia-body-sm option-row">
+        <input type="checkbox" id="combined-toggle" class="oia-checkbox">
+        Combine into single .md file
+      </label>
+      <button id="btn-liberate" class="oia-btn oia-btn-primary btn-liberate" type="button" disabled>
+        Liberate to Vault
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="brand-footer">
+    <p class="brand-footer__line brand-footer__product">
+      ScriptureScout v0.1.0 | 864-Flux | 864zeros LLC
+    </p>
+    <p class="brand-footer__line brand-footer__privacy">
+      <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+      No ads. No tracking. Your data stays yours.
+    </p>
+    <p class="brand-footer__line brand-footer__legal">
+      <a href="https://864zeros.com/terms">Terms of Use</a>
+      <span aria-hidden="true">•</span>
+      <a href="https://864zeros.com/privacy">Privacy Policy</a>
+    </p>
+    <p class="brand-footer__line brand-footer__copyright">
+      © 2026 864zeros LLC. All rights reserved.
+    </p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClipBoard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="panel-header">
+    <h1 class="oia-h2"><span class="brand-prefix">[864F]</span> ClipBoard</h1>
+    <button class="panel-header__settings" id="open-options" title="Settings" aria-label="Open settings">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="panel-content">
+
+    <!-- Clips View (default) -->
+    <section id="view-clips" class="panel-view active">
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-chip" id="filter-starred" aria-pressed="false">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Starred
+        </button>
+        <button class="filter-chip" id="filter-clear" style="display: none;">
+          Clear filters
+        </button>
+        <button class="filter-chip filter-chip--select" id="toggle-select-mode">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 11 12 14 22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+          Select
+        </button>
+      </div>
+
+      <div class="oia-empty">
+        <div class="oia-empty__icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          </svg>
+        </div>
+        <div class="oia-empty__headline">Nothing clipped yet</div>
+        <div class="oia-empty__subtext">Select text on any page and click the capture button to save it here.</div>
+      </div>
+
+      <!-- Clips list (hidden until populated) -->
+      <div id="clips-list" class="clips-list"></div>
+    </section>
+
+    <!-- Tags View -->
+    <section id="view-tags" class="panel-view">
+      <div class="oia-empty">
+        <div class="oia-empty__icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+        </div>
+        <div class="oia-empty__headline">No tags yet</div>
+        <div class="oia-empty__subtext">Tags help you organize your clips. Create your first tag when you save a clip.</div>
+      </div>
+
+      <!-- Tags list (hidden until populated) -->
+      <div id="tags-list" class="tags-list"></div>
+    </section>
+
+    <!-- Search View -->
+    <section id="view-search" class="panel-view" aria-label="Search clips">
+      <div class="search-container" role="search">
+        <label for="search-input" class="oia-sr-only">Search clips</label>
+        <input
+          type="search"
+          id="search-input"
+          class="oia-input"
+          placeholder="Search your clips..."
+          autocomplete="off"
+          aria-label="Search clips by content, title, URL, or tag"
+        >
+      </div>
+
+      <div id="search-empty" class="oia-empty">
+        <div class="oia-empty__icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <div class="oia-empty__headline">Search your clips</div>
+        <div class="oia-empty__subtext">Find anything you've saved by content, title, or URL.</div>
+      </div>
+
+      <!-- Search results (hidden until search performed) -->
+      <div id="search-results" class="search-results"></div>
+    </section>
+
+  </main>
+
+  <!-- Bulk Action Bar (hidden by default) -->
+  <div class="bulk-action-bar" id="bulk-action-bar" style="display: none;">
+    <span class="bulk-action-bar__count" id="bulk-count">0 selected</span>
+    <div class="bulk-action-bar__actions">
+      <button class="oia-btn oia-btn-secondary oia-btn-sm" id="bulk-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        Tag
+      </button>
+      <button class="oia-btn oia-btn-primary oia-btn-sm bulk-action-bar__synthesize" id="bulk-synthesize" title="Analyze clips with AI">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 16v-4"/>
+          <path d="M12 8h.01"/>
+          <path d="M8 12h8"/>
+        </svg>
+        Synthesize
+      </button>
+      <button class="oia-btn oia-btn-secondary oia-btn-sm bulk-action-bar__delete" id="bulk-delete">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+        Delete
+      </button>
+      <button class="oia-btn oia-btn-secondary oia-btn-sm" id="bulk-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Template Selector Modal -->
+  <div class="template-modal" id="template-modal" style="display: none;">
+    <div class="oia-card template-modal__content">
+      <div class="template-modal__header">
+        <h3 class="oia-h3">Choose Report Style</h3>
+        <button class="template-modal__close" id="template-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="template-modal__body">
+        <p class="template-modal__subtitle">Select a template for your synthesis report</p>
+
+        <div class="template-options">
+          <!-- Quick Summary -->
+          <button class="template-option" data-template="quick-summary" data-cost="3">
+            <div class="template-option__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <line x1="10" y1="9" x2="8" y2="9"/>
+              </svg>
+            </div>
+            <div class="template-option__info">
+              <div class="template-option__name">Quick Summary</div>
+              <div class="template-option__desc">Key themes, insights, and takeaways</div>
+            </div>
+            <div class="template-option__cost">
+              <span class="template-option__credits">3</span>
+              <span class="template-option__label">credits</span>
+            </div>
+          </button>
+
+          <!-- Research Dossier -->
+          <button class="template-option" data-template="research-dossier" data-cost="5">
+            <div class="template-option__icon template-option__icon--dossier">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                <line x1="8" y1="6" x2="16" y2="6"/>
+                <line x1="8" y1="10" x2="16" y2="10"/>
+                <line x1="8" y1="14" x2="12" y2="14"/>
+              </svg>
+            </div>
+            <div class="template-option__info">
+              <div class="template-option__name">Research Dossier</div>
+              <div class="template-option__desc">Full analysis with source clips preserved</div>
+            </div>
+            <div class="template-option__cost">
+              <span class="template-option__credits">5</span>
+              <span class="template-option__label">credits</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="template-modal__balance">
+          Your balance: <strong id="template-balance">0</strong> credits
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Synthesis Results Modal -->
+  <div class="synthesis-modal" id="synthesis-modal" style="display: none;">
+    <div class="oia-card synthesis-modal__content" id="synthesis-report">
+      <div class="synthesis-modal__header">
+        <div class="synthesis-modal__header-left">
+          <div class="synthesis-modal__logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="oia-h3">Synthesis Report</h3>
+            <span class="synthesis-modal__meta" id="synthesis-meta"></span>
+          </div>
+        </div>
+        <button class="synthesis-modal__close" id="synthesis-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="synthesis-modal__body" id="synthesis-results">
+        <!-- Results populated by JS -->
+      </div>
+      <div class="synthesis-modal__footer">
+        <span class="synthesis-modal__credits" id="synthesis-credits"></span>
+        <div class="synthesis-modal__actions">
+          <button class="oia-btn oia-btn-ghost oia-btn-sm" id="synthesis-copy" title="Copy to clipboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            Copy
+          </button>
+          <button class="oia-btn oia-btn-ghost oia-btn-sm" id="synthesis-download" title="Download PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            PDF
+          </button>
+          <button class="oia-btn oia-btn-primary oia-btn-sm" id="synthesis-done">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credits Prompt Modal -->
+  <div class="credits-modal" id="credits-modal" style="display: none;">
+    <div class="oia-card credits-modal__content">
+      <div class="credits-modal__icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <h3 class="oia-h3">Need More Credits</h3>
+      <p class="oia-body-sm">This action requires <strong id="credits-needed">0</strong> credits. You have <strong id="credits-balance">0</strong>.</p>
+      <div class="credits-modal__packs" id="credits-packs">
+        <!-- Credit packs populated by JS -->
+      </div>
+      <div class="credits-modal__actions">
+        <button class="oia-btn oia-btn-secondary" id="credits-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB (Floating Action Button) -->
+  <button class="oia-fab" id="fab-capture" title="Capture from page" aria-label="Capture content from current page">
+    <svg class="oia-fab__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+  </button>
+
+  <!-- Privacy Footer -->
+  <footer class="privacy-footer">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </svg>
+    <span>Your data stays on your device. No tracking. No ads.</span>
+  </footer>
+
+  <!-- Bottom Navigation -->
+  <nav class="oia-bottom-nav panel-nav" aria-label="Main navigation">
+    <button class="oia-bottom-nav__item oia-bottom-nav__item--active" data-view="clips" aria-current="page">
+      <svg class="oia-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+      </svg>
+      <span class="oia-bottom-nav__label">Clips</span>
+    </button>
+
+    <button class="oia-bottom-nav__item" data-view="tags">
+      <svg class="oia-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+        <line x1="7" y1="7" x2="7.01" y2="7"/>
+      </svg>
+      <span class="oia-bottom-nav__label">Tags</span>
+    </button>
+
+    <button class="oia-bottom-nav__item" data-view="search">
+      <svg class="oia-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <span class="oia-bottom-nav__label">Search</span>
+    </button>
+  </nav>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

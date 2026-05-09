@@ -1,0 +1,485 @@
+/* ============================================================
+   [FHG] ScriptureScout — Options / Settings Page
+   Extends FHG-flavored OIA Design System (Charcoal & Bronze).
+   ============================================================ */
+
+body {
+  background-color: var(--oia-bg);
+}
+
+.options-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--oia-space-xl) var(--oia-space-lg) var(--oia-space-xxl);
+  min-height: 100vh;
+}
+
+/* ----- Hero ----- */
+
+.options-hero {
+  text-align: center;
+  padding: var(--oia-space-md) 0 var(--oia-space-lg);
+}
+
+.options-hero .oia-h1 {
+  margin: 0 0 var(--oia-space-xs);
+}
+
+.options-hero__pitch {
+  margin: 0 auto var(--oia-space-sm);
+  max-width: 48ch;
+  color: var(--oia-text-secondary);
+}
+
+.options-hero__brand {
+  margin: 0;
+  color: var(--oia-text-muted);
+}
+
+/* ----- Card layout overrides ----- */
+
+.oia-card {
+  padding: var(--oia-space-lg);
+}
+
+/* ----- Section 1: How to Use ----- */
+
+.howto-steps {
+  list-style: decimal;
+  padding-left: var(--oia-space-lg);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+.howto-steps li {
+  padding-left: var(--oia-space-xs);
+}
+
+.howto-step__title {
+  display: block;
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+  margin-bottom: var(--oia-space-xs);
+}
+
+.howto-step__body {
+  display: block;
+  color: var(--oia-text-secondary);
+  line-height: var(--oia-lh-relaxed);
+}
+
+.howto-substeps {
+  list-style: disc;
+  padding-left: var(--oia-space-lg);
+  margin: var(--oia-space-xs) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+  color: var(--oia-text-secondary);
+}
+
+.howto-substeps li {
+  line-height: var(--oia-lh-relaxed);
+}
+
+.howto-footnote {
+  margin: var(--oia-space-md) 0 0;
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.08);
+  border-left: 3px solid var(--oia-sage);
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-text-secondary);
+}
+
+code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  background-color: rgba(166, 148, 133, 0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ----- Section 2: Subscription & Tiers ----- */
+
+.tier-current {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+  padding: var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.06);
+  border-radius: var(--oia-radius-md);
+}
+
+.tier-current__note {
+  margin: 0;
+  color: var(--oia-text-secondary);
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--oia-space-sm);
+}
+
+.tier-card {
+  background-color: var(--oia-bg);
+  border: 1px solid rgba(166, 148, 133, 0.3);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+}
+
+.tier-card--upcoming {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.tier-card__name {
+  margin: 0;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+}
+
+.tier-card__price {
+  margin: 0 0 var(--oia-space-xs);
+  font-size: var(--oia-size-h2);
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-sage);
+}
+
+.tier-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--oia-text-secondary);
+}
+
+.tier-card__features li::before {
+  /* WCAG audit: checkmark glyph at caption size (12px bold) is below the
+     14pt-bold large-text threshold. Bronze fails AA at this size — use
+     text-primary for the glyph; the bullet semantic is preserved without
+     relying on color. */
+  content: '✓ ';
+  color: var(--oia-text-primary);
+  font-weight: var(--oia-weight-bold);
+}
+
+.tier-card__cta {
+  margin-top: var(--oia-space-sm);
+  height: 40px;
+  min-width: 0;
+  font-size: var(--oia-size-body-sm);
+}
+
+.fuel-build {
+  padding: var(--oia-space-md);
+  border-top: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.fuel-build__heading {
+  margin: 0 0 var(--oia-space-xs);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+}
+
+.fuel-build__body {
+  margin: 0 0 var(--oia-space-sm);
+  color: var(--oia-text-secondary);
+}
+
+/* ----- Section 3: Data Management ----- */
+
+.data-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--oia-space-sm);
+  border-bottom: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.data-stat__value {
+  margin: 0;
+  /* WCAG audit: 20px semibold is below the 14pt-bold large-text
+     threshold, so Bronze on bg-card (2.91:1) fails AA. Use text-primary;
+     the visual hierarchy comes from size + position, not color. */
+  color: var(--oia-text-primary);
+}
+
+.data-management__note {
+  margin: var(--oia-space-sm) 0 0;
+  color: var(--oia-text-secondary);
+}
+
+.data-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--oia-space-xs);
+}
+
+.data-actions__danger {
+  color: var(--oia-error);
+  border-color: var(--oia-error);
+}
+
+.data-actions__danger:hover:not(:disabled) {
+  background-color: rgba(212, 132, 122, 0.08);
+}
+
+.data-actions__danger--armed {
+  background-color: var(--oia-error);
+  color: var(--oia-text-inverse);
+  animation: armed-pulse 1s ease-in-out infinite;
+}
+
+.data-actions__danger--armed:hover {
+  background-color: var(--oia-error);
+}
+
+@keyframes armed-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 132, 122, 0.4); }
+  50%      { box-shadow: 0 0 0 6px rgba(212, 132, 122, 0); }
+}
+
+.data-actions__hint {
+  margin: 0;
+  color: var(--oia-text-muted);
+}
+
+/* ----- [FHG] Brand prefix — UI accent pill (sufficient area exception
+   per WCAG audit 2026-05-08). Bronze BACKGROUND + inverse text passes 7.0:1;
+   the prior small-bronze-text approach failed AA. ----- */
+
+.brand-prefix {
+  display: inline-block;
+  background-color: var(--oia-accent);
+  color: var(--oia-text-inverse);
+  font-weight: var(--oia-weight-bold);
+  font-size: 0.6em;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: var(--oia-radius-sm);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   GENERAL SETTINGS card (theme selector + Dopamine-Friendly info)
+   ============================================================ */
+
+.general-settings {
+  border: 1px solid var(--oia-slate-border);
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oia-space-md);
+  flex-wrap: wrap;
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.setting-info .oia-body {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oia-space-xs);
+  color: var(--oia-text-primary);
+}
+
+.setting-info .oia-caption {
+  color: var(--oia-text-secondary);
+}
+
+.setting-select {
+  height: 40px;
+  padding: 0 var(--oia-space-sm);
+  width: auto;
+  min-width: 160px;
+  font-size: var(--oia-size-body-sm);
+}
+
+/* Info-icon (the "*" beside Theme) — Dopamine-Friendly UI inspector */
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: var(--oia-slate-bg);
+  color: var(--oia-slate);
+  border: 1px solid var(--oia-slate-border);
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: var(--oia-font);
+  font-size: 14px;
+  font-weight: var(--oia-weight-bold);
+  line-height: 1;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              color var(--oia-duration-fast) var(--oia-ease-default),
+              border-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.info-icon:hover {
+  background: var(--oia-sage);
+  color: var(--oia-text-inverse);
+  border-color: var(--oia-sage);
+}
+
+.info-icon:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}
+
+.info-icon[aria-expanded="true"] {
+  background: var(--oia-sage);
+  color: var(--oia-text-inverse);
+  border-color: var(--oia-sage);
+}
+
+/* Info-popover — Dopamine-Friendly UI definition (FHG: Bronze accent border) */
+.info-popover {
+  margin-top: var(--oia-space-md);
+  padding: var(--oia-space-md);
+  background-color: var(--oia-slate-bg);
+  border-left: 3px solid var(--oia-accent);
+  border-radius: var(--oia-radius-sm);
+  position: relative;
+  animation: oia-slide-up var(--oia-duration-normal) var(--oia-ease-enter);
+}
+
+.info-popover[hidden] {
+  display: none !important;
+}
+
+.info-popover__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--oia-space-sm);
+  margin-bottom: var(--oia-space-xs);
+}
+
+.info-popover__title {
+  margin: 0;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-slate);
+}
+
+.info-popover__close {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: var(--oia-radius-sm);
+  transition: color var(--oia-duration-fast) var(--oia-ease-default),
+              background-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.info-popover__close:hover {
+  color: var(--oia-text-primary);
+  background-color: rgba(71, 85, 105, 0.08);
+}
+
+.info-popover__body {
+  margin: 0;
+  color: var(--oia-text-secondary);
+  line-height: var(--oia-lh-relaxed);
+}
+
+/* ----- The Architect's Hook (per GTM_MANIFEST §4) ----- */
+
+.architects-hook {
+  text-align: center;
+  margin: var(--oia-space-lg) auto var(--oia-space-md);
+  max-width: 56ch;
+  color: var(--oia-text-secondary);
+  font-style: italic;
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid var(--oia-slate-border);
+}
+
+/* ----- Brand Footer (per GTM_MANIFEST §6) ----- */
+
+.brand-footer {
+  text-align: center;
+  padding: var(--oia-space-md) 0;
+  border-top: 1px solid var(--oia-slate-border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-footer__line {
+  margin: 0;
+  font-size: var(--oia-size-caption);
+  line-height: 1.5;
+  color: var(--oia-text-muted);
+}
+
+.brand-footer__product {
+  color: var(--oia-text-secondary);
+  font-weight: var(--oia-weight-semibold);
+}
+
+.brand-footer__privacy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--oia-slate);
+}
+
+.brand-footer__lock {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.brand-footer__legal a {
+  /* WCAG audit: text color stays text-primary for AA contrast.
+     Bronze appears as the UNDERLINE accent (decoration-color),
+     never as text-color in small body. Always underlined for
+     color-independent link identification. */
+  color: var(--oia-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--oia-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.brand-footer__legal a:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--oia-sage-light);
+}
+
+.brand-footer__legal span[aria-hidden="true"] {
+  margin: 0 6px;
+  color: var(--oia-text-muted);
+}
+
+.brand-footer__copyright {
+  color: var(--oia-text-muted);
+  opacity: 0.85;
+}

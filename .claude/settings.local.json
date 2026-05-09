@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command *)",
+      "PowerShell(py *)",
+      "PowerShell(\\(Get-Item \"C:\\\\dev\\\\864zeros-llc\\\\MONOLITH_INDEX.md\"\\).Length; \\(Get-Content \"C:\\\\dev\\\\864zeros-llc\\\\MONOLITH_INDEX.md\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Move-Item *)",
+      "PowerShell(Rename-Item *)"
+    ]
+  }
+}

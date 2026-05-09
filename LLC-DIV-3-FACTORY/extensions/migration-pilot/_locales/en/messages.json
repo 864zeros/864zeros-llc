@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "MigrationPilot — Web to Obsidian",
+    "description": "Extension name shown in Chrome"
+  },
+  "extDescription": {
+    "message": "Built for people with ADHD by someone with ADHD. Capture from any page, liberate to Markdown. Your vault, your control. No cloud, no account, no subscription.",
+    "description": "Extension description for the Chrome Web Store"
+  },
+  "captureSelection": {
+    "message": "Save selection to MigrationPilot",
+    "description": "Right-click context menu label"
+  },
+  "captureMarquee": {
+    "message": "Drag-select region",
+    "description": "Marquee capture button label"
+  },
+  "captureFullPage": {
+    "message": "Save this page",
+    "description": "Full-page capture button label"
+  },
+  "liberateButton": {
+    "message": "Liberate to Markdown",
+    "description": "Primary action button — exports captures as .md files"
+  }
+}

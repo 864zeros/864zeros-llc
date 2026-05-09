@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "product": "CrewAI Studio",
+    "scan_timestamp": "2026-05-06T13:29:56.748072",
+    "engine_version": "1.2.0",
+    "mode": "live"
+  },
+  "pricing_friction": [
+    {
+      "source": "web",
+      "content": "What is CrewAI Studio pricing? CrewAI offers a free open-source framework, plus paid plans for its cloud product. On the pricing page ...Read more",
+      "query": "\"CrewAI Studio\" pricing expensive OR \"too expensive\" OR overpriced"
+    },
+    {
+      "source": "web",
+      "content": "What does CrewAI Studio Review cost at scale? Pricing varies by deployment model. Managed offerings are predictable but premium. Self-hosted ...Read more",
+      "query": "\"CrewAI Studio\" pricing expensive OR \"too expensive\" OR overpriced"
+    },
+    {
+      "source": "web",
+      "content": "Enterprise pricing gets expensive (up to $5,999/mo for 2 million tasks). ... CrewAI Studio provides a visual interface for building agent ...Read more",
+      "query": "\"CrewAI Studio\" pricing expensive OR \"too expensive\" OR overpriced"
+    },
+    {
+      "source": "web",
+      "content": "What is CrewAI Studio pricing? CrewAI offers a free open-source framework, plus paid plans for its cloud product. On the pricing page ...Read more",
+      "query": "\"CrewAI Studio\" enterprise pricing OR \"per seat\" OR \"per user\""
+    },
+    {
+      "source": "web",
+      "content": "**CrewAI Review (2026): Pricing, Pros + Free Trial | Comparateur-IA**",
+      "query": "\"CrewAI Studio\" enterprise pricing OR \"per seat\" OR \"per user\""
+    },
+    {
+      "source": "web",
+      "content": "CrewAI Studio (limited). Knowledge base, Built-in per agent, RAG setup required. API deployment, REST API + embed, Self-managed. Pricing model, Predictable ...Read more",
+      "query": "\"CrewAI Studio\" enterprise pricing OR \"per seat\" OR \"per user\""
+    },
+    {
+      "source": "web",
+      "content": "**Review of CrewAI (2026) — pros, cons, pricing & alternatives**",
+      "query": "\"CrewAI Studio\" free tier OR limitations OR restricted"
+    },
+    {
+      "source": "web",
+      "content": "What is CrewAI Studio pricing? CrewAI offers a free open-source framework, plus paid plans for its cloud product. On the pricing page ...Read more",
+      "query": "\"CrewAI Studio\" free tier OR limitations OR restricted"
+    }
+  ],
+  "export_hostage": [
+    {
+      "source": "web",
+      "content": "... export USER_AGENT=\"CrewAI-Studio/1.0\" # Enable debug logging export STREAMLIT_LOGGER_LEVEL=debug # Ensure Python can import modules from the app folder ...",
+      "query": "\"CrewAI Studio\" export data OR \"how to export\" OR migration"
+    },
+    {
+      "source": "web",
+      "content": "CrewAI-Studio is the official no-code UI for CrewAI. ... Import/export configurations via YAML for reusability and DevOps integration ... data sharing; Jupyter AI ...",
+      "query": "\"CrewAI Studio\" export data OR \"how to export\" OR migration"
+    },
+    {
+      "source": "web",
+      "content": "Build in <60s with CrewAI Studio – Fast speed to value; Download your Agents as Code at any point – No vendor lock in; Intuitive workflows ...Read more",
+      "query": "\"CrewAI Studio\" lock-in OR locked OR \"can't export\""
+    },
+    {
+      "source": "web",
+      "content": "CrewAI Studio provides a visual editor alongside API and SDK access. ... LLM lock-in. ‍Can you swap LLM providers without rewriting agent ...Read more",
+      "query": "\"CrewAI Studio\" lock-in OR locked OR \"can't export\""
+    },
+    {
+      "source": "web",
+      "content": "**11 Best CrewAI Alternatives for AI Workflow Automation (2026**",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    },
+    {
+      "source": "web",
+      "content": "(https://coworker.ai/blog/crewai-alternatives)",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    },
+    {
+      "source": "web",
+      "content": "CrewAI Studio provides a visual builder. AutoGen Studio exists for ... Nexus: the production-ready alternative to both. Nexus isn't a ...Read more",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    },
+    {
+      "source": "web",
+      "content": "**Obot AI Alternatives: Top 6 Tools You Can Consider in 2026**",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    },
+    {
+      "source": "web",
+      "content": "(https://www.truefoundry.com/blog/obot-ai-alternatives)",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    },
+    {
+      "source": "web",
+      "content": "**7 best LangChain alternatives I've tested in 2026**",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    },
+    {
+      "source": "web",
+      "content": "(https://www.gumloop.com/blog/langchain-alternatives)",
+      "query": "\"CrewAI Studio\" alternative OR \"switched from\" OR replacement"
+    }
+  ],
+  "enterprise_pain": [
+    {
+      "source": "web",
+      "content": "CrewAI studio features and benefits. Open App. Skip to ... I asked ChatGPT and 4 other AIs about their limitations. Here's what ...Read more",
+      "query": "\"CrewAI Studio\" template OR \"can't customize\" OR limitations"
+    },
+    {
+      "source": "web",
+      "content": "Welcome screen with template quick-start when canvas is empty. Export ... CrewAI studio Featurs · General. 1, 21, February 2, 2026.Read more",
+      "query": "\"CrewAI Studio\" template OR \"can't customize\" OR limitations"
+    },
+    {
+      "source": "web",
+      "content": "CrewAI has a no-code builder (CrewAI Studio), so you can set up workflows visually. It's way less frustrating than trying to hack together ...Read more",
+      "query": "site:reddit.com \"CrewAI Studio\" frustrating OR broken OR slow"
+    },
+    {
+      "source": "web",
+      "content": "Current WAC is ridiculously slow because it relies on winrm ... Rowboat Cloud Launch: open-source agent builder - n8n meets CrewAI Studio.Read more",
+      "query": "site:reddit.com \"CrewAI Studio\" frustrating OR broken OR slow"
+    }
+  ],
+  "sentiment_signals": [],
+  "competitors": [],
+  "community_pain_points": [
+    {
+      "quote": "Best AI Agents in 2026: 25 Tools Tested and Compared. Enterprise pricing gets expensive (up to $5,999/mo for 2 million tasks). ... CrewAI Studio provides a visual interface for building agent ...Read more",
+      "matched_keywords": [
+        "expensive"
+      ],
+      "source_url": "https://felloai.com/best-ai-agents/",
+      "title": "Best AI Agents in 2026: 25 Tools Tested and Compared",
+      "phase": "pricing"
+    },
+    {
+      "quote": "Inkeep vs CrewAI: Key Differences To Know. While CrewAI Studio allows the download of agent flows into generated code for added customization, there's no evidence of code-to-UI import ...Read more",
+      "matched_keywords": [
+        "import"
+      ],
+      "source_url": "https://inkeep.com/blog/inkeep-vs-crewai-key-differences",
+      "title": "Inkeep vs CrewAI: Key Differences To Know",
+      "phase": "export"
+    },
+    {
+      "quote": "CrewAI Studio UI keeps on spinning without specific err #106. ... export USER_AGENT=\"CrewAI-Studio/1.0\" # Enable debug logging export STREAMLIT_LOGGER_LEVEL=debug # Ensure Python can import modules from the app folder ...",
+      "matched_keywords": [
+        "export",
+        "import"
+      ],
+      "source_url": "https://github.com/strnad/CrewAI-Studio/issues/106",
+      "title": "CrewAI Studio UI keeps on spinning without specific err #106",
+      "phase": "export"
+    },
+    {
+      "quote": "AI Agents using CrewAI Studio & Jupyter with GPU support. CrewAI-Studio is the official no-code UI for CrewAI. ... Import/export configurations via YAML for reusability and DevOps integration ... data sharing; Jupyter AI ...",
+      "matched_keywords": [
+        "export",
+        "import"
+      ],
+      "source_url": "https://marketplace.microsoft.com/en-us/product/virtual-machines/techlatest.crewai-vm?tab=overview",
+      "title": "AI Agents using CrewAI Studio & Jupyter with GPU support",
+      "phase": "export"
+    },
+    {
+      "quote": "8 Best AI Agent Frameworks for Enterprise in 2026 | Rasa Blog. CrewAI Studio provides a visual editor alongside API and SDK access. ... LLM lock-in. ‍Can you swap LLM providers without rewriting agent ...Read more",
+      "matched_keywords": [
+        "lock-in"
+      ],
+      "source_url": "https://rasa.com/blog/best-ai-agent-framework",
+      "title": "8 Best AI Agent Frameworks for Enterprise in 2026 | Rasa Blog",
+      "phase": "export"
+    },
+    {
+      "quote": "Spoke to 21 CrewAI developers and here's what we found. CrewAI studio features and benefits. Open App. Skip to ... I asked ChatGPT and 4 other AIs about their limitations. Here's what ...Read more",
+      "matched_keywords": [
+        "limitation"
+      ],
+      "source_url": "https://www.reddit.com/r/crewai/comments/1fntljw/spoke_to_21_crewai_developers_and_heres_what_we/",
+      "title": "Spoke to 21 CrewAI developers and here's what we found",
+      "phase": "enterprise"
+    },
+    {
+      "quote": "Introducing My Independent Project: CrewAI Visual Editor. Welcome screen with template quick-start when canvas is empty. Export ... CrewAI studio Featurs · General. 1, 21, February 2, 2026.Read more",
+      "matched_keywords": [
+        "export"
+      ],
+      "source_url": "https://community.crewai.com/t/introducing-my-independent-project-crewai-visual-editor/2702",
+      "title": "Introducing My Independent Project: CrewAI Visual Editor",
+      "phase": "enterprise"
+    },
+    {
+      "quote": "Forget ChatGPT. CrewAI is the Future of AI Automation and .... CrewAI has a no-code builder (CrewAI Studio), so you can set up workflows visually. It's way less frustrating than trying to hack together ...Read more",
+      "matched_keywords": [
+        "frustrating"
+      ],
+      "source_url": "https://www.reddit.com/r/PromptEngineering/comments/1k8k7xz/forget_chatgpt_crewai_is_the_future_of_ai/",
+      "title": "Forget ChatGPT. CrewAI is the Future of AI Automation and ...",
+      "phase": "enterprise"
+    },
+    {
+      "quote": "New Windows Admin Center vMode for managing Hyper-V .... Current WAC is ridiculously slow because it relies on winrm ... Rowboat Cloud Launch: open-source agent builder - n8n meets CrewAI Studio.Read more",
+      "matched_keywords": [
+        "slow"
+      ],
+      "source_url": "https://www.reddit.com/r/HyperV/comments/1p18hz7/new_windows_admin_center_vmode_for_managing/",
+      "title": "New Windows Admin Center vMode for managing Hyper-V ...",
+      "phase": "enterprise"
+    }
+  ],
+  "unbundle_opportunity": {
+    "viable": true,
+    "local_first_possible": true,
+    "estimated_market_size": 0,
+    "saas_hostage_indicators": [
+      "Export friction detected",
+      "Pricing complaints prevalent",
+      "Enterprise frustration documented"
+    ]
+  },
+  "score_864z": 10.0,
+  "passes_8_64": true,
+  "verdict": {
+    "strike_worthy": true,
+    "priority": "high",
+    "rationale": "864z score 10.0 >= 8.64. Cleared the gate. 23 pain signals, 3 hostage indicators.",
+    "total_signals": 23
+  },
+  "score_breakdown": {
+    "convergence": 1.0,
+    "velocity": 1.0,
+    "scarcity": 1.0,
+    "weights": {
+      "convergence": 0.45,
+      "velocity": 0.35,
+      "scarcity": 0.2
+    },
+    "threshold": 8.64
+  }
+}

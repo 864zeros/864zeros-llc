@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoamRescue Settings</title>
+  <link rel="stylesheet" href="../lib/aether-ui.css">
+</head>
+<body>
+  <div class="options-container p-xl">
+    <h1>RoamRescue Settings</h1>
+
+    <div class="card mt-lg">
+      <h3>Security</h3>
+      <div class="form-group mt-md">
+        <label class="form-label">Auto-lock timeout</label>
+        <select id="auto-lock-timeout">
+          <option value="5">5 minutes</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card mt-lg">
+      <h3>Data</h3>
+      <button class="btn btn-secondary mt-md" id="export-btn">Export Vault</button>
+      <button class="btn btn-danger mt-sm" id="reset-btn">Reset Vault</button>
+    </div>
+
+    <!-- 864zeros Brand Footer -->
+    <footer class="brand-footer mt-xl">
+      <div class="footer-brand">
+        <span class="footer-logo">864</span>
+        <span class="footer-company">zeros</span>
+      </div>
+      <div class="footer-mission">Organize Your Internal Architecture</div>
+      <div class="footer-links">
+        <a href="https://864zeros.com/privacy" target="_blank" rel="noopener">Privacy</a>
+        <span class="footer-divider">·</span>
+        <a href="https://864zeros.com/terms" target="_blank" rel="noopener">Terms</a>
+        <span class="footer-divider">·</span>
+        <a href="https://864zeros.com/support" target="_blank" rel="noopener">Support</a>
+      </div>
+      <div class="footer-copyright">© 2026 864zeros LLC. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script type="module" src="./options.js"></script>
+</body>
+</html>

@@ -1,0 +1,1084 @@
+/*
+ * ================================================================
+ * OIA Design System v1.0 — CSS Implementation
+ * ================================================================
+ * Source of Truth: OIA_Design_System_-_Complete.pdf
+ * Covers:         Web apps, Micro-SaaS, Chrome extension panels
+ * Dark Mode:      Automatic via prefers-color-scheme
+ * 
+ * Usage:
+ *   <link rel="stylesheet" href="oia-design-system.css">
+ *   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+ *
+ * For Chrome Extensions:
+ *   Add both lines to your sidepanel/index.html or popup/popup.html.
+ *   Google Fonts works inside extension pages (not content scripts).
+ *   For content scripts, bundle the font or use the fallback stack.
+ *
+ * Structure:
+ *   1. Custom Properties (Tokens)
+ *   2. Reset & Base
+ *   3. Typography
+ *   4. Spacing Utilities
+ *   5. Components
+ *   6. Animations & Motion
+ *   7. Accessibility
+ *   8. Dark Mode
+ * ================================================================
+ */
+
+
+/* ================================================================
+   1. CUSTOM PROPERTIES — LIGHT MODE (DEFAULT)
+   ================================================================ */
+
+:root {
+
+  /* ============================================================
+   * WCAG Compliance: Bronze (#A67C52) is reserved for large text
+   * (18pt+) or UI accents with sufficient area. Body text must use
+   * --oia-text-primary.
+   *
+   * Audit (2026-05-08, Strike 012 Q4): Bronze on Charcoal #3D3D3D
+   * is 2.91:1 — fails AA Normal (4.5:1) and AA Large (3:1). Bronze
+   * on Parchment #F5EDD8 is 4.35:1 — fails AA Normal by 0.15.
+   * Solution: do NOT change the Bronze token (brand-load-bearing);
+   * scope it to UI accents (backgrounds, borders, focus outlines)
+   * and large bold text (≥18pt). Body text uses --oia-text-primary.
+   * Per-component compliance enforced in sidepanel/styles.css and
+   * options/styles.css.
+   * ============================================================ */
+
+  /* --- Brand (FHG Bronze, swapped from OIA Sage 2026-05-08) --- */
+  --oia-sage:             #A67C52;   /* FHG Bronze (semantic alias: --oia-accent) */
+  --oia-sage-dark:        #8C6743;
+  --oia-sage-light:       #BD8E60;
+  --oia-coral:            #C39A6F;
+  --oia-coral-dark:       #A8865B;
+  --oia-coral-light:      #D4AC81;
+
+  /* --- Slate (FHG Structural Charcoal, swapped 2026-05-08) --- */
+  --oia-slate:            #3D3D3D;   /* FHG Structural Charcoal */
+  --oia-slate-dark:       #2A2A2A;
+  --oia-slate-light:      #5A5A5A;
+  --oia-slate-bg:         #353535;
+  --oia-slate-border:     rgba(245, 245, 245, 0.08);
+
+  /* --- Accent (semantic alias for the brand color in this build) --- */
+  --oia-accent:           #A67C52;   /* FHG Bronze */
+
+  /* --- Backgrounds (FHG Charcoal canvas) --- */
+  --oia-bg:               #2D2D2D;   /* FHG Charcoal */
+  --oia-bg-card:          #3D3D3D;   /* Slightly elevated */
+  --oia-bg-elevated:      #4D4D4D;
+
+  /* --- Supporting --- */
+  --oia-dusty-blue:       #7A8FA3;
+  --oia-taupe:            #A69485;
+  --oia-olive:            #6B6B5E;
+  --oia-mustard:          #C9A86C;
+
+  /* --- Text (FHG Warm White on Charcoal) --- */
+  --oia-text-primary:     #F5F5F5;   /* FHG Warm White */
+  --oia-text-secondary:   #C0C0C0;
+  --oia-text-muted:       #909090;
+  --oia-text-inverse:     #2D2D2D;   /* For buttons / inverse on bronze */
+
+  /* --- Semantic --- */
+  --oia-success:          #8BA888;
+  --oia-warning:          #C9A86C;
+  --oia-error:            #D4847A;
+  --oia-info:             #7A8FA3;
+
+  /* --- Border --- */
+  --oia-border:           #4D4D4D;   /* FHG Mid-Charcoal */
+
+  /* --- Typography --- */
+  --oia-font:             'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --oia-size-display:     32px;
+  --oia-size-h1:          24px;
+  --oia-size-h2:          20px;
+  --oia-size-body:        16px;
+  --oia-size-body-sm:     14px;
+  --oia-size-caption:     12px;
+  --oia-size-button:      16px;
+  --oia-weight-regular:   400;
+  --oia-weight-medium:    500;
+  --oia-weight-semibold:  600;
+  --oia-weight-bold:      700;
+  --oia-lh-tight:         1.2;
+  --oia-lh-normal:        1.3;
+  --oia-lh-relaxed:       1.5;
+
+  /* --- Spacing (8px base) --- */
+  --oia-space-xs:         4px;
+  --oia-space-sm:         8px;
+  --oia-space-md:         16px;
+  --oia-space-lg:         24px;
+  --oia-space-xl:         32px;
+  --oia-space-xxl:        48px;
+
+  /* --- Border Radius --- */
+  --oia-radius-sm:        8px;
+  --oia-radius-md:        12px;
+  --oia-radius-lg:        16px;
+  --oia-radius-xl:        24px;
+  --oia-radius-full:      9999px;
+
+  /* --- Shadows --- */
+  --oia-shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.05);
+  --oia-shadow-md:        0 2px 8px rgba(0, 0, 0, 0.08);
+  --oia-shadow-lg:        0 4px 16px rgba(0, 0, 0, 0.1);
+  --oia-shadow-button:    0 2px 8px rgba(139, 168, 136, 0.3);
+
+  /* --- Animation --- */
+  --oia-duration-fast:    150ms;
+  --oia-duration-normal:  250ms;
+  --oia-duration-slow:    350ms;
+  --oia-ease-default:     ease-out;
+  --oia-ease-enter:       ease-out;
+  --oia-ease-exit:        ease-in;
+  --oia-ease-move:        ease-in-out;
+
+  /* --- Component Sizes --- */
+  --oia-button-height:    56px;
+  --oia-button-min-width: 120px;
+  --oia-input-height:     56px;
+  --oia-touch-min:        48px;
+  --oia-touch-rec:        56px;
+  --oia-checkbox-size:    24px;
+  --oia-fab-size:         56px;
+  --oia-bottom-nav-h:     64px;
+  --oia-progress-h:       8px;
+  --oia-toast-h:          48px;
+  --oia-spinner-sm:       24px;
+  --oia-spinner-md:       32px;
+  --oia-spinner-lg:       48px;
+}
+
+
+/* ================================================================
+   2. RESET & BASE
+   ================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--oia-font);
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-regular);
+  line-height: var(--oia-lh-relaxed);
+  color: var(--oia-text-primary);
+  background-color: var(--oia-bg);
+}
+
+/* Never pure black or pure white — per design system */
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--oia-sage);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--oia-sage-dark);
+}
+
+
+/* ================================================================
+   3. TYPOGRAPHY
+   ================================================================
+   Classes: .oia-display, .oia-h1, .oia-h2, .oia-body,
+            .oia-body-sm, .oia-caption, .oia-button-text
+   
+   Max line length: 65 characters for readability.
+   Never all-caps except very short labels (2-3 words).
+   ================================================================ */
+
+.oia-display {
+  font-size: var(--oia-size-display);
+  font-weight: var(--oia-weight-bold);
+  line-height: var(--oia-lh-tight);
+  color: var(--oia-text-primary);
+}
+
+.oia-h1 {
+  font-size: var(--oia-size-h1);
+  font-weight: var(--oia-weight-bold);
+  line-height: var(--oia-lh-normal);
+  color: var(--oia-text-primary);
+}
+
+.oia-h2 {
+  font-size: var(--oia-size-h2);
+  font-weight: var(--oia-weight-semibold);
+  line-height: var(--oia-lh-normal);
+  color: var(--oia-text-primary);
+}
+
+.oia-body {
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-regular);
+  line-height: var(--oia-lh-relaxed);
+  color: var(--oia-text-primary);
+  max-width: 65ch;
+}
+
+.oia-body-sm {
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-regular);
+  line-height: var(--oia-lh-relaxed);
+  color: var(--oia-text-secondary);
+}
+
+.oia-caption {
+  font-size: var(--oia-size-caption);
+  font-weight: var(--oia-weight-regular);
+  line-height: 1.4;
+  color: var(--oia-text-muted);
+}
+
+.oia-button-text {
+  font-size: var(--oia-size-button);
+  font-weight: var(--oia-weight-semibold);
+  line-height: 1.0;
+  letter-spacing: 0.5px;
+}
+
+
+/* ================================================================
+   4. SPACING UTILITIES
+   ================================================================
+   Pattern: .oia-m-{size}, .oia-p-{size}, .oia-gap-{size}
+   Also: .oia-mt-{size}, .oia-mb-{size}, .oia-ml-{size}, .oia-mr-{size}
+   ================================================================ */
+
+/* --- Margin --- */
+.oia-m-xs   { margin: var(--oia-space-xs); }
+.oia-m-sm   { margin: var(--oia-space-sm); }
+.oia-m-md   { margin: var(--oia-space-md); }
+.oia-m-lg   { margin: var(--oia-space-lg); }
+.oia-m-xl   { margin: var(--oia-space-xl); }
+.oia-m-xxl  { margin: var(--oia-space-xxl); }
+
+.oia-mt-xs  { margin-top: var(--oia-space-xs); }
+.oia-mt-sm  { margin-top: var(--oia-space-sm); }
+.oia-mt-md  { margin-top: var(--oia-space-md); }
+.oia-mt-lg  { margin-top: var(--oia-space-lg); }
+.oia-mt-xl  { margin-top: var(--oia-space-xl); }
+.oia-mt-xxl { margin-top: var(--oia-space-xxl); }
+
+.oia-mb-xs  { margin-bottom: var(--oia-space-xs); }
+.oia-mb-sm  { margin-bottom: var(--oia-space-sm); }
+.oia-mb-md  { margin-bottom: var(--oia-space-md); }
+.oia-mb-lg  { margin-bottom: var(--oia-space-lg); }
+.oia-mb-xl  { margin-bottom: var(--oia-space-xl); }
+.oia-mb-xxl { margin-bottom: var(--oia-space-xxl); }
+
+.oia-ml-sm  { margin-left: var(--oia-space-sm); }
+.oia-mr-sm  { margin-right: var(--oia-space-sm); }
+
+/* --- Padding --- */
+.oia-p-xs   { padding: var(--oia-space-xs); }
+.oia-p-sm   { padding: var(--oia-space-sm); }
+.oia-p-md   { padding: var(--oia-space-md); }
+.oia-p-lg   { padding: var(--oia-space-lg); }
+.oia-p-xl   { padding: var(--oia-space-xl); }
+.oia-p-xxl  { padding: var(--oia-space-xxl); }
+
+/* --- Gap (for flexbox/grid containers) --- */
+.oia-gap-xs  { gap: var(--oia-space-xs); }
+.oia-gap-sm  { gap: var(--oia-space-sm); }
+.oia-gap-md  { gap: var(--oia-space-md); }
+.oia-gap-lg  { gap: var(--oia-space-lg); }
+.oia-gap-xl  { gap: var(--oia-space-xl); }
+
+
+/* ================================================================
+   5. COMPONENTS
+   ================================================================ */
+
+/* ----- 5.1 Screen Layout ----- */
+
+.oia-screen {
+  padding: var(--oia-space-xxl) var(--oia-space-lg) var(--oia-space-xl);
+  min-height: 100vh;
+}
+
+.oia-section {
+  margin-bottom: var(--oia-space-lg);
+}
+
+/* ----- 5.2 Buttons ----- */
+
+.oia-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--oia-button-height);
+  min-width: var(--oia-button-min-width);
+  padding: 0 var(--oia-space-lg);
+  border: none;
+  border-radius: var(--oia-radius-md);
+  font-family: var(--oia-font);
+  font-size: var(--oia-size-button);
+  font-weight: var(--oia-weight-semibold);
+  letter-spacing: 0.5px;
+  line-height: 1.0;
+  cursor: pointer;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              transform var(--oia-duration-fast) var(--oia-ease-default),
+              box-shadow var(--oia-duration-fast) var(--oia-ease-default);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Primary */
+.oia-btn-primary {
+  background-color: var(--oia-sage);
+  color: var(--oia-text-inverse);
+  box-shadow: var(--oia-shadow-button);
+}
+
+.oia-btn-primary:hover {
+  background-color: var(--oia-sage-dark);
+}
+
+.oia-btn-primary:active {
+  background-color: var(--oia-sage-dark);
+  transform: scale(0.97);
+}
+
+.oia-btn-primary:disabled {
+  background-color: var(--oia-taupe);
+  color: rgba(253, 252, 250, 0.5);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary */
+.oia-btn-secondary {
+  background-color: transparent;
+  color: var(--oia-sage);
+  border: 2px solid var(--oia-sage);
+  box-shadow: none;
+}
+
+.oia-btn-secondary:hover {
+  background-color: rgba(139, 168, 136, 0.08);
+}
+
+.oia-btn-secondary:active {
+  background-color: rgba(139, 168, 136, 0.1);
+  transform: scale(0.97);
+}
+
+.oia-btn-secondary:disabled {
+  border-color: rgba(166, 148, 133, 0.5);
+  color: rgba(166, 148, 133, 0.5);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ----- 5.3 Text Input ----- */
+
+.oia-input {
+  display: block;
+  width: 100%;
+  height: var(--oia-input-height);
+  padding: 0 var(--oia-space-md);
+  background-color: var(--oia-bg-card);
+  border: 1px solid var(--oia-taupe);
+  border-radius: var(--oia-radius-md);
+  font-family: var(--oia-font);
+  font-size: var(--oia-size-body);
+  color: var(--oia-text-primary);
+  outline: none;
+  transition: border-color var(--oia-duration-fast) var(--oia-ease-default),
+              box-shadow var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-input::placeholder {
+  color: var(--oia-text-muted);
+}
+
+.oia-input:focus {
+  border: 2px solid var(--oia-sage);
+  padding: 0 calc(var(--oia-space-md) - 1px); /* Compensate for border width change */
+}
+
+.oia-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Textarea variant */
+textarea.oia-input {
+  height: auto;
+  min-height: calc(var(--oia-input-height) * 2);
+  padding: var(--oia-space-md);
+  resize: vertical;
+}
+
+/* ----- 5.4 Card ----- */
+
+.oia-card {
+  background-color: var(--oia-bg-card);
+  border-radius: var(--oia-radius-lg);
+  padding: var(--oia-space-md);
+  box-shadow: var(--oia-shadow-sm);
+  transition: opacity var(--oia-duration-normal) var(--oia-ease-enter),
+              transform var(--oia-duration-normal) var(--oia-ease-enter);
+}
+
+.oia-card--completed {
+  background-color: var(--oia-bg);
+}
+
+.oia-card--completed .oia-card__title {
+  color: var(--oia-text-secondary);
+  text-decoration: line-through;
+}
+
+/* ----- 5.5 Task Card ----- */
+
+.oia-task {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oia-space-sm);
+  background-color: var(--oia-bg-card);
+  border-radius: var(--oia-radius-lg);
+  padding: var(--oia-space-md);
+  box-shadow: var(--oia-shadow-sm);
+}
+
+.oia-task__content {
+  flex: 1;
+}
+
+.oia-task__title {
+  font-size: var(--oia-size-body);
+  color: var(--oia-text-primary);
+}
+
+.oia-task__meta {
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+  margin-top: var(--oia-space-xs);
+}
+
+.oia-task--completed {
+  background-color: var(--oia-bg);
+}
+
+.oia-task--completed .oia-task__title {
+  color: var(--oia-text-secondary);
+  text-decoration: line-through;
+}
+
+/* ----- 5.6 Checkbox ----- */
+
+.oia-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--oia-checkbox-size);
+  height: var(--oia-checkbox-size);
+  min-width: var(--oia-checkbox-size);
+  border: 2px solid var(--oia-taupe);
+  border-radius: var(--oia-radius-sm);
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              border-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-checkbox:checked {
+  background-color: var(--oia-sage);
+  border-color: var(--oia-sage);
+}
+
+.oia-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.oia-checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ----- 5.7 Progress Bar ----- */
+
+.oia-progress {
+  width: 100%;
+  height: var(--oia-progress-h);
+  background-color: rgba(166, 148, 133, 0.25); /* Taupe 25% */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.oia-progress__fill {
+  height: 100%;
+  background-color: var(--oia-sage);
+  border-radius: 4px;
+  transition: width var(--oia-duration-normal) var(--oia-ease-move);
+}
+
+/* ----- 5.8 Status Badge ----- */
+
+.oia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--oia-space-xs) var(--oia-space-sm);
+  border-radius: var(--oia-radius-full);
+  font-size: var(--oia-size-caption);
+  font-weight: var(--oia-weight-semibold);
+}
+
+.oia-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.oia-badge--completed {
+  background-color: rgba(139, 168, 136, 0.2);
+  color: var(--oia-sage);
+}
+
+.oia-badge--completed .oia-badge__dot {
+  background-color: var(--oia-sage);
+}
+
+.oia-badge--in-progress {
+  background-color: rgba(201, 168, 108, 0.2);
+  color: var(--oia-mustard);
+}
+
+.oia-badge--in-progress .oia-badge__dot {
+  background-color: var(--oia-mustard);
+}
+
+.oia-badge--pending {
+  background-color: rgba(166, 148, 133, 0.2);
+  color: var(--oia-taupe);
+}
+
+.oia-badge--pending .oia-badge__dot {
+  background-color: var(--oia-taupe);
+}
+
+/* ----- 5.9 Floating Action Button (FAB) ----- */
+
+.oia-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--oia-fab-size);
+  height: var(--oia-fab-size);
+  border: none;
+  border-radius: var(--oia-radius-full);
+  background-color: var(--oia-sage);
+  color: white;
+  box-shadow: var(--oia-shadow-lg);
+  cursor: pointer;
+  position: fixed;
+  bottom: var(--oia-space-lg);
+  right: var(--oia-space-lg);
+  z-index: 100;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              transform var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-fab:active {
+  background-color: var(--oia-sage-dark);
+  transform: scale(0.97);
+}
+
+.oia-fab__icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ----- 5.10 Toast / Snackbar ----- */
+
+.oia-toast {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  height: var(--oia-toast-h);
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  border-radius: var(--oia-radius-md);
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: white;
+  position: fixed;
+  bottom: calc(var(--oia-bottom-nav-h) + var(--oia-space-lg));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  animation: oia-toast-in var(--oia-duration-normal) var(--oia-ease-enter) forwards;
+}
+
+.oia-toast--success  { background-color: var(--oia-sage); }
+.oia-toast--warning  { background-color: var(--oia-mustard); color: var(--oia-text-primary); }
+.oia-toast--error    { background-color: var(--oia-error); }
+.oia-toast--info     { background-color: var(--oia-dusty-blue); }
+
+.oia-toast--dismiss {
+  animation: oia-toast-out 200ms var(--oia-ease-exit) forwards;
+}
+
+/* ----- 5.11 Spinner ----- */
+
+.oia-spinner {
+  width: var(--oia-spinner-md);
+  height: var(--oia-spinner-md);
+  border: 3px solid rgba(139, 168, 136, 0.25);
+  border-top-color: var(--oia-sage);
+  border-radius: 50%;
+  animation: oia-spin 1s linear infinite;
+}
+
+.oia-spinner--sm {
+  width: var(--oia-spinner-sm);
+  height: var(--oia-spinner-sm);
+  border-width: 2px;
+}
+
+.oia-spinner--lg {
+  width: var(--oia-spinner-lg);
+  height: var(--oia-spinner-lg);
+  border-width: 4px;
+}
+
+/* ----- 5.12 Skeleton Loader ----- */
+
+.oia-skeleton {
+  background-color: rgba(166, 148, 133, 0.2);
+  border-radius: var(--oia-radius-md);
+  animation: oia-pulse 1.5s ease-in-out infinite;
+}
+
+.oia-skeleton--text {
+  height: 16px;
+  margin-bottom: var(--oia-space-sm);
+  border-radius: var(--oia-radius-sm);
+}
+
+.oia-skeleton--title {
+  height: 24px;
+  width: 60%;
+  margin-bottom: var(--oia-space-md);
+  border-radius: var(--oia-radius-sm);
+}
+
+.oia-skeleton--card {
+  height: 80px;
+  border-radius: var(--oia-radius-lg);
+  margin-bottom: var(--oia-space-sm);
+}
+
+.oia-skeleton--circle {
+  width: var(--oia-checkbox-size);
+  height: var(--oia-checkbox-size);
+  border-radius: 50%;
+}
+
+/* ----- 5.13 Bottom Navigation ----- */
+
+.oia-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: var(--oia-bottom-nav-h);
+  background-color: var(--oia-bg-card);
+  border-top: 1px solid rgba(166, 148, 133, 0.2);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.oia-bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-width: var(--oia-touch-min);
+  min-height: var(--oia-touch-min);
+  justify-content: center;
+  padding: var(--oia-space-xs);
+}
+
+.oia-bottom-nav__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--oia-taupe);
+  transition: color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-bottom-nav__label {
+  font-size: var(--oia-size-caption);
+  color: var(--oia-text-muted);
+  transition: color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-bottom-nav__item--active .oia-bottom-nav__icon {
+  color: var(--oia-sage);
+}
+
+.oia-bottom-nav__item--active .oia-bottom-nav__label {
+  color: var(--oia-sage);
+}
+
+/* ----- 5.14 Empty State ----- */
+
+.oia-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--oia-space-xxl) var(--oia-space-lg);
+  gap: var(--oia-space-md);
+}
+
+.oia-empty__illustration {
+  max-width: 200px;
+  margin-bottom: var(--oia-space-sm);
+}
+
+.oia-empty__headline {
+  font-size: var(--oia-size-h2);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+}
+
+.oia-empty__subtext {
+  font-size: var(--oia-size-body);
+  color: var(--oia-text-secondary);
+  max-width: 280px;
+}
+
+/* ----- 5.15 Slider / Range ----- */
+
+.oia-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(166, 148, 133, 0.4);
+  border-radius: 2px;
+  outline: none;
+}
+
+.oia-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--oia-coral);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--oia-shadow-sm);
+  transition: transform var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.oia-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--oia-coral);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--oia-shadow-sm);
+}
+
+.oia-slider:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+
+/* ================================================================
+   6. ANIMATIONS & MOTION
+   ================================================================
+   Purposeful, quick, calm, rewarding.
+   All animations honor prefers-reduced-motion (see Section 7).
+   ================================================================ */
+
+/* --- Keyframes --- */
+
+@keyframes oia-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes oia-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes oia-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes oia-slide-down {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes oia-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes oia-toast-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes oia-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes oia-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.7; }
+}
+
+@keyframes oia-check-draw {
+  0%   { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* --- Utility Classes --- */
+
+.oia-animate-fade-in   { animation: oia-fade-in var(--oia-duration-normal) var(--oia-ease-enter); }
+.oia-animate-slide-up  { animation: oia-slide-up var(--oia-duration-normal) var(--oia-ease-enter); }
+.oia-animate-slide-down { animation: oia-slide-down 200ms var(--oia-ease-exit); }
+
+
+/* ================================================================
+   7. ACCESSIBILITY
+   ================================================================ */
+
+/* --- Focus Visible (keyboard users only) --- */
+
+:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+  border-radius: var(--oia-radius-sm);
+}
+
+/* Remove focus ring for mouse/touch */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- Reduced Motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .oia-spinner {
+    animation: none;
+    border-top-color: var(--oia-sage);
+    opacity: 0.7;
+  }
+
+  .oia-skeleton {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* --- Screen Reader Only --- */
+
+.oia-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* ================================================================
+   8. DARK MODE — prefers-color-scheme
+   ================================================================
+   Automatic. No toggle class needed.
+   Overrides custom properties only — all components inherit.
+   ================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* FHG is dark-first; @media dark mirrors :root */
+    --oia-bg:               #2D2D2D;
+    --oia-bg-card:          #3D3D3D;
+    --oia-bg-elevated:      #4D4D4D;
+    --oia-text-primary:     #F5F5F5;
+    --oia-text-secondary:   #C0C0C0;
+    --oia-text-muted:       #909090;
+    --oia-text-inverse:     #2D2D2D;
+    --oia-sage:             #A67C52;
+    --oia-sage-dark:        #8C6743;
+    --oia-coral:            #C39A6F;
+    --oia-border:           #4D4D4D;
+    --oia-shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.35);
+    --oia-shadow-md:        0 2px 8px rgba(0, 0, 0, 0.45);
+    --oia-shadow-lg:        0 4px 16px rgba(0, 0, 0, 0.55);
+    --oia-shadow-button:    0 2px 8px rgba(166, 124, 82, 0.35);
+    --oia-slate:            #3D3D3D;
+    --oia-slate-dark:       #2A2A2A;
+    --oia-slate-light:      #5A5A5A;
+    --oia-slate-bg:         #353535;
+    --oia-slate-border:     rgba(245, 245, 245, 0.08);
+    --oia-accent:           #A67C52;
+  }
+
+  /* --- Component dark mode tweaks --- */
+
+  .oia-input {
+    border-color: var(--oia-border);
+  }
+
+  .oia-card--completed {
+    background-color: var(--oia-bg-elevated);
+  }
+
+  .oia-task--completed {
+    background-color: var(--oia-bg-elevated);
+  }
+
+  .oia-progress {
+    background-color: var(--oia-bg-elevated);
+  }
+
+  .oia-skeleton {
+    background-color: var(--oia-bg-elevated);
+  }
+
+  .oia-bottom-nav {
+    border-top-color: rgba(107, 107, 94, 0.3);
+  }
+
+  /* Links adjust for dark */
+  a {
+    color: var(--oia-sage);
+  }
+
+  a:hover {
+    color: var(--oia-sage-dark);
+  }
+}
+
+
+/* ================================================================
+   9. MANUAL THEME OVERRIDE (added 2026-05-08)
+   ================================================================
+   Per GTM_MANIFEST §8: extensions may add a Theme Selector (Auto /
+   Light / Dark). When :root[data-theme="light"|"dark"] is set,
+   force the corresponding palette regardless of system preference.
+   Default behavior (no attribute) honors prefers-color-scheme.
+   ================================================================ */
+
+:root[data-theme="light"] {
+  /* FHG Light variant — Parchment & Bronze (Faith/Heritage warm-light alternative) */
+  --oia-bg:               #F5EDD8;   /* Parchment cream */
+  --oia-bg-card:          #FAF6EC;   /* Warm white */
+  --oia-bg-elevated:      #FFFCF5;
+  --oia-text-primary:     #2D2419;   /* Deep brown */
+  --oia-text-secondary:   #5A4A33;
+  --oia-text-muted:       #8C7A5C;
+  --oia-text-inverse:     #FAF6EC;
+  --oia-sage:             #8C6743;   /* Deeper bronze for contrast on parchment */
+  --oia-sage-dark:        #6E5034;
+  --oia-coral:            #A8865B;
+  --oia-border:           #D4C4A0;
+  --oia-shadow-sm:        0 1px 3px rgba(45, 36, 25, 0.08);
+  --oia-shadow-md:        0 2px 8px rgba(45, 36, 25, 0.12);
+  --oia-shadow-lg:        0 4px 16px rgba(45, 36, 25, 0.15);
+  --oia-shadow-button:    0 2px 8px rgba(140, 103, 67, 0.3);
+  --oia-slate:            #6E5034;   /* Warm brown structural */
+  --oia-slate-dark:       #4A3522;
+  --oia-slate-light:      #8C7A5C;
+  --oia-slate-bg:         #EBE0C4;
+  --oia-slate-border:     rgba(110, 80, 52, 0.15);
+  --oia-accent:           #8C6743;
+}
+
+:root[data-theme="dark"] {
+  /* FHG Dark — Charcoal & Bronze (matches :root since FHG is dark-first) */
+  --oia-bg:               #2D2D2D;
+  --oia-bg-card:          #3D3D3D;
+  --oia-bg-elevated:      #4D4D4D;
+  --oia-text-primary:     #F5F5F5;
+  --oia-text-secondary:   #C0C0C0;
+  --oia-text-muted:       #909090;
+  --oia-text-inverse:     #2D2D2D;
+  --oia-sage:             #A67C52;
+  --oia-sage-dark:        #8C6743;
+  --oia-coral:            #C39A6F;
+  --oia-border:           #4D4D4D;
+  --oia-shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.35);
+  --oia-shadow-md:        0 2px 8px rgba(0, 0, 0, 0.45);
+  --oia-shadow-lg:        0 4px 16px rgba(0, 0, 0, 0.55);
+  --oia-shadow-button:    0 2px 8px rgba(166, 124, 82, 0.35);
+  --oia-slate:            #3D3D3D;
+  --oia-slate-dark:       #2A2A2A;
+  --oia-slate-light:      #5A5A5A;
+  --oia-slate-bg:         #353535;
+  --oia-slate-border:     rgba(245, 245, 245, 0.08);
+  --oia-accent:           #A67C52;
+}
+
+/* Dark-mode component tweaks reapplied for explicit theme="dark" */
+:root[data-theme="dark"] .oia-input { border-color: var(--oia-border); }
+:root[data-theme="dark"] .oia-card--completed { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-task--completed { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-progress { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-skeleton { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-bottom-nav { border-top-color: rgba(107, 107, 94, 0.3); }

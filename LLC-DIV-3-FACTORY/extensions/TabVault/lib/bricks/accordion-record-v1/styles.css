@@ -1,0 +1,287 @@
+/* ============================================================
+ * BRICK — accordion-record-v1 / styles.css
+ * ============================================================
+ * ID:       BRK-UI-004
+ * Authority: BUILD_KIT_RULES.md → RULE-004 (Interactive Record Accordion)
+ * Origin:   Strike 012 (ScriptureScout)
+ *
+ * USAGE
+ * -----
+ * Link this file from your sidepanel/options HTML AFTER your design
+ * system tokens (oia-design-system.css). The brick uses --oia-* tokens
+ * exclusively — no hard-coded brand colors. Pillar palettes (OIA Sage,
+ * 864-Flux Graphite, FHG Bronze) flow through the same tokens, so the
+ * accordion adapts automatically.
+ *
+ * <link rel="stylesheet" href="../lib/oia-design-system.css">
+ * <link rel="stylesheet" href="../lib/bricks/accordion-record-v1/styles.css">
+ * <link rel="stylesheet" href="styles.css">  <!-- your own page styles -->
+ *
+ * PARCHMENT READING SURFACE
+ * -------------------------
+ * `.accordion-record__reading` is intentionally a LIGHT panel (#F5F5F5
+ * default) regardless of the surrounding theme. This is the "Kindle
+ * sepia card" pattern — even in dark mode, the captured content reads
+ * on a high-contrast light surface. Text color is deep brown for AA AAA.
+ *
+ * Pillars may override the reading surface via:
+ *   .accordion-record__reading {
+ *     background-color: var(--oia-reading-surface, #F5F5F5);
+ *     color: var(--oia-reading-text, #2D2419);
+ *   }
+ * ============================================================ */
+
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}
+
+.accordion-record {
+  background-color: var(--oia-bg-card);
+  border-radius: var(--oia-radius-md);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--oia-shadow-sm);
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition: border-color var(--oia-duration-fast) var(--oia-ease-default),
+              box-shadow var(--oia-duration-normal) var(--oia-ease-default);
+}
+
+.accordion-record--selected {
+  border-color: var(--oia-accent);
+}
+
+.accordion-record--expanded {
+  box-shadow: var(--oia-shadow-md);
+}
+
+/* ----- HEADER (always visible, click-to-toggle) ----- */
+
+.accordion-record__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.accordion-record__header:hover {
+  background-color: rgba(166, 124, 82, 0.04);
+}
+
+.accordion-record__header:focus-visible {
+  outline: 2px solid var(--oia-accent);
+  outline-offset: -2px;
+}
+
+.accordion-record__title-block {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.accordion-record__title {
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: var(--oia-lh-tight);
+}
+
+.accordion-record__meta {
+  font-size: var(--oia-size-caption);
+  color: var(--oia-text-muted);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: var(--oia-lh-tight);
+}
+
+/* ----- Chevron (Bronze, rotates 90° on expand) ----- */
+
+.accordion-record__chevron {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--oia-accent);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s ease-out,
+              background-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.accordion-record--expanded .accordion-record__chevron {
+  transform: rotate(90deg);
+}
+
+.accordion-record__chevron:hover {
+  background-color: rgba(166, 124, 82, 0.10);
+}
+
+/* ----- BODY (grid-template-rows transition for smooth height-auto) ----- */
+
+.accordion-record__body-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+
+.accordion-record--expanded .accordion-record__body-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.accordion-record__body {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ----- Parchment Reading Surface (per RULE-004 §2) ----- */
+
+.accordion-record__reading {
+  margin: 0 12px 10px;
+  padding: 14px 16px;
+  background-color: var(--oia-reading-surface, #F5F5F5);
+  color: var(--oia-reading-text, #2D2419);
+  border-radius: var(--oia-radius-sm);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.18);
+  max-height: var(--accordion-reading-max-height, 500px);
+  overflow-y: auto;
+  font-size: var(--oia-size-body-sm);
+  line-height: var(--oia-lh-relaxed);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: var(--oia-font);
+}
+
+/* HTML-rendered captures (BG / BLB / BibleHub) — natural flow */
+.accordion-record__reading p,
+.accordion-record__reading div,
+.accordion-record__reading table,
+.accordion-record__reading h1,
+.accordion-record__reading h2,
+.accordion-record__reading h3,
+.accordion-record__reading h4 {
+  white-space: normal;
+}
+
+.accordion-record__reading h1,
+.accordion-record__reading h2,
+.accordion-record__reading h3,
+.accordion-record__reading h4 {
+  margin: 0.4em 0 0.2em;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-reading-heading, #1F1A11);
+}
+
+.accordion-record__reading p {
+  margin: 0.4em 0;
+}
+
+.accordion-record__reading a {
+  color: var(--oia-reading-link, #6E5034);
+  text-decoration: underline;
+}
+
+.accordion-record__reading table {
+  font-size: 0.92em;
+  border-collapse: collapse;
+  margin: 0.4em 0;
+}
+
+.accordion-record__reading th,
+.accordion-record__reading td {
+  padding: 4px 8px;
+  border: 1px solid rgba(110, 80, 52, 0.25);
+  text-align: left;
+}
+
+/* ----- ACTION ROW (per RULE-004 §3) ----- */
+
+.accordion-record__actions {
+  display: flex;
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.accordion-record__action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid rgba(166, 124, 82, 0.4);
+  border-radius: var(--oia-radius-sm);
+  background-color: transparent;
+  color: var(--oia-text-primary);
+  font-family: var(--oia-font);
+  font-size: var(--oia-size-caption);
+  font-weight: var(--oia-weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--oia-duration-fast) var(--oia-ease-default),
+              border-color var(--oia-duration-fast) var(--oia-ease-default),
+              opacity var(--oia-duration-fast) var(--oia-ease-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accordion-record__action:hover {
+  background-color: rgba(166, 124, 82, 0.08);
+}
+
+.accordion-record__action:focus-visible {
+  outline: 2px solid var(--oia-accent);
+  outline-offset: 1px;
+}
+
+.accordion-record__action--primary {
+  background-color: var(--oia-accent);
+  color: var(--oia-text-inverse);
+  border-color: var(--oia-accent);
+}
+
+.accordion-record__action--primary:hover {
+  background-color: var(--oia-sage-dark);
+  border-color: var(--oia-sage-dark);
+}
+
+.accordion-record__action--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.accordion-record__action--danger {
+  color: var(--oia-error);
+  border-color: rgba(212, 132, 122, 0.4);
+}
+
+.accordion-record__action--danger:hover {
+  background-color: rgba(212, 132, 122, 0.10);
+  border-color: var(--oia-error);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-record__body-wrapper,
+  .accordion-record__chevron {
+    transition: none;
+  }
+}

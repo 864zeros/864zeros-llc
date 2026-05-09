@@ -1,0 +1,39 @@
+# 864zeros LLC: Monolith Sync & Handover
+**Date:** 2026-05-05
+**Node:** Always-On PC (Cresco, PA)
+**Status:** Environment Stable / Factory Initialized
+
+## 1. Physical Node State
+- **Root:** `C:\dev\864zeros-llc`
+- **Identity:** Jeffrey Martin Conn (Principal Solution Architect / Owner 864zeros LLC)
+- **Connectivity:** Bypassed Google Workspace MCP "auth-trap." Node is now using a direct `.env` configuration.
+- **Heartbeat:** Verified successful via `@JC_zbot`. Telegram notifier is LIVE.
+
+## 2. Monolith Architecture
+- **Div-1 (Intelligence):** Research & AETHER core documentation.
+- **Div-3 (Factory):** Engineering hub.
+    - `div-3-factory/aether-pulse-x`: Cloned as a full child repository.
+- **Div-4 (GTM):** Strategy & Playbooks.
+    - Moved `AETHER_Social_Engagement_Playbook.md` here for strategic isolation.
+
+## 3. Engineering Backlog (AETHER Pulse X)
+The repository at `div-3-factory/aether-pulse-x` has been audited against V1.1 specs. The following P1/P2 blockers are active:
+
+### [P1] Async/Await Orchestration
+- **File:** `pulse_x.py`
+- **Problem:** Synchronous loops are calling async Telegram notifier methods.
+- **Impact:** Potential silent failures in monitor mode. 
+- **Requirement:** Refactor entry points to `asyncio.run()` and `await` all notifier calls.
+
+### [P2] Recency Scoring Mismatch
+- **Files:** `scorer.py` and `tests/test_scorer.py`
+- **Problem:** Logic mismatch on the "48-hour penalty" math.
+- **Impact:** 5 failing unit tests in the current suite.
+- **Requirement:** Align `scorer.py` math with the expectations in the test suite.
+
+### [P3] X-Character Budget
+- **File:** `drafter.py`
+- **Requirement:** Implement 23-character URL rule for X-compliance (DOI: 10.5281/zenodo.19212829).
+
+## 4. Operational Mandate
+Claude Code is authorized to act as Lead Engineer. Use the AETHER Power Words (Self-healing, Capsule, Intrinsic) in all drafts. Never allow auto-posting to X; maintain "Human-in-the-Loop" for Jeff's manual posting.

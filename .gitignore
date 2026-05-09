@@ -1,2 +1,39 @@
+# 864zeros LLC — repo-wide ignore rules
+# Updated: 2026-05-08 (Strike 012 Q4)
 
+# Windows artifact (preserve)
 nul
+
+# Node tooling
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm/
+.yarn/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.orig
+*.tmp
+.vscode/
+.idea/
+
+# Build outputs / archives
+dist/
+build/
+*.zip
+*.crx
+
+# Secrets / local-only env
+.env
+.env.local
+*.pem
+*.key
+credentials.json
+
+# Test / coverage artifacts
+coverage/
+.nyc_output/

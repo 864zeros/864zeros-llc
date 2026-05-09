@@ -1,0 +1,455 @@
+/* ============================================================
+   ClipBoard — Options Page Styles
+   864-Flux pillar (Graphite accent — see lib/oia-design-system.css)
+   ============================================================ */
+
+body {
+  min-height: 100vh;
+}
+
+/* ----- Standardized Brand Footer (RULE-001 §6 / GTM_MANIFEST §6) -----
+   Added 2026-05-08 alongside the existing options-footer (which carries
+   the legal/* link targets shipped with the extension). */
+
+.brand-footer {
+  text-align: center;
+  padding: var(--oia-space-md) 0;
+  border-top: 1px solid var(--oia-slate-border, rgba(71, 85, 105, 0.15));
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-footer__line {
+  margin: 0;
+  font-size: var(--oia-size-caption);
+  line-height: 1.5;
+  color: var(--oia-text-muted);
+}
+
+.brand-footer__product {
+  color: var(--oia-text-secondary);
+  font-weight: var(--oia-weight-semibold);
+}
+
+.brand-footer__privacy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--oia-text-secondary);
+}
+
+.brand-footer__lock {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.brand-footer__legal a {
+  color: var(--oia-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--oia-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.brand-footer__legal a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.brand-footer__legal span[aria-hidden="true"] {
+  margin: 0 6px;
+  color: var(--oia-text-muted);
+}
+
+.brand-footer__copyright {
+  color: var(--oia-text-muted);
+  opacity: 0.85;
+}
+
+.options-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--oia-space-xl) var(--oia-space-lg);
+}
+
+/* ----- Hero: Pitch & Instructions ----- */
+
+.options-hero {
+  text-align: center;
+  padding-bottom: var(--oia-space-lg);
+  border-bottom: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+.options-hero__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-md);
+  margin-bottom: var(--oia-space-md);
+}
+
+.options-hero__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--oia-radius-md);
+}
+
+.options-hero__brand .oia-h1 {
+  margin: 0;
+  text-align: left;
+}
+
+.oia-tagline {
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-medium);
+  color: var(--oia-sage);
+  margin: 0;
+  text-align: left;
+}
+
+.options-hero__pitch {
+  color: var(--oia-text-secondary);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* How-to Accordion */
+.options-howto {
+  text-align: left;
+  background-color: rgba(139, 168, 136, 0.08);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-sm) var(--oia-space-md);
+}
+
+.options-howto__toggle {
+  cursor: pointer;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-xs);
+}
+
+.options-howto__toggle::before {
+  content: '+';
+  font-size: 16px;
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-sage);
+  width: 20px;
+}
+
+.options-howto[open] .options-howto__toggle::before {
+  content: '−';
+}
+
+.options-howto__steps {
+  margin: 0;
+  padding-left: var(--oia-space-lg);
+  color: var(--oia-text-secondary);
+  font-size: var(--oia-size-body-sm);
+  line-height: 1.7;
+}
+
+.options-howto__steps li {
+  margin-bottom: var(--oia-space-xs);
+}
+
+.options-howto__steps strong {
+  color: var(--oia-text-primary);
+}
+
+/* ----- Setting Rows ----- */
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oia-space-md);
+  padding: var(--oia-space-sm) 0;
+}
+
+.setting-row + .setting-row {
+  border-top: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.setting-select {
+  width: auto;
+  min-width: 140px;
+  height: 40px;
+  padding: 0 var(--oia-space-sm);
+  font-size: var(--oia-size-body-sm);
+}
+
+.setting-row--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.setting-row--vertical .setting-info {
+  margin-bottom: var(--oia-space-sm);
+}
+
+/* ----- API Key Row ----- */
+
+.api-key-row {
+  display: flex;
+  gap: var(--oia-space-xs);
+}
+
+.api-key-row .oia-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.api-key-row .oia-btn {
+  flex-shrink: 0;
+  height: 44px;
+  padding: 0 var(--oia-space-sm);
+}
+
+.setting-info a {
+  color: var(--oia-sage);
+  text-decoration: none;
+}
+
+.setting-info a:hover {
+  text-decoration: underline;
+}
+
+/* ----- Toggle Switch ----- */
+
+.toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ----- Tier Display ----- */
+
+.tier-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--oia-space-xs) var(--oia-space-sm);
+  background-color: rgba(139, 168, 136, 0.15);
+  border-radius: var(--oia-radius-full);
+}
+
+.tier-badge__dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--oia-sage);
+  border-radius: 50%;
+}
+
+.tier-badge__name {
+  font-size: var(--oia-size-body-sm);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-sage);
+}
+
+/* ----- Feature List ----- */
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oia-space-sm);
+  padding: var(--oia-space-xs) 0;
+  font-size: var(--oia-size-body-sm);
+  color: var(--oia-text-secondary);
+}
+
+.feature-list__tier {
+  display: inline-block;
+  min-width: 60px;
+  padding: 2px 6px;
+  background-color: rgba(166, 148, 133, 0.15);
+  border-radius: var(--oia-radius-sm);
+  font-size: 10px;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-taupe);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* ----- Button Group ----- */
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oia-space-sm);
+}
+
+.button-group .oia-btn {
+  min-width: auto;
+  padding: 0 var(--oia-space-md);
+  height: 44px;
+}
+
+/* ----- Sync Section ----- */
+
+.sync-section {
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid rgba(166, 148, 133, 0.15);
+}
+
+/* ----- Fuel Card ----- */
+
+.fuel-card {
+  background: linear-gradient(135deg, var(--oia-bg-card) 0%, rgba(139, 168, 136, 0.08) 100%);
+  border: 1px solid rgba(139, 168, 136, 0.2);
+}
+
+/* ----- Footer ----- */
+
+.options-footer {
+  text-align: center;
+  padding: var(--oia-space-xl) 0 var(--oia-space-lg);
+  color: var(--oia-text-muted);
+}
+
+.options-footer strong {
+  color: var(--oia-text-secondary);
+}
+
+/* Privacy Badge */
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oia-space-xs);
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.1);
+  border: 1px solid rgba(139, 168, 136, 0.2);
+  border-radius: var(--oia-radius-full);
+  margin-bottom: var(--oia-space-md);
+  font-size: var(--oia-size-body-sm);
+}
+
+.privacy-badge svg {
+  color: var(--oia-sage);
+  flex-shrink: 0;
+}
+
+/* Legal Links */
+.options-footer__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  margin-bottom: var(--oia-space-sm);
+}
+
+.options-footer__links a {
+  color: var(--oia-text-muted);
+  text-decoration: none;
+  font-size: var(--oia-size-caption);
+  transition: color var(--oia-duration-fast);
+}
+
+.options-footer__links a:hover {
+  color: var(--oia-sage);
+  text-decoration: underline;
+}
+
+.options-footer__divider {
+  color: var(--oia-text-muted);
+  opacity: 0.5;
+}
+
+.options-footer__copyright {
+  font-size: var(--oia-size-caption);
+  margin: 0;
+}
+
+/* ----- Dark Mode ----- */
+
+@media (prefers-color-scheme: dark) {
+  .options-hero {
+    border-bottom-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .options-howto {
+    background-color: rgba(150, 184, 147, 0.1);
+  }
+
+  .setting-row + .setting-row {
+    border-top-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .sync-section {
+    border-top-color: rgba(107, 107, 94, 0.2);
+  }
+
+  .fuel-card {
+    background: linear-gradient(135deg, var(--oia-bg-card) 0%, rgba(150, 184, 147, 0.1) 100%);
+    border-color: rgba(150, 184, 147, 0.25);
+  }
+
+  .tier-badge {
+    background-color: rgba(150, 184, 147, 0.2);
+  }
+
+  .feature-list__tier {
+    background-color: rgba(107, 107, 94, 0.25);
+  }
+
+  .privacy-badge {
+    background-color: rgba(150, 184, 147, 0.1);
+    border-color: rgba(150, 184, 147, 0.2);
+  }
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 480px) {
+  .options-container {
+    padding: var(--oia-space-lg) var(--oia-space-md);
+  }
+
+  .setting-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--oia-space-sm);
+  }
+
+  .setting-select {
+    width: 100%;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group .oia-btn {
+    width: 100%;
+  }
+}

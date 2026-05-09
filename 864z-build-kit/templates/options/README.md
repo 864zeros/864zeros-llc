@@ -1,169 +1,160 @@
-# Options Page Template
+# Canonical Options Page Template (RULE-001)
 
-Standard structure for 864zeros extension options pages.
-
----
-
-## Required Sections
-
-Every options page **must** include these sections in this order:
-
-| # | Section | Purpose | Required? |
-|---|---------|---------|-----------|
-| 1 | **Hero** | Pitch + instructions — sell value, teach usage | Yes |
-| 2 | **General** | Core settings users might adjust | Yes |
-| 3 | **Your Plan** | Current tier, features, upgrade CTA | Yes |
-| 4 | **Data** | Export, import, sync options | If app stores data |
-| 5 | **Fuel the Build** | Donation/support CTA | Yes |
-| 6 | **Footer** | Privacy badge, legal, copyright | Yes |
+**Authority:** [`864z-build-kit/references/core/BUILD_KIT_RULES.md`](../../references/core/BUILD_KIT_RULES.md) → **RULE-001: Command & Control Standard**
+**Effective:** 2026-05-08
+**Reference implementation:** `LLC-DIV-3-FACTORY/extensions/migration-pilot/options/`
+**Supersedes:** v1 Options Page Template (preserved at `_legacy-v1/`)
 
 ---
 
-## Section Details
+## What This Is
 
-### 1. Hero (Required)
+The **single mandatory pattern** for every 864zeros extension's Options page. Every extension must:
 
-The first thing users see. Combines branding with value proposition and onboarding.
-
-**Must include:**
-- App icon + name
-- Tagline (one punchy line)
-- Pitch sentence (1-2 sentences explaining what the app does)
-- Collapsible "How to use" instructions (5 steps max)
-
-**Example:**
-```html
-<header class="options-hero">
-  <div class="options-hero__brand">
-    <img src="../icons/icon-48.png" alt="AppName" class="options-hero__icon">
-    <div>
-      <h1 class="oia-h1">AppName</h1>
-      <p class="oia-tagline">Tagline goes here.</p>
-    </div>
-  </div>
-  <p class="oia-body options-hero__pitch">
-    One or two sentences explaining the core value.
-  </p>
-  <details class="options-howto">
-    <summary>How to use AppName</summary>
-    <ol class="options-howto__steps">...</ol>
-  </details>
-</header>
-```
+1. Ship `options/options.html`, `options/main.js`, `options/styles.css` (this folder, copy-pasted + genericized)
+2. Wire `manifest.json → options_ui` to `options/options.html` with `open_in_tab: true`
+3. Trigger via the canonical Cog header (`templates/sidepanel/header-component.js`)
+4. Include all three RULE-001 sections in the prescribed order
 
 ---
 
-### 2. General (Required)
+## The Three Mandatory Sections (RULE-001)
 
-Core preferences. Keep it minimal — only settings most users care about.
+| # | Section | Owns | Cannot live elsewhere |
+|---|---|---|---|
+| 1 | **How to Use** | User instructions, capture flows, escape hatches | Other surfaces may *repeat*, but Options is source of truth |
+| 2 | **Subscription & Tiers** | Current tier, upgrade path, tipping | Inline upgrade nags in side panel are FORBIDDEN |
+| 3 | **Data Management** | Destructive actions (Clear DB, Reset, Export-all) | Destructive controls outside Options are FORBIDDEN |
 
-**Guidelines:**
-- Use dropdowns for choice settings
-- Use toggles for on/off settings
-- Include helper text (caption) for each setting
-- Max 5-6 settings in General; use additional cards for advanced settings
-
----
-
-### 3. Your Plan (Required)
-
-Shows current tier and drives upgrades.
-
-**Must include:**
-- Current tier badge with visual indicator
-- Brief description of what current tier includes
-- Feature list showing what each upgrade unlocks
-- Single "Upgrade your plan" CTA button
-
-**Standard tiers:**
-- Free → Starter → Pro → Power
-
----
-
-### 4. Data (Conditional)
-
-Include if the app stores user data locally or in the cloud.
-
-**Must include:**
-- Statement that data is stored locally
-- Export button
-- Import button
-- Hidden file input for import
-
-**Optional:**
-- Cloud sync section (gated by tier)
-
----
-
-### 5. Fuel the Build (Required)
-
-Donation/support CTA. Builds community engagement and funds development.
-
-**Must include:**
-- Friendly ask (not desperate)
-- "Buy us a coffee" button
-
-**Example copy:**
-> Love [AppName]? Help us build the next feature. Every coffee counts.
-
----
-
-### 6. Footer (Required)
-
-Privacy assurance and legal compliance.
-
-**Must include (in this order):**
-
-1. **Privacy Badge** — Exact text: "No ads. No tracking. Your data stays yours."
-2. **Legal Links** — Terms of Use, Privacy Policy
-3. **Copyright** — "© [Year] 864zeros LLC. All rights reserved."
-4. **Version** — "[AppName] v[X.X.X]"
-
----
-
-## Placeholders to Replace
-
-| Placeholder | Replace With |
-|-------------|--------------|
-| `__APP_NAME__` | Your extension name (e.g., "ClipBoard") |
-| `__TAGLINE__` | Short punchy tagline |
-| `__PITCH_SENTENCE__` | 1-2 sentence value proposition |
-| `__INSTRUCTION_1-5__` | How-to steps |
-| `__SETTING_*__` | Setting labels and descriptions |
-| `__FREE_TIER_DESCRIPTION__` | What Free includes |
-| `__STARTER/PRO/POWER_FEATURES__` | Tier feature lists |
-| `__YEAR__` | Current year |
-| `__VERSION__` | Semantic version |
+Why these three, why this home → see RULE-001 commentary in `BUILD_KIT_RULES.md`.
 
 ---
 
 ## Files
 
 ```
-options/
-├── options.html    # Page structure
-├── options.css     # Styles (copy as-is)
-└── options.js      # Logic (create per extension)
+templates/options/
+├── options.html          # Page structure with all 3 mandatory sections
+├── main.js               # ESM controller — count display + Clear-all (two-tap confirm)
+├── styles.css            # Extends OIA tokens (do NOT redefine tokens here)
+├── README.md             # This file
+└── _legacy-v1/           # Preserved v1 6-section scaffold (do not use for new builds)
+    ├── options.html
+    ├── options.css
+    └── README.md
 ```
 
 ---
 
-## Checklist
+## Placeholders to Replace
 
-Before shipping, verify:
+Find-and-replace these tokens during scaffold-out. None are optional except where noted.
 
-- [ ] Hero has icon, tagline, pitch, and how-to
-- [ ] General settings are minimal and useful
-- [ ] Your Plan shows current tier and upgrade path
-- [ ] Data section works (export/import tested)
-- [ ] Fuel the Build links to donation page
-- [ ] Privacy badge uses exact text
-- [ ] Legal links work (Terms, Privacy)
-- [ ] Copyright has correct year
-- [ ] Version matches manifest.json
-- [ ] Dark mode looks good
-- [ ] Mobile responsive (480px breakpoint)
+### Hero
+| Placeholder | Replace With |
+|---|---|
+| `__APP_NAME__` | Extension name (e.g., `MigrationPilot`) |
+| `__TAGLINE__` | One-liner — *optional, may be removed if absent* |
+| `__PITCH_SENTENCE__` | 1-2 sentences explaining the core value |
+| `__VERSION__` | Semantic version matching `manifest.json` |
+| `__PILLAR__` | OIA \| general \| security \| etc. |
+
+### How to Use (Section 1)
+| Placeholder | Replace With |
+|---|---|
+| `__INSTRUCTION_1_TITLE__` ... `__INSTRUCTION_4_TITLE__` | Step titles |
+| `__INSTRUCTION_1_BODY__` ... `__INSTRUCTION_4_BODY__` | Step bodies |
+| `__HOWTO_FOOTNOTE__` | Closing tip / privacy note |
+
+(Add or remove `<li>` items as needed; 3–6 steps recommended.)
+
+### Subscription & Tiers (Section 2)
+| Placeholder | Replace With |
+|---|---|
+| `__CURRENT_TIER__` | `Free` / `Pro` / etc. (computed at render time if applicable) |
+| `__TIER_PROMISE__` | Privacy-equals-at-every-tier statement (per `CLAUDE-base.md`) |
+| `__FREE_TIER_FEATURE_*__` | What's free |
+| `__PRO_PRICE__` / `__PRO_FEATURE_*__` | Pro tier copy (or leave `(coming)`) |
+| `__POWER_PRICE__` / `__POWER_FEATURE_*__` | Power tier copy |
+| `__FUEL_BUILD_COPY__` | Tipping ask copy |
+
+### Data Management (Section 3)
+| Placeholder | Replace With |
+|---|---|
+| `__DATA_STAT_LABEL__` | "Captures stored locally" / "Clips stored locally" / etc. |
+| `__DATA_LOCATION_NOTE__` | Where the data lives statement |
+| `__DATA_NOUN__` | `captures` / `clips` / `notes` — used in button text and toast |
+
+### Footer
+| Placeholder | Replace With |
+|---|---|
+| `__BRAND_LINE_1__` | Brand line (e.g., `"Built for people with ADHD by someone with ADHD."`) |
+| `__STRIKE_ID__` | Strike ID (e.g., `Strike 011`) |
 
 ---
 
-*Template version: 1.0.0*
+## DB Module Contract (`main.js` import requirement)
+
+`main.js` imports two functions from `../lib/db.js`:
+
+```javascript
+import { countAll, clearAll } from '../lib/db.js';
+```
+
+If your DB module names them differently (e.g., MigrationPilot uses `countCaptures` and `clearAll`), rename in your fork. The contract is:
+
+| Function | Signature | Purpose |
+|---|---|---|
+| `countAll` (or domain alias) | `() => Promise<number>` | Total record count for the data-stat display |
+| `clearAll` | `() => Promise<void>` | Wipe all records — used by Clear-all destructive action |
+
+Per RULE-001, the destructive `clearAll` MUST live behind the two-tap confirm pattern (already wired in `main.js`).
+
+---
+
+## Broadcast Contract
+
+`main.js` listens for and emits these runtime messages:
+
+| Message | Direction | Purpose |
+|---|---|---|
+| `CAPTURE_ADDED` | inbound (from SW) | Refreshes count display |
+| `CAPTURE_REMOVED` | inbound (from sidepanel) | Refreshes count display |
+| `CAPTURES_CLEARED` | outbound (after Clear-all) | Tells sidepanel to re-render its empty state |
+
+Rename per domain (e.g., `CLIPS_*`, `NOTES_*`) but keep the three-state pattern.
+
+---
+
+## Compliance Checklist (RULE-001)
+
+Before shipping any extension, verify:
+
+- [ ] `manifest.json → options_ui.page === "options/options.html"`
+- [ ] `manifest.json → options_ui.open_in_tab === true`
+- [ ] `options/options.html` links `../lib/oia-design-system.css`
+- [ ] All `__PLACEHOLDER__` tokens replaced
+- [ ] All three sections present in the prescribed order
+- [ ] At least one destructive control in Section 3 (Clear DB, Reset, etc.)
+- [ ] Side-panel header uses `mountPanelHeader()` from `templates/sidepanel/header-component.js`
+- [ ] No `alert()` / `confirm()` / "Are you sure?" copy anywhere (per `CLAUDE-base.md`)
+- [ ] No destructive controls in `sidepanel/`, `popup/`, or `content/`
+- [ ] No upgrade nags / inline tier modals in `sidepanel/`, `popup/`, or `content/`
+- [ ] `prefers-color-scheme: dark` looks correct (the OIA design system handles automatically)
+
+---
+
+## Why The v1 Template Was Superseded
+
+The v1 template (preserved at `_legacy-v1/`) mandated **six** sections: Hero, General, Your Plan, Data, Fuel-the-Build, Footer. Field experience (Strikes 005–011) found:
+
+- **General settings cards bloat the page** with knobs most users never touch — surfaces flagged "Are you sure I should care about this?"
+- **Hero + Footer are infrastructure, not sections** — they belong but don't demand top-billing in the spec
+- **Fuel-the-Build is owned by Tiers**, not separate — separating reduced perceived value of Free
+- **The real value of Options is the three jobs nothing else can do**: teach, sell, and let users delete
+
+RULE-001 collapses to those three. v1 is preserved for reference — and for legacy extensions still on the v1 spec — but new builds use this canonical scaffold.
+
+---
+
+*Template version: 2.0.0 (RULE-001 canonical) · 2026-05-08*

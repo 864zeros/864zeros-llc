@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/I820965/dev/vulture-nest/plannerpress-webapp/app/themes/page.tsx"],"sourcesContent":["import React from 'react';\n\nexport default function ThemesPage() {\n  return (\n    <div className=\"oia-main-content\">\n      <div className=\"oia-empty\">\n        <div className=\"oia-empty__headline\">Discover Planner Themes</div>\n        <div className=\"oia-empty__subtext\">Explore beautiful designs for your digital planners.</div>\n        <button className=\"oia-btn oia-btn-primary oia-mt-lg\">Browse Themes</button>\n      </div>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAI,WAAU;;8BACb,8OAAC;oBAAI,WAAU;8BAAsB;;;;;;8BACrC,8OAAC;oBAAI,WAAU;8BAAqB;;;;;;8BACpC,8OAAC;oBAAO,WAAU;8BAAoC;;;;;;;;;;;;;;;;;AAI9D"}}]
-}

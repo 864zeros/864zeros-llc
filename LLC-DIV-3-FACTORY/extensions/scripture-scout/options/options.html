@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[FHG] ScriptureScout — Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/oia-design-system.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="oia-screen options-container">
+
+    <!-- Hero -->
+    <header class="options-hero oia-mb-lg">
+      <h1 class="oia-h1"><span class="brand-prefix">[FHG]</span> ScriptureScout</h1>
+      <p class="oia-body options-hero__pitch">
+        Heritage-first technology. Preserving what matters most.
+      </p>
+      <p class="oia-caption options-hero__brand">
+        864zeros LLC · Faith / Heritage pillar · v0.1.0
+      </p>
+    </header>
+
+    <!-- ============================================================
+         GENERAL SETTINGS (optional section per RULE-001 footnote)
+         Theme selector + Dopamine-Friendly UI info-popover
+         (per GTM_MANIFEST §3 + §8)
+         ============================================================ -->
+    <section class="oia-card oia-mb-md general-settings" aria-labelledby="general-heading">
+      <h2 id="general-heading" class="oia-h2 oia-mb-md">General</h2>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="oia-body">
+            Theme
+            <button
+              class="info-icon"
+              type="button"
+              id="dopamine-info-trigger"
+              aria-label="What is Dopamine-Friendly UI?"
+              aria-expanded="false"
+              aria-controls="dopamine-info-popover"
+              title="What is Dopamine-Friendly UI?">
+              <span aria-hidden="true">*</span>
+            </button>
+          </span>
+          <span class="oia-caption">Light, dark, or follow your system</span>
+        </div>
+        <select id="theme-selector" class="oia-input setting-select" aria-label="Theme">
+          <option value="auto">Auto (system)</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+
+      <!-- Dopamine-Friendly UI tooltip / popover -->
+      <div
+        class="info-popover"
+        id="dopamine-info-popover"
+        role="region"
+        aria-labelledby="dopamine-info-title"
+        hidden>
+        <div class="info-popover__header">
+          <p id="dopamine-info-title" class="oia-body-sm info-popover__title">What is Dopamine-Friendly UI?</p>
+          <button class="info-popover__close" type="button" id="dopamine-info-close" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <p class="info-popover__body oia-body-sm">
+          *Dopamine-Friendly UI: Designed to minimize 'Executive Function' tax. We use high-contrast focal points, eliminate distracting animations, and provide immediate visual feedback for single-task completion. By addressing one core challenge at a time, we help maintain the flow state without the 'Decision Fatigue' common in complex suites.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 1: How to Use
+         ============================================================ -->
+    <section class="oia-card oia-mb-md" aria-labelledby="howto-heading">
+      <h2 id="howto-heading" class="oia-h2 oia-mb-md">How to Use</h2>
+
+      <ol class="howto-steps">
+        <li>
+          <span class="howto-step__title">Open the side panel</span>
+          <span class="howto-step__body oia-body-sm">Click the ScriptureScout icon in your toolbar. The panel opens on the right.</span>
+        </li>
+        <li>
+          <span class="howto-step__title">Capture content (three ways)</span>
+          <ul class="howto-substeps oia-body-sm">
+            <li><strong>Drag-select region</strong> — click the panel button, then drag a rectangle on any page</li>
+            <li><strong>Save this page</strong> — full-text capture from the active tab</li>
+            <li><strong>Right-click selection</strong> — highlight a passage, then right-click → <em>864zeros: Save passage</em></li>
+          </ul>
+        </li>
+        <li>
+          <span class="howto-step__title">Liberate to Vault</span>
+          <span class="howto-step__body oia-body-sm">
+            Click <em>Liberate to Vault</em> in the panel (or right-click any page →
+            <em>864zeros: Liberate to Vault</em>). Your passages download as <code>.md</code>
+            files with full citation frontmatter to <code>~/Downloads/scripture-scout/</code>.
+          </span>
+        </li>
+        <li>
+          <span class="howto-step__title">Drop into your vault</span>
+          <span class="howto-step__body oia-body-sm">
+            Move the <code>.md</code> files into your Obsidian / Capacities / Logseq vault folder. Done.
+          </span>
+        </li>
+      </ol>
+
+      <p class="howto-footnote oia-caption">
+        Tip: captures stack up locally (IndexedDB). Nothing leaves your device until you click Liberate.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2: Subscription & Tiers
+         ============================================================ -->
+    <section class="oia-card oia-mb-md" aria-labelledby="tiers-heading">
+      <h2 id="tiers-heading" class="oia-h2 oia-mb-md">Subscription &amp; Tiers</h2>
+
+      <div class="tier-current">
+        <span class="oia-badge oia-badge--completed">
+          <span class="oia-badge__dot"></span>
+          Current tier: Free
+        </span>
+        <p class="oia-body-sm tier-current__note">
+          Every capture and export feature is free, forever. Privacy is identical at every tier. Paid tiers (when available) unlock optional Logos integration, lectionary tools, and Hebrew/Greek lexical enrichment — never privacy.
+        </p>
+      </div>
+
+      <div class="tiers-grid oia-mt-md">
+        <div class="tier-card">
+          <h3 class="oia-body tier-card__name">Free</h3>
+          <p class="tier-card__price">$0</p>
+          <ul class="tier-card__features oia-caption">
+            <li>Marquee, page, selection capture</li>
+            <li>Markdown export with frontmatter</li>
+            <li>Local IndexedDB (unlimited)</li>
+            <li>Right-click context menu</li>
+          </ul>
+        </div>
+
+        <div class="tier-card tier-card--upcoming">
+          <h3 class="oia-body tier-card__name">Pro <span class="oia-caption">(coming)</span></h3>
+          <p class="tier-card__price">TBD</p>
+          <ul class="tier-card__features oia-caption">
+            <li>Optional Google Drive sync</li>
+            <li>Direct File-System write to vault</li>
+            <li>Combined-file batch export presets</li>
+          </ul>
+          <button class="oia-btn oia-btn-secondary tier-card__cta" disabled aria-disabled="true">
+            Notify me
+          </button>
+        </div>
+
+        <div class="tier-card tier-card--upcoming">
+          <h3 class="oia-body tier-card__name">Power <span class="oia-caption">(coming)</span></h3>
+          <p class="tier-card__price">TBD</p>
+          <ul class="tier-card__features oia-caption">
+            <li>AI auto-tagging (privacy-redacted)</li>
+            <li>Smart summaries on capture</li>
+            <li>Bulk vault migration tools</li>
+          </ul>
+          <button class="oia-btn oia-btn-secondary tier-card__cta" disabled aria-disabled="true">
+            Notify me
+          </button>
+        </div>
+      </div>
+
+      <div class="fuel-build oia-mt-md">
+        <h3 class="oia-body fuel-build__heading">Fuel the Build</h3>
+        <p class="oia-body-sm fuel-build__body">
+          ScriptureScout is free because a heritage-preservation tool that requires you to sign up is no longer a heritage-preservation tool.
+          If it’s saving your study work into your vault, you can support the build when tipping launches.
+        </p>
+        <button class="oia-btn oia-btn-secondary" disabled aria-disabled="true">
+          ☕ Tipping coming soon
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: Data Management
+         ============================================================ -->
+    <section class="oia-card oia-mb-md" aria-labelledby="data-heading">
+      <h2 id="data-heading" class="oia-h2 oia-mb-md">Data Management</h2>
+
+      <div class="data-stat">
+        <span class="oia-body">Passages stored locally</span>
+        <span class="oia-h2 data-stat__value" id="data-count">—</span>
+      </div>
+
+      <p class="oia-body-sm data-management__note">
+        All passages live in this browser’s IndexedDB. They never leave your device unless you click Liberate.
+      </p>
+
+      <div class="data-actions oia-mt-md">
+        <button id="btn-clear-db" class="oia-btn oia-btn-secondary data-actions__danger" type="button">
+          Clear all passages
+        </button>
+        <p class="oia-caption data-actions__hint" id="clear-hint">
+          Permanent. There is no undo.
+        </p>
+      </div>
+    </section>
+
+    <!-- The FHG Architect's Bio (Faith / Heritage variant) -->
+    <p class="architects-hook oia-caption oia-mt-lg">
+      Built for the serious student of the Word.
+      Designed to bridge the gap between digital reading and a permanent, sovereign study vault.
+      Iterated for precision; preserved for heritage.
+    </p>
+
+    <!-- Standardized Brand Footer (per GTM_MANIFEST §6) -->
+    <footer class="brand-footer oia-mt-md">
+      <p class="brand-footer__line brand-footer__product">
+        ScriptureScout v0.1.0 | 864-Flux | 864zeros LLC
+      </p>
+      <p class="brand-footer__line brand-footer__privacy">
+        <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        No ads. No tracking. Your data stays yours.
+      </p>
+      <p class="brand-footer__line brand-footer__legal">
+        <a href="https://864zeros.com/terms">Terms of Use</a>
+        <span aria-hidden="true">•</span>
+        <a href="https://864zeros.com/privacy">Privacy Policy</a>
+      </p>
+      <p class="brand-footer__line brand-footer__copyright">
+        © 2026 864zeros LLC. All rights reserved.
+      </p>
+    </footer>
+
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+/* ============================================================
+   MigrationPilot — Side Panel Styles
+   Extends OIA Design System with panel-specific layout.
+   ============================================================ */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 280px;
+}
+
+/* ----- Header ----- */
+
+.panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--oia-bg-card);
+  padding: var(--oia-space-md);
+  border-bottom: 1px solid rgba(166, 148, 133, 0.2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oia-space-sm);
+}
+
+.panel-header__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.panel-header .oia-h2 {
+  margin: 0;
+}
+
+.panel-header .tagline {
+  color: var(--oia-text-muted);
+}
+
+/* [864F] brand prefix — slate accent against the sage-led header */
+.brand-prefix {
+  color: var(--oia-slate);
+  font-weight: var(--oia-weight-bold);
+  font-size: 0.85em;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.panel-header__settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--oia-duration-fast) var(--oia-ease-default),
+              background-color var(--oia-duration-fast) var(--oia-ease-default);
+}
+
+.panel-header__settings:hover {
+  color: var(--oia-text-primary);
+  background-color: rgba(166, 148, 133, 0.1);
+}
+
+.panel-header__settings:focus-visible {
+  outline: 2px solid var(--oia-sage);
+  outline-offset: 2px;
+}
+
+/* ----- Content ----- */
+
+.panel-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--oia-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+/* ----- Actions ----- */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+}
+
+.actions .oia-btn {
+  height: var(--oia-touch-rec);
+}
+
+.btn-hint {
+  margin: 0 0 var(--oia-space-sm);
+  text-align: center;
+}
+
+/* ----- Counter ----- */
+
+.counter {
+  padding: var(--oia-space-sm) 0;
+  border-top: 1px solid rgba(166, 148, 133, 0.2);
+  text-align: center;
+}
+
+.counter p {
+  margin: 0;
+}
+
+#count-num {
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-text-primary);
+}
+
+.selection-count {
+  color: var(--oia-sage);
+  font-weight: var(--oia-weight-semibold);
+}
+
+/* ----- Master Select-all row ----- */
+
+.select-all-row {
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.04);
+  border-radius: var(--oia-radius-sm);
+  border: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.select-all-label {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  cursor: pointer;
+  margin: 0;
+  user-select: none;
+}
+
+.select-all-label .oia-checkbox {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+/* ----- Captures list ----- */
+
+.captures-list {
+  flex: 1;
+  min-height: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}
+
+/* ----- Record list (RULE-004 / BRK-UI-004 accordion) -----
+   Per-record styling lives in lib/bricks/accordion-record-v1/styles.css
+   The brick uses --oia-* tokens so the 864-Flux Graphite palette
+   (set in lib/oia-design-system.css) flows through automatically. */
+
+/* ----- Cleanup prompt (post-liberation) ----- */
+
+.cleanup-prompt {
+  background-color: rgba(139, 168, 136, 0.08);
+  border: 1px solid var(--oia-sage);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+}
+
+.cleanup-prompt[hidden] {
+  display: none !important;
+}
+
+.cleanup-prompt--visible {
+  animation: oia-slide-up var(--oia-duration-normal) var(--oia-ease-enter);
+}
+
+.cleanup-prompt__msg {
+  margin: 0;
+  color: var(--oia-text-primary);
+}
+
+.cleanup-prompt__actions {
+  display: flex;
+  gap: var(--oia-space-sm);
+}
+
+.cleanup-btn {
+  flex: 1;
+  height: 40px;
+  min-width: 0;
+  font-size: var(--oia-size-body-sm);
+}
+
+.cleanup-btn--ghost {
+  color: var(--oia-text-secondary);
+  border-color: rgba(166, 148, 133, 0.4);
+}
+
+.cleanup-btn--ghost:hover:not(:disabled) {
+  background-color: rgba(166, 148, 133, 0.08);
+}
+
+/* ----- Liberate ----- */
+
+.liberate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-sm);
+  padding-top: var(--oia-space-md);
+  border-top: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: var(--oia-space-sm);
+  cursor: pointer;
+}
+
+.option-row .oia-checkbox {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+.btn-liberate {
+  margin-top: var(--oia-space-sm);
+}
+
+/* ----- Brand Footer (per GTM_MANIFEST §6) ----- */
+
+.brand-footer {
+  flex-shrink: 0;
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  text-align: center;
+  background-color: var(--oia-bg-card);
+  border-top: 1px solid var(--oia-slate-border);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-footer__line {
+  margin: 0;
+  font-size: var(--oia-size-caption);
+  line-height: 1.4;
+  color: var(--oia-text-muted);
+}
+
+.brand-footer__product {
+  color: var(--oia-text-secondary);
+  font-weight: var(--oia-weight-semibold);
+}
+
+.brand-footer__privacy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--oia-slate);
+}
+
+.brand-footer__lock {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.brand-footer__legal a {
+  color: var(--oia-sage);
+  text-decoration: none;
+}
+
+.brand-footer__legal a:hover {
+  text-decoration: underline;
+}
+
+.brand-footer__legal span[aria-hidden="true"] {
+  margin: 0 4px;
+  color: var(--oia-text-muted);
+}
+
+.brand-footer__copyright {
+  color: var(--oia-text-muted);
+  opacity: 0.85;
+}

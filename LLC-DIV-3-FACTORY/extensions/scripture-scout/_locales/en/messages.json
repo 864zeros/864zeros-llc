@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "[FHG] ScriptureScout",
+    "description": "Display name of the extension."
+  },
+  "extDescription": {
+    "message": "FHG: For His Grace. Heritage-first technology. Preserving what matters most.",
+    "description": "Short description shown in chrome://extensions and the Web Store."
+  },
+  "captureSelection": {
+    "message": "Save passage to ScriptureScout",
+    "description": "Right-click context menu — save selected scripture text."
+  },
+  "captureMarquee": {
+    "message": "Capture region to ScriptureScout",
+    "description": "Drag-select a region of a Bible-study page."
+  },
+  "captureFullPage": {
+    "message": "Save this page to ScriptureScout",
+    "description": "Full-page capture from active Bible-study tab."
+  },
+  "liberateButton": {
+    "message": "Liberate to Vault",
+    "description": "Primary action — export selected captures as Markdown."
+  }
+}

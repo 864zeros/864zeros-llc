@@ -1,0 +1,266 @@
+/* ============================================================
+   Canonical Options Page Styles — 864zeros RULE-001
+   Authority: BUILD_KIT_RULES.md → RULE-001
+   Extends OIA Design System tokens. Do NOT redefine tokens here.
+   ============================================================ */
+
+body {
+  background-color: var(--oia-bg);
+}
+
+.options-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--oia-space-xl) var(--oia-space-lg) var(--oia-space-xxl);
+  min-height: 100vh;
+}
+
+/* ----- Hero ----- */
+
+.options-hero {
+  text-align: center;
+  padding: var(--oia-space-md) 0 var(--oia-space-lg);
+}
+
+.options-hero .oia-h1 {
+  margin: 0 0 var(--oia-space-xs);
+}
+
+.options-hero__pitch {
+  margin: 0 auto var(--oia-space-sm);
+  max-width: 48ch;
+  color: var(--oia-text-secondary);
+}
+
+.options-hero__brand {
+  margin: 0;
+  color: var(--oia-text-muted);
+}
+
+.oia-card {
+  padding: var(--oia-space-lg);
+}
+
+/* ============================================================
+   RULE-001 Section 1: How to Use
+   ============================================================ */
+
+.howto-steps {
+  list-style: decimal;
+  padding-left: var(--oia-space-lg);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-md);
+}
+
+.howto-steps li {
+  padding-left: var(--oia-space-xs);
+}
+
+.howto-step__title {
+  display: block;
+  font-size: var(--oia-size-body);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+  margin-bottom: var(--oia-space-xs);
+}
+
+.howto-step__body {
+  display: block;
+  color: var(--oia-text-secondary);
+  line-height: var(--oia-lh-relaxed);
+}
+
+.howto-substeps {
+  list-style: disc;
+  padding-left: var(--oia-space-lg);
+  margin: var(--oia-space-xs) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+  color: var(--oia-text-secondary);
+}
+
+.howto-substeps li {
+  line-height: var(--oia-lh-relaxed);
+}
+
+.howto-footnote {
+  margin: var(--oia-space-md) 0 0;
+  padding: var(--oia-space-sm) var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.08);
+  border-left: 3px solid var(--oia-sage);
+  border-radius: var(--oia-radius-sm);
+  color: var(--oia-text-secondary);
+}
+
+code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  background-color: rgba(166, 148, 133, 0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ============================================================
+   RULE-001 Section 2: Subscription & Tiers
+   ============================================================ */
+
+.tier-current {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+  padding: var(--oia-space-md);
+  background-color: rgba(139, 168, 136, 0.06);
+  border-radius: var(--oia-radius-md);
+}
+
+.tier-current__note {
+  margin: 0;
+  color: var(--oia-text-secondary);
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--oia-space-sm);
+}
+
+.tier-card {
+  background-color: var(--oia-bg);
+  border: 1px solid rgba(166, 148, 133, 0.3);
+  border-radius: var(--oia-radius-md);
+  padding: var(--oia-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--oia-space-xs);
+}
+
+.tier-card--upcoming {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.tier-card__name {
+  margin: 0;
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+}
+
+.tier-card__price {
+  margin: 0 0 var(--oia-space-xs);
+  font-size: var(--oia-size-h2);
+  font-weight: var(--oia-weight-bold);
+  color: var(--oia-sage);
+}
+
+.tier-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--oia-text-secondary);
+}
+
+.tier-card__features li::before {
+  content: '✓ ';
+  color: var(--oia-sage);
+  font-weight: var(--oia-weight-bold);
+}
+
+.tier-card__cta {
+  margin-top: var(--oia-space-sm);
+  height: 40px;
+  min-width: 0;
+  font-size: var(--oia-size-body-sm);
+}
+
+.fuel-build {
+  padding: var(--oia-space-md);
+  border-top: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.fuel-build__heading {
+  margin: 0 0 var(--oia-space-xs);
+  font-weight: var(--oia-weight-semibold);
+  color: var(--oia-text-primary);
+}
+
+.fuel-build__body {
+  margin: 0 0 var(--oia-space-sm);
+  color: var(--oia-text-secondary);
+}
+
+/* ============================================================
+   RULE-001 Section 3: Data Management
+   ============================================================ */
+
+.data-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--oia-space-sm);
+  border-bottom: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.data-stat__value {
+  margin: 0;
+  color: var(--oia-sage);
+}
+
+.data-management__note {
+  margin: var(--oia-space-sm) 0 0;
+  color: var(--oia-text-secondary);
+}
+
+.data-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--oia-space-xs);
+}
+
+.data-actions__danger {
+  color: var(--oia-error);
+  border-color: var(--oia-error);
+}
+
+.data-actions__danger:hover:not(:disabled) {
+  background-color: rgba(212, 132, 122, 0.08);
+}
+
+.data-actions__danger--armed {
+  background-color: var(--oia-error);
+  color: var(--oia-text-inverse);
+  animation: armed-pulse 1s ease-in-out infinite;
+}
+
+.data-actions__danger--armed:hover {
+  background-color: var(--oia-error);
+}
+
+@keyframes armed-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 132, 122, 0.4); }
+  50%      { box-shadow: 0 0 0 6px rgba(212, 132, 122, 0); }
+}
+
+.data-actions__hint {
+  margin: 0;
+  color: var(--oia-text-muted);
+}
+
+/* ----- Footer ----- */
+
+.options-footer {
+  text-align: center;
+  padding: var(--oia-space-md) 0;
+  border-top: 1px solid rgba(166, 148, 133, 0.2);
+}
+
+.options-footer .oia-caption {
+  margin: 0;
+  color: var(--oia-text-muted);
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>[FHG] ScriptureScout Icon Generator</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; background: #0a0a0f; color: #fff; }
+    .row { display: flex; gap: 24px; align-items: center; margin: 16px 0; }
+    canvas { background: transparent; border: 1px solid #333; }
+    .label { width: 80px; }
+    h1 { color: #00d084; }
+    .hint { color: #aaa; font-size: 12px; line-height: 1.5; }
+    code { background: #1a1a24; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>[FHG] ScriptureScout Icon Generator</h1>
+  <p class="hint">
+    Right-click each canvas → "Save image as…" → save as <code>icon16.png</code>, <code>icon48.png</code>, <code>icon128.png</code>
+    in this <code>icons/</code> folder. Then reload the extension in <code>chrome://extensions</code>.
+  </p>
+
+  <div class="row"><span class="label">16×16</span><canvas id="icon16" width="16" height="16"></canvas></div>
+  <div class="row"><span class="label">48×48</span><canvas id="icon48" width="48" height="48"></canvas></div>
+  <div class="row"><span class="label">128×128</span><canvas id="icon128" width="128" height="128"></canvas></div>
+
+  <script>
+    const sizes = [16, 48, 128];
+
+    // Icon design: dark circle background, green arrow pointing right (migration symbol)
+    function drawIcon(ctx, size) {
+      const scale = size / 128;
+      ctx.scale(scale, scale);
+
+      // Background circle
+      ctx.beginPath();
+      ctx.arc(64, 64, 60, 0, Math.PI * 2);
+      ctx.fillStyle = '#0a0a0f';
+      ctx.fill();
+      ctx.strokeStyle = '#00d084';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Migration arrow (left to right, two parallel lines suggesting "from → to")
+      ctx.strokeStyle = '#00d084';
+      ctx.lineWidth = 7;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      // Top: a short bracket shape (the "trapped" data)
+      ctx.beginPath();
+      ctx.moveTo(34, 50);
+      ctx.lineTo(28, 50);
+      ctx.lineTo(28, 78);
+      ctx.lineTo(34, 78);
+      ctx.stroke();
+
+      // Center: arrow shaft
+      ctx.beginPath();
+      ctx.moveTo(36, 64);
+      ctx.lineTo(86, 64);
+      ctx.stroke();
+
+      // Center: arrowhead
+      ctx.beginPath();
+      ctx.moveTo(74, 52);
+      ctx.lineTo(86, 64);
+      ctx.lineTo(74, 76);
+      ctx.stroke();
+
+      // Right: the receiving bracket (the "vault")
+      ctx.beginPath();
+      ctx.moveTo(96, 50);
+      ctx.lineTo(102, 50);
+      ctx.lineTo(102, 78);
+      ctx.lineTo(96, 78);
+      ctx.stroke();
+    }
+
+    sizes.forEach((size) => {
+      const canvas = document.getElementById('icon' + size);
+      const ctx = canvas.getContext('2d');
+      drawIcon(ctx, size);
+    });
+  </script>
+</body>
+</html>

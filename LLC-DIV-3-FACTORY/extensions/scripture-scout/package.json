@@ -1,0 +1,13 @@
+{
+  "name": "scripture-scout",
+  "private": true,
+  "version": "0.1.0",
+  "description": "[FHG] ScriptureScout — Heritage-first scripture liberation. Strike 012.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/profile-validator.js"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}

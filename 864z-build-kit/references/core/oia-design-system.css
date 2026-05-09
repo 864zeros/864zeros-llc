@@ -42,6 +42,13 @@
   --oia-coral-dark:       #D99A8E;
   --oia-coral-light:      #F0B5A8;
 
+  /* --- Slate (Slate & Sage aesthetic, added 2026-05-08) --- */
+  --oia-slate:            #475569;   /* Slate 600 — structural mid */
+  --oia-slate-dark:       #334155;   /* Slate 700 */
+  --oia-slate-light:      #64748B;   /* Slate 500 */
+  --oia-slate-bg:         #F1F5F9;   /* Slate 50 — subtle backgrounds */
+  --oia-slate-border:     rgba(71, 85, 105, 0.15);
+
   /* --- Backgrounds --- */
   --oia-bg:               #F5F2ED;   /* Cream */
   --oia-bg-card:          #FDFCFA;   /* Warm White */
@@ -954,6 +961,13 @@ textarea.oia-input {
     --oia-shadow-md:        0 2px 4px rgba(0, 0, 0, 0.4);
     --oia-shadow-lg:        0 4px 8px rgba(0, 0, 0, 0.5);
     --oia-shadow-button:    0 2px 4px rgba(0, 0, 0, 0.3);
+
+    /* --- Slate (dark variant, Slate & Sage aesthetic 2026-05-08) --- */
+    --oia-slate:            #94A3B8;   /* Slate 400 — lighter for dark contrast */
+    --oia-slate-dark:       #64748B;   /* Slate 500 */
+    --oia-slate-light:      #CBD5E1;   /* Slate 300 */
+    --oia-slate-bg:         #1E293B;   /* Slate 800 */
+    --oia-slate-border:     rgba(148, 163, 184, 0.18);
   }
 
   /* --- Component dark mode tweaks --- */
@@ -991,3 +1005,67 @@ textarea.oia-input {
     color: var(--oia-sage-dark);
   }
 }
+
+
+/* ================================================================
+   9. MANUAL THEME OVERRIDE (added 2026-05-08)
+   ================================================================
+   Per GTM_MANIFEST §8: extensions may add a Theme Selector (Auto /
+   Light / Dark). When :root[data-theme="light"|"dark"] is set,
+   force the corresponding palette regardless of system preference.
+   Default behavior (no attribute) honors prefers-color-scheme.
+   ================================================================ */
+
+:root[data-theme="light"] {
+  --oia-bg:               #F5F2ED;
+  --oia-bg-card:          #FDFCFA;
+  --oia-bg-elevated:      #FDFCFA;
+  --oia-text-primary:     #2D2D2D;
+  --oia-text-secondary:   #5C5C5C;
+  --oia-text-muted:       #8C8C8C;
+  --oia-text-inverse:     #FDFCFA;
+  --oia-sage:             #8BA888;
+  --oia-sage-dark:        #7A9676;
+  --oia-coral:            #E8A598;
+  --oia-border:           #A69485;
+  --oia-shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.05);
+  --oia-shadow-md:        0 2px 8px rgba(0, 0, 0, 0.08);
+  --oia-shadow-lg:        0 4px 16px rgba(0, 0, 0, 0.1);
+  --oia-shadow-button:    0 2px 8px rgba(139, 168, 136, 0.3);
+  --oia-slate:            #475569;
+  --oia-slate-dark:       #334155;
+  --oia-slate-light:      #64748B;
+  --oia-slate-bg:         #F1F5F9;
+  --oia-slate-border:     rgba(71, 85, 105, 0.15);
+}
+
+:root[data-theme="dark"] {
+  --oia-bg:               #1A1A1A;
+  --oia-bg-card:          #242424;
+  --oia-bg-elevated:      #2E2E2E;
+  --oia-text-primary:     #F0EDE8;
+  --oia-text-secondary:   #A8A8A8;
+  --oia-text-muted:       #6C6C6C;
+  --oia-text-inverse:     #2D2D2D;
+  --oia-sage:             #96B893;
+  --oia-sage-dark:        #8BA888;
+  --oia-coral:            #D99A8E;
+  --oia-border:           #6B6B5E;
+  --oia-shadow-sm:        0 1px 2px rgba(0, 0, 0, 0.3);
+  --oia-shadow-md:        0 2px 4px rgba(0, 0, 0, 0.4);
+  --oia-shadow-lg:        0 4px 8px rgba(0, 0, 0, 0.5);
+  --oia-shadow-button:    0 2px 4px rgba(0, 0, 0, 0.3);
+  --oia-slate:            #94A3B8;
+  --oia-slate-dark:       #64748B;
+  --oia-slate-light:      #CBD5E1;
+  --oia-slate-bg:         #1E293B;
+  --oia-slate-border:     rgba(148, 163, 184, 0.18);
+}
+
+/* Dark-mode component tweaks reapplied for explicit theme="dark" */
+:root[data-theme="dark"] .oia-input { border-color: var(--oia-border); }
+:root[data-theme="dark"] .oia-card--completed { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-task--completed { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-progress { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-skeleton { background-color: var(--oia-bg-elevated); }
+:root[data-theme="dark"] .oia-bottom-nav { border-top-color: rgba(107, 107, 94, 0.3); }

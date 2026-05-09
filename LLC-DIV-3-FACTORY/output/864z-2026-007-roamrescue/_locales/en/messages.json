@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "RoamRescue",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Local-first block-graph notes. One-click migration from Roam. No subscription, no cloud lock-in.",
+    "description": "Extension description"
+  },
+  "cmdLockVault": {
+    "message": "Lock vault",
+    "description": "Lock keyboard shortcut"
+  },
+  "cmdOpenVault": {
+    "message": "Open RoamRescue",
+    "description": "Open keyboard shortcut"
+  }
+}
