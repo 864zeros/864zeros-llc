@@ -8,7 +8,7 @@ Extensions in this directory are **frozen** and not part of the active fleet. Th
 |---|---|
 | `oia.focus.signal` | Legacy `oia.focus.*` dot-namespace family — superseded by the active OIA portfolio (Focus Note, Focus Wall, Time2Focus, etc.). |
 | `oia.focus.sound` | Same. |
-| `oia-focus-timer` | Legacy timer; functional overlap with Time2Focus. Operator's Strike 016 directive named `oia.focus.timer` (no dot-form sibling exists); archived the kebab-form `oia-focus-timer` as the closest match — flagged in the strike log entry for confirmation. |
+| `oia-focus-timer` | Legacy timer; functional overlap with Time2Focus. Operator's Strike 016 directive named `oia.focus.timer` (no dot-form sibling exists); archived the kebab-form `oia-focus-timer` as the closest match. **Operator-confirmed correct target in Strike 017** — the archived extension's `_locales/en/messages.json` extName reads `[OIA] oia.focus` with description "Simple focus timer with preset intervals", confirming this is the legacy timer extension intended for archival. |
 
 ## Policy
 

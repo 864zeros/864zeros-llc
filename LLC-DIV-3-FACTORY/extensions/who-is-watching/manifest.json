@@ -23,10 +23,15 @@
     "<all_urls>"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "side_panel": {
     "default_path": "sidepanel/index.html"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
   },
   "action": {
     "default_title": "Open Who Is Watching"
