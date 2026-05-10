@@ -1,0 +1,18 @@
+/* [OIA] Focus Note — Options page minimal overrides
+   Most styling comes from ../lib/oia-design-system.css + ../lib/transparency-tier.css. */
+
+body { background: var(--oia-bg, #F5F2ED); margin: 0; font-family: 'Nunito', system-ui, sans-serif; color: var(--oia-text-primary, #2D2D2D); min-height: 100vh; }
+.options-container { max-width: 720px; margin: 0 auto; padding: 32px 24px; }
+.options-hero { text-align: center; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid rgba(166, 148, 133, 0.25); }
+.oia-tagline { color: var(--oia-text-secondary, #5C5C5C); margin: 0; font-size: 14px; font-weight: 500; }
+.oia-card { background: var(--oia-bg-card, #FDFCFA); border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.oia-h1 { margin: 0 0 4px; font-size: 24px; }
+.oia-h2 { margin-top: 0; font-size: 18px; }
+.brand-prefix { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 9999px; font-size: 0.55em; font-weight: 700; letter-spacing: 0.5px; vertical-align: middle; margin-right: 4px; }
+.brand-prefix--oia { background: var(--oia-sage, #8BA888); color: var(--oia-text-inverse, #FDFCFA); }
+.oia-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 8px; font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+.oia-btn-primary { background: var(--oia-sage, #8BA888); color: white; border-color: var(--oia-sage, #8BA888); }
+.oia-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.oia-btn-secondary { background: transparent; color: var(--oia-text-primary, #2D2D2D); border: 1px solid var(--oia-border, #A69485); }
+.oia-body-sm { font-size: 14px; color: var(--oia-text-secondary, #5C5C5C); }
+ol { color: var(--oia-text-secondary, #5C5C5C); line-height: 1.7; }

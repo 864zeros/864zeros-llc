@@ -216,6 +216,38 @@
       </p>
     </footer>
   </div>
+    <!-- Tier-0.5 LOCKED state — Sovereign Link Backup (upcoming feature).
+         Per TIER_0_5_BLUEPRINT.md §III.a — opacity 0.60, ⊘ glyphs, sage CTA at full opacity.
+         Wired in the inline <script type="module"> block at the bottom of body. -->
+    <section class="oia-card tier-section">
+      <h2 class="oia-h2">Subscription &amp; Tiers</h2>
+
+      <div class="tier-display">
+        <div class="tier-badge" id="current-tier-badge">
+          <span class="tier-badge__dot"></span>
+          <span class="tier-badge__name" id="current-tier-name">Free</span>
+        </div>
+      </div>
+
+      <div class="tier-card tier-card--locked" id="vault-tier-card">
+        <div class="tier-card__head">
+          <div>
+            <span class="tier-card__name">⌖ Tier-0.5: Vault</span>
+            <span class="tier-card__price"><script type="module" src="options.js"></script>.99 once · perpetual unlock</span>
+          </div>
+          <span class="tier-card__lock-watermark" id="vault-lock-watermark">LOCKED</span>
+        </div>
+        <ul class="tier-features">
+          <li class="tier-feature"><strong>Sovereign Link Backup</strong> — local export of your DataNap data as JSON to your Downloads folder; no proxy through 864zeros servers.</li>
+          <li class="tier-feature"><strong>Scheduled snapshots</strong> — weekly / monthly automatic backups to a folder you choose.</li>
+          <li class="tier-feature"><strong>Bulk export by filter</strong> — export selected items, by date range, or by tag.</li>
+          <li class="tier-feature"><strong>All future Tier-0.5 features</strong> — at no additional cost. Perpetual unlock.</li>
+        </ul>
+        <button class="oia-btn oia-btn-primary tier-card__cta" id="unlock-vault-btn" disabled>
+          Unlock Vault — <script type="module" src="options.js"></script>.99 (coming soon)
+        </button>
+      </div>
+    </section>
 
   <script type="module" src="options.js"></script>
 
@@ -242,5 +274,93 @@
         © 2026 864zeros LLC. All rights reserved.
       </p>
     </footer>
+  
+    <!-- Strike 016: minimal .dev-override styles (mustard border).
+         The full Tier-0.5 visual contract is in ../lib/transparency-tier.css. -->
+    <style>
+      .dev-override { border: 2px solid var(--oia-mustard, #C9A86C); background: rgba(201, 168, 108, 0.08); }
+      .dev-override__head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+      .dev-override__icon { font-size: 20px; color: var(--oia-mustard, #C9A86C); }
+      .dev-override__title { margin: 0; flex: 1; font-size: 16px; letter-spacing: 0.05em; color: var(--oia-mustard, #C9A86C); }
+      .dev-override__gate { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--oia-text-muted, #8C8C8C); font-family: SFMono-Regular, Consolas, monospace; }
+      .dev-override__lede { font-size: 13px; color: var(--oia-text-secondary, #5C5C5C); line-height: 1.5; margin: 0 0 16px 0; }
+      .dev-override__lede code { background: rgba(201, 168, 108, 0.18); color: var(--oia-text-primary, #2D2D2D); padding: 1px 6px; border-radius: 3px; font-family: SFMono-Regular, Consolas, monospace; font-size: 0.92em; }
+      .dev-override__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .dev-override__btns { display: flex; gap: 8px; }
+      .dev-override__btns .oia-btn { border-color: var(--oia-mustard, #C9A86C); color: var(--oia-mustard, #C9A86C); font-weight: 600; }
+      .dev-override__btns .oia-btn:hover { background: rgba(201, 168, 108, 0.12); }
+      .tier-section { margin: 16px 0; }
+      .tier-display { margin-bottom: 16px; }
+      .tier-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; background: rgba(139, 168, 136, 0.15); border-radius: 9999px; }
+      .tier-badge__dot { width: 8px; height: 8px; background: var(--oia-sage, #8BA888); border-radius: 50%; }
+      .tier-badge__name { font-size: 12px; font-weight: 600; color: var(--oia-sage, #8BA888); }
+      .hidden { display: none !important; }
+    </style>
+
+    <!-- Developer Override Panel (URL-gated by ?dev=1; documented in DEV_NOTES.md style).
+         Not a hidden backdoor — URL is sole gate; panel visible in source; uses same
+         setTier() path as production. -->
+    <section class="oia-card dev-override hidden" id="dev-override-panel" role="region" aria-label="Developer override (URL-gated)">
+      <div class="dev-override__head">
+        <span class="dev-override__icon" aria-hidden="true">⚠</span>
+        <h2 class="oia-h2 dev-override__title">DEVELOPER OVERRIDE</h2>
+        <span class="dev-override__gate">URL-gated · ?dev=1</span>
+      </div>
+      <p class="dev-override__lede">
+        Shown only when the page URL contains <code>?dev=1</code>. The URL is the sole gate. Tier-flip uses the same path as the production stub.
+      </p>
+      <div class="dev-override__row">
+        <span class="oia-body-sm">Current tier: <strong id="dev-current-tier">…</strong></span>
+        <div class="dev-override__btns">
+          <button class="oia-btn oia-btn-secondary" id="dev-force-vault">Force tier: vault</button>
+          <button class="oia-btn oia-btn-secondary" id="dev-force-free">Force tier: free</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strike 016: ?dev=1 URL gate + tier card render. Self-contained module
+         so it doesn't need to integrate with the extension's existing options.js. -->
+    <script type="module">
+      import { getTier, setTier, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
+
+      async function renderTier() {
+        const tier = await getTier();
+        const isUnlocked = tier === TIER_VAULT;
+        const nameEl = document.getElementById('current-tier-name');
+        if (nameEl) nameEl.textContent = isUnlocked ? 'Tier-0.5: Vault' : 'Free';
+        const card = document.getElementById('vault-tier-card');
+        const watermark = document.getElementById('vault-lock-watermark');
+        if (card) {
+          card.classList.toggle('tier-card--locked', !isUnlocked);
+          card.classList.toggle('tier-card--unlocked', isUnlocked);
+        }
+        if (watermark) {
+          watermark.textContent = isUnlocked ? 'UNLOCKED' : 'LOCKED';
+          watermark.style.color = isUnlocked ? 'var(--oia-sage, #8BA888)' : '';
+        }
+      }
+
+      function initDevOverride() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('dev') !== '1') return;
+        const panel = document.getElementById('dev-override-panel');
+        if (!panel) return;
+        panel.classList.remove('hidden');
+        refreshDevTierLabel();
+        document.getElementById('dev-force-vault').addEventListener('click', async () => {
+          await setTier(TIER_VAULT); await renderTier(); await refreshDevTierLabel();
+        });
+        document.getElementById('dev-force-free').addEventListener('click', async () => {
+          await setTier(TIER_FREE); await renderTier(); await refreshDevTierLabel();
+        });
+      }
+      async function refreshDevTierLabel() {
+        const el = document.getElementById('dev-current-tier');
+        if (el) el.textContent = await getTier();
+      }
+
+      renderTier();
+      initDevOverride();
+    </script>
   </body>
 </html>
