@@ -50,3 +50,6 @@
 - `[2026-05-09T22:29:00Z]` `[strike:023]` `[factory-manifest-v165]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.6 → v1.65 (Chronicle ExtPay → 🔥 P0-TOP "TOMORROW MORNING" callout) — ok
 - `[2026-05-09T22:30:00Z]` `[strike:023]` `[eod-log-create]` create `LLC-DIV-3-FACTORY/EOD_LOG.md` — daily wrap-up (Strike 016-023 arc + compliance-to-revenue pivot + tomorrow's start-here checklist) — ok
 - `[2026-05-09T22:31:00Z]` `[strike:023]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 023 entry appended (audit + manifest v1.65 + EOD_LOG + EOD commit) — ok
+- `[2026-05-09T22:35:00Z]` `[strike:023]` `[eod-commit-llc]` commit `864zeros-llc` — sha 1356626 · 3 files · "EOD Sync: Fleet 100% Rung-3 Compliance + Payment Blueprint Staged" — ok
+- `[2026-05-09T22:35:30Z]` `[strike:023]` `[eod-commit-isd]` commit `864zeros-ISD` — sha b4b1914 · 2 files · "EOD Sync: Fleet 100% Rung-3 Compliance + Payment Blueprint Staged" — ok
+- `[2026-05-09T22:42:00Z]` `[strike:023]` `[strike-022-eod-conclusion]` conclude `864zeros-llc + 864zeros-ISD` — operator-framed "Strike 022 EOD Conclusion"; ledger-tagged strike:023 for audit-stream consistency; aether-pulse-x excluded; final cloud-parity push pending — ok
