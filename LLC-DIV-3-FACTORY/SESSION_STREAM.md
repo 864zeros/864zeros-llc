@@ -34,3 +34,11 @@
 - `[2026-05-09T22:16:00Z]` `[strike:021]` `[clipboard-rule-007-audit]` create `extensions/clipboard/RULE_007_AUDIT.md` — per-extension audit (8 sections) covering BYOK + debugger + identity + ExtPay + management; verdict structurally compliant — ok
 - `[2026-05-09T22:16:30Z]` `[strike:021]` `[fleet-readiness-final-verify]` verify `extensions/` — 12/12 Rung 3+; 12/12 visual-compliant; FLEET-WIDE 100% — ok
 - `[2026-05-09T22:17:00Z]` `[strike:021]` `[factory-manifest-v15]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.4 → v1.5 (🏆 FLEET-WIDE 100% Rung-3+ milestone; all 3 pillars at 100%) — ok
+- `[2026-05-09T22:18:00Z]` `[strike:021]` `[commit-llc]` commit `864zeros-llc` (ab4fe98) — 5 files (audit artifacts + clipboard 3-file Phase-2 closure) — ok
+- `[2026-05-09T22:19:00Z]` `[strike:021]` `[commit-isd]` commit `864zeros-ISD` (622d3e6) — 2 files (SYSTEM_STRIKE_LOG + FACTORY_MANIFEST v1.5) — ok
+- `[2026-05-09T22:20:00Z]` `[strike:022]` `[strike-022-init]` begin Strike 022 — Phase 1: clipboard §Disclosure; Phase 2: shared options-tier-init.js extraction; Phase 3: Chronicle Checkout Blueprint; Phase 4: Factory Manifest v1.6 — ok
+- `[2026-05-09T22:20:30Z]` `[strike:022]` `[clipboard-rule-007-disclosure]` edit `extensions/clipboard/options/options.html` — RULE-007 §Disclosure block injected before brand-footer (closes Strike-021 P1) — ok
+- `[2026-05-09T22:21:00Z]` `[strike:022]` `[canonical-options-tier-init]` create `864z-build-kit/references/core/options-tier-init.js` — NEW canonical extracted from per-extension inline blocks — ok
+- `[2026-05-09T22:21:30Z]` `[strike:022]` `[options-tier-init-distribute]` distribute to 11 extensions' `lib/options-tier-init.js` (chronicle excluded; uses options.js) — ok
+- `[2026-05-09T22:22:00Z]` `[strike:022]` `[options-html-link-shared-script]` edit 11 options.html — inline scripts replaced with `<script src="../lib/options-tier-init.js">` — ok
+- `[2026-05-09T22:23:00Z]` `[strike:022]` `[chronicle-checkout-blueprint]` create `extensions/864z-chronical/CHRONICLE_CHECKOUT_BLUEPRINT.md` — design doc identifying 3 ExtPay entry points + 6 failure modes + generalization path — ok

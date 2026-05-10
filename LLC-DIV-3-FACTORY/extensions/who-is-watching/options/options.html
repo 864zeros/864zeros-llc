@@ -131,49 +131,11 @@
       </div>
     </section>
 
-    <!-- Strike 017: ?dev=1 URL gate + tier card render. Self-contained module. -->
-    <script type="module">
-      import { getTier, setTier, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
-
-      async function renderTier() {
-        const tier = await getTier();
-        const isUnlocked = tier === TIER_VAULT;
-        const nameEl = document.getElementById('current-tier-name');
-        if (nameEl) nameEl.textContent = isUnlocked ? 'Tier-0.5: Vault' : 'Free';
-        const card = document.getElementById('vault-tier-card');
-        const watermark = document.getElementById('vault-lock-watermark');
-        if (card) {
-          card.classList.toggle('tier-card--locked', !isUnlocked);
-          card.classList.toggle('tier-card--unlocked', isUnlocked);
-        }
-        if (watermark) {
-          watermark.textContent = isUnlocked ? 'UNLOCKED' : 'LOCKED';
-          watermark.style.color = isUnlocked ? 'var(--oia-sage, #8BA888)' : '';
-        }
-      }
-
-      function initDevOverride() {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('dev') !== '1') return;
-        const panel = document.getElementById('dev-override-panel');
-        if (!panel) return;
-        panel.classList.remove('hidden');
-        refreshDevTierLabel();
-        document.getElementById('dev-force-vault').addEventListener('click', async () => {
-          await setTier(TIER_VAULT); await renderTier(); await refreshDevTierLabel();
-        });
-        document.getElementById('dev-force-free').addEventListener('click', async () => {
-          await setTier(TIER_FREE); await renderTier(); await refreshDevTierLabel();
-        });
-      }
-      async function refreshDevTierLabel() {
-        const el = document.getElementById('dev-current-tier');
-        if (el) el.textContent = await getTier();
-      }
-
-      renderTier();
-      initDevOverride();
-    </script>
+    <!-- Strike 022: shared tier-init (extracted from per-extension inline blocks).
+         Canonical at 864z-build-kit/references/core/options-tier-init.js;
+         per-extension copy at lib/options-tier-init.js.
+         Imports from ./tier.js (sibling within lib/). -->
+    <script type="module" src="../lib/options-tier-init.js"></script>
   </div>
 </body>
 </html>

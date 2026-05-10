@@ -230,6 +230,27 @@
       </p>
     </footer>
 
+    <!-- RULE-007 §Disclosure block — verbatim from RULE_007_AUDIT.md §VI.a (Strike 022).
+         Closes the one outstanding P1 from Strike 021 audit. Covers all 5 high-trust
+         permissions / external integrations: AI (BYOK Gemini), OAuth (Google Drive),
+         Payments (ExtPay 3rd-party), debugger (PDF only), management (extension
+         enumeration only). -->
+    <section class="oia-card privacy-disclosure oia-mt-md">
+      <h2 class="oia-h2">Privacy &amp; Your Data</h2>
+
+      <p><strong>AI features.</strong> Your Gemini API key is stored only on this device, in <code>chrome.storage.local</code>. It is sent only to Google's official Gemini endpoint at <code>generativelanguage.googleapis.com</code> when you trigger an AI analysis. <strong>864zeros never sees your key, your prompts, or your responses.</strong></p>
+
+      <p><strong>Google Drive sync (Pro).</strong> Authentication uses Google's OAuth flow via <code>chrome.identity.launchWebAuthFlow()</code>. You sign in with your own Google account; clipboard never sees your password. The OAuth access token is stored in <code>chrome.storage.local</code> on this device only. All Drive API calls go directly from your browser to Google.</p>
+
+      <p><strong>Payments (Pro).</strong> ClipBoard uses ExtensionPay (<code>extensionpay.com</code>) to process payments. ExtPay handles credit card data directly; <strong>864zeros never sees your payment details.</strong> 864zeros receives payment-status metadata (e.g., "user X paid for Pro tier") via ExtPay's standard merchant flow.</p>
+
+      <p><strong>Captured content.</strong> Your clips (text, screenshots, PDFs, tags, AI summaries) live in IndexedDB on this device. They do not leave your device unless you explicitly trigger an action that uses an external feature (Drive sync, AI analysis, or the upcoming Sovereign History export).</p>
+
+      <p><strong>The "debugger" permission.</strong> Used <strong>only</strong> to generate PDF exports of pages you choose (the "Save as PDF" feature). When you click Save as PDF, ClipBoard briefly attaches Chrome's DevTools Protocol to the active tab, captures the page as a PDF, and immediately detaches. The PDF goes to your local IndexedDB or Downloads folder. No data is ever sent over the network through this permission.</p>
+
+      <p><strong>The "management" permission.</strong> Used only to enumerate which other extensions you have installed (for compatibility/conflict detection). Does not transmit anything.</p>
+    </section>
+
     <!-- Standardized Brand Footer (per GTM_MANIFEST §6 / RULE-001) — added 2026-05-08
          Note: legal links above are local /legal/*.html (existing shipping content);
          this brand-footer is the canonical 4-line stamp for traceability. -->
@@ -293,50 +314,12 @@
       </div>
     </section>
 
-    <!-- Strike 021: ?dev=1 URL gate + tier card render. Self-contained module
-         so it doesn't need to integrate with options.js. -->
-    <script type="module">
-      import { getTier, setTier, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
+    <!-- Strike 022: shared tier-init (extracted from per-extension inline blocks).
+         Canonical at 864z-build-kit/references/core/options-tier-init.js;
+         per-extension copy at lib/options-tier-init.js.
+         Imports from ./tier.js (sibling within lib/). -->
+    <script type="module" src="../lib/options-tier-init.js"></script>
 
-      async function renderTier() {
-        const tier = await getTier();
-        const isUnlocked = tier === TIER_VAULT;
-        const nameEl = document.getElementById('current-tier-name');
-        if (nameEl) nameEl.textContent = isUnlocked ? 'Tier-0.5: Sovereign History' : 'Free';
-        const card = document.getElementById('vault-tier-card');
-        if (card) {
-          card.classList.toggle('tier-card--locked', !isUnlocked);
-          card.classList.toggle('tier-card--unlocked', isUnlocked);
-        }
-        const watermark = document.getElementById('vault-lock-watermark');
-        if (watermark) {
-          watermark.textContent = isUnlocked ? 'UNLOCKED' : 'LOCKED';
-          watermark.style.color = isUnlocked ? 'var(--oia-sage, #8BA888)' : '';
-        }
-      }
-
-      function initDevOverride() {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('dev') !== '1') return;
-        const panel = document.getElementById('dev-override-panel');
-        if (!panel) return;
-        panel.classList.remove('hidden');
-        refreshDevTierLabel();
-        document.getElementById('dev-force-vault').addEventListener('click', async () => {
-          await setTier(TIER_VAULT); await renderTier(); await refreshDevTierLabel();
-        });
-        document.getElementById('dev-force-free').addEventListener('click', async () => {
-          await setTier(TIER_FREE); await renderTier(); await refreshDevTierLabel();
-        });
-      }
-      async function refreshDevTierLabel() {
-        const el = document.getElementById('dev-current-tier');
-        if (el) el.textContent = await getTier();
-      }
-
-      renderTier();
-      initDevOverride();
-    </script>
 
   <script type="module" src="options.js"></script>
 </body>
