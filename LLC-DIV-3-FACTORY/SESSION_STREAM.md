@@ -24,3 +24,13 @@
 - `[2026-05-09T22:09:00Z]` `[strike:020]` `[scripture-scout-canonical-ids]` edit `extensions/scripture-scout/options/options.html` — same 3 IDs added (mirror change) — ok
 - `[2026-05-09T22:09:30Z]` `[strike:020]` `[bible-insight-sovereign-research-kit-rebrand]` edit `extensions/Bible-Insight/html/options.html` — tier rebrand "Tier-0.5: Vault" → "Sovereign Research Kit" with $2.99 perpetual model + 5-feature list + "why $2.99 once" rationale; closes Strike 018 P0 GTM-decision — ok
 - `[2026-05-09T22:10:00Z]` `[strike:020]` `[factory-manifest-v14]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.3 → v1.4 (ADHD + FHG pillars 100% Rung-3 visual-compliant; clipboard sole Rung-1 holdout) — ok
+- `[2026-05-09T22:11:00Z]` `[strike:020]` `[commit-llc]` commit `864zeros-llc` (47c8fbc) — 5 files (2 audit artifacts + 3 extension options.html) — ok
+- `[2026-05-09T22:12:00Z]` `[strike:020]` `[commit-isd]` commit `864zeros-ISD` (24464a2) — 2 files (SYSTEM_STRIKE_LOG + FACTORY_MANIFEST v1.4) — ok
+- `[2026-05-09T22:13:00Z]` `[strike:021]` `[strike-021-init]` begin Strike 021 — Phase 2 closure for clipboard — ok
+- `[2026-05-09T22:13:30Z]` `[strike:021]` `[clipboard-tier-js-copy]` create `extensions/clipboard/lib/tier.js` — canonical copy; fleet-wide tier-state-helper distribution complete (12/12) — ok
+- `[2026-05-09T22:14:00Z]` `[strike:021]` `[clipboard-current-tier-name-id]` edit `extensions/clipboard/options/options.html` — id="current-tier-name" added to existing tier-badge name span — ok
+- `[2026-05-09T22:14:30Z]` `[strike:021]` `[clipboard-sovereign-history-card]` edit `extensions/clipboard/options/options.html` — NEW Sovereign History (Tier-0.5) card with canonical IDs + 5-feature list + rationale — ok
+- `[2026-05-09T22:15:00Z]` `[strike:021]` `[clipboard-dev-override-and-tier-init]` edit `extensions/clipboard/options/options.html` — dev-override panel + inline tier-init script injected; clipboard now Rung 3 visual-compliant — ok
+- `[2026-05-09T22:16:00Z]` `[strike:021]` `[clipboard-rule-007-audit]` create `extensions/clipboard/RULE_007_AUDIT.md` — per-extension audit (8 sections) covering BYOK + debugger + identity + ExtPay + management; verdict structurally compliant — ok
+- `[2026-05-09T22:16:30Z]` `[strike:021]` `[fleet-readiness-final-verify]` verify `extensions/` — 12/12 Rung 3+; 12/12 visual-compliant; FLEET-WIDE 100% — ok
+- `[2026-05-09T22:17:00Z]` `[strike:021]` `[factory-manifest-v15]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.4 → v1.5 (🏆 FLEET-WIDE 100% Rung-3+ milestone; all 3 pillars at 100%) — ok

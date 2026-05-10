@@ -111,7 +111,9 @@
       <div class="tier-display">
         <div class="tier-badge" id="current-tier-badge">
           <span class="tier-badge__dot"></span>
-          <span class="tier-badge__name">Free</span>
+          <!-- Strike 021: id="current-tier-name" added so the inline tier-init
+               script can update this label when chrome.storage.local.tier flips. -->
+          <span class="tier-badge__name" id="current-tier-name">Free</span>
         </div>
         <p class="oia-body-sm oia-mt-sm" id="tier-description">
           Text and page capture, tags, search, and local export.
@@ -139,6 +141,38 @@
       <button class="oia-btn oia-btn-primary oia-mt-md" id="upgrade-btn">
         Upgrade your plan
       </button>
+    </div>
+
+    <!-- Strike 021: Tier-0.5 "Sovereign History" LOCKED card.
+         Sits adjacent to the existing product-tier ladder (Starter/Pro/Power above)
+         as the cross-fleet Tier-0.5 sovereignty unlock — same visual contract as
+         chronicle's "Sovereign Link Backup", Bible-Insight's "Sovereign Research
+         Kit", scripture-scout's vault tier. Internal tier flag name is TIER_VAULT
+         (cross-extension code consistency); user-facing label is product-specific. -->
+    <div class="oia-card oia-mb-md">
+      <h2 class="oia-h2 oia-mb-sm">Sovereign Backup (Tier-0.5)</h2>
+      <div class="tier-card tier-card--locked" id="vault-tier-card">
+        <div class="tier-card__head">
+          <div>
+            <span class="tier-card__name">⌖ Sovereign History</span>
+            <span class="tier-card__price">$2.99 once · perpetual unlock</span>
+          </div>
+          <span class="tier-card__lock-watermark" id="vault-lock-watermark">LOCKED</span>
+        </div>
+        <ul class="tier-features">
+          <li class="tier-feature"><strong>Sovereign Link Backup</strong> — local export of your full clip history (text, page captures, screenshots, tags, AI summaries) as a single JSON file to your Downloads folder; no proxy through 864zeros servers.</li>
+          <li class="tier-feature"><strong>Markdown vault folder export</strong> — one <code>.md</code> per clip, organized by tag, Obsidian-friendly hierarchy.</li>
+          <li class="tier-feature"><strong>Scheduled snapshots</strong> — weekly / monthly automatic backups to your local filesystem.</li>
+          <li class="tier-feature"><strong>Bulk export by filter</strong> — export selected clips, by date range, by tag, or by source domain.</li>
+          <li class="tier-feature"><strong>All future Sovereign History features</strong> — at no additional cost. Perpetual unlock; one purchase, kept forever.</li>
+        </ul>
+        <p class="oia-caption" style="margin: 0 0 12px 0; color: var(--oia-text-muted);">
+          Why $2.99 once and not part of the Pro subscription? Your clip history outlives any subscription billing cycle. Sovereign History is the layer that ensures you can ALWAYS get your data out, in your own format, on your own schedule — even if every other tier sunsets.
+        </p>
+        <button class="oia-btn oia-btn-primary tier-card__cta" id="unlock-vault-btn" disabled>
+          Unlock Sovereign History — $2.99 (coming soon)
+        </button>
+      </div>
     </div>
 
     <!-- Data -->
@@ -220,6 +254,89 @@
       </p>
     </footer>
   </div>
+
+    <!-- Strike 021: minimal .dev-override + tier-helper styles
+         (full Tier-0.5 visual contract is in ../lib/transparency-tier.css). -->
+    <style>
+      .dev-override { border: 2px solid var(--oia-mustard, #C9A86C); background: rgba(201, 168, 108, 0.08); padding: 16px; border-radius: 12px; margin: 16px 0; }
+      .dev-override.hidden { display: none !important; }
+      .dev-override__head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+      .dev-override__icon { font-size: 20px; color: var(--oia-mustard, #C9A86C); }
+      .dev-override__title { margin: 0; flex: 1; font-size: 16px; letter-spacing: 0.05em; color: var(--oia-mustard, #C9A86C); }
+      .dev-override__gate { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--oia-text-muted, #8C8C8C); font-family: SFMono-Regular, Consolas, monospace; }
+      .dev-override__lede { font-size: 13px; color: var(--oia-text-secondary, #5C5C5C); line-height: 1.5; margin: 0 0 16px 0; }
+      .dev-override__lede code { background: rgba(201, 168, 108, 0.18); color: var(--oia-text-primary, #2D2D2D); padding: 1px 6px; border-radius: 3px; font-family: SFMono-Regular, Consolas, monospace; font-size: 0.92em; }
+      .dev-override__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .dev-override__btns { display: flex; gap: 8px; }
+      .dev-override__btns .oia-btn { border-color: var(--oia-mustard, #C9A86C); color: var(--oia-mustard, #C9A86C); font-weight: 600; }
+      .dev-override__btns .oia-btn:hover { background: rgba(201, 168, 108, 0.12); }
+    </style>
+
+    <!-- Developer Override Panel (URL-gated by ?dev=1; documented behavior).
+         Strike 021: state machine + dev gate. Visual binding to the Sovereign
+         History tier card (id="vault-tier-card") is fully functional. -->
+    <section class="dev-override hidden" id="dev-override-panel" role="region" aria-label="Developer override (URL-gated)">
+      <div class="dev-override__head">
+        <span class="dev-override__icon" aria-hidden="true">⚠</span>
+        <h2 class="dev-override__title">DEVELOPER OVERRIDE</h2>
+        <span class="dev-override__gate">URL-gated · ?dev=1</span>
+      </div>
+      <p class="dev-override__lede">
+        Shown only when the page URL contains <code>?dev=1</code>. The URL is the sole gate. Tier-flip uses the same path as the production stub (chrome.storage.local).
+      </p>
+      <div class="dev-override__row">
+        <span>Current tier: <strong id="dev-current-tier">…</strong></span>
+        <div class="dev-override__btns">
+          <button class="oia-btn oia-btn-secondary" id="dev-force-vault">Force tier: vault</button>
+          <button class="oia-btn oia-btn-secondary" id="dev-force-free">Force tier: free</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strike 021: ?dev=1 URL gate + tier card render. Self-contained module
+         so it doesn't need to integrate with options.js. -->
+    <script type="module">
+      import { getTier, setTier, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
+
+      async function renderTier() {
+        const tier = await getTier();
+        const isUnlocked = tier === TIER_VAULT;
+        const nameEl = document.getElementById('current-tier-name');
+        if (nameEl) nameEl.textContent = isUnlocked ? 'Tier-0.5: Sovereign History' : 'Free';
+        const card = document.getElementById('vault-tier-card');
+        if (card) {
+          card.classList.toggle('tier-card--locked', !isUnlocked);
+          card.classList.toggle('tier-card--unlocked', isUnlocked);
+        }
+        const watermark = document.getElementById('vault-lock-watermark');
+        if (watermark) {
+          watermark.textContent = isUnlocked ? 'UNLOCKED' : 'LOCKED';
+          watermark.style.color = isUnlocked ? 'var(--oia-sage, #8BA888)' : '';
+        }
+      }
+
+      function initDevOverride() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('dev') !== '1') return;
+        const panel = document.getElementById('dev-override-panel');
+        if (!panel) return;
+        panel.classList.remove('hidden');
+        refreshDevTierLabel();
+        document.getElementById('dev-force-vault').addEventListener('click', async () => {
+          await setTier(TIER_VAULT); await renderTier(); await refreshDevTierLabel();
+        });
+        document.getElementById('dev-force-free').addEventListener('click', async () => {
+          await setTier(TIER_FREE); await renderTier(); await refreshDevTierLabel();
+        });
+      }
+      async function refreshDevTierLabel() {
+        const el = document.getElementById('dev-current-tier');
+        if (el) el.textContent = await getTier();
+      }
+
+      renderTier();
+      initDevOverride();
+    </script>
 
   <script type="module" src="options.js"></script>
 </body>
