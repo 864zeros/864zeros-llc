@@ -42,3 +42,11 @@
 - `[2026-05-09T22:21:30Z]` `[strike:022]` `[options-tier-init-distribute]` distribute to 11 extensions' `lib/options-tier-init.js` (chronicle excluded; uses options.js) — ok
 - `[2026-05-09T22:22:00Z]` `[strike:022]` `[options-html-link-shared-script]` edit 11 options.html — inline scripts replaced with `<script src="../lib/options-tier-init.js">` — ok
 - `[2026-05-09T22:23:00Z]` `[strike:022]` `[chronicle-checkout-blueprint]` create `extensions/864z-chronical/CHRONICLE_CHECKOUT_BLUEPRINT.md` — design doc identifying 3 ExtPay entry points + 6 failure modes + generalization path — ok
+- `[2026-05-09T22:24:00Z]` `[strike:022]` `[factory-manifest-v16]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.5 → v1.6 (Strike-022 milestones; new P0 = Chronicle ExtPay) — ok
+- `[2026-05-09T22:25:00Z]` `[strike:022]` `[commit-llc]` commit `864zeros-llc` (2762060) — ~25 files (clipboard §Disclosure + canonical + 11 lib copies + 11 options.html + blueprint + audit artifacts) — ok
+- `[2026-05-09T22:26:00Z]` `[strike:022]` `[commit-isd]` commit `864zeros-ISD` (1f578a6) — 2 files (SYSTEM_STRIKE_LOG + FACTORY_MANIFEST v1.6) — ok
+- `[2026-05-09T22:27:00Z]` `[strike:023]` `[strike-023-init]` begin Strike 023 (EOD wrap-up) — ok
+- `[2026-05-09T22:28:00Z]` `[strike:023]` `[ledger-stream-audit]` verify `FACTORY_LEDGER.jsonl + SESSION_STREAM.md` — 39/39 valid JSON; 39/39 schema-complete; timestamps monotonic; stream/ledger counts match — ok
+- `[2026-05-09T22:29:00Z]` `[strike:023]` `[factory-manifest-v165]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.6 → v1.65 (Chronicle ExtPay → 🔥 P0-TOP "TOMORROW MORNING" callout) — ok
+- `[2026-05-09T22:30:00Z]` `[strike:023]` `[eod-log-create]` create `LLC-DIV-3-FACTORY/EOD_LOG.md` — daily wrap-up (Strike 016-023 arc + compliance-to-revenue pivot + tomorrow's start-here checklist) — ok
+- `[2026-05-09T22:31:00Z]` `[strike:023]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 023 entry appended (audit + manifest v1.65 + EOD_LOG + EOD commit) — ok
