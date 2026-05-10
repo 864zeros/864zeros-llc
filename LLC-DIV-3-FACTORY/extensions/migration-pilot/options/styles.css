@@ -134,10 +134,9 @@ code {
   gap: var(--oia-space-xs);
 }
 
-.tier-card--upcoming {
-  opacity: 0.75;
-  border-style: dashed;
-}
+/* .tier-card--upcoming — RENAMED to .tier-card--locked in Strike 018
+   fleet alias (matches Chronicle Standard); canonical styling now lives
+   in ../lib/transparency-tier.css (opacity 0.60 + tinted bg + ⊘ glyphs). */
 
 .tier-card__name {
   margin: 0;
