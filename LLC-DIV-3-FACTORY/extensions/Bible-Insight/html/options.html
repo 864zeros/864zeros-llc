@@ -352,6 +352,14 @@
 
     <script src="../js/options.js" type="module"></script>
 
+    <!-- RULE-007 §Disclosure block — verbatim from RULE_007_AUDIT.md §V.a (Strike 019).
+         Closes the one outstanding RULE-007 audit item (P1 disclosure UX gap). -->
+    <section class="oia-card privacy-disclosure">
+      <h2 class="oia-h2">Privacy &amp; Your API Key</h2>
+      <p>Your Gemini API key is stored only on this device, in <code>chrome.storage.local</code>. It is sent only to Google's official Gemini endpoint at <code>generativelanguage.googleapis.com</code> when you trigger an AI analysis. <strong>864zeros never sees your key, your prompts, or your responses.</strong></p>
+      <p>Your captured content (highlights, screenshots, PDFs) lives in IndexedDB on this device. It does not leave your device unless you click an action that explicitly uses the Gemini AI features.</p>
+    </section>
+
     <!-- Transparency Card: standardized 4-line brand footer (per GTM_MANIFEST §6).
          Injected by Strike 014 transparency-card sweep (2026-05-09) — matches the
          Chronicle Standard at extensions/864z-chronical/options/options.html. -->

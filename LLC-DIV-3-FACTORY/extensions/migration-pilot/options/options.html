@@ -237,6 +237,89 @@
 
   </div>
 
+    <!-- Strike 019: minimal .dev-override + tier-helper styles
+         (full Tier-0.5 visual contract is in ../lib/transparency-tier.css). -->
+    <style>
+      .dev-override { border: 2px solid var(--oia-mustard, #C9A86C); background: rgba(201, 168, 108, 0.08); padding: 16px; border-radius: 12px; margin: 16px 0; }
+      .dev-override.hidden { display: none !important; }
+      .dev-override__head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+      .dev-override__icon { font-size: 20px; color: var(--oia-mustard, #C9A86C); }
+      .dev-override__title { margin: 0; flex: 1; font-size: 16px; letter-spacing: 0.05em; color: var(--oia-mustard, #C9A86C); }
+      .dev-override__gate { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--oia-text-muted, #8C8C8C); font-family: SFMono-Regular, Consolas, monospace; }
+      .dev-override__lede { font-size: 13px; color: var(--oia-text-secondary, #5C5C5C); line-height: 1.5; margin: 0 0 16px 0; }
+      .dev-override__lede code { background: rgba(201, 168, 108, 0.18); color: var(--oia-text-primary, #2D2D2D); padding: 1px 6px; border-radius: 3px; font-family: SFMono-Regular, Consolas, monospace; font-size: 0.92em; }
+      .dev-override__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .dev-override__btns { display: flex; gap: 8px; }
+      .dev-override__btns .oia-btn { border-color: var(--oia-mustard, #C9A86C); color: var(--oia-mustard, #C9A86C); font-weight: 600; }
+      .dev-override__btns .oia-btn:hover { background: rgba(201, 168, 108, 0.12); }
+    </style>
+
+    <!-- Developer Override Panel (URL-gated by ?dev=1; documented behavior).
+         Strike 019: state machine + dev gate. Visual binding to a specific
+         tier card is partial because this extension's existing tier ladder
+         uses generic tier-card--locked markup without canonical IDs. -->
+    <section class="dev-override hidden" id="dev-override-panel" role="region" aria-label="Developer override (URL-gated)">
+      <div class="dev-override__head">
+        <span class="dev-override__icon" aria-hidden="true">⚠</span>
+        <h2 class="dev-override__title">DEVELOPER OVERRIDE</h2>
+        <span class="dev-override__gate">URL-gated · ?dev=1</span>
+      </div>
+      <p class="dev-override__lede">
+        Shown only when the page URL contains <code>?dev=1</code>. The URL is the sole gate. Tier-flip uses the same path as the production stub (chrome.storage.local).
+      </p>
+      <div class="dev-override__row">
+        <span>Current tier: <strong id="dev-current-tier">…</strong></span>
+        <div class="dev-override__btns">
+          <button class="oia-btn oia-btn-secondary" id="dev-force-vault">Force tier: vault</button>
+          <button class="oia-btn oia-btn-secondary" id="dev-force-free">Force tier: free</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strike 019: ?dev=1 URL gate + tier card render. Self-contained module. -->
+    <script type="module">
+      import { getTier, setTier, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
+
+      async function renderTier() {
+        const tier = await getTier();
+        const isUnlocked = tier === TIER_VAULT;
+        const nameEl = document.getElementById('current-tier-name');
+        if (nameEl) nameEl.textContent = isUnlocked ? 'Tier-0.5: Vault' : 'Free';
+        const card = document.getElementById('vault-tier-card');
+        if (card) {
+          card.classList.toggle('tier-card--locked', !isUnlocked);
+          card.classList.toggle('tier-card--unlocked', isUnlocked);
+        }
+        const watermark = document.getElementById('vault-lock-watermark');
+        if (watermark) {
+          watermark.textContent = isUnlocked ? 'UNLOCKED' : 'LOCKED';
+          watermark.style.color = isUnlocked ? 'var(--oia-sage, #8BA888)' : '';
+        }
+      }
+
+      function initDevOverride() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('dev') !== '1') return;
+        const panel = document.getElementById('dev-override-panel');
+        if (!panel) return;
+        panel.classList.remove('hidden');
+        refreshDevTierLabel();
+        document.getElementById('dev-force-vault').addEventListener('click', async () => {
+          await setTier(TIER_VAULT); await renderTier(); await refreshDevTierLabel();
+        });
+        document.getElementById('dev-force-free').addEventListener('click', async () => {
+          await setTier(TIER_FREE); await renderTier(); await refreshDevTierLabel();
+        });
+      }
+      async function refreshDevTierLabel() {
+        const el = document.getElementById('dev-current-tier');
+        if (el) el.textContent = await getTier();
+      }
+
+      renderTier();
+      initDevOverride();
+    </script>
+
   <script type="module" src="main.js"></script>
 </body>
 </html>
