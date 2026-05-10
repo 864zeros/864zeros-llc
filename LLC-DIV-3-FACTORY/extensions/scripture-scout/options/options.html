@@ -143,9 +143,18 @@
           </ul>
         </div>
 
-        <div class="tier-card tier-card--locked">
-          <h3 class="oia-body tier-card__name">Pro <span class="oia-caption">(coming)</span></h3>
-          <p class="tier-card__price">TBD</p>
+        <!-- Strike 020: canonical IDs added to enable visual binding from
+             the inline tier-init script (renderTier() in the <script
+             type="module"> block at end of body). Card content unchanged
+             from prior strikes; ID layer is purely additive. The
+             vault-lock-watermark span is also new (no visible change at
+             rest; toggles to "UNLOCKED" + sage when tier flips). -->
+        <div class="tier-card tier-card--locked" id="vault-tier-card">
+          <h3 class="oia-body tier-card__name">
+            Pro <span class="oia-caption">(coming)</span>
+            <span class="tier-card__lock-watermark" id="vault-lock-watermark" style="float:right;font-size:10px;letter-spacing:0.15em;color:var(--oia-text-muted);font-weight:700;opacity:0.85;">LOCKED</span>
+          </h3>
+          <p class="tier-card__price">TBD · current tier: <strong id="current-tier-name">Free</strong></p>
           <ul class="tier-card__features oia-caption">
             <li>Optional Google Drive sync</li>
             <li>Direct File-System write to vault</li>
