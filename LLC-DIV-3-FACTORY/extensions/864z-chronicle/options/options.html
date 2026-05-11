@@ -8,8 +8,11 @@
   <link rel="stylesheet" href="../lib/oia-design-system.css">
   <link rel="stylesheet" href="../lib/transparency-tier.css">
   <link rel="stylesheet" href="options.css">
+  <!-- Strike 033: Fleet theme engine. Classic script in <head> applies
+       data-theme attribute on <html> before DOMContentLoaded (FOUC-safe). -->
+  <script src="../lib/theme-engine.js"></script>
 </head>
-<body>
+<body data-pillar="OIA">
   <div class="options-container">
 
     <!-- Hero -->
@@ -197,10 +200,23 @@
       </div>
     </section>
 
+    <!-- Strike 025: cross-surface BRAND_MISSION (founder-voice mission statement).
+         Text injected by canonical lib/options-tier-init.js → injectBrandMission()
+         which reads from lib/brand-identity.js BRAND_MISSION. .brand-text class
+         is currently unstyled (default block text); operator can add a style
+         rule later if a specific treatment is desired. -->
+    <div id="brand-mission" class="brand-text"></div>
+
     <!-- Standardized 4-line brand footer (per GTM_MANIFEST §6) -->
+    <!-- Strike 029: Trust Vault UI container. Populated by canonical
+         lib/options-tier-init.js → injectTrustVaultUI() which reads from
+         lib/trust-vault.js. Place BEFORE the standardized brand-footer. -->
+    <div id="trust-vault-root"></div>
+
     <footer class="brand-footer">
       <p class="brand-footer__line brand-footer__product">
         Chronicle v1.1.0 | OIA | 864zeros LLC
+        <a href="#" id="theme-toggle" role="button">Theme: [Loading...]</a>
       </p>
       <p class="brand-footer__line brand-footer__privacy">
         <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -224,6 +240,12 @@
   <!-- Toast (status messages) -->
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
+  <!-- Strike 024: shared tier-init (canonical 3 tier-card elements + dev-override panel).
+       Chronicle's options.js handles its own extras (description + markdown button) via
+       chrome.runtime.onMessage + chrome.storage.onChanged listeners.
+       Canonical at 864z-build-kit/references/core/options-tier-init.js;
+       per-extension copy at lib/options-tier-init.js. -->
+  <script type="module" src="../lib/options-tier-init.js"></script>
   <script type="module" src="options.js"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@ DO NOT MODIFY - HARVEST ONLY            ACTIVE DEVELOPMENT ZONE
 | signal2noise | Signal2Noise | Task Prioritization | OIA | Stable | Signal pill UI, Accordion list |
 | tuneout2focusin | TuneOut2FocusIn | Background Noise | OIA | Stable | Offscreen audio pattern |
 | time2focus | Time2Focus | Focus Timer | OIA | Stable | chrome.alarms, Panel flash |
-| 864z-chronical | Chronicle | AI Conversation History | 864z | Stable | AI scraping patterns, db.js |
+| 864z-chronicle | Chronicle | AI Conversation History | 864z | Stable | AI scraping patterns, db.js |
 | who-is-watching | Who Is Watching | Tracker Detector | OIA | Stable | detector.js, JS API hooking |
 | oia-focus-note | OIA Focus Note | Note Taking | OIA | Minimal | - |
 | oia-focus-timer | OIA Focus Timer | Timer | OIA | Minimal | - |
@@ -204,7 +204,7 @@ clipboard/lib/payments/ExtPay.js
 who-is-watching/content/detector.js
 Time2Focus/offscreen/
 TuneOut2FocusIn/offscreen/
-864z-chronical/lib/db.js
+864z-chronicle/lib/db.js
 ```
 
 ### Production Floor (vulture-nest\864zeros_engine\builds\)

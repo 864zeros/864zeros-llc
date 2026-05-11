@@ -4,7 +4,7 @@
 **Loaded:** Pre-implementation review by Operator + Systems Engineer.
 **Authored:** 2026-05-09 by 864z-OA (Office Architect) per RULE-000.
 **Update protocol:** Append revisions; supersession marked. This is an *engineering blueprint*, not a strike commit — it specifies the integration architecture, the entry points, the failure modes, and the per-extension generalization path. Implementation is a separate strike charter.
-**Sources synthesized:** [`extensions/864z-chronical/options/options.js`](./options/options.js) (current stub-unlock onUnlockVault flow + lib/tier.js usage) · [`extensions/clipboard/lib/payments/extpay-wrapper.js`](../clipboard/lib/payments/extpay-wrapper.js) (the existing fleet ExtPay wrapper pattern) · [`extensions/clipboard/lib/payments/ExtPay.js`](../clipboard/lib/payments/ExtPay.js) (vendored 3rd-party ExtPay SDK) · [`extensions/clipboard/RULE_007_AUDIT.md`](../clipboard/RULE_007_AUDIT.md) §V (ExtPay 3rd-party RULE-007 verdict — "ExtPay handles credit card data directly; 864zeros never sees payment details") · [`864z-build-kit/references/core/tier.js`](../../../864z-build-kit/references/core/tier.js) (canonical TIER_FREE/TIER_VAULT state machine) · [`TIER_0_5_BLUEPRINT.md`](./TIER_0_5_BLUEPRINT.md) §VII.1 (the original deferral notation: "real ExtPay checkout integration is deferred").
+**Sources synthesized:** [`extensions/864z-chronicle/options/options.js`](./options/options.js) (current stub-unlock onUnlockVault flow + lib/tier.js usage) · [`extensions/clipboard/lib/payments/extpay-wrapper.js`](../clipboard/lib/payments/extpay-wrapper.js) (the existing fleet ExtPay wrapper pattern) · [`extensions/clipboard/lib/payments/ExtPay.js`](../clipboard/lib/payments/ExtPay.js) (vendored 3rd-party ExtPay SDK) · [`extensions/clipboard/RULE_007_AUDIT.md`](../clipboard/RULE_007_AUDIT.md) §V (ExtPay 3rd-party RULE-007 verdict — "ExtPay handles credit card data directly; 864zeros never sees payment details") · [`864z-build-kit/references/core/tier.js`](../../../864z-build-kit/references/core/tier.js) (canonical TIER_FREE/TIER_VAULT state machine) · [`TIER_0_5_BLUEPRINT.md`](./TIER_0_5_BLUEPRINT.md) §VII.1 (the original deferral notation: "real ExtPay checkout integration is deferred").
 **Format note:** Follows the `864z-markdown-standard` (RULE-008).
 
 ---
@@ -80,7 +80,7 @@ onPaid(async (user) => {
 
 Currently Chronicle's `options.js` has an `onUnlockVault()` function (Strike 013) that flips the tier flag directly with a two-tap arm. That stub needs to be replaced with: open ExtPay's checkout page.
 
-**File:** `extensions/864z-chronical/options/options.js`
+**File:** `extensions/864z-chronicle/options/options.js`
 
 **Function to replace:** `onUnlockVault()` (the existing stub).
 
@@ -179,11 +179,11 @@ After Chronicle ships ExtPay integration, the same pattern applies to the other 
 
 ## VII. Cross-References
 
-- [`extensions/864z-chronical/lib/tier.js`](./lib/tier.js) — canonical TIER_FREE/TIER_VAULT state machine
-- [`extensions/864z-chronical/options/options.js`](./options/options.js) — host for the new `onUnlockVault()` (§III.b above)
-- [`extensions/864z-chronical/service-worker.js`](./service-worker.js) — host for `initPayments()` + `onPaid()` (§III.a above)
-- [`extensions/864z-chronical/TIER_0_5_BLUEPRINT.md`](./TIER_0_5_BLUEPRINT.md) §VII.1 — the original deferral notation
-- [`extensions/864z-chronical/SOVEREIGN_LINK_PROPOSAL.md`](./SOVEREIGN_LINK_PROPOSAL.md) — companion design doc
+- [`extensions/864z-chronicle/lib/tier.js`](./lib/tier.js) — canonical TIER_FREE/TIER_VAULT state machine
+- [`extensions/864z-chronicle/options/options.js`](./options/options.js) — host for the new `onUnlockVault()` (§III.b above)
+- [`extensions/864z-chronicle/service-worker.js`](./service-worker.js) — host for `initPayments()` + `onPaid()` (§III.a above)
+- [`extensions/864z-chronicle/TIER_0_5_BLUEPRINT.md`](./TIER_0_5_BLUEPRINT.md) §VII.1 — the original deferral notation
+- [`extensions/864z-chronicle/SOVEREIGN_LINK_PROPOSAL.md`](./SOVEREIGN_LINK_PROPOSAL.md) — companion design doc
 - [`extensions/clipboard/lib/payments/extpay-wrapper.js`](../clipboard/lib/payments/extpay-wrapper.js) — reference wrapper to copy
 - [`extensions/clipboard/RULE_007_AUDIT.md`](../clipboard/RULE_007_AUDIT.md) §V — ExtPay 3rd-party RULE-007 verdict (compliant)
 - [`864z-build-kit/references/core/tier.js`](../../../864z-build-kit/references/core/tier.js) — fleet canonical

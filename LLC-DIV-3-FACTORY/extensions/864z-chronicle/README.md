@@ -108,7 +108,7 @@ Each AI host page → content-script.js (DOM observer)
 ### Installation (development)
 
 ```bash
-cd C:\dev\864zeros-llc\LLC-DIV-3-FACTORY\extensions\864z-chronical
+cd C:\dev\864zeros-llc\LLC-DIV-3-FACTORY\extensions\864z-chronicle
 # No npm install needed — vanilla JS, zero dependencies
 
 # Load in Chrome:

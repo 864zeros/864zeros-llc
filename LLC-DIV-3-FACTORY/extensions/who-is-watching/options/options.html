@@ -28,8 +28,11 @@
       .tier-badge__name { font-size: 12px; font-weight: 600; color: var(--oia-sage, #8BA888); }
       .hidden { display: none !important; }
     </style>
+  <!-- Strike 033: Fleet theme engine. Classic script in <head> applies
+       data-theme attribute on <html> before DOMContentLoaded (FOUC-safe). -->
+  <script src="../lib/theme-engine.js"></script>
 </head>
-<body>
+<body data-pillar="OIA">
   <div class="options-container">
 
     <header class="options-hero">
@@ -90,9 +93,15 @@
     </section>
 
     <!-- Standardized 4-line brand footer (per GTM_MANIFEST §6) -->
+    <!-- Strike 029: Trust Vault UI container. Populated by canonical
+         lib/options-tier-init.js → injectTrustVaultUI() which reads from
+         lib/trust-vault.js. Place BEFORE the standardized brand-footer. -->
+    <div id="trust-vault-root"></div>
+
     <footer class="brand-footer">
       <p class="brand-footer__line brand-footer__product">
         Who Is Watching v2.1.6 | OIA | 864zeros LLC
+        <a href="#" id="theme-toggle" role="button">Theme: [Loading...]</a>
       </p>
       <p class="brand-footer__line brand-footer__privacy">
         <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

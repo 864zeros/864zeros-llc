@@ -53,3 +53,71 @@
 - `[2026-05-09T22:35:00Z]` `[strike:023]` `[eod-commit-llc]` commit `864zeros-llc` — sha 1356626 · 3 files · "EOD Sync: Fleet 100% Rung-3 Compliance + Payment Blueprint Staged" — ok
 - `[2026-05-09T22:35:30Z]` `[strike:023]` `[eod-commit-isd]` commit `864zeros-ISD` — sha b4b1914 · 2 files · "EOD Sync: Fleet 100% Rung-3 Compliance + Payment Blueprint Staged" — ok
 - `[2026-05-09T22:42:00Z]` `[strike:023]` `[strike-022-eod-conclusion]` conclude `864zeros-llc + 864zeros-ISD` — operator-framed "Strike 022 EOD Conclusion"; ledger-tagged strike:023 for audit-stream consistency; aether-pulse-x excluded; final cloud-parity push pending — ok
+- `[2026-05-09T22:45:00Z]` `[strike:023]` `[strike-022-complete-commit-llc]` commit `864zeros-llc` — sha 6d164e5 · 2 files · "STRIKE 022 COMPLETE: Fleet 100% Rung-3 Synchronized + Revenue Blueprint Pushed" — ok
+- `[2026-05-09T22:45:30Z]` `[strike:023]` `[strike-022-complete-commit-isd]` skip `864zeros-ISD` — clean tree (no empty commit) — ok
+- `[2026-05-09T22:46:00Z]` `[strike:023]` `[strike-022-complete-push-llc]` push `864zeros-llc` — 2c22fed..6d164e5 · 16 commits → origin/main · cloud parity ✅ — ok
+- `[2026-05-09T22:46:30Z]` `[strike:023]` `[strike-022-complete-push-isd]` push `864zeros-ISD` — 690db0d..b4b1914 · 14 commits → origin/main · cloud parity ✅ — ok
+- `[2026-05-10T08:00:00Z]` `[strike:024]` `[strike-024-init]` begin `864zeros-llc + 864zeros-ISD` — Chronicle ExtPay impl per blueprint (5-task directive); 864z-chronical dir confirmed; verbatim operator values for EXTPAY_ID/SOVEREIGN_PRICE_ID/PLAN_ID — ok
+- `[2026-05-10T08:05:00Z]` `[strike:024]` `[create-chronicle-config]` create `extensions/864z-chronical/js/config.js + .gitignore` — operator-verbatim consts; gitignored; verified — ok
+- `[2026-05-10T08:10:00Z]` `[strike:024]` `[vendor-extpay-sdk]` create `references/core/payments/ExtPay.js + extensions/864z-chronical/lib/payments/ExtPay.js` — 2 destinations, 3 SHAs identical (52KB / 1578 LOC) — ok
+- `[2026-05-10T08:11:00Z]` `[strike:024]` `[author-chronicle-extpay-wrapper]` create `extensions/864z-chronical/lib/payments/extpay-wrapper.js` — minimal binary-tier wrapper; imports EXTPAY_ID from config.js — ok
+- `[2026-05-10T08:12:00Z]` `[strike:024]` `[chronicle-sw-extpay-bootstrap]` edit `extensions/864z-chronical/service-worker.js` — initPayments + onPaid handler (sets TIER_VAULT + broadcasts TIER_UNLOCKED) — ok
+- `[2026-05-10T08:13:00Z]` `[strike:024]` `[chronicle-manifest-extpay-cs]` edit `extensions/864z-chronical/manifest.json` — added content_scripts for extensionpay.com/* — ok
+- `[2026-05-10T08:20:00Z]` `[strike:024]` `[chronicle-options-js-extpay-wiring]` edit `extensions/864z-chronical/options/options.js` — ExtPay imports + onUnlockVault swap; deleted dev-override duplicates; added listeners — ok
+- `[2026-05-10T08:21:00Z]` `[strike:024]` `[chronicle-options-html-shared-script]` edit `extensions/864z-chronical/options/options.html` — added `<script src=../lib/options-tier-init.js>` — ok
+- `[2026-05-10T08:22:00Z]` `[strike:024]` `[canonical-tier-init-add-tier-unlocked-listener]` edit `references/core/options-tier-init.js` — appended TIER_UNLOCKED/TIER_DOWNGRADED listener — ok
+- `[2026-05-10T08:23:00Z]` `[strike:024]` `[distribute-canonical-to-12-extensions]` distribute `12 extensions/lib/options-tier-init.js` — 12/12 SHA-identical, syntax-clean — ok
+- `[2026-05-10T08:30:00Z]` `[strike:024]` `[factory-manifest-v17]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.65 → v1.7; chronicle promoted to 🚀 Rung 4: Active Checkout — ok
+- `[2026-05-10T08:35:00Z]` `[strike:024]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 024 entry appended (8 deliverables; REVENUE ARC OPENED) — ok
+- `[2026-05-10T08:50:00Z]` `[strike:024]` `[chronicle-sw-syntax-fix-line36]` fix `extensions/864z-chronical/service-worker.js` — pre-existing `.then(() => )` → `.then(() => {})`; module-mode syntax check now passes; honest correction (my Strike-024 script-mode check missed this) — ok
+- `[2026-05-11T09:00:00Z]` `[strike:025]` `[strike-025-init]` begin `864zeros-llc + 864zeros-ISD` — BRAND_MISSION cross-surface install (5-task directive) — ok
+- `[2026-05-11T09:05:00Z]` `[strike:025]` `[create-canonical-brand-identity]` create `references/core/brand-identity.js` — BRAND_MISSION canonical (founder-voice text, operator-verbatim) — ok
+- `[2026-05-11T09:06:00Z]` `[strike:025]` `[canonical-tier-init-inject-brand-mission]` edit `references/core/options-tier-init.js` — import BRAND_MISSION + injectBrandMission() — ok
+- `[2026-05-11T09:07:00Z]` `[strike:025]` `[distribute-canonicals-12-extensions]` distribute `12 ext × {brand-identity.js, options-tier-init.js}` — 24/24 SHA-match + module-syntax-clean — ok
+- `[2026-05-11T09:08:00Z]` `[strike:025]` `[chronicle-options-html-brand-mission-div]` edit `extensions/864z-chronical/options/options.html` — added `<div id=brand-mission class=brand-text>` above brand-footer — ok
+- `[2026-05-11T09:09:00Z]` `[strike:025]` `[create-gtm-build-report-template]` create `ISD-DIV-5-EVOLUTION/templates/GTM_BUILD_REPORT_TEMPLATE.md` — Build Report template with BRAND_MISSION header (8 sections, RULE-008) — ok
+- `[2026-05-11T09:15:00Z]` `[strike:025]` `[factory-manifest-v175]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.7 → v1.75 (Strike-025 milestones block prepended) — ok
+- `[2026-05-11T09:16:00Z]` `[strike:025]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 025 entry appended (7 deliverables; 🎯 BRAND_MISSION canonical) — ok
+- `[2026-05-11T10:00:00Z]` `[strike:026]` `[strike-026-init]` begin `864zeros-llc + 864zeros-ISD` — Chronicle payment-flow debug (6-task directive) — ok
+- `[2026-05-11T10:05:00Z]` `[strike:026]` `[chronicle-sw-payment-debug-instrumentation]` edit `extensions/864z-chronical/service-worker.js` — logging + try/catch + best-effort options-tab focus redirect — ok
+- `[2026-05-11T10:06:00Z]` `[strike:026]` `[canonical-tier-init-focus-listener]` edit `references/core/options-tier-init.js` — window.focus → renderTier + refreshDevTierLabel — ok
+- `[2026-05-11T10:07:00Z]` `[strike:026]` `[chronicle-options-js-payment-success-toast]` edit `extensions/864z-chronical/options/options.js` — split TIER_UNLOCKED/DOWNGRADED branches; "Payment Successful!" toast — ok
+- `[2026-05-11T10:08:00Z]` `[strike:026]` `[distribute-canonical-tier-init-12-extensions]` distribute `12 ext × options-tier-init.js` — 12/12 SHA-match + module-syntax-clean — ok
+- `[2026-05-11T10:12:00Z]` `[strike:026]` `[chronicle-payment-redirect-storage-tab-id]` edit `extensions/864z-chronical/{options.js, service-worker.js}` — storage-passed tab ID (no 'tabs' permission); options.js writes paymentReturnTabId; SW reads + chrome.tabs.update — ok
+- `[2026-05-11T10:18:00Z]` `[strike:026]` `[factory-manifest-v18]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.75 → v1.8 (🔧 payment-flow debug milestones block prepended) — ok
+- `[2026-05-11T10:19:00Z]` `[strike:026]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 026 entry appended (6 deliverables; 3-layer defense architecture) — ok
+- `[2026-05-11T11:00:00Z]` `[strike:027]` `[strike-027-init]` begin `864zeros-llc + 864zeros-ISD` — payment-persistence repair + cross-fleet ExtPay fail-safe (3-task directive) — ok
+- `[2026-05-11T11:05:00Z]` `[strike:027]` `[chronicle-extpay-wrapper-initpayments-callback]` edit `extensions/864z-chronical/lib/payments/extpay-wrapper.js` — initPayments(cb) registers listener BEFORE startBackground; closes race — ok
+- `[2026-05-11T11:06:00Z]` `[strike:027]` `[chronicle-sw-single-call-initpayments]` edit `extensions/864z-chronical/service-worker.js` — switched to single-call initPayments(handler) — ok
+- `[2026-05-11T11:07:00Z]` `[strike:027]` `[canonical-tier-init-extpay-failsafe]` edit `references/core/options-tier-init.js` — added tryExtPaySync (dynamic import; upgrade-only; wired on init + focus) — ok
+- `[2026-05-11T11:08:00Z]` `[strike:027]` `[distribute-canonical-tier-init-12-extensions]` distribute `12 ext × options-tier-init.js` — 12/12 SHA-match + module-syntax-clean — ok
+- `[2026-05-11T11:15:00Z]` `[strike:027]` `[factory-manifest-v185]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.8 → v1.85 (🛡 payment-persistence repair milestones block prepended) — ok
+- `[2026-05-11T11:16:00Z]` `[strike:027]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 027 entry appended (6 deliverables; 4-layer defense; race CLOSED) — ok
+- `[2026-05-11T12:00:00Z]` `[strike:028]` `[strike-028-init]` begin `864zeros-llc + 864zeros-ISD` — Trust Vault library (6-task directive; no manifest bump) — ok
+- `[2026-05-11T12:05:00Z]` `[strike:028]` `[create-canonical-trust-vault]` create `references/core/trust-vault.js` — exportVault + importVault; operator-verbatim header + alert; round-trippable ```json fence — ok
+- `[2026-05-11T12:06:00Z]` `[strike:028]` `[distribute-trust-vault-chronicle]` distribute `extensions/864z-chronical/lib/trust-vault.js` — first consumer; SHA-identical to canonical — ok
+- `[2026-05-11T12:10:00Z]` `[strike:028]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 028 entry appended (operator-verbatim text byte-exact; library-only scope) — ok
+- `[2026-05-11T13:00:00Z]` `[strike:029]` `[strike-029-init]` begin `864zeros-llc + 864zeros-ISD` — Trust Vault UI fleet rollout (6-task directive; +extends Strike 028 trust-vault.js to 12 ext) — ok
+- `[2026-05-11T13:05:00Z]` `[strike:029]` `[canonical-tier-init-trust-vault-ui]` edit `references/core/options-tier-init.js` — injectTrustVaultUI(); 5 operator-verbatim strings byte-exact — ok
+- `[2026-05-11T13:06:00Z]` `[strike:029]` `[distribute-tier-init-and-trust-vault-12-extensions]` distribute `12 ext × {options-tier-init.js, trust-vault.js}` — 24/24 SHA-match + module-syntax-clean — ok
+- `[2026-05-11T13:07:00Z]` `[strike:029]` `[inject-trust-vault-root-12-options-html]` edit `12 options.html` — Python script inserted `<div id=trust-vault-root>` before brand-footer — ok
+- `[2026-05-11T13:15:00Z]` `[strike:029]` `[factory-manifest-v19]` edit `ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md` — v1.85 → v1.9 (🔐 Trust Vault fleet rollout milestones block prepended) — ok
+- `[2026-05-11T13:16:00Z]` `[strike:029]` `[strike-log-append]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 029 entry appended (6 deliverables; 0/12→12/12 fleet parity) — ok
+- `[2026-05-11T14:00:00Z]` `[strike:030]` `[strike-030-init]` begin `864zeros-llc + 864zeros-ISD` — Brand Foundation: Glossary + Legal Bridge (4-task; Task 1 paused for verbatim text) — ok
+- `[2026-05-11T14:05:00Z]` `[strike:030]` `[create-864zeros-glossary]` create `ISD-DIV-6-KNOWLEDGE/864zeros_GLOSSARY.md` — Local-First + Trust Vault verbatim definitions; §II Forthcoming Terms stub list — ok
+- `[2026-05-11T14:06:00Z]` `[strike:030]` `[gtm-build-report-template-checklist]` edit `ISD-DIV-5-EVOLUTION/templates/GTM_BUILD_REPORT_TEMPLATE.md` — v1.0 → v1.1; NEW §VII Strike Verification Checklist (6 gates, Trust Vault first) — ok
+- `[2026-05-11T14:30:00Z]` `[strike:030]` `[create-trust-vault-terms]` create `864z-build-kit/references/legal/trust-vault-terms.md` — Sovereign Custody Notice + Mandatory Custody Disclaimer byte-exact (5 phrases grep-validated) — ok
+- `[2026-05-11T14:35:00Z]` `[strike:030]` `[strike-log-append-DELIVERED]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 030 DELIVERED 📚 (Trust Vault initiative closed: library+UI+legal+glossary+checklist) — ok
+- `[2026-05-11T15:00:00Z]` `[strike:031]` `[strike-031-init]` begin `864zeros-llc + 864zeros-ISD` — directory rename + repo-wide typo cleanup (5-task; high blast radius) — ok
+- `[2026-05-11T15:30:00Z]` `[strike:031]` `[git-mv-chronicle-directory]` rename `extensions/864z-chronical → 864z-chronicle` — git mv preserves history; internal typo'd file also renamed — ok
+- `[2026-05-11T15:31:00Z]` `[strike:031]` `[repo-wide-typo-replacement]` edit `63 files / 167 replacements` — principled scope (audit logs + IGNORE/ preserved); 10 files skipped — ok
+- `[2026-05-11T15:32:00Z]` `[strike:031]` `[gitignore-path-update]` edit `.gitignore` — critical fix: config.js re-protected at new path (script's INCLUDE_EXT missed .gitignore) — ok
+- `[2026-05-11T15:33:00Z]` `[strike:031]` `[task-4-import-verification]` verify `chronicle imports` — 11/11 SW+options JS syntax-clean; 48/48 ext-lib syntax-clean; SHA: 12/12 match for 3 canonicals, 11/12 for tier.js (chronicle is its own ref impl — EXPECTED) — ok
+- `[2026-05-11T15:40:00Z]` `[strike:031]` `[strike-log-append-DELIVERED]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 031 DELIVERED ✏️ (Chronicle officially typo-free; 167 replacements; 0 live remaining) — ok
+- `[2026-05-11T16:00:00Z]` `[strike:033]` `[strike-033-init]` begin `864zeros-llc + 864zeros-ISD` — Fleet Theme Standardization (4-task; ambiguities resolved via pre-execution gate) — ok
+- `[2026-05-11T16:05:00Z]` `[strike:033]` `[create-canonical-theme-engine]` create `references/core/theme-engine.js` — 3-state theme; FOUC-safe; window.__864zCycleTheme — ok
+- `[2026-05-11T16:06:00Z]` `[strike:033]` `[canonical-transparency-tier-theme-vars]` edit `references/core/transparency-tier.css` — Strike-033 theme system block appended — ok
+- `[2026-05-11T16:07:00Z]` `[strike:033]` `[distribute-canonicals-12-ext]` distribute `12 ext × {theme-engine.js, transparency-tier.css}` — 24/24 SHA-match + 12/12 syntax-clean — ok
+- `[2026-05-11T16:15:00Z]` `[strike:033]` `[options-html-theme-injection-12-ext]` edit `12 options.html` — script + data-pillar + theme-toggle (12/12 fully wired) — ok
+- `[2026-05-11T16:16:00Z]` `[strike:033]` `[task-4-persistence-verification]` verify `theme persistence chain` — storage.set/get + FOUC-safe head-time apply + matchMedia change listener — ok
+- `[2026-05-11T16:25:00Z]` `[strike:033]` `[strike-log-append-DELIVERED]` edit `ISD-DIV-5-EVOLUTION/reports/SYSTEM_STRIKE_LOG.md` — Strike 033 DELIVERED 🎨 (Fleet Theme Mandate ACTIVE; 12/12 theme-aware) — ok

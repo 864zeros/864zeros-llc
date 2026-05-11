@@ -16,7 +16,7 @@
                       the canonical home of the bracket-tag at footer scale)
      - RULE-007 §Disclosure: privacy line in the standardized footer
 
-   Reference implementation: extensions/864z-chronical/options/options.css
+   Reference implementation: extensions/864z-chronicle/options/options.css
    (Strike 013 set the visual standard; this file extracts the cross-
    extension subset for shared consumption.)
 
@@ -187,3 +187,57 @@
     background: rgba(255, 255, 255, 0.04);
   }
 }
+
+/* ============================================================
+   Strike 033: Fleet Theme System
+   ------------------------------------------------------------
+   Three-state theme: dark / light / system. Driven by lib/theme-engine.js
+   which sets <html data-theme="dark|light"> at FOUC-safe head-time.
+
+   --864z-bg / --864z-text / --864z-border  — theme-aware surface tokens
+   --864z-accent                            — pillar-aware accent (mapped
+                                              to existing --oia-sage /
+                                              --oia-graphite / --oia-bronze
+                                              via body[data-pillar])
+
+   Extensions opt into the dark/light surface by referencing the new
+   `--864z-*` tokens in their per-extension styles. The existing OIA
+   design-system tokens (--oia-sage, etc.) remain untouched.
+   ============================================================ */
+
+:root[data-theme='dark'] {
+  --864z-bg: #0B0E14;
+  --864z-text: #E5E7EB;
+  --864z-border: #1F2937;
+}
+
+:root[data-theme='light'] {
+  --864z-bg: #F5F2ED;
+  --864z-text: #111827;
+  --864z-border: #D1D5DB;
+}
+
+/* Pillar-aware accent. Each extension's <body> carries data-pillar="OIA|864-Flux|FHG".
+   Mapping per BUILD_KIT_RULES.md §438 (codified palette; operator-confirmed in Strike 033). */
+body[data-pillar='OIA']      { --864z-accent: var(--oia-sage,     #8BA888); }
+body[data-pillar='864-Flux'] { --864z-accent: var(--oia-graphite, #374151); }
+body[data-pillar='FHG']      { --864z-accent: var(--oia-bronze,   #A67C52); }
+
+/* Minimal body styling so the theme is actually visible end-to-end.
+   Per-extension stylesheets may override but inherit the same surface tokens. */
+:root[data-theme='dark'] body,
+:root[data-theme='light'] body {
+  background: var(--864z-bg);
+  color: var(--864z-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Theme toggle link (injected into brand-footer alongside the version string). */
+#theme-toggle {
+  color: var(--864z-accent, var(--oia-sage, #8BA888));
+  text-decoration: none;
+  font-size: 0.875em;
+  margin-left: 0.5em;
+  cursor: pointer;
+}
+#theme-toggle:hover { text-decoration: underline; }

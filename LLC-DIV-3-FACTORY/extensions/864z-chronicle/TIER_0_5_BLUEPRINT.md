@@ -232,14 +232,14 @@ The unit economics work because Tier-0.5 features are *write once, run forever* 
 
 | File | New / Modified | Purpose |
 |---|---|---|
-| `extensions/864z-chronical/options/options.html` | NEW | The page itself; structure per §II of this blueprint |
-| `extensions/864z-chronical/options/options.css` | NEW | Tier-card styles + grayed-out spec per §III.a |
-| `extensions/864z-chronical/options/options.js` | NEW | Tier state read from `chrome.storage.local.tier`; render gating; ExtPay (or equivalent) checkout wiring |
-| `extensions/864z-chronical/manifest.json` | MODIFIED | Add `options_ui: { page: "options/options.html", open_in_tab: true }`; update `name` to `[OIA] Chronicle` per RULE-006 v1.1 (or via `_locales/en/messages.json` `extName.message` if `name` is `__MSG_extName__`) |
-| `extensions/864z-chronical/sidepanel/panel.html` | MODIFIED | Replace settings-cog handler to open the new Options tab via `chrome.runtime.openOptionsPage()` (canonical RULE-001 pattern); add brand-prefix pill `[OIA]` to header |
-| `extensions/864z-chronical/sidepanel/panel.js` | MODIFIED | Migrate `clearAllData()` from `confirm()` to BRK-UI-003 two-tap (RULE-005); remove the inline settings view; add the Sovereign Link header button per `SOVEREIGN_LINK_PROPOSAL.md` §III.a |
-| `extensions/864z-chronical/_locales/en/messages.json` | NEW or MODIFIED | `extName.message: "[OIA] Chronicle"` per RULE-006 v1.1 |
-| `extensions/864z-chronical/lib/tier.js` | NEW | Tiny helper module exporting `getTier()`, `setTier()`, `isVaultUnlocked()` for consistent tier checks across panel.js + options.js |
+| `extensions/864z-chronicle/options/options.html` | NEW | The page itself; structure per §II of this blueprint |
+| `extensions/864z-chronicle/options/options.css` | NEW | Tier-card styles + grayed-out spec per §III.a |
+| `extensions/864z-chronicle/options/options.js` | NEW | Tier state read from `chrome.storage.local.tier`; render gating; ExtPay (or equivalent) checkout wiring |
+| `extensions/864z-chronicle/manifest.json` | MODIFIED | Add `options_ui: { page: "options/options.html", open_in_tab: true }`; update `name` to `[OIA] Chronicle` per RULE-006 v1.1 (or via `_locales/en/messages.json` `extName.message` if `name` is `__MSG_extName__`) |
+| `extensions/864z-chronicle/sidepanel/panel.html` | MODIFIED | Replace settings-cog handler to open the new Options tab via `chrome.runtime.openOptionsPage()` (canonical RULE-001 pattern); add brand-prefix pill `[OIA]` to header |
+| `extensions/864z-chronicle/sidepanel/panel.js` | MODIFIED | Migrate `clearAllData()` from `confirm()` to BRK-UI-003 two-tap (RULE-005); remove the inline settings view; add the Sovereign Link header button per `SOVEREIGN_LINK_PROPOSAL.md` §III.a |
+| `extensions/864z-chronicle/_locales/en/messages.json` | NEW or MODIFIED | `extName.message: "[OIA] Chronicle"` per RULE-006 v1.1 |
+| `extensions/864z-chronicle/lib/tier.js` | NEW | Tiny helper module exporting `getTier()`, `setTier()`, `isVaultUnlocked()` for consistent tier checks across panel.js + options.js |
 
 **Total estimated scope:** ~10-12h focused work (matches the Strike 013 charter outline in `SOVEREIGN_LINK_PROPOSAL.md` §VI).
 

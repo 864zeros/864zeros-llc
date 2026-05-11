@@ -147,7 +147,7 @@ The `lib/payments/ExtPay.js` SDK is third-party code. Operator should:
 - [`864zeros-ISD/ISD-DIV-0-CORE/SECURITY_ROTATION_LOG.md`](../../../../864zeros-ISD/ISD-DIV-0-CORE/SECURITY_ROTATION_LOG.md) — fleet credential rotation log
 - [`864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_SOVEREIGN_GAP_REPORT.md`](../../../../864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_SOVEREIGN_GAP_REPORT.md) — fleet-wide sovereignty audit
 - [`extensions/Bible-Insight/RULE_007_AUDIT.md`](../Bible-Insight/RULE_007_AUDIT.md) — companion per-extension audit (Bible-Insight); clipboard's audit follows the same template + adds 3 sections (chrome.identity, ExtPay, chrome.management)
-- [`extensions/864z-chronical/`](../864z-chronical/) — Reference RULE-007 implementation (the canonical BYOK pattern)
+- [`extensions/864z-chronicle/`](../864z-chronicle/) — Reference RULE-007 implementation (the canonical BYOK pattern)
 - prior-strike commit `b1fd136` — confirmed deletion of dead-code 864zeros AI proxy at `lib/ai/ai-client.js`
 
 ---

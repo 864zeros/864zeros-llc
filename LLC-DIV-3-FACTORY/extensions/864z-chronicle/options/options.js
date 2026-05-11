@@ -16,6 +16,7 @@
  */
 
 import { getTier, setTier, isVaultUnlocked, TIER_FREE, TIER_VAULT } from '../lib/tier.js';
+import { initPayments, openPaymentPage } from '../lib/payments/extpay-wrapper.js';
 
 (async function init() {
   await Promise.all([
@@ -24,7 +25,10 @@ import { getTier, setTier, isVaultUnlocked, TIER_FREE, TIER_VAULT } from '../lib
     loadDataStats(),
   ]);
   bindEvents();
-  initDevOverride();
+  // Strike 024: initDevOverride() removed — handled by shared lib/options-tier-init.js
+  // (script tag in options.html). Tier-rendering on tier-flag changes is wired
+  // via chrome.runtime.onMessage + chrome.storage.onChanged listeners at the
+  // bottom of this file.
 })();
 
 // ============================================================
@@ -142,31 +146,38 @@ function bindEvents() {
 }
 
 // ============================================================
-// Tier-0.5 unlock flow (STUB — real payment integration deferred)
+// Tier-0.5 unlock flow (Strike 024 — real ExtPay checkout)
 // ============================================================
 
 async function onUnlockVault() {
-  // Strike 013 stub: flips local tier flag immediately. Real ExtPay
-  // checkout integration is deferred per TIER_0_5_BLUEPRINT.md §VII.1.
-  // The two-tap arm here is a deliberate friction signal that this is a
-  // local-only stub — operator should replace with real checkout before
-  // any public release.
-  const btn = document.getElementById('unlock-vault-btn');
-  if (btn.dataset.armed === 'true') {
-    await setTier(TIER_VAULT);
-    await renderTierUI();
-    toast('Vault unlocked. (Stub: no payment processed.)');
-    btn.dataset.armed = 'false';
-    btn.textContent = 'Unlock Vault — $2.99';
-  } else {
-    btn.dataset.armed = 'true';
-    btn.textContent = 'Stub-unlock (no payment) — tap again to confirm';
-    setTimeout(() => {
-      if (btn.dataset.armed === 'true') {
-        btn.dataset.armed = 'false';
-        btn.textContent = 'Unlock Vault — $2.99';
-      }
-    }, 4000);
+  // Strike 024: opens ExtPay's checkout page. ExtPay handles the Stripe
+  // checkout in a new tab; on payment success, the SW's onPaid() handler
+  // (service-worker.js Strike-024 block) calls setTier(TIER_VAULT) and
+  // broadcasts TIER_UNLOCKED, which fires the listener at the bottom of
+  // this file to re-render the tier card.
+  //
+  // No two-tap arm here: ExtPay's checkout page IS the confirmation gate
+  // (user explicitly clicks Pay $2.99 on Stripe's UI).
+  //
+  // Strike 026 Task 3 (storage-passed tab ID variant): record this options
+  // tab's ID to chrome.storage.local BEFORE opening checkout. The SW reads
+  // it on payment success + calls chrome.tabs.update(id, {active: true}) to
+  // refocus this tab. No 'tabs' permission needed (we use chrome.tabs.update
+  // with a known ID; we never query by URL). The key is cleared after focus.
+  try {
+    // Capture this tab's ID (defensive: getCurrent may return undefined for
+    // some contexts; if so, skip the redirect — focus listener will pick up).
+    const myTab = await new Promise(resolve => chrome.tabs.getCurrent(resolve));
+    if (myTab?.id !== undefined) {
+      await chrome.storage.local.set({ paymentReturnTabId: myTab.id });
+    }
+
+    initPayments();
+    openPaymentPage();
+    toast('Opening checkout… complete payment to unlock the Vault.');
+  } catch (err) {
+    console.error('[Chronicle Options] Unlock failed:', err);
+    toast('Could not open checkout. Try again, or contact support.');
   }
 }
 
@@ -381,51 +392,36 @@ function onFuel() {
 }
 
 // ============================================================
-// Developer Override (URL-gated; documented in DEV_NOTES.md)
+// Tier-flag change listeners (Strike 024)
 //
-// Purpose: lets the operator flip the local tier flag during testing
-// without going through the stub Unlock button or the future ExtPay
-// checkout. The override is gated by the URL flag ?dev=1 — it does not
-// react to any localStorage value, magic header, or undocumented input.
+// The shared lib/options-tier-init.js (loaded via script tag in options.html)
+// handles the canonical 3 tier-card elements (current-tier-name, vault-tier-card
+// classList, vault-lock-watermark) AND the URL-gated dev-override panel. These
+// listeners pick up the chronicle-specific extras: current-tier-description text
+// + liberate-md-btn enabled state.
 //
-// This is NOT a hidden backdoor:
-//   - The panel is in plain HTML in options.html (auditable in source)
-//   - The URL flag is documented in DEV_NOTES.md
-//   - The tier-flip uses the same setTier() path as the production stub
-//   - No data exfiltration, no remote signaling, no analytics emission
-//   - Customers without ?dev=1 never see the panel
+// Two signals are observed for safety:
+//   - chrome.runtime.onMessage TIER_UNLOCKED / TIER_DOWNGRADED — fired by SW
+//     onPaid() callback after ExtPay confirms a payment (real checkout flow)
+//   - chrome.storage.onChanged tier — fired by ANY setTier() write, including
+//     the shared dev-override panel's Force-tier-{vault,free} buttons
 // ============================================================
 
-function initDevOverride() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('dev') !== '1') return; // gate; panel stays hidden
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type === 'TIER_UNLOCKED') {
+    renderTierUI();
+    // Strike 026: visible payment-success confirmation. The SW already
+    // logged + persisted; this is the user-facing acknowledgement.
+    toast('Payment Successful! Vault unlocked.', 5000);
+  } else if (msg?.type === 'TIER_DOWNGRADED') {
+    renderTierUI();
+    toast('Vault locked — payment status changed.', 5000);
+  }
+});
 
-  const panel = document.getElementById('dev-override-panel');
-  if (!panel) return;
-  panel.classList.remove('hidden');
-
-  refreshDevTierLabel();
-
-  document.getElementById('dev-force-vault').addEventListener('click', async () => {
-    await setTier(TIER_VAULT);
-    await renderTierUI();
-    await refreshDevTierLabel();
-    toast('Dev override: tier set to vault');
-  });
-
-  document.getElementById('dev-force-free').addEventListener('click', async () => {
-    await setTier(TIER_FREE);
-    await renderTierUI();
-    await refreshDevTierLabel();
-    toast('Dev override: tier set to free');
-  });
-}
-
-async function refreshDevTierLabel() {
-  const el = document.getElementById('dev-current-tier');
-  if (!el) return;
-  el.textContent = await getTier();
-}
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'local' && changes.tier) renderTierUI();
+});
 
 // ============================================================
 // Toast utility

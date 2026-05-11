@@ -21,7 +21,7 @@ Extensions in this directory are **frozen** and not part of the active fleet. Th
 
 12 extensions across 3 pillars:
 
-- **OIA (8):** `864z-chronical`, `DataNap` (was TabVault), `oia-focus-note` (Focus Note), `oia-focus-wall` (Focus Wall), `Signal2Noise`, `Time2Focus`, `TuneOut2FocusIn`, `who-is-watching`
+- **OIA (8):** `864z-chronicle`, `DataNap` (was TabVault), `oia-focus-note` (Focus Note), `oia-focus-wall` (Focus Wall), `Signal2Noise`, `Time2Focus`, `TuneOut2FocusIn`, `who-is-watching`
 - **864-Flux (2):** `clipboard`, `migration-pilot`
 - **FHG (2):** `Bible-Insight`, `scripture-scout`
 

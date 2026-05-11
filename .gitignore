@@ -43,3 +43,6 @@ coverage/
 .env.local
 *.env
 migration-stuff/.env.master
+
+# Strike 024: per-extension operator config (merchant slugs, price IDs, etc.)
+LLC-DIV-3-FACTORY/extensions/864z-chronicle/js/config.js

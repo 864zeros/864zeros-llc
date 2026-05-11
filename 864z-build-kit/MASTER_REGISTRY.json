@@ -222,10 +222,10 @@
       "harvestable": ["chrome.alarms timer pattern", "Panel flash overlay", "Focus topic persistence"]
     },
 
-    "864z-chronical": {
-      "id": "864z-chronical",
+    "864z-chronicle": {
+      "id": "864z-chronicle",
       "name": "Chronicle",
-      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\864z-chronical",
+      "path": "C:\\Users\\I820965\\dev\\864zeros\\extensions\\864z-chronicle",
       "zone": "warehouse",
       "status": "stable",
       "version": "1.0.0",

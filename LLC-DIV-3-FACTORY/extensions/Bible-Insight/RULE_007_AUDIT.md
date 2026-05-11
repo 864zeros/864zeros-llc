@@ -127,7 +127,7 @@ This is a GTM/marketing decision, not a RULE-007 decision — but it should be s
 - [`864zeros-ISD/ISD-DIV-0-CORE/SECURITY_ROTATION_LOG.md`](../../../../864zeros-ISD/ISD-DIV-0-CORE/SECURITY_ROTATION_LOG.md) — fleet credential rotation log (Bible-Insight's own RULE-007 posture is now part of the operator's SECURITY_ROTATION_LOG attestation)
 - [`864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_SOVEREIGN_GAP_REPORT.md`](../../../../864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_SOVEREIGN_GAP_REPORT.md) — fleet-wide sovereignty audit; this doc deepens the per-extension lens for Bible-Insight specifically
 - [`864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md`](../../../../864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_FACTORY_MANIFEST.md) — Tier-0.5 readiness ladder (Bible-Insight's promotion to Rung 3 alongside this audit)
-- [`extensions/864z-chronical/`](../864z-chronical/) — Reference RULE-007 implementation (the canonical BYOK + dev-override + DEV_NOTES pattern)
+- [`extensions/864z-chronicle/`](../864z-chronicle/) — Reference RULE-007 implementation (the canonical BYOK + dev-override + DEV_NOTES pattern)
 
 ---
 

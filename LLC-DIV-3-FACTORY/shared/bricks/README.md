@@ -147,7 +147,7 @@ The brick is also a **drop-in feature** for existing 864zeros extensions:
 |---|---|
 | **clipboard** | "Export to Obsidian / Capacities" for any saved clip — cross-promo lever |
 | **Bible-Insight** | Markdown export of sermon notes / verse cross-references |
-| **Chronicle (864z-chronical)** | Export AI conversation history to Markdown for vault-style archiving |
+| **Chronicle (864z-chronicle)** | Export AI conversation history to Markdown for vault-style archiving |
 | **OIA series** (Signal2Noise, oia-focus-note, oia-focus-wall) | "Send to Obsidian" for any captured signal/note/sticky |
 
 ---

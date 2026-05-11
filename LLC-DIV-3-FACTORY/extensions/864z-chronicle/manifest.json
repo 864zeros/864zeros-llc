@@ -41,6 +41,11 @@
       "js": ["content-script.js"],
       "run_at": "document_idle",
       "all_frames": true
+    },
+    {
+      "matches": ["https://extensionpay.com/*"],
+      "js": ["lib/payments/ExtPay.js"],
+      "run_at": "document_start"
     }
   ],
 

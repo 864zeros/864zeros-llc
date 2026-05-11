@@ -4,7 +4,7 @@
 **Loaded:** Engineering proposal — review by Operator + Systems Engineer before any code changes.
 **Authored:** 2026-05-09 by 864z-OA per RULE-000.
 **Update protocol:** Append revisions; supersession marked. This is an *engineering proposal*, not a strike charter — it identifies injection points and recommends mechanics. The decision to build, defer, or reject lives with the Operator.
-**Sources synthesized:** [`extensions/864z-chronical/lib/db.js`](./lib/db.js) (lines 1-193) · [`extensions/864z-chronical/sidepanel/panel.js`](./sidepanel/panel.js) (lines 1-611) · [`864zeros_SOVEREIGN_GAP_REPORT.md`](../../../../864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_SOVEREIGN_GAP_REPORT.md) §IX.1.
+**Sources synthesized:** [`extensions/864z-chronicle/lib/db.js`](./lib/db.js) (lines 1-193) · [`extensions/864z-chronicle/sidepanel/panel.js`](./sidepanel/panel.js) (lines 1-611) · [`864zeros_SOVEREIGN_GAP_REPORT.md`](../../../../864zeros-ISD/ISD-DIV-6-KNOWLEDGE/864zeros_SOVEREIGN_GAP_REPORT.md) §IX.1.
 **Format note:** Follows the `864z-markdown-standard` (RULE-008).
 
 ---

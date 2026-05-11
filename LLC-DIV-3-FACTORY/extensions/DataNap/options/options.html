@@ -10,8 +10,11 @@
   <link rel="stylesheet" href="options.css">
 
     <link rel="stylesheet" href="../lib/transparency-tier.css">
+  <!-- Strike 033: Fleet theme engine. Classic script in <head> applies
+       data-theme attribute on <html> before DOMContentLoaded (FOUC-safe). -->
+  <script src="../lib/theme-engine.js"></script>
 </head>
-<body>
+<body data-pillar="OIA">
   <div class="oia-screen options-container">
     <h1 class="oia-h1 oia-mb-lg">TabVault Settings</h1>
 
@@ -253,10 +256,16 @@
 
     <!-- Transparency Card: standardized 4-line brand footer (per GTM_MANIFEST §6).
          Injected by Strike 014 transparency-card sweep (2026-05-09) — matches the
-         Chronicle Standard at extensions/864z-chronical/options/options.html. -->
+         Chronicle Standard at extensions/864z-chronicle/options/options.html. -->
+    <!-- Strike 029: Trust Vault UI container. Populated by canonical
+         lib/options-tier-init.js → injectTrustVaultUI() which reads from
+         lib/trust-vault.js. Place BEFORE the standardized brand-footer. -->
+    <div id="trust-vault-root"></div>
+
     <footer class="brand-footer">
       <p class="brand-footer__line brand-footer__product">
         TabVault (864z) v1.0.0 | OIA | 864zeros LLC
+        <a href="#" id="theme-toggle" role="button">Theme: [Loading...]</a>
       </p>
       <p class="brand-footer__line brand-footer__privacy">
         <svg class="brand-footer__lock" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

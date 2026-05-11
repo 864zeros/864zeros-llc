@@ -14,7 +14,7 @@
  *     provides the read/write primitive that Options + Sidepanel both
  *     consume
  *
- * Reference impl: extensions/864z-chronical/lib/tier.js (Strike 013)
+ * Reference impl: extensions/864z-chronicle/lib/tier.js (Strike 013)
  *
  * Update protocol (canonical): edit this file, then re-sync per-extension
  * lib/tier.js copies in the next compliance migration sprint.
